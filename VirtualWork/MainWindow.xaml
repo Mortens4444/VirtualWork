@@ -1,0 +1,49 @@
+﻿<Window x:Class="VirtualWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VirtualWork"
+        mc:Ignorable="d"
+		Icon="pack://application:,,,/VirtualWork;component/Resources/VirtualWork_16.ico"
+        Title="VIRtual Work"
+		Height="450"
+		Width="800"
+		WindowStartupLocation="CenterScreen">
+
+	<DockPanel>
+		<StatusBar DockPanel.Dock="Bottom">
+			<StatusBarItem>
+				<TextBlock Text="Ready" />
+			</StatusBarItem>
+		</StatusBar>
+
+		<StackPanel Orientation="Vertical">
+			<Menu>
+				<MenuItem Header="File">
+					<MenuItem Header="New task" />
+					<Separator />
+					<MenuItem Header="Exit" />
+				</MenuItem>
+				<MenuItem Header="Options">
+					<MenuItem Header="Users" />
+					<MenuItem Header="Groups and permissions" />
+					<MenuItem Header="Settings" />
+					<!--<MenuItem Header="Language">
+						<MenuItem Header="Deutch" Click="SetGermanLanguageMenuItem_Click" />
+						<MenuItem Header="English" Click="SetEnglishLanguageMenuItem_Click" />
+						<MenuItem Header="Magyar" Click="SetHungarianLanguageMenuItem_Click" />
+						<MenuItem Header="中文" Click="SetChineseLanguageMenuItem_Click" />
+					</MenuItem>-->
+				</MenuItem>
+				<MenuItem Header="Help">
+					<MenuItem Header="User guide" Click="UserGuideMenuItem_Click" />
+					<MenuItem Header="About" />
+				</MenuItem>
+			</Menu>
+
+			<TabPanel>
+			</TabPanel>
+		</StackPanel>
+	</DockPanel>
+</Window>

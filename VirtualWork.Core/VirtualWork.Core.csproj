@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C279FB9B-B43F-447B-B95B-6B67EF4CB318}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VirtualWork.Core</RootNamespace>
+    <AssemblyName>VirtualWork.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\VirtualWork\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\VirtualWork\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Enums, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageBoxes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\MessageBoxes.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageBoxSender, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\MessageBoxSender.exe</HintPath>
+    </Reference>
+    <Reference Include="SourceInfo, Version=1.0.7409.20471, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\SourceInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Management" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Actors\Store.cs" />
+    <Compile Include="Actors\Team.cs" />
+    <Compile Include="Actors\User.cs" />
+    <Compile Include="Contacts\Address.cs" />
+    <Compile Include="Contacts\Email.cs" />
+    <Compile Include="Contacts\TelephoneNumber.cs" />
+    <Compile Include="Directories\DirectoryProvider.cs" />
+    <Compile Include="Directories\DirectoryUtils.cs" />
+    <Compile Include="Enums\IssueState.cs" />
+    <Compile Include="Enums\IssueType.cs" />
+    <Compile Include="Enums\Priority.cs" />
+    <Compile Include="Enums\PublicAreaKind.cs" />
+    <Compile Include="Enums\UserType.cs" />
+    <Compile Include="Exceptions\ExceptionDetails.cs" />
+    <Compile Include="Exceptions\SystemErrorCodes.cs" />
+    <Compile Include="Job\Issue.cs" />
+    <Compile Include="Job\IssueHistory.cs" />
+    <Compile Include="Job\SchedulleInfo.cs" />
+    <Compile Include="Media\Image.cs" />
+    <Compile Include="Production\Invoice.cs" />
+    <Compile Include="Production\License.cs" />
+    <Compile Include="Production\Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Group.cs" />
+    <Compile Include="Security\GroupPermissions.cs" />
+    <Compile Include="Security\Permission.cs" />
+    <Compile Include="Security\UsersInGroups.cs" />
+    <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Exceptions\ExceptionCatcher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualWork.Interfaces\VirtualWork.Interfaces.csproj">
+      <Project>{c86e343f-bffa-4e35-b8ef-8b98e2e1f7df}</Project>
+      <Name>VirtualWork.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*"
+			Name="Virtual Work Setup"
+			Language="1033"
+			Version="1.0.0.0"
+			Manufacturer="Mortens"
+			UpgradeCode="609be243-6e44-4a40-a73a-26476986d9b2">
+
+		<Package InstallerVersion="200"
+				Compressed="yes"
+				InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature"
+				 Title="Virtual Work"
+				 Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="Documentation" />
+		</Feature>
+
+	</Product>
+</Wix>
