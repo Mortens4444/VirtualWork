@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,34 +35,125 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Enums, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageBoxes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\MessageBoxes.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageBoxSender, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\MessageBoxSender.exe</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="SourceInfo, Version=1.0.7409.20471, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\SourceInfo.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database.cs" />
-    <Compile Include="Entities\Option.cs" />
-    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Converters\ResourceConverter.cs" />
+    <Compile Include="Converters\CameraConverter.cs" />
+    <Compile Include="Converters\EventConverter.cs" />
+    <Compile Include="Converters\MeetingConverter.cs" />
+    <Compile Include="Converters\ServerConverter.cs" />
+    <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="Converters\LicenseConverter.cs" />
+    <Compile Include="Converters\IssueHistoryConverter.cs" />
+    <Compile Include="Converters\IssueConverter.cs" />
+    <Compile Include="Converters\ResourceImageConverter.cs" />
+    <Compile Include="Converters\UserImageConverter.cs" />
+    <Compile Include="Converters\EmailConverter.cs" />
+    <Compile Include="Converters\CommentConverter.cs" />
+    <Compile Include="Converters\IConverter.cs" />
+    <Compile Include="Converters\PermissionConverter.cs" />
+    <Compile Include="Converters\GroupConverter.cs" />
+    <Compile Include="Converters\SystemSettingConverter.cs" />
+    <Compile Include="Converters\UserSettingConverter.cs" />
+    <Compile Include="Converters\AddressConverter.cs" />
+    <Compile Include="Converters\TelephoneNumberConverter.cs" />
+    <Compile Include="Converters\UserConverter.cs" />
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Camera.cs" />
+    <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\Meeting.cs" />
+    <Compile Include="Entities\Repeatable.cs" />
+    <Compile Include="Entities\Resource.cs" />
+    <Compile Include="Entities\Image.cs" />
+    <Compile Include="Entities\Server.cs" />
+    <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\Email.cs" />
+    <Compile Include="Entities\Issue.cs" />
+    <Compile Include="Entities\IssueHistory.cs" />
+    <Compile Include="Entities\License.cs" />
+    <Compile Include="Entities\Setting.cs" />
+    <Compile Include="Entities\ResourceImage.cs" />
+    <Compile Include="Entities\UserImage.cs" />
+    <Compile Include="Entities\TelephoneNumber.cs" />
+    <Compile Include="Entities\IssueConnection.cs" />
+    <Compile Include="Entities\SystemSetting.cs" />
+    <Compile Include="Helper\FileReader.cs" />
+    <Compile Include="Helper\NotificationSettings.cs" />
+    <Compile Include="Helper\PropertyCopier.cs" />
+    <Compile Include="Migrations\202007110920053_CreateDatabase.cs" />
+    <Compile Include="Migrations\202007110920053_CreateDatabase.designer.cs">
+      <DependentUpon>202007110920053_CreateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007112052347_AddMacAddressToServer.cs" />
+    <Compile Include="Migrations\202007112052347_AddMacAddressToServer.designer.cs">
+      <DependentUpon>202007112052347_AddMacAddressToServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007191902295_ChangeIssueRepeation.cs" />
+    <Compile Include="Migrations\202007191902295_ChangeIssueRepeation.designer.cs">
+      <DependentUpon>202007191902295_ChangeIssueRepeation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ResourceRepository.cs" />
+    <Compile Include="Repositories\CameraRepository.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\MeetingRepository.cs" />
+    <Compile Include="Repositories\ServerRepository.cs" />
+    <Compile Include="Repositories\EmailRepository.cs" />
+    <Compile Include="Repositories\EntityProvider.cs" />
+    <Compile Include="Repositories\LicenseRepository.cs" />
+    <Compile Include="Repositories\ImageRepository.cs" />
+    <Compile Include="Repositories\UserGroupRepository.cs" />
+    <Compile Include="Repositories\IssueConnectionRepository.cs" />
+    <Compile Include="Repositories\TelephoneNumberRepository.cs" />
+    <Compile Include="Repositories\AddressRepository.cs" />
+    <Compile Include="Repositories\CommentRepository.cs" />
+    <Compile Include="Repositories\IssueHistoryRepository.cs" />
+    <Compile Include="Repositories\IssueRepository.cs" />
+    <Compile Include="Repositories\SystemSettingsRepository.cs" />
+    <Compile Include="VirtualWorkDatabaseContext.cs" />
+    <Compile Include="Entities\UserSetting.cs" />
+    <Compile Include="Entities\Permission.cs" />
+    <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Helper\Creator.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrator.cs" />
     <Compile Include="PersistenceInjectionModule.cs" />
     <Compile Include="PermissionHandler.cs" />
     <Compile Include="PersistenceConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\OptionsRepository.cs" />
+    <Compile Include="Repositories\UserSettingsRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\RolesRepository.cs" />
-    <Compile Include="Repositories\UserRolesRepository.cs" />
-    <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Repositories\PermissionRepository.cs" />
+    <Compile Include="Repositories\GroupPermissionsRepository.cs" />
+    <Compile Include="Repositories\GroupRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="RoleHelp\RoleDistributor.cs" />
     <Compile Include="RoleHelp\RoleName.cs" />
   </ItemGroup>
@@ -70,18 +161,45 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VirtualWork.Core\VirtualWork.Core.csproj">
+      <Project>{C279FB9B-B43F-447B-B95B-6B67EF4CB318}</Project>
+      <Name>VirtualWork.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VirtualWork.Interfaces\VirtualWork.Interfaces.csproj">
       <Project>{c86e343f-bffa-4e35-b8ef-8b98e2e1f7df}</Project>
       <Name>VirtualWork.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VirtualWork.Service\VirtualWork.Service.csproj">
+      <Project>{1343ECA4-6962-4951-8315-04FC2CBD08DC}</Project>
+      <Name>VirtualWork.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007110920053_CreateDatabase.resx">
+      <DependentUpon>202007110920053_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007112052347_AddMacAddressToServer.resx">
+      <DependentUpon>202007112052347_AddMacAddressToServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007191902295_ChangeIssueRepeation.resx">
+      <DependentUpon>202007191902295_ChangeIssueRepeation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StoredProcedures\GetUserContacts.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

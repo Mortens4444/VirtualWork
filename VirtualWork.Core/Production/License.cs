@@ -1,6 +1,10 @@
+using System;
+using VirtualWork.Core.Actors;
+using VirtualWork.Interfaces;
+
 namespace VirtualWork.Core.Production
 {
-	public class License
+	public class License : IHaveIdentifier
 	{
 		public int Id { get; set; }
 
@@ -9,5 +13,11 @@ namespace VirtualWork.Core.Production
 		public string Description { get; set; }
 
 		public string Name { get; set; }
+
+		public DateTime OrderDate { get; set; }
+
+		public DateTime? RenewalDate { get; set; }
+
+		public User User { get; set; }
 	}
 }

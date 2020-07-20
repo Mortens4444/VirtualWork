@@ -1,0 +1,40 @@
+﻿using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Repositories;
+using DtoType = VirtualWork.Core.Job.Issue;
+using EntityType = VirtualWork.Persistence.Entities.Issue;
+
+namespace VirtualWork.Persistence.Converters
+{
+	public class IssueConverter : ConverterBase<DtoType, EntityType>
+	{
+		private readonly UserRepository userRepository;
+
+		public IssueConverter(EntityProvider<EntityType> entityProvider,
+			UserRepository userRepository,
+			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
+			: base(entityProvider, virtualWorkDatabaseContext)
+		{
+			this.userRepository = userRepository;
+		}
+
+		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
+		{
+			entity.CreatorId = dto.Creator.Id;
+			entity.EpicId = dto.Epic?.Id;
+			entity.IssueState = (int)dto.IssueState;
+			entity.IssueType = (int)dto.IssueType;
+			entity.OwnerId = dto.Owner?.Id;
+			entity.Priority = (int)dto.Priority;
+		}
+
+		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
+		{
+			dto.Creator = userRepository.Get(entity.CreatorId);
+			dto.Epic = ToDto(entityProvider.GetEntity(entity.EpicId, VirtualWorkDatabaseContext.Issues));
+			dto.IssueState = (IssueState)entity.IssueState;
+			dto.IssueType = (IssueType)entity.IssueType;
+			dto.Owner = userRepository.Get(entity.OwnerId);
+			dto.Priority = (Priority)entity.Priority;
+		}
+	}
+}

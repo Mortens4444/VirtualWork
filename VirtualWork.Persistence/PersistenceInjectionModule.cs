@@ -6,7 +6,7 @@ namespace VirtualWork.Persistence
 	{
 		public override void Load()
 		{
-			//Bind<>().To<>();
+			Bind<VirtualWorkDatabaseContext>().ToSelf().InSingletonScope();
 		}
 	}
 }

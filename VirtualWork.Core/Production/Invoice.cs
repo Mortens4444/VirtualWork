@@ -1,10 +1,11 @@
 
 using System;
 using System.Collections.Generic;
+using VirtualWork.Interfaces;
 
 namespace VirtualWork.Core.Production
 {
-	public class Invoice
+	public class Invoice : IHaveIdentifier
 	{
 		public int Id { get; set; }
 

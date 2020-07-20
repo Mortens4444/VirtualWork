@@ -34,14 +34,38 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\INotifiable.cs" />
+    <Compile Include="Attributes\Coloring.cs" />
+    <Compile Include="Attributes\FontColoring.cs" />
+    <Compile Include="Attributes\TitleBarColoring.cs" />
+    <Compile Include="Attributes\BackgroundColoring.cs" />
     <Compile Include="Contacts\IContactInfo.cs" />
-    <Compile Include="EmailService\IEmailSender.cs" />
+    <Compile Include="Contacts\IAddress.cs" />
+    <Compile Include="Contacts\ITelephoneNumber.cs" />
+    <Compile Include="Contacts\IEmailAddress.cs" />
+    <Compile Include="Date\ActualDateTimeReportEventArgs.cs" />
+    <Compile Include="Date\IDateTimeProvider.cs" />
+    <Compile Include="EmailService\ISmtpConfigurationProvider.cs" />
+    <Compile Include="EmailService\ISmtpServerOptions.cs" />
     <Compile Include="EmailService\IEmailSenderOptions.cs" />
+    <Compile Include="EmailService\IEmailSender.cs" />
+    <Compile Include="Enums\CalendarViewType.cs" />
+    <Compile Include="Enums\ConnectionType.cs" />
+    <Compile Include="Enums\IssueState.cs" />
+    <Compile Include="Enums\IssueType.cs" />
+    <Compile Include="Enums\Priority.cs" />
+    <Compile Include="Enums\PublicAreaKind.cs" />
+    <Compile Include="Enums\ResourceType.cs" />
+    <Compile Include="Enums\RepeationType.cs" />
+    <Compile Include="IHaveTitle.cs" />
+    <Compile Include="IHaveName.cs" />
+    <Compile Include="IHaveIdentifier.cs" />
     <Compile Include="Log\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\IWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

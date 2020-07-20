@@ -29,7 +29,13 @@
 					  Source="$(var.VirtualWork.TargetPath)"
 					  KeyPath="yes" />
 			</Component>
-
+			<Component>
+				<File Id="VirtualWork.WinForms.Output"
+					  Name="$(var.VirtualWork.WinForms.TargetFileName)"
+					  Source="$(var.VirtualWork.WinForms.TargetPath)"
+					  KeyPath="yes" />
+			</Component>
+			
 			<Component>
 				<File Id="VirtualWork.Output.config"
 					  Name="$(var.VirtualWork.TargetFileName).config"

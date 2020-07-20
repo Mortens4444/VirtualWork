@@ -16,6 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWork.Persistence", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5702C5D8-985D-4D02-BEFD-242BFAB52B89}"
 	ProjectSection(SolutionItems) = preProject
+		Ideas.txt = Ideas.txt
 		Documentation\UML.bmp = Documentation\UML.bmp
 		Documentation\VIRtual Work.mdj = Documentation\VIRtual Work.mdj
 	EndProjectSection
@@ -23,6 +24,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWork.Service", "VirtualWork.Service\VirtualWork.Service.csproj", "{1343ECA4-6962-4951-8315-04FC2CBD08DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWork.Interfaces", "VirtualWork.Interfaces\VirtualWork.Interfaces.csproj", "{C86E343F-BFFA-4E35-B8EF-8B98E2E1F7DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWork.WinForms", "VirtualWork.WinForms\VirtualWork.WinForms.csproj", "{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F31CFFFA-143F-4E70-B617-ED760E60BC39}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWork.Tests", "VirtualWork.Tests\VirtualWork.Tests.csproj", "{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +88,22 @@ Global
 		{C86E343F-BFFA-4E35-B8EF-8B98E2E1F7DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C86E343F-BFFA-4E35-B8EF-8B98E2E1F7DF}.Release|x86.ActiveCfg = Release|Any CPU
 		{C86E343F-BFFA-4E35-B8EF-8B98E2E1F7DF}.Release|x86.Build.0 = Release|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Debug|x86.Build.0 = Debug|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Release|x86.ActiveCfg = Release|Any CPU
+		{5D186AE3-DC19-4FBB-AF5E-0CAE37CBD410}.Release|x86.Build.0 = Release|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Debug|x86.Build.0 = Debug|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Release|x86.ActiveCfg = Release|Any CPU
+		{6901A1BA-8A6A-4852-9F7E-13CF4DE4FE06}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

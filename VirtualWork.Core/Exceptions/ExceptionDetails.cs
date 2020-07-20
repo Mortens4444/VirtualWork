@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace VirtualWork.Core.Exceptions
 {
@@ -134,6 +134,16 @@ namespace VirtualWork.Core.Exceptions
 			{
 				stringBuilder.AppendLine($"Win32 NativeErrorCode: {win32Exception.NativeErrorCode} - {(SystemErrorCodes)win32Exception.NativeErrorCode}");
 			}
+			else if (ex is DbEntityValidationException dbEntityValidationException)
+			{
+				foreach (var entityValidationErrors in dbEntityValidationException.EntityValidationErrors)
+				{
+					foreach (var validationError in entityValidationErrors.ValidationErrors)
+					{
+						stringBuilder.AppendLine($"Error message: {validationError.ErrorMessage}, Property name: {validationError.PropertyName}");
+					}
+				}
+			}
 #if !__MonoCS__
 			else
 			{
@@ -144,7 +154,7 @@ namespace VirtualWork.Core.Exceptions
 						stringBuilder.Append("ErrorInformation description: ");
 						stringBuilder.AppendLine(Convert.ToString(managementException.ErrorInformation["Description"]));
 					}
-				}
+				}				
 			}
 #endif
 		}

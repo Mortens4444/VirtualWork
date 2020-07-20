@@ -1,6 +1,8 @@
+using VirtualWork.Interfaces;
+
 namespace VirtualWork.Core.Security
 {
-	public class Permission
+	public class Permission : IHaveIdentifier
 	{
 		public int Id { get; set; }
 

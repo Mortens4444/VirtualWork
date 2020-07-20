@@ -1,15 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using LanguageService;
 using LanguageService.WPF;
-using VirtualWork.Core.Actors;
-using VirtualWork.Core.Contacts;
 using VirtualWork.Core.Directories;
-using VirtualWork.Interfaces.Actors;
-using VirtualWork.Interfaces.Contacts;
-using VirtualWork.Interfaces.EmailService;
 using VirtualWork.Persistence.Repositories;
 
 namespace VirtualWork
@@ -19,7 +13,7 @@ namespace VirtualWork
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow(UsersRepository usersRepository)
+		public MainWindow(UserRepository usersRepository)
 		{
 			InitializeComponent();
 			Translator.Translate(this);
@@ -52,6 +46,17 @@ namespace VirtualWork
 		{
 			Lng.DefaultLanguage = LanguageService.Language.Chinese;
 			Translator.Translate(this);
+		}
+
+		private void MenuItem_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
+		{
+			var aboutWindow = new AboutWindow();
+			aboutWindow.Show();
 		}
 	}
 }

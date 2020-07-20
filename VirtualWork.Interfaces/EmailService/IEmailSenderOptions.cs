@@ -2,16 +2,8 @@
 {
 	public interface IEmailSenderOptions
 	{
-		string SmtpServer { get; }
+		string SenderEmailAddress { get; set; }
 
-		int SmtpServerPort { get; }
-
-		bool SmtpServerUseSSl { get; }
-
-		string SmtpServerUser { get; }
-
-		string SmtpServerPassword { get; }
-
-		string SenderEmailAddress { get; }
+		bool ShowErrorMessages { get; set; }
 	}
 }

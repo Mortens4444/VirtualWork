@@ -1,11 +1,10 @@
+using VirtualWork.Core.Actors;
 using VirtualWork.Interfaces.Contacts;
 
 namespace VirtualWork.Core.Contacts
 {
-	public class TelephoneNumber : IContactInfo
+	public class TelephoneNumber : ContactBase, ITelephoneNumber
 	{
-		public int Id { get; set; }
-
 		public string Number { get; set; }
 	}
 }

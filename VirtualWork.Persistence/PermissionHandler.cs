@@ -1,17 +1,34 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 using System.Threading;
-using VirtualWork.Persistence.Entities;
+using VirtualWork.Core.Actors;
+using VirtualWork.Persistence.Repositories;
 
 namespace VirtualWork.Persistence
 {
-	public static class PermissionHandler
+	public class PermissionHandler
     {
-        public static void SetPrincipals(User user)
+		private readonly PermissionRepository permissionRepository;
+
+		public PermissionHandler(PermissionRepository permissionRepository)
+		{
+			this.permissionRepository = permissionRepository;
+		}
+
+        public void SetPrincipals(User user)
         {
-            var principals = user.Roles.Select(userRole => userRole.Role.Name).ToArray();
+			IEnumerable<string> principals;
+			if (user.IsAdmin())
+			{
+				principals = permissionRepository.GetAll().Select(permisssion => permisssion.Name);				
+			}
+			else
+			{
+				principals = user.Groups.SelectMany(group => group.Permissions.Select(groupPermission => groupPermission.Name));
+			}
             var genericIdentity = new GenericIdentity(user.Name);
-            Thread.CurrentPrincipal = new GenericPrincipal(genericIdentity, principals);
+            Thread.CurrentPrincipal = new GenericPrincipal(genericIdentity, principals.ToArray());
         }
     }
 }

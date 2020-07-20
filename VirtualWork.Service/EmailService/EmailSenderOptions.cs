@@ -2,18 +2,10 @@
 
 namespace VirtualWork.Service.EmailService
 {
-	class EmailSenderOptions : IEmailSenderOptions
+	public class EmailSenderOptions : IEmailSenderOptions
 	{
-		public string SmtpServer => "mail.digikabel.hu";
+		public string SenderEmailAddress { get; set; }
 
-		public int SmtpServerPort => 25;
-
-		public bool SmtpServerUseSSl => false;
-
-		public string SmtpServerUser => "user@digikabel.hu";
-
-		public string SmtpServerPassword => "pass";
-
-		public string SenderEmailAddress => "virtualwork@noreply.com";
+		public bool ShowErrorMessages { get; set; }
 	}
 }

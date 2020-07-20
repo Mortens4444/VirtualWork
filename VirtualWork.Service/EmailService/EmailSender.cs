@@ -2,54 +2,86 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EmailService;
+using EmailService.Enum;
 using EmailService.EventArgs;
 using EmailService.Model;
-using VirtualWork.Core.Contacts;
 using VirtualWork.Interfaces.Actors;
+using VirtualWork.Interfaces.Contacts;
 using VirtualWork.Interfaces.EmailService;
-using VirtualWork.Interfaces.Log;
 
 namespace VirtualWork.Service.EmailService
 {
 	public class EmailSender : IEmailSender
 	{
-		private readonly string senderEmailAddress;
 		private readonly SmtpServer smtpServer;
 		private readonly SendMail sendMail;
-		private readonly ILogger logger;
+		private string systemSenderEmailAddress = "virtualwork@noreply.com";
+		private bool showMessages;
 
-		public EmailSender(IEmailSenderOptions emailSenderOptions, ILogger logger)
+		public EmailSender(ISmtpServerOptions smtpServerOptions)
 		{
-			this.logger = logger;
-			senderEmailAddress = emailSenderOptions.SenderEmailAddress;
-			smtpServer = new SmtpServer(emailSenderOptions.SmtpServer, emailSenderOptions.SmtpServerPort, emailSenderOptions.SmtpServerUseSSl, emailSenderOptions.SmtpServerUser, emailSenderOptions.SmtpServerPassword, null, true);
+			var smtpAuthentication = smtpServerOptions.SmtpAuthentication == -1 ? (SmtpAuthentication?)null : (SmtpAuthentication)smtpServerOptions.SmtpAuthentication;
+			smtpServer = new SmtpServer(smtpServerOptions.SmtpServer, smtpServerOptions.SmtpServerPort, smtpServerOptions.SmtpServerUseSSl, smtpServerOptions.SmtpServerUser, smtpServerOptions.SmtpServerPassword, smtpAuthentication, true);
 			sendMail = new SendMail(smtpServer);
 		}
 
-		public void Send(HashSet<INotifiable> notifiables, string title, string message)
+		public void Send(INotifiable sender, HashSet<INotifiable> recipents, string title, string message)
 		{
-			sendMail.SentChanged += SendMail_SentChanged;
-
-			foreach (var notifiable in notifiables)
+			string senderEmailAddress;
+			if (systemSenderEmailAddress != null && sender != null)
 			{
-				if (notifiable.Contacts.FirstOrDefault(contact => contact is Email) is Email email)
-				{
-					sendMail.Send(senderEmailAddress, email.Address, title, message);
-				}
+				CheckSenderEmailExistence(sender);
+				senderEmailAddress = sender.GetFirstEmailAddress()?.Address;
+			}
+			else
+			{
+				senderEmailAddress = systemSenderEmailAddress;
+			}
+
+			var recipentsEmailAddresses = recipents
+				.Select(notifiable => notifiable.GetFirstEmailAddress())
+				.Where(emailAddress => emailAddress != null)
+				.ToHashSet();
+			Send(senderEmailAddress, recipentsEmailAddresses, title, message);
+		}
+
+		public void Send(string sender, HashSet<IEmailAddress> recipents, string title, string message)
+		{
+			CheckSenderEmailExistence(sender);
+			sendMail.SentChanged += SendMail_SentChanged;
+			foreach (var recipent in recipents)
+			{
+				sendMail.Send(sender, recipent.Address, title, message);
+			}
+		}
+
+		public void Send(string sender, string to, string cc, string bcc, string title, string message)
+		{
+			CheckSenderEmailExistence(sender);
+			sendMail.SentChanged += SendMail_SentChanged;
+			sendMail.Send(sender, to, title, message, cc, bcc);
+		}
+
+		private static void CheckSenderEmailExistence(object sender)
+		{
+			if (sender == null)
+			{
+				throw new InvalidOperationException("You need to add an e-mail address to your profile.");
 			}
 		}
 
 		private void SendMail_SentChanged(object sender, SentChangedEventArgs e)
 		{
-			var recipents = $"{e.To}, CC: {String.Join(", ", e.CC)}, BCC: {String.Join(", ", e.Bcc)}";
-			if (e.Sent)
+			if (showMessages)
 			{
-				logger.Info($"E-mail message has been sent to {recipents} from {e.From}");
+
 			}
-			else
-			{
-				logger.Error($"E-mail message cannot be sent to {recipents} from {e.From}. Exception: {e.Exception}");
-			}
+		}
+
+		public void SetOptions(IEmailSenderOptions emailSenderOptions)
+		{
+			showMessages = emailSenderOptions.ShowErrorMessages;
+			systemSenderEmailAddress = emailSenderOptions.SenderEmailAddress;
 		}
 	}
 }

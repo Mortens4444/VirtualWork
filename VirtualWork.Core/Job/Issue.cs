@@ -1,24 +1,27 @@
 using System;
 using System.Collections.Generic;
 using VirtualWork.Core.Actors;
-using VirtualWork.Core.Enums;
+using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Actors;
+using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Job
 {
-	public class Issue
+	public class Issue : IHaveIdentifier, IHaveTitle
 	{
 		public int Id { get; set; }
-
-		public HashSet<User> Contacts { get; set; }
 
 		public User Creator { get; set; }
 
 		public string Description { get; set; }
 
+		public string Title { get; set; }
+
+		public DateTime CreationDate { get; set; }
+
 		public DateTime DueDate { get; set; }
 
-		public int EpicId { get; set; }
+		public Issue Epic { get; set; }
 
 		public HashSet<INotifiable> Followers { get; set; }
 
@@ -34,7 +37,11 @@ namespace VirtualWork.Core.Job
 
 		public Priority Priority { get; set; }
 
-		public SchedulleInfo SchedulleInfo { get; set; }
+		public DateTime? ExpirationDate { get; set; }
+
+		public int RepeationValue { get; set; }
+
+		public RepeationType RepeationType { get; set; }
 
 		/// <summary>
 		/// @param notifiable
