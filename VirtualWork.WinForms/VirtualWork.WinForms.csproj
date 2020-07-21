@@ -188,6 +188,7 @@
     </Compile>
     <Compile Include="Providers\ActualUserGroupsProvider.cs" />
     <Compile Include="Providers\FileAndFolderProvider.cs" />
+    <Compile Include="Providers\IssueListProvider.cs" />
     <Compile Include="Providers\UserListProvider.cs" />
     <Compile Include="Providers\ServerListProvider.cs" />
     <Compile Include="SendMailForm.cs">

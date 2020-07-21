@@ -46,7 +46,7 @@ namespace VirtualWork.WinForms
 				ExpirationDate = dtpExpirationDate.Value,
 				MeetingDate = dtpMeetingDate.Value,
 				Owner = Initializer.LoggedInUser,
-				RepeationType = EnumUtils.Get<RepeationType>((string)cbRepeationType.SelectedItem),
+				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),
 				RepeationValue = (int)nudRepeationValue.Value
 			};
 			meetingRepository.Add(meeting);

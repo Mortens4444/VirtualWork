@@ -30,15 +30,16 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Events", 3, 3);
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Servers");
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Events", 3, 3);
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Servers");
 			this.pMain = new System.Windows.Forms.Panel();
 			this.pContent = new System.Windows.Forms.Panel();
 			this.pRight = new System.Windows.Forms.Panel();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tpTaskboard = new System.Windows.Forms.TabPage();
+			this.taskboard1 = new VirtualWork.WinForms.Controls.Taskboard();
 			this.tpFileExplorer = new System.Windows.Forms.TabPage();
 			this.pFileExplorerMain = new System.Windows.Forms.Panel();
 			this.pFileExlorer = new System.Windows.Forms.Panel();
@@ -69,34 +70,34 @@
 			this.pBrowser = new System.Windows.Forms.Panel();
 			this.webBrowser = new System.Windows.Forms.WebBrowser();
 			this.pBrowserHeader = new System.Windows.Forms.Panel();
+			this.btnVisit = new System.Windows.Forms.Button();
 			this.tbWebAddress = new System.Windows.Forms.TextBox();
 			this.tpCalendar = new System.Windows.Forms.TabPage();
+			this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+			this.cbView = new System.Windows.Forms.ComboBox();
+			this.lblView = new System.Windows.Forms.Label();
+			this.dgvCalendar = new System.Windows.Forms.DataGridView();
 			this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.pLeft = new System.Windows.Forms.Panel();
 			this.tvItems = new System.Windows.Forms.TreeView();
+			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
-			this.menuStrip = new System.Windows.Forms.MenuStrip();
-			this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.dgvCalendar = new System.Windows.Forms.DataGridView();
-			this.lblView = new System.Windows.Forms.Label();
-			this.cbView = new System.Windows.Forms.ComboBox();
-			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-			this.btnVisit = new System.Windows.Forms.Button();
 			this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenCmd = new System.Windows.Forms.ToolStripSplitButton();
+			this.menuStrip = new System.Windows.Forms.MenuStrip();
+			this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewMeeting = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiNewServer = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewCamera = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiDatabaseSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +107,6 @@
 			this.tsmiUserSettings = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-			this.taskboard1 = new VirtualWork.WinForms.Controls.Taskboard();
 			this.pMain.SuspendLayout();
 			this.pContent.SuspendLayout();
 			this.pRight.SuspendLayout();
@@ -124,10 +124,10 @@
 			this.pBrowser.SuspendLayout();
 			this.pBrowserHeader.SuspendLayout();
 			this.tpCalendar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).BeginInit();
 			this.pLeft.SuspendLayout();
 			this.statusStrip.SuspendLayout();
 			this.menuStrip.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pMain
@@ -184,6 +184,14 @@
 			this.tpTaskboard.TabIndex = 0;
 			this.tpTaskboard.Text = "Taskboard";
 			this.tpTaskboard.UseVisualStyleBackColor = true;
+			// 
+			// taskboard1
+			// 
+			this.taskboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.taskboard1.Location = new System.Drawing.Point(3, 3);
+			this.taskboard1.Name = "taskboard1";
+			this.taskboard1.Size = new System.Drawing.Size(724, 434);
+			this.taskboard1.TabIndex = 0;
 			// 
 			// tpFileExplorer
 			// 
@@ -260,8 +268,8 @@
 			// 
 			this.images.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("images.ImageStream")));
 			this.images.TransparentColor = System.Drawing.Color.Transparent;
-			this.images.Images.SetKeyName(0, "computer");
-			this.images.Images.SetKeyName(1, "operation");
+			this.images.Images.SetKeyName(0, "server");
+			this.images.Images.SetKeyName(1, "issue");
 			this.images.Images.SetKeyName(2, "clock");
 			this.images.Images.SetKeyName(3, "event");
 			this.images.Images.SetKeyName(4, "folder");
@@ -515,6 +523,17 @@
 			this.pBrowserHeader.Size = new System.Drawing.Size(724, 26);
 			this.pBrowserHeader.TabIndex = 0;
 			// 
+			// btnVisit
+			// 
+			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
+			this.btnVisit.Location = new System.Drawing.Point(689, 1);
+			this.btnVisit.Name = "btnVisit";
+			this.btnVisit.Size = new System.Drawing.Size(31, 23);
+			this.btnVisit.TabIndex = 1;
+			this.btnVisit.UseVisualStyleBackColor = true;
+			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
+			// 
 			// tbWebAddress
 			// 
 			this.tbWebAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -539,6 +558,41 @@
 			this.tpCalendar.TabIndex = 3;
 			this.tpCalendar.Text = "Calendar";
 			this.tpCalendar.UseVisualStyleBackColor = true;
+			// 
+			// monthCalendar1
+			// 
+			this.monthCalendar1.Location = new System.Drawing.Point(12, 72);
+			this.monthCalendar1.Name = "monthCalendar1";
+			this.monthCalendar1.TabIndex = 4;
+			// 
+			// cbView
+			// 
+			this.cbView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbView.FormattingEnabled = true;
+			this.cbView.Location = new System.Drawing.Point(78, 11);
+			this.cbView.Name = "cbView";
+			this.cbView.Size = new System.Drawing.Size(121, 21);
+			this.cbView.TabIndex = 3;
+			// 
+			// lblView
+			// 
+			this.lblView.AutoSize = true;
+			this.lblView.Location = new System.Drawing.Point(9, 14);
+			this.lblView.Name = "lblView";
+			this.lblView.Size = new System.Drawing.Size(30, 13);
+			this.lblView.TabIndex = 2;
+			this.lblView.Text = "View";
+			// 
+			// dgvCalendar
+			// 
+			this.dgvCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvCalendar.Location = new System.Drawing.Point(214, 11);
+			this.dgvCalendar.Name = "dgvCalendar";
+			this.dgvCalendar.Size = new System.Drawing.Size(510, 423);
+			this.dgvCalendar.TabIndex = 1;
 			// 
 			// dateTimePicker
 			// 
@@ -572,28 +626,33 @@
 			this.tvItems.ImageList = this.images;
 			this.tvItems.Location = new System.Drawing.Point(0, 0);
 			this.tvItems.Name = "tvItems";
-			treeNode5.ImageIndex = 1;
-			treeNode5.Name = "Issues";
-			treeNode5.SelectedImageIndex = 1;
-			treeNode5.Text = "Issues";
-			treeNode6.ImageIndex = 3;
-			treeNode6.Name = "Events";
-			treeNode6.SelectedImageIndex = 3;
-			treeNode6.Text = "Events";
-			treeNode7.ImageIndex = 2;
-			treeNode7.Name = "Meetings";
-			treeNode7.SelectedImageIndex = 2;
-			treeNode7.Text = "Meetings";
-			treeNode8.Name = "Servers";
-			treeNode8.Text = "Servers";
+			treeNode1.ImageIndex = 1;
+			treeNode1.Name = "Issues";
+			treeNode1.SelectedImageIndex = 1;
+			treeNode1.Text = "Issues";
+			treeNode2.ImageIndex = 3;
+			treeNode2.Name = "Events";
+			treeNode2.SelectedImageIndex = 3;
+			treeNode2.Text = "Events";
+			treeNode3.ImageIndex = 2;
+			treeNode3.Name = "Meetings";
+			treeNode3.SelectedImageIndex = 2;
+			treeNode3.Text = "Meetings";
+			treeNode4.Name = "Servers";
+			treeNode4.Text = "Servers";
 			this.tvItems.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
 			this.tvItems.SelectedImageIndex = 0;
 			this.tvItems.Size = new System.Drawing.Size(200, 466);
 			this.tvItems.TabIndex = 0;
+			// 
+			// contextMenuStrip
+			// 
+			this.contextMenuStrip.Name = "contextMenuStrip";
+			this.contextMenuStrip.Size = new System.Drawing.Size(61, 4);
 			// 
 			// statusStrip
 			// 
@@ -618,6 +677,28 @@
 			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
 			this.tsslPlaceHolder.Size = new System.Drawing.Size(884, 17);
 			this.tsslPlaceHolder.Spring = true;
+			// 
+			// toolStripSplitButton1
+			// 
+			this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripSplitButton1.DropDownButtonWidth = 0;
+			this.toolStripSplitButton1.Image = global::VirtualWork.WinForms.Properties.Resources.powershell_ise;
+			this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+			this.toolStripSplitButton1.Size = new System.Drawing.Size(21, 20);
+			this.toolStripSplitButton1.Text = "PowerShell ISE";
+			this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.TssbOpenPowerShellIse_ButtonClick);
+			// 
+			// tssbOpenCmd
+			// 
+			this.tssbOpenCmd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tssbOpenCmd.DropDownButtonWidth = 0;
+			this.tssbOpenCmd.Image = ((System.Drawing.Image)(resources.GetObject("tssbOpenCmd.Image")));
+			this.tssbOpenCmd.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tssbOpenCmd.Name = "tssbOpenCmd";
+			this.tssbOpenCmd.Size = new System.Drawing.Size(21, 20);
+			this.tssbOpenCmd.Text = "Command prompt";
+			this.tssbOpenCmd.ButtonClick += new System.EventHandler(this.TssbOpenCmd_ButtonClick);
 			// 
 			// menuStrip
 			// 
@@ -648,107 +729,19 @@
 			this.tsmiFile.Size = new System.Drawing.Size(37, 20);
 			this.tsmiFile.Text = "File";
 			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(147, 6);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(147, 6);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
-			// 
-			// dgvCalendar
-			// 
-			this.dgvCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvCalendar.Location = new System.Drawing.Point(214, 11);
-			this.dgvCalendar.Name = "dgvCalendar";
-			this.dgvCalendar.Size = new System.Drawing.Size(510, 423);
-			this.dgvCalendar.TabIndex = 1;
-			// 
-			// lblView
-			// 
-			this.lblView.AutoSize = true;
-			this.lblView.Location = new System.Drawing.Point(9, 14);
-			this.lblView.Name = "lblView";
-			this.lblView.Size = new System.Drawing.Size(30, 13);
-			this.lblView.TabIndex = 2;
-			this.lblView.Text = "View";
-			// 
-			// cbView
-			// 
-			this.cbView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbView.FormattingEnabled = true;
-			this.cbView.Location = new System.Drawing.Point(78, 11);
-			this.cbView.Name = "cbView";
-			this.cbView.Size = new System.Drawing.Size(121, 21);
-			this.cbView.TabIndex = 3;
-			// 
-			// contextMenuStrip
-			// 
-			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(61, 4);
-			// 
-			// monthCalendar1
-			// 
-			this.monthCalendar1.Location = new System.Drawing.Point(12, 72);
-			this.monthCalendar1.Name = "monthCalendar1";
-			this.monthCalendar1.TabIndex = 4;
-			// 
-			// btnVisit
-			// 
-			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
-			this.btnVisit.Location = new System.Drawing.Point(689, 1);
-			this.btnVisit.Name = "btnVisit";
-			this.btnVisit.Size = new System.Drawing.Size(31, 23);
-			this.btnVisit.TabIndex = 1;
-			this.btnVisit.UseVisualStyleBackColor = true;
-			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
-			// 
-			// toolStripSplitButton1
-			// 
-			this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripSplitButton1.DropDownButtonWidth = 0;
-			this.toolStripSplitButton1.Image = global::VirtualWork.WinForms.Properties.Resources.powershell_ise;
-			this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-			this.toolStripSplitButton1.Size = new System.Drawing.Size(21, 20);
-			this.toolStripSplitButton1.Text = "PowerShell ISE";
-			this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.ToolStripSplitButton1_ButtonClick);
-			// 
-			// tssbOpenCmd
-			// 
-			this.tssbOpenCmd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tssbOpenCmd.DropDownButtonWidth = 0;
-			this.tssbOpenCmd.Image = ((System.Drawing.Image)(resources.GetObject("tssbOpenCmd.Image")));
-			this.tssbOpenCmd.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tssbOpenCmd.Name = "tssbOpenCmd";
-			this.tssbOpenCmd.Size = new System.Drawing.Size(21, 20);
-			this.tssbOpenCmd.Text = "Command prompt";
-			this.tssbOpenCmd.ButtonClick += new System.EventHandler(this.TssbOpenCmd_ButtonClick);
-			// 
 			// tsmiNewIssue
 			// 
 			this.tsmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
 			this.tsmiNewIssue.Name = "tsmiNewIssue";
-			this.tsmiNewIssue.Size = new System.Drawing.Size(150, 22);
+			this.tsmiNewIssue.Size = new System.Drawing.Size(180, 22);
 			this.tsmiNewIssue.Text = "New issue";
-			this.tsmiNewIssue.Click += new System.EventHandler(this.TsmiNewTask_Click);
+			this.tsmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
 			// 
 			// tsmiNewEvent
 			// 
 			this.tsmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
 			this.tsmiNewEvent.Name = "tsmiNewEvent";
-			this.tsmiNewEvent.Size = new System.Drawing.Size(150, 22);
+			this.tsmiNewEvent.Size = new System.Drawing.Size(180, 22);
 			this.tsmiNewEvent.Text = "New event";
 			this.tsmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
 			// 
@@ -756,15 +749,20 @@
 			// 
 			this.tsmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
 			this.tsmiNewMeeting.Name = "tsmiNewMeeting";
-			this.tsmiNewMeeting.Size = new System.Drawing.Size(150, 22);
+			this.tsmiNewMeeting.Size = new System.Drawing.Size(180, 22);
 			this.tsmiNewMeeting.Text = "New meeting";
 			this.tsmiNewMeeting.Click += new System.EventHandler(this.TsmiNewMeeting_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiNewServer
 			// 
 			this.tsmiNewServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
 			this.tsmiNewServer.Name = "tsmiNewServer";
-			this.tsmiNewServer.Size = new System.Drawing.Size(150, 22);
+			this.tsmiNewServer.Size = new System.Drawing.Size(180, 22);
 			this.tsmiNewServer.Text = "Create server";
 			this.tsmiNewServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
 			// 
@@ -772,23 +770,33 @@
 			// 
 			this.tsmiNewCamera.Image = global::VirtualWork.WinForms.Properties.Resources.security_camera;
 			this.tsmiNewCamera.Name = "tsmiNewCamera";
-			this.tsmiNewCamera.Size = new System.Drawing.Size(150, 22);
+			this.tsmiNewCamera.Size = new System.Drawing.Size(180, 22);
 			this.tsmiNewCamera.Text = "Create camera";
 			this.tsmiNewCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiSendEmail
 			// 
 			this.tsmiSendEmail.Image = global::VirtualWork.WinForms.Properties.Resources.email;
 			this.tsmiSendEmail.Name = "tsmiSendEmail";
-			this.tsmiSendEmail.Size = new System.Drawing.Size(150, 22);
+			this.tsmiSendEmail.Size = new System.Drawing.Size(180, 22);
 			this.tsmiSendEmail.Text = "Send e-mail";
 			this.tsmiSendEmail.Click += new System.EventHandler(this.TsmiSendEmail_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiExit
 			// 
 			this.tsmiExit.Image = global::VirtualWork.WinForms.Properties.Resources.exit;
 			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(150, 22);
+			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
 			this.tsmiExit.Text = "Exit";
 			this.tsmiExit.Click += new System.EventHandler(this.TsmiExit_Click);
 			// 
@@ -862,14 +870,6 @@
 			this.tsmiAbout.Text = "About";
 			this.tsmiAbout.Click += new System.EventHandler(this.TsmiAbout_Click);
 			// 
-			// taskboard1
-			// 
-			this.taskboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.taskboard1.Location = new System.Drawing.Point(3, 3);
-			this.taskboard1.Name = "taskboard1";
-			this.taskboard1.Size = new System.Drawing.Size(724, 434);
-			this.taskboard1.TabIndex = 0;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -905,12 +905,12 @@
 			this.pBrowserHeader.PerformLayout();
 			this.tpCalendar.ResumeLayout(false);
 			this.tpCalendar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).EndInit();
 			this.pLeft.ResumeLayout(false);
 			this.statusStrip.ResumeLayout(false);
 			this.statusStrip.PerformLayout();
 			this.menuStrip.ResumeLayout(false);
 			this.menuStrip.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).EndInit();
 			this.ResumeLayout(false);
 
 		}

@@ -128,8 +128,6 @@
     <Compile Include="Repositories\EntityProvider.cs" />
     <Compile Include="Repositories\LicenseRepository.cs" />
     <Compile Include="Repositories\ImageRepository.cs" />
-    <Compile Include="Repositories\UserGroupRepository.cs" />
-    <Compile Include="Repositories\IssueConnectionRepository.cs" />
     <Compile Include="Repositories\TelephoneNumberRepository.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
@@ -151,7 +149,6 @@
     <Compile Include="Repositories\UserSettingsRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\PermissionRepository.cs" />
-    <Compile Include="Repositories\GroupPermissionsRepository.cs" />
     <Compile Include="Repositories\GroupRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="RoleHelp\RoleDistributor.cs" />

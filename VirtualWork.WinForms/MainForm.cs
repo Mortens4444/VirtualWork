@@ -23,7 +23,7 @@ namespace VirtualWork.WinForms
 		private readonly UserManagementForm userManagementForm;
 		private readonly UserProfileForm userProfileForm;
 		private readonly UserSettingsForm userSettingsForm;
-		private readonly CreateIssueForm createTaskForm;
+		private readonly CreateIssueForm createIssueForm;
 		private readonly CreateEventForm createEventForm;
 		private readonly CreateMeetingForm createMeetingForm;
 		private readonly AddServerForm addServerForm;
@@ -33,6 +33,7 @@ namespace VirtualWork.WinForms
 		private readonly AboutBox aboutBox;
 		private readonly ServerListProvider serverListProvider;
 		private readonly FileAndFolderProvider fileAndFolderProvider;
+		private readonly IssueListProvider issueListProvider;
 		private readonly IDateTimeProvider dateTimeProvider;
 
 		private string workingDirectoryOnLeft;
@@ -44,7 +45,7 @@ namespace VirtualWork.WinForms
 			UserManagementForm userManagementForm,
 			UserProfileForm userProfileForm,
 			UserSettingsForm userSettingsForm,
-			CreateIssueForm createTaskForm,
+			CreateIssueForm createIssueForm,
 			CreateEventForm createEventForm,
 			CreateMeetingForm createMeetingForm,
 			AddServerForm addServerForm,
@@ -54,6 +55,7 @@ namespace VirtualWork.WinForms
 			AboutBox aboutBox,
 			ServerListProvider serverListProvider,
 			FileAndFolderProvider fileAndFolderProvider,
+			IssueListProvider issueListProvider,
 			IDateTimeProvider dateTimeProvider)
 		{
 			InitializeComponent();
@@ -63,7 +65,7 @@ namespace VirtualWork.WinForms
 			this.userManagementForm = userManagementForm;
 			this.userProfileForm = userProfileForm;
 			this.userSettingsForm = userSettingsForm;
-			this.createTaskForm = createTaskForm;
+			this.createIssueForm = createIssueForm;
 			this.createEventForm = createEventForm;
 			this.createMeetingForm = createMeetingForm;
 			this.sendMailForm = sendMailForm;
@@ -73,6 +75,7 @@ namespace VirtualWork.WinForms
 			this.addCameraForm = addCameraForm;
 			this.serverListProvider = serverListProvider;
 			this.fileAndFolderProvider = fileAndFolderProvider;
+			this.issueListProvider = issueListProvider;
 			this.aboutBox = aboutBox;
 
 			active = lvFileExplorerLeft;
@@ -101,6 +104,7 @@ namespace VirtualWork.WinForms
 		{
 			dateTimeProvider.ActualDateTimeReport += DateTimeProvider_ActualDateTimeReport;
 			serverListProvider.GetServersAndCamera(tvItems);
+			issueListProvider.GetOngoingIssues(tvItems);
 		}
 
 		private void DateTimeProvider_ActualDateTimeReport(object sender, ActualDateTimeReportEventArgs e)
@@ -108,9 +112,11 @@ namespace VirtualWork.WinForms
 			try
 			{
 				Invoke((Action)(() => { tsslDate.Text = e.DateTimeString; }));
-				//Invoke((MethodInvoker)delegate { tsslDate.Text = e.DateTimeString; });
 			}
-			catch { }
+			catch
+			{
+				// Try ... catch block is needed because of form dispose could throw an exception here.
+			}
 		}
 
 		private void TsmiExit_Click(object sender, EventArgs e)
@@ -143,9 +149,10 @@ namespace VirtualWork.WinForms
 			userProfileForm.ShowDialog();
 		}
 
-		private void TsmiNewTask_Click(object sender, EventArgs e)
+		private void TsmiNewIssue_Click(object sender, EventArgs e)
 		{
-			createTaskForm.ShowDialog();
+			createIssueForm.ShowDialog();
+			issueListProvider.GetOngoingIssues(tvItems);
 		}
 
 		private void TsmiNewEvent_Click(object sender, EventArgs e)
@@ -185,7 +192,7 @@ namespace VirtualWork.WinForms
 			ProcessUtils.StartAsAdmin("CMD");
 		}
 
-		private void ToolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+		private void TssbOpenPowerShellIse_ButtonClick(object sender, EventArgs e)
 		{
 			ProcessUtils.StartAsAdmin("PowerShell_ISE");
 		}

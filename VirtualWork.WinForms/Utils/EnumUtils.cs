@@ -5,9 +5,24 @@ namespace VirtualWork.WinForms.Utils
 {
 	class EnumUtils
 	{
-		public static TEnumType Get<TEnumType>(string text)
+		public static TEnumType GetByDescription<TEnumType>(string description)
 		{
-			return (TEnumType)Enum.Parse(typeof(TEnumType), Lng.Translate(Lng.DefaultLanguage, text, Language.English));
+			var englishDescription = Lng.Translate(Lng.DefaultLanguage, description, Language.English);
+			var values = Enum.GetValues(typeof(TEnumType));
+			foreach (TEnumType value in values)
+			{
+				if (englishDescription == Core.Utils.EnumUtils.GetDescription(value as Enum))
+				{
+					return value;
+				}
+			}
+
+			return Parse<TEnumType>(englishDescription);
+		}
+
+		public static TEnumType Parse<TEnumType>(string value)
+		{
+			return (TEnumType)Enum.Parse(typeof(TEnumType), value);
 		}
 	}
 }

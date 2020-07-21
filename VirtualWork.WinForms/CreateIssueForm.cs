@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
 using VirtualWork.Core.Job;
@@ -15,6 +14,7 @@ namespace VirtualWork.WinForms
 	{
 		private readonly IssueRepository issueRepository;
 		private readonly UserRepository userRepository;
+		private bool selectingOwner;
 
 		public CreateIssueForm(IssueRepository issueRepository,
 			UserRepository userRepository)
@@ -47,7 +47,10 @@ namespace VirtualWork.WinForms
 
 		private void CbOwnedBy_TextChanged(object sender, EventArgs e)
 		{
-			GetUsers();
+			if (!selectingOwner)
+			{
+				GetUsers();
+			}
 		}
 
 		private void CbEpic_TextChanged(object sender, EventArgs e)
@@ -75,17 +78,27 @@ namespace VirtualWork.WinForms
 				Creator = Initializer.LoggedInUser,
 				Description = rtbDescription.Text,
 				Title = tbTitle.Text,
-				IssueType = EnumUtils.Get<IssueType>((string)cbIssueType.SelectedItem),
+				IssueType = EnumUtils.GetByDescription<IssueType>((string)cbIssueType.SelectedItem),
 				Epic = (Issue)cbEpic.SelectedItem,
-				DueDate = dtpDueTo.Value,
+				DueDate = dtpDueTo.Value.ToUniversalTime(),
 				Owner = (User)cbOwnedBy.SelectedItem,
-				Priority = EnumUtils.Get<Priority>((string)cbIssuePriority.SelectedItem),
-				RepeationType = EnumUtils.Get<RepeationType>((string)cbRepeationType.SelectedItem),
+				Priority = EnumUtils.GetByDescription<Priority>((string)cbIssuePriority.SelectedItem),
+				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),
 				RepeationValue = (int)nudRepeationValue.Value,
-				ExpirationDate = dtpExpirationDate.Value,
+				ExpirationDate = dtpExpirationDate.Value.ToUniversalTime(),
 				CreationDate = DateTime.UtcNow
 			};
 			issueRepository.Add(issue);
+		}
+
+		private void CbOwnedBy_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			selectingOwner = false;
+		}
+
+		private void CbOwnedBy_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			selectingOwner = true;
 		}
 	}
 }

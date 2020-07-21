@@ -33,7 +33,6 @@ namespace VirtualWork.Persistence.Entities
 		[Required]
 		public string Title { get; set; }
 
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public DateTime CreationDate { get; set; }
 
 		public DateTime DueDate { get; set; }

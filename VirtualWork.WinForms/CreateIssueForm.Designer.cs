@@ -284,6 +284,8 @@
 			this.cbOwnedBy.Name = "cbOwnedBy";
 			this.cbOwnedBy.Size = new System.Drawing.Size(707, 21);
 			this.cbOwnedBy.TabIndex = 17;
+			this.cbOwnedBy.SelectedIndexChanged += new System.EventHandler(this.CbOwnedBy_SelectedIndexChanged);
+			this.cbOwnedBy.SelectionChangeCommitted += new System.EventHandler(this.CbOwnedBy_SelectionChangeCommitted);
 			this.cbOwnedBy.TextChanged += new System.EventHandler(this.CbOwnedBy_TextChanged);
 			// 
 			// lblOwnedBy

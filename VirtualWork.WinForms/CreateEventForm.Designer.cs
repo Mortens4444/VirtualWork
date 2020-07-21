@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateEventForm));
 			this.pMain = new System.Windows.Forms.Panel();
+			this.btnTest = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnCreate = new System.Windows.Forms.Button();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -68,14 +69,27 @@
 			// 
 			// pMain
 			// 
+			this.pMain.Controls.Add(this.btnTest);
 			this.pMain.Controls.Add(this.btnCancel);
 			this.pMain.Controls.Add(this.btnCreate);
 			this.pMain.Controls.Add(this.tabControl1);
 			this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pMain.Location = new System.Drawing.Point(0, 0);
+			this.pMain.MinimumSize = new System.Drawing.Size(800, 405);
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(800, 405);
 			this.pMain.TabIndex = 0;
+			// 
+			// btnTest
+			// 
+			this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnTest.Location = new System.Drawing.Point(13, 372);
+			this.btnTest.Name = "btnTest";
+			this.btnTest.Size = new System.Drawing.Size(75, 23);
+			this.btnTest.TabIndex = 22;
+			this.btnTest.Text = "Test";
+			this.btnTest.UseVisualStyleBackColor = true;
+			this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
 			// 
 			// btnCancel
 			// 
@@ -98,6 +112,7 @@
 			this.btnCreate.TabIndex = 21;
 			this.btnCreate.Text = "OK";
 			this.btnCreate.UseVisualStyleBackColor = true;
+			this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
 			// 
 			// tabControl1
 			// 
@@ -406,5 +421,6 @@
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnCreate;
 		private System.Windows.Forms.Label lblRepetition;
+		private System.Windows.Forms.Button btnTest;
 	}
 }

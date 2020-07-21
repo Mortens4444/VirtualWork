@@ -2,8 +2,10 @@
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Appointment;
+using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
+using VirtualWork.Service.Process;
 using VirtualWork.WinForms.Extensions;
 using VirtualWork.WinForms.Utils;
 
@@ -39,10 +41,11 @@ namespace VirtualWork.WinForms
 				CreationDate = DateTime.UtcNow,
 				Creator = Initializer.LoggedInUser,
 				Description = rtbDescription.Text,
-				EventDate = dtpEventDate.Value,
-				ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value : (DateTime?)null,
+				EventDate = dtpEventDate.Value.ToUniversalTime(),
+				ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value.ToUniversalTime() : (DateTime?)null,
 				RepeationValue = (int)nudRepeationValue.Value,
-				RepeationType = EnumUtils.Get<RepeationType>((string)cbRepeationType.SelectedItem),
+				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),
+				Title = tbTitle.Text
 			};
 			eventRepository.Add(myEvent);
 		}
@@ -57,6 +60,12 @@ namespace VirtualWork.WinForms
 			nudRepeationValue.Enabled = isEnabled;
 			chkExpire.Enabled = isEnabled;
 			dtpExpirationDate.Enabled = isEnabled;
+		}
+
+		private void BtnTest_Click(object sender, EventArgs e)
+		{
+			var executionParameters = rtbStartApplication.Text.GetExecutionParameters();
+			ProcessUtils.Start(executionParameters.Application, executionParameters.Parameters);
 		}
 	}
 }
