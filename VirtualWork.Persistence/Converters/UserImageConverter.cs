@@ -1,6 +1,7 @@
-﻿using VirtualWork.Persistence.Repositories;
-using DtoType = VirtualWork.Core.Media.UserImage;
-using EntityType = VirtualWork.Persistence.Entities.UserImage;
+﻿using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Repositories;
+using DtoType = VirtualWork.Core.Media.ActorImage;
+using EntityType = VirtualWork.Persistence.Entities.ActorImage;
 
 namespace VirtualWork.Persistence.Converters
 {
@@ -18,12 +19,14 @@ namespace VirtualWork.Persistence.Converters
 
 		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
 		{
-			entity.UserId = dto.User.Id;
+			entity.ActorId = dto.Actor.Id;
+			entity.ActorType = (int)dto.ActorType;
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
-			dto.User = userRepository.Get(entity.UserId);
+			dto.Actor = userRepository.Get(entity.ActorId);
+			dto.ActorType = (ActorType)entity.ActorType;
 		}
 	}
 }

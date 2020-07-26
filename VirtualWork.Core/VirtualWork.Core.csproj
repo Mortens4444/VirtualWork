@@ -66,6 +66,7 @@
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actors\Store.cs" />
     <Compile Include="Actors\Team.cs" />
+    <Compile Include="Actors\Partner.cs" />
     <Compile Include="Actors\User.cs" />
     <Compile Include="Appointment\AppointmentBase.cs" />
     <Compile Include="Appointment\Meeting.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="Infrastructure\Server.cs" />
     <Compile Include="Job\Issue.cs" />
     <Compile Include="Job\IssueHistory.cs" />
-    <Compile Include="Media\UserImage.cs" />
+    <Compile Include="Media\ActorImage.cs" />
     <Compile Include="Media\ResourceImage.cs" />
     <Compile Include="Media\Image.cs" />
     <Compile Include="Appointment\Event.cs" />

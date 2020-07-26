@@ -18,11 +18,13 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
 		{
 			entity.PublicAreaKind = (int)dto.PublicAreaKind;
+			entity.ActorType = (int)dto.ActorType;
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.PublicAreaKind = (PublicAreaKind)entity.PublicAreaKind;
+			dto.ActorType = (ActorType)entity.ActorType;
 		}
 	}
 }

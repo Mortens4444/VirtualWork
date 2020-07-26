@@ -74,6 +74,7 @@
     <Compile Include="Converters\IssueHistoryConverter.cs" />
     <Compile Include="Converters\IssueConverter.cs" />
     <Compile Include="Converters\ResourceImageConverter.cs" />
+    <Compile Include="Converters\PartnerConverter.cs" />
     <Compile Include="Converters\UserImageConverter.cs" />
     <Compile Include="Converters\EmailConverter.cs" />
     <Compile Include="Converters\CommentConverter.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Meeting.cs" />
+    <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\Repeatable.cs" />
     <Compile Include="Entities\Resource.cs" />
     <Compile Include="Entities\Image.cs" />
@@ -100,7 +102,8 @@
     <Compile Include="Entities\License.cs" />
     <Compile Include="Entities\Setting.cs" />
     <Compile Include="Entities\ResourceImage.cs" />
-    <Compile Include="Entities\UserImage.cs" />
+    <Compile Include="Entities\Partner.cs" />
+    <Compile Include="Entities\ActorImage.cs" />
     <Compile Include="Entities\TelephoneNumber.cs" />
     <Compile Include="Entities\IssueConnection.cs" />
     <Compile Include="Entities\SystemSetting.cs" />
@@ -118,6 +121,18 @@
     <Compile Include="Migrations\202007191902295_ChangeIssueRepeation.cs" />
     <Compile Include="Migrations\202007191902295_ChangeIssueRepeation.designer.cs">
       <DependentUpon>202007191902295_ChangeIssueRepeation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007222100313_ChangeForeignKeys.cs" />
+    <Compile Include="Migrations\202007222100313_ChangeForeignKeys.designer.cs">
+      <DependentUpon>202007222100313_ChangeForeignKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007231819134_AddLocations.cs" />
+    <Compile Include="Migrations\202007231819134_AddLocations.designer.cs">
+      <DependentUpon>202007231819134_AddLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007261236228_ChangeEventDescriptionToOptional.cs" />
+    <Compile Include="Migrations\202007261236228_ChangeEventDescriptionToOptional.designer.cs">
+      <DependentUpon>202007261236228_ChangeEventDescriptionToOptional.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\CameraRepository.cs" />
@@ -184,6 +199,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007191902295_ChangeIssueRepeation.resx">
       <DependentUpon>202007191902295_ChangeIssueRepeation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007222100313_ChangeForeignKeys.resx">
+      <DependentUpon>202007222100313_ChangeForeignKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007231819134_AddLocations.resx">
+      <DependentUpon>202007231819134_AddLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007261236228_ChangeEventDescriptionToOptional.resx">
+      <DependentUpon>202007261236228_ChangeEventDescriptionToOptional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

@@ -21,8 +21,10 @@ namespace VirtualWork.Persistence.Entities
 		public string Title { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
-		[Required]
 		public string Description { get; set; }
+
+		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
+		public string EventLocation { get; set; }
 
 		public DateTime EventDate { get; set; }
 

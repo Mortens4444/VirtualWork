@@ -11,9 +11,10 @@ namespace VirtualWork.Persistence.Entities
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		[ForeignKey(nameof(User))]
-		public int UserId { get; set; }
-		public virtual User User { get; set; }
+		[Required]
+		public int ActorId { get; set; }
+
+		public int ActorType { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfStrings)]
 		public string Number { get; set; }

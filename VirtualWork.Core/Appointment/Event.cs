@@ -16,5 +16,7 @@ namespace VirtualWork.Core.Appointment
 		public string ApplicationToStart { get; set; }
 
 		public string Arguments { get; set; }
+
+		public string EventLocation { get; set; }
 	}
 }

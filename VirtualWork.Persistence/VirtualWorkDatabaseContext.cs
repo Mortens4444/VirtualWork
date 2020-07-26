@@ -31,6 +31,8 @@ namespace VirtualWork.Persistence
 
 		public DbSet<Permission> Permisssions { get; set; }
 
+		public DbSet<Partner> Partners { get; set; }
+
 		public DbSet<ResourceImage> ResourceImages { get; set; }
 
 		public DbSet<Resource> Resources { get; set; }
@@ -39,7 +41,7 @@ namespace VirtualWork.Persistence
 
 		public DbSet<TelephoneNumber> TelephoneNumbers { get; set; }
 
-		public DbSet<UserImage> UserImages { get; set; }
+		public DbSet<ActorImage> UserImages { get; set; }
 
         public DbSet<UserSetting> UserSettings { get; set; }
 
@@ -52,16 +54,6 @@ namespace VirtualWork.Persistence
 			modelBuilder.Entity<Server>().
 				HasMany<Camera>(server => server.Cameras).
 				WithOptional(camera => camera.Server).
-				WillCascadeOnDelete(true);
-
-			modelBuilder.Entity<User>().
-				HasMany<License>(user => user.Licenses).
-				WithRequired(license => license.User).
-				WillCascadeOnDelete(true);
-
-			modelBuilder.Entity<User>().
-				HasMany<Address>(user => user.Addresses).
-				WithRequired(address => address.User).
 				WillCascadeOnDelete(true);
 
 			modelBuilder.Entity<Group>()

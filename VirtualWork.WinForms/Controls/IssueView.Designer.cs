@@ -46,12 +46,14 @@
 			this.toolStrip.Size = new System.Drawing.Size(146, 25);
 			this.toolStrip.TabIndex = 2;
 			this.toolStrip.Text = "toolStrip1";
+			this.toolStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ToolStrip_MouseDown);
 			// 
 			// tslTitle
 			// 
 			this.tslTitle.Name = "tslTitle";
 			this.tslTitle.Size = new System.Drawing.Size(50, 22);
 			this.tslTitle.Text = "Id - Title";
+			this.tslTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ToolStrip_MouseDown);
 			// 
 			// rtbDescription
 			// 

@@ -57,6 +57,8 @@
 			this.chOperation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOriginator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOperationTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.lblEventLocation = new System.Windows.Forms.Label();
+			this.tbEventLocation = new System.Windows.Forms.TextBox();
 			this.pMain.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tpGeneral.SuspendLayout();
@@ -77,13 +79,13 @@
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.MinimumSize = new System.Drawing.Size(800, 405);
 			this.pMain.Name = "pMain";
-			this.pMain.Size = new System.Drawing.Size(800, 405);
+			this.pMain.Size = new System.Drawing.Size(800, 431);
 			this.pMain.TabIndex = 0;
 			// 
 			// btnTest
 			// 
 			this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnTest.Location = new System.Drawing.Point(13, 372);
+			this.btnTest.Location = new System.Drawing.Point(13, 398);
 			this.btnTest.Name = "btnTest";
 			this.btnTest.Size = new System.Drawing.Size(75, 23);
 			this.btnTest.TabIndex = 22;
@@ -95,7 +97,7 @@
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(712, 374);
+			this.btnCancel.Location = new System.Drawing.Point(712, 400);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 20;
@@ -106,7 +108,7 @@
 			// 
 			this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.btnCreate.Location = new System.Drawing.Point(631, 374);
+			this.btnCreate.Location = new System.Drawing.Point(631, 400);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(75, 23);
 			this.btnCreate.TabIndex = 21;
@@ -124,7 +126,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(800, 370);
+			this.tabControl1.Size = new System.Drawing.Size(800, 396);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tpGeneral
@@ -133,13 +135,15 @@
 			this.tpGeneral.Location = new System.Drawing.Point(4, 22);
 			this.tpGeneral.Name = "tpGeneral";
 			this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
-			this.tpGeneral.Size = new System.Drawing.Size(792, 344);
+			this.tpGeneral.Size = new System.Drawing.Size(792, 370);
 			this.tpGeneral.TabIndex = 0;
 			this.tpGeneral.Text = "General";
 			this.tpGeneral.UseVisualStyleBackColor = true;
 			// 
 			// gbMain
 			// 
+			this.gbMain.Controls.Add(this.tbEventLocation);
+			this.gbMain.Controls.Add(this.lblEventLocation);
 			this.gbMain.Controls.Add(this.gbStartInfo);
 			this.gbMain.Controls.Add(this.gbRecurring);
 			this.gbMain.Controls.Add(this.dtpEventTime);
@@ -152,7 +156,7 @@
 			this.gbMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.gbMain.Location = new System.Drawing.Point(3, 3);
 			this.gbMain.Name = "gbMain";
-			this.gbMain.Size = new System.Drawing.Size(786, 338);
+			this.gbMain.Size = new System.Drawing.Size(786, 364);
 			this.gbMain.TabIndex = 3;
 			this.gbMain.TabStop = false;
 			// 
@@ -162,10 +166,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbStartInfo.Controls.Add(this.rtbStartApplication);
-			this.gbStartInfo.Location = new System.Drawing.Point(6, 250);
+			this.gbStartInfo.Location = new System.Drawing.Point(6, 273);
 			this.gbStartInfo.MinimumSize = new System.Drawing.Size(774, 48);
 			this.gbStartInfo.Name = "gbStartInfo";
-			this.gbStartInfo.Size = new System.Drawing.Size(774, 85);
+			this.gbStartInfo.Size = new System.Drawing.Size(774, 88);
 			this.gbStartInfo.TabIndex = 29;
 			this.gbStartInfo.TabStop = false;
 			this.gbStartInfo.Text = "Start application";
@@ -177,7 +181,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.rtbStartApplication.Location = new System.Drawing.Point(3, 19);
 			this.rtbStartApplication.Name = "rtbStartApplication";
-			this.rtbStartApplication.Size = new System.Drawing.Size(765, 60);
+			this.rtbStartApplication.Size = new System.Drawing.Size(765, 63);
 			this.rtbStartApplication.TabIndex = 0;
 			this.rtbStartApplication.Text = "";
 			// 
@@ -191,7 +195,7 @@
 			this.gbRecurring.Controls.Add(this.dtpExpirationDate);
 			this.gbRecurring.Controls.Add(this.lblExpirationDate);
 			this.gbRecurring.Controls.Add(this.nudRepeationValue);
-			this.gbRecurring.Location = new System.Drawing.Point(6, 167);
+			this.gbRecurring.Location = new System.Drawing.Point(6, 190);
 			this.gbRecurring.Name = "gbRecurring";
 			this.gbRecurring.Size = new System.Drawing.Size(774, 77);
 			this.gbRecurring.TabIndex = 28;
@@ -365,13 +369,31 @@
 			this.chOperationTime.Text = "Operation time";
 			this.chOperationTime.Width = 101;
 			// 
+			// lblEventLocation
+			// 
+			this.lblEventLocation.AutoSize = true;
+			this.lblEventLocation.Location = new System.Drawing.Point(6, 174);
+			this.lblEventLocation.Name = "lblEventLocation";
+			this.lblEventLocation.Size = new System.Drawing.Size(75, 13);
+			this.lblEventLocation.TabIndex = 30;
+			this.lblEventLocation.Text = "Event location";
+			// 
+			// tbEventLocation
+			// 
+			this.tbEventLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbEventLocation.Location = new System.Drawing.Point(101, 171);
+			this.tbEventLocation.Name = "tbEventLocation";
+			this.tbEventLocation.Size = new System.Drawing.Size(679, 20);
+			this.tbEventLocation.TabIndex = 31;
+			// 
 			// CreateEventForm
 			// 
 			this.AcceptButton = this.btnCreate;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(800, 405);
+			this.ClientSize = new System.Drawing.Size(800, 431);
 			this.Controls.Add(this.pMain);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "CreateEventForm";
@@ -422,5 +444,7 @@
 		private System.Windows.Forms.Button btnCreate;
 		private System.Windows.Forms.Label lblRepetition;
 		private System.Windows.Forms.Button btnTest;
+		private System.Windows.Forms.TextBox tbEventLocation;
+		private System.Windows.Forms.Label lblEventLocation;
 	}
 }

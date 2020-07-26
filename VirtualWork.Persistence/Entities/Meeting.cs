@@ -18,6 +18,14 @@ namespace VirtualWork.Persistence.Entities
 		public int OwnerId { get; set; }
 		public virtual User Owner { get; set; }
 
+		[Required]
+		public int ActorId { get; set; }
+
+		public int ActorType { get; set; }
+
+		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
+		public string MeetingPoint { get; set; }
+
 		public string Description { get; set; }
 
 		public string Title { get; set; }

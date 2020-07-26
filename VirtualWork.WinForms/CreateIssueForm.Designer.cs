@@ -465,6 +465,7 @@
 			this.Name = "CreateIssueForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Create issue";
+			this.Shown += new System.EventHandler(this.CreateIssueForm_Shown);
 			this.pMain.ResumeLayout(false);
 			this.tabControl.ResumeLayout(false);
 			this.tpGeneral.ResumeLayout(false);

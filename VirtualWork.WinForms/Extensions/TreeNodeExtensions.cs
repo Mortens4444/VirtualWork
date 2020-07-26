@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Repositories;
@@ -43,7 +44,7 @@ namespace VirtualWork.WinForms.Extensions
 			}
 		}
 
-		public static void FillTreeNodeCollectionWithTitle<TDtoType, TEntityType>(
+		public static IEnumerable<TDtoType> FillTreeNodeCollectionWithTitle<TDtoType, TEntityType>(
 			this TreeNodeCollection treeNodeCollection,
 			RepositoryBase<TDtoType, TEntityType> repository,
 			int elementImageIndex = 0,
@@ -57,6 +58,7 @@ namespace VirtualWork.WinForms.Extensions
 				var treeNode = element.CreateTreeNode(elementImageIndex);
 				treeNodeCollection.Add(treeNode);
 			}
+			return elements;
 		}
 	}
 }

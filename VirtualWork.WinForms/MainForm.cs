@@ -34,6 +34,8 @@ namespace VirtualWork.WinForms
 		private readonly ServerListProvider serverListProvider;
 		private readonly FileAndFolderProvider fileAndFolderProvider;
 		private readonly IssueListProvider issueListProvider;
+		private readonly MeetingsListProvider meetingsListProvider;
+		private readonly EventListProvider eventListProvider;
 		private readonly IDateTimeProvider dateTimeProvider;
 
 		private string workingDirectoryOnLeft;
@@ -56,6 +58,8 @@ namespace VirtualWork.WinForms
 			ServerListProvider serverListProvider,
 			FileAndFolderProvider fileAndFolderProvider,
 			IssueListProvider issueListProvider,
+			MeetingsListProvider meetingsListProvider,
+			EventListProvider eventListProvider,
 			IDateTimeProvider dateTimeProvider)
 		{
 			InitializeComponent();
@@ -76,6 +80,8 @@ namespace VirtualWork.WinForms
 			this.serverListProvider = serverListProvider;
 			this.fileAndFolderProvider = fileAndFolderProvider;
 			this.issueListProvider = issueListProvider;
+			this.meetingsListProvider = meetingsListProvider;
+			this.eventListProvider = eventListProvider;
 			this.aboutBox = aboutBox;
 
 			active = lvFileExplorerLeft;
@@ -104,7 +110,9 @@ namespace VirtualWork.WinForms
 		{
 			dateTimeProvider.ActualDateTimeReport += DateTimeProvider_ActualDateTimeReport;
 			serverListProvider.GetServersAndCamera(tvItems);
-			issueListProvider.GetOngoingIssues(tvItems);
+			issueListProvider.GetOngoingIssues(tvItems, taskboard);
+			eventListProvider.GetUpcomingEvents(tvItems);
+			meetingsListProvider.GetUpcomingMeetings(tvItems);
 		}
 
 		private void DateTimeProvider_ActualDateTimeReport(object sender, ActualDateTimeReportEventArgs e)
@@ -152,12 +160,13 @@ namespace VirtualWork.WinForms
 		private void TsmiNewIssue_Click(object sender, EventArgs e)
 		{
 			createIssueForm.ShowDialog();
-			issueListProvider.GetOngoingIssues(tvItems);
+			issueListProvider.GetOngoingIssues(tvItems, taskboard);
 		}
 
 		private void TsmiNewEvent_Click(object sender, EventArgs e)
 		{
 			createEventForm.ShowDialog();
+			eventListProvider.GetUpcomingEvents(tvItems);
 		}
 
 		private void TsmiSendEmail_Click(object sender, EventArgs e)
@@ -173,6 +182,7 @@ namespace VirtualWork.WinForms
 		private void TsmiNewMeeting_Click(object sender, EventArgs e)
 		{
 			createMeetingForm.ShowDialog();
+			meetingsListProvider.GetUpcomingMeetings(tvItems);
 		}
 
 		private void TsmiNewServer_Click(object sender, EventArgs e)
@@ -379,6 +389,11 @@ namespace VirtualWork.WinForms
 		private void ListView_Enter(object sender, EventArgs e)
 		{
 			active = (ListView)sender;
+		}
+
+		private void TvItems_MouseDown(object sender, MouseEventArgs e)
+		{
+			tvItems.SelectedNode = tvItems.GetNodeAt(e.X, e.Y);
 		}
 	}
 }

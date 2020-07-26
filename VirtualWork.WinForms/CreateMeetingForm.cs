@@ -47,7 +47,8 @@ namespace VirtualWork.WinForms
 				MeetingDate = dtpMeetingDate.Value,
 				Owner = Initializer.LoggedInUser,
 				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),
-				RepeationValue = (int)nudRepeationValue.Value
+				RepeationValue = (int)nudRepeationValue.Value,
+				MeetingPoint = cbMeetingPoint.Text
 			};
 			meetingRepository.Add(meeting);
 		}

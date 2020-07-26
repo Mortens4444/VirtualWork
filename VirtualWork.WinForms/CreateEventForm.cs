@@ -27,11 +27,12 @@ namespace VirtualWork.WinForms
 
 		private void CreateEventForm_Shown(object sender, EventArgs e)
 		{
-			dtpEventDate.Value = DateTime.UtcNow.AddDays(1);
+			dtpEventDate.Value = DateTime.Now.AddDays(1);
 		}
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
+			dtpEventDate.Value = new DateTime(dtpEventDate.Value.Year, dtpEventDate.Value.Month, dtpEventDate.Value.Day, dtpEventTime.Value.Hour, dtpEventTime.Value.Minute, dtpEventTime.Value.Second);
 			rtbStartApplication.Text = rtbStartApplication.Text.Trim();
 			var firstSpaceIndex = rtbStartApplication.Text.IndexOf(' ');
 			var myEvent = new Event
@@ -42,6 +43,7 @@ namespace VirtualWork.WinForms
 				Creator = Initializer.LoggedInUser,
 				Description = rtbDescription.Text,
 				EventDate = dtpEventDate.Value.ToUniversalTime(),
+				EventLocation = tbEventLocation.Text,
 				ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value.ToUniversalTime() : (DateTime?)null,
 				RepeationValue = (int)nudRepeationValue.Value,
 				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),

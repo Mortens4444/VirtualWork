@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VirtualWork.Interfaces;
 
 namespace VirtualWork.Core.Infrastructure
@@ -18,5 +19,14 @@ namespace VirtualWork.Core.Infrastructure
 		public string Password { get; set; }
 
 		public IEnumerable<Camera> Cameras { get; set; }
+
+		public override string ToString()
+		{
+			if (String.IsNullOrEmpty(MacAddress))
+			{
+				return $"{Name} - {IpAddress}";
+			}
+			return $"{Name} - {IpAddress} ({MacAddress})";
+		}
 	}
 }

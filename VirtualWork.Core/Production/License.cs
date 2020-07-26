@@ -1,6 +1,7 @@
 using System;
 using VirtualWork.Core.Actors;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Production
 {
@@ -18,6 +19,8 @@ namespace VirtualWork.Core.Production
 
 		public DateTime? RenewalDate { get; set; }
 
-		public User User { get; set; }
+		public Actor Actor { get; set; }
+
+		public ActorType ActorType { get; set; }
 	}
 }

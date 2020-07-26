@@ -20,13 +20,25 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
 		{
 			entity.ResourceType = (int)dto.ResourceType;
-			entity.UserId = dto.User.Id;
+			entity.ActorId = dto.Actor.Id;
+			entity.ActorType = (int)dto.ActorType;
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.ResourceType = (ResourceType)entity.ResourceType;
-			dto.User = userRepository.Get(entity.UserId);
+			dto.ActorType = (ActorType)entity.ActorType;
+
+			switch (dto.ActorType)
+			{
+				case ActorType.User:
+					dto.Actor = userRepository.Get(entity.ActorId);
+					break;
+				case ActorType.Partner:
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }

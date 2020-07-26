@@ -14,7 +14,7 @@ namespace VirtualWork.Interfaces.Attributes
 		public byte Blue { get; }
 
 		public Coloring(byte red, byte green, byte blue)
-			: this(0, red, green, blue)
+			: this(255, red, green, blue)
 		{
 		}
 

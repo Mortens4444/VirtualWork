@@ -11,5 +11,7 @@ namespace VirtualWork.Core.Appointment
 		public DateTime MeetingDate { get; set; }
 
 		public virtual ICollection<User> Followers { get; set; }
+
+		public string MeetingPoint { get; set; }
 	}
 }

@@ -52,6 +52,7 @@
     <Compile Include="EmailService\ISmtpServerOptions.cs" />
     <Compile Include="EmailService\IEmailSenderOptions.cs" />
     <Compile Include="EmailService\IEmailSender.cs" />
+    <Compile Include="Enums\ActorType.cs" />
     <Compile Include="Enums\CalendarViewType.cs" />
     <Compile Include="Enums\ConnectionType.cs" />
     <Compile Include="Enums\IssueState.cs" />

@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VirtualWork.Persistence.Entities
 {
-	public class UserImage : Image
+	public class ActorImage : Image
 	{
-		[ForeignKey(nameof(User))]
 		[Required]
-		public int UserId { get; set; }
-		public virtual User User { get; set; }
+		public int ActorId { get; set; }
+
+		public int ActorType { get; set; }
 	}
 }

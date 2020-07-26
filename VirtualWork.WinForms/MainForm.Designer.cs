@@ -30,6 +30,9 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
 			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Events", 3, 3);
 			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
@@ -39,7 +42,7 @@
 			this.pRight = new System.Windows.Forms.Panel();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tpTaskboard = new System.Windows.Forms.TabPage();
-			this.taskboard1 = new VirtualWork.WinForms.Controls.Taskboard();
+			this.taskboard = new VirtualWork.WinForms.Controls.Taskboard();
 			this.tpFileExplorer = new System.Windows.Forms.TabPage();
 			this.pFileExplorerMain = new System.Windows.Forms.Panel();
 			this.pFileExlorer = new System.Windows.Forms.Panel();
@@ -176,7 +179,7 @@
 			// 
 			// tpTaskboard
 			// 
-			this.tpTaskboard.Controls.Add(this.taskboard1);
+			this.tpTaskboard.Controls.Add(this.taskboard);
 			this.tpTaskboard.Location = new System.Drawing.Point(4, 22);
 			this.tpTaskboard.Name = "tpTaskboard";
 			this.tpTaskboard.Padding = new System.Windows.Forms.Padding(3);
@@ -185,13 +188,13 @@
 			this.tpTaskboard.Text = "Taskboard";
 			this.tpTaskboard.UseVisualStyleBackColor = true;
 			// 
-			// taskboard1
+			// taskboard
 			// 
-			this.taskboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.taskboard1.Location = new System.Drawing.Point(3, 3);
-			this.taskboard1.Name = "taskboard1";
-			this.taskboard1.Size = new System.Drawing.Size(724, 434);
-			this.taskboard1.TabIndex = 0;
+			this.taskboard.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.taskboard.Location = new System.Drawing.Point(3, 3);
+			this.taskboard.Name = "taskboard";
+			this.taskboard.Size = new System.Drawing.Size(724, 434);
+			this.taskboard.TabIndex = 0;
 			// 
 			// tpFileExplorer
 			// 
@@ -299,6 +302,8 @@
 			this.images.Images.SetKeyName(28, "compress");
 			this.images.Images.SetKeyName(29, "cursor.ico");
 			this.images.Images.SetKeyName(30, "help");
+			this.images.Images.SetKeyName(31, "security-camera.ico");
+			this.images.Images.SetKeyName(32, "bug.ico");
 			// 
 			// pFileExplorerRightHeader
 			// 
@@ -588,9 +593,33 @@
 			this.dgvCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCalendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvCalendar.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvCalendar.Location = new System.Drawing.Point(214, 11);
 			this.dgvCalendar.Name = "dgvCalendar";
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCalendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgvCalendar.Size = new System.Drawing.Size(510, 423);
 			this.dgvCalendar.TabIndex = 1;
 			// 
@@ -648,6 +677,7 @@
 			this.tvItems.SelectedImageIndex = 0;
 			this.tvItems.Size = new System.Drawing.Size(200, 466);
 			this.tvItems.TabIndex = 0;
+			this.tvItems.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TvItems_MouseDown);
 			// 
 			// contextMenuStrip
 			// 
@@ -733,7 +763,7 @@
 			// 
 			this.tsmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
 			this.tsmiNewIssue.Name = "tsmiNewIssue";
-			this.tsmiNewIssue.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewIssue.Size = new System.Drawing.Size(150, 22);
 			this.tsmiNewIssue.Text = "New issue";
 			this.tsmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
 			// 
@@ -741,7 +771,7 @@
 			// 
 			this.tsmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
 			this.tsmiNewEvent.Name = "tsmiNewEvent";
-			this.tsmiNewEvent.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewEvent.Size = new System.Drawing.Size(150, 22);
 			this.tsmiNewEvent.Text = "New event";
 			this.tsmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
 			// 
@@ -749,20 +779,20 @@
 			// 
 			this.tsmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
 			this.tsmiNewMeeting.Name = "tsmiNewMeeting";
-			this.tsmiNewMeeting.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewMeeting.Size = new System.Drawing.Size(150, 22);
 			this.tsmiNewMeeting.Text = "New meeting";
 			this.tsmiNewMeeting.Click += new System.EventHandler(this.TsmiNewMeeting_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(147, 6);
 			// 
 			// tsmiNewServer
 			// 
 			this.tsmiNewServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
 			this.tsmiNewServer.Name = "tsmiNewServer";
-			this.tsmiNewServer.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewServer.Size = new System.Drawing.Size(150, 22);
 			this.tsmiNewServer.Text = "Create server";
 			this.tsmiNewServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
 			// 
@@ -770,33 +800,33 @@
 			// 
 			this.tsmiNewCamera.Image = global::VirtualWork.WinForms.Properties.Resources.security_camera;
 			this.tsmiNewCamera.Name = "tsmiNewCamera";
-			this.tsmiNewCamera.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewCamera.Size = new System.Drawing.Size(150, 22);
 			this.tsmiNewCamera.Text = "Create camera";
 			this.tsmiNewCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(147, 6);
 			// 
 			// tsmiSendEmail
 			// 
 			this.tsmiSendEmail.Image = global::VirtualWork.WinForms.Properties.Resources.email;
 			this.tsmiSendEmail.Name = "tsmiSendEmail";
-			this.tsmiSendEmail.Size = new System.Drawing.Size(180, 22);
+			this.tsmiSendEmail.Size = new System.Drawing.Size(150, 22);
 			this.tsmiSendEmail.Text = "Send e-mail";
 			this.tsmiSendEmail.Click += new System.EventHandler(this.TsmiSendEmail_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
 			// 
 			// tsmiExit
 			// 
 			this.tsmiExit.Image = global::VirtualWork.WinForms.Properties.Resources.exit;
 			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+			this.tsmiExit.Size = new System.Drawing.Size(150, 22);
 			this.tsmiExit.Text = "Exit";
 			this.tsmiExit.Click += new System.EventHandler(this.TsmiExit_Click);
 			// 
@@ -989,7 +1019,7 @@
 		private System.Windows.Forms.Label lblView;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 		private System.Windows.Forms.MonthCalendar monthCalendar1;
-		private Controls.Taskboard taskboard1;
+		private Controls.Taskboard taskboard;
 	}
 }
 

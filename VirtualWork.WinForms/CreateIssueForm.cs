@@ -100,5 +100,10 @@ namespace VirtualWork.WinForms
 		{
 			selectingOwner = true;
 		}
+
+		private void CreateIssueForm_Shown(object sender, EventArgs e)
+		{
+			dtpDueTo.Value = DateTime.Now.AddDays(7);
+		}
 	}
 }

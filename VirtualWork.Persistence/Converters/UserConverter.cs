@@ -13,13 +13,11 @@ namespace VirtualWork.Persistence.Converters
 		private readonly AddressConverter addressConverter;
 		private readonly GroupConverter groupConverter;
 
-		public UserConverter(AddressConverter addressConverter,
-			GroupConverter groupConverter,
+		public UserConverter(GroupConverter groupConverter,
 			EntityProvider<EntityType> entityProvider,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
 			: base(entityProvider, virtualWorkDatabaseContext)
 		{
-			this.addressConverter = addressConverter;
 			this.groupConverter = groupConverter;
 		}
 
@@ -31,8 +29,6 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Groups = entity.Groups.Select(groupConverter.ToDto).ToList();
-			var contacts = entity.Addresses?.Select(addressConverter.ToDto).ToList<IContactInfo>() ?? new List<IContactInfo>();
-			dto.Contacts = contacts;
 		}
 	}
 }

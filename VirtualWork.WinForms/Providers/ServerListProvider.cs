@@ -26,7 +26,7 @@ namespace VirtualWork.WinForms.Providers
 			foreach (TreeNode serverTreeNode in serverNodes)
 			{
 				var server = serverTreeNode.Tag as Server;
-				serverTreeNode.Nodes.FillTreeNodeCollectionWithName(cameraRepository, 1, camera => camera.ServerId == server.Id);
+				serverTreeNode.Nodes.FillTreeNodeCollectionWithName(cameraRepository, 31, camera => camera.ServerId == server.Id);
 			}
 			serverGroupNode.ExpandAll();
 		}

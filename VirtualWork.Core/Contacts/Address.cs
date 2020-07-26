@@ -16,5 +16,7 @@ namespace VirtualWork.Core.Contacts
 		public string FullAddress { get; set; }
 
 		public PublicAreaKind PublicAreaKind { get; set; }
+
+		public ActorType ActorType { get; set; }
 	}
 }

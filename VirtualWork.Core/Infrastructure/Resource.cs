@@ -14,6 +14,8 @@ namespace VirtualWork.Core.Infrastructure
 
 		public string OtherInformation { get; set; }
 
-		public User User { get; set; }
+		public Actor Actor { get; set; }
+
+		public ActorType ActorType { get; set; }
 	}
 }
