@@ -2,10 +2,10 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
-using MessageBoxes;
 using VirtualWork.Core.Infrastructure;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Network;
+using VirtualWork.Service.Utils;
 
 namespace VirtualWork.WinForms
 {
@@ -67,7 +67,7 @@ namespace VirtualWork.WinForms
 			}
 			catch (Exception ex)
 			{
-				ErrorBox.Show(ex);
+				ErrorBoxHelper.Show(ex);
 			}
 		}
 	}

@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using LanguageService;
-using MessageBoxes;
+using VirtualWork.Service.Utils;
 
 namespace VirtualWork.WinForms
 {
@@ -23,7 +23,7 @@ namespace VirtualWork.WinForms
 			}
 			catch (Exception ex)
 			{
-				ErrorBox.Show(ex);
+				ErrorBoxHelper.Show(ex);
 			}
 		}
 

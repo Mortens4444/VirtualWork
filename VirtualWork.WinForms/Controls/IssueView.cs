@@ -14,8 +14,11 @@ namespace VirtualWork.WinForms.Controls
 			Anchor = AnchorStyles.Top | AnchorStyles.Left;
 		}
 
+		public Issue Issue { get; set; }
+
 		public void SetIssue(Issue issue)
 		{
+			Issue = issue;
 			toolStrip.BackColor = issue.IssueType.GetColoring<TitleBarColoring>();
 			rtbDescription.BackColor = issue.IssueType.GetColoring<BackgroundColoring>();
 			toolStrip.ForeColor = issue.IssueType.GetColoring<FontColoring>();

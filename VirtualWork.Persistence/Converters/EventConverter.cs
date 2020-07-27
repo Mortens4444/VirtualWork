@@ -26,9 +26,9 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Creator = userRepository.Get(entity.CreatorId);
-			var appStart = entity.StartApplication.GetExecutionParameters();
-			dto.ApplicationToStart = appStart.Application;
-			dto.Arguments = appStart.Parameters;
+			var (application, parameters) = entity.StartApplication.GetExecutionParameters();
+			dto.ApplicationToStart = application;
+			dto.Arguments = parameters;
 		}
 	}
 }

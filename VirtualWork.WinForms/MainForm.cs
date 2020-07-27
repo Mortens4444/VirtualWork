@@ -7,7 +7,10 @@ using LanguageService.Windows.Forms;
 using MessageBoxes;
 using VirtualWork.Interfaces.Date;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.Interfaces.Job;
+using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Process;
+using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
 using VirtualWork.WinForms.Providers;
 
@@ -36,6 +39,7 @@ namespace VirtualWork.WinForms
 		private readonly IssueListProvider issueListProvider;
 		private readonly MeetingsListProvider meetingsListProvider;
 		private readonly EventListProvider eventListProvider;
+		private readonly IssueRepository issueRepository;
 		private readonly IDateTimeProvider dateTimeProvider;
 
 		private string workingDirectoryOnLeft;
@@ -60,6 +64,7 @@ namespace VirtualWork.WinForms
 			IssueListProvider issueListProvider,
 			MeetingsListProvider meetingsListProvider,
 			EventListProvider eventListProvider,
+			IssueRepository issueRepository,
 			IDateTimeProvider dateTimeProvider)
 		{
 			InitializeComponent();
@@ -80,6 +85,7 @@ namespace VirtualWork.WinForms
 			this.serverListProvider = serverListProvider;
 			this.fileAndFolderProvider = fileAndFolderProvider;
 			this.issueListProvider = issueListProvider;
+			this.issueRepository = issueRepository;
 			this.meetingsListProvider = meetingsListProvider;
 			this.eventListProvider = eventListProvider;
 			this.aboutBox = aboutBox;
@@ -90,6 +96,25 @@ namespace VirtualWork.WinForms
 			GetDrives();
 
 			cbView.FillWithEnum<CalendarViewType>();
+
+			var columns = taskboard.GetColumns();
+			foreach (var column in columns)
+			{
+				column.IssueStateChanged += TaskboardColumn_IssueStateChanged;
+			}
+		}
+
+		private void TaskboardColumn_IssueStateChanged(object sender, IssueStateChangedEventArgs e)
+		{
+			var issue = issueRepository.Get(e.Issue.Id);
+			if (issue.IssueState != e.Issue.IssueState)
+			{
+				issue.IssueState = e.Issue.IssueState;
+				issueRepository.Update(issue);
+
+				var fromColumn = taskboard.GetColumnByState(e.PreviousState);
+				fromColumn.RecalculateLocations();
+			}
 		}
 
 		private void GetDrives()
@@ -368,7 +393,7 @@ namespace VirtualWork.WinForms
 				}
 				catch (Exception ex)
 				{
-					ErrorBox.Show(ex);
+					ErrorBoxHelper.Show(ex);
 				}
 			}
 		}

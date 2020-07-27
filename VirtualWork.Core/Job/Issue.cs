@@ -4,10 +4,11 @@ using VirtualWork.Core.Actors;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Actors;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.Interfaces.Job;
 
 namespace VirtualWork.Core.Job
 {
-	public class Issue : IHaveIdentifier, IHaveTitle
+	public class Issue : IIssue, IHaveIdentifier, IHaveTitle
 	{
 		public int Id { get; set; }
 

@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.pToDo = new System.Windows.Forms.Panel();
-			this.pDone = new System.Windows.Forms.Panel();
 			this.lblDone = new System.Windows.Forms.Label();
-			this.pVerification = new System.Windows.Forms.Panel();
-			this.pReview = new System.Windows.Forms.Panel();
 			this.lblVerification = new System.Windows.Forms.Label();
 			this.lblReview = new System.Windows.Forms.Label();
-			this.pInProgress = new System.Windows.Forms.Panel();
 			this.lblInProgress = new System.Windows.Forms.Label();
 			this.lblToDo = new System.Windows.Forms.Label();
+			this.tcToDo = new VirtualWork.WinForms.Controls.TaskboardColumn();
+			this.tcInProgress = new VirtualWork.WinForms.Controls.TaskboardColumn();
+			this.tcReview = new VirtualWork.WinForms.Controls.TaskboardColumn();
+			this.tcVerification = new VirtualWork.WinForms.Controls.TaskboardColumn();
+			this.tcDone = new VirtualWork.WinForms.Controls.TaskboardColumn();
 			this.tableLayoutPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -51,16 +51,16 @@
 			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.00001F));
-			this.tableLayoutPanel.Controls.Add(this.pToDo, 0, 1);
-			this.tableLayoutPanel.Controls.Add(this.pDone, 4, 1);
 			this.tableLayoutPanel.Controls.Add(this.lblDone, 4, 0);
-			this.tableLayoutPanel.Controls.Add(this.pVerification, 3, 1);
-			this.tableLayoutPanel.Controls.Add(this.pReview, 2, 1);
 			this.tableLayoutPanel.Controls.Add(this.lblVerification, 3, 0);
 			this.tableLayoutPanel.Controls.Add(this.lblReview, 2, 0);
-			this.tableLayoutPanel.Controls.Add(this.pInProgress, 1, 1);
 			this.tableLayoutPanel.Controls.Add(this.lblInProgress, 1, 0);
 			this.tableLayoutPanel.Controls.Add(this.lblToDo, 0, 0);
+			this.tableLayoutPanel.Controls.Add(this.tcToDo, 0, 1);
+			this.tableLayoutPanel.Controls.Add(this.tcInProgress, 1, 1);
+			this.tableLayoutPanel.Controls.Add(this.tcReview, 2, 1);
+			this.tableLayoutPanel.Controls.Add(this.tcVerification, 3, 1);
+			this.tableLayoutPanel.Controls.Add(this.tcDone, 4, 1);
 			this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -71,32 +71,6 @@
 			this.tableLayoutPanel.TabIndex = 0;
 			this.tableLayoutPanel.SizeChanged += new System.EventHandler(this.TableLayoutPanel_SizeChanged);
 			// 
-			// pToDo
-			// 
-			this.pToDo.AllowDrop = true;
-			this.pToDo.AutoScroll = true;
-			this.pToDo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pToDo.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pToDo.Location = new System.Drawing.Point(6, 39);
-			this.pToDo.Name = "pToDo";
-			this.pToDo.Size = new System.Drawing.Size(151, 254);
-			this.pToDo.TabIndex = 2;
-			this.pToDo.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
-			this.pToDo.DragOver += new System.Windows.Forms.DragEventHandler(this.Panel_DragOver);
-			// 
-			// pDone
-			// 
-			this.pDone.AllowDrop = true;
-			this.pDone.AutoScroll = true;
-			this.pDone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pDone.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pDone.Location = new System.Drawing.Point(646, 39);
-			this.pDone.Name = "pDone";
-			this.pDone.Size = new System.Drawing.Size(152, 254);
-			this.pDone.TabIndex = 3;
-			this.pDone.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
-			this.pDone.DragOver += new System.Windows.Forms.DragEventHandler(this.Panel_DragOver);
-			// 
 			// lblDone
 			// 
 			this.lblDone.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -106,32 +80,6 @@
 			this.lblDone.Size = new System.Drawing.Size(33, 13);
 			this.lblDone.TabIndex = 4;
 			this.lblDone.Text = "Done";
-			// 
-			// pVerification
-			// 
-			this.pVerification.AllowDrop = true;
-			this.pVerification.AutoScroll = true;
-			this.pVerification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pVerification.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pVerification.Location = new System.Drawing.Point(486, 39);
-			this.pVerification.Name = "pVerification";
-			this.pVerification.Size = new System.Drawing.Size(151, 254);
-			this.pVerification.TabIndex = 2;
-			this.pVerification.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
-			this.pVerification.DragOver += new System.Windows.Forms.DragEventHandler(this.Panel_DragOver);
-			// 
-			// pReview
-			// 
-			this.pReview.AllowDrop = true;
-			this.pReview.AutoScroll = true;
-			this.pReview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pReview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pReview.Location = new System.Drawing.Point(326, 39);
-			this.pReview.Name = "pReview";
-			this.pReview.Size = new System.Drawing.Size(151, 254);
-			this.pReview.TabIndex = 2;
-			this.pReview.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
-			this.pReview.DragOver += new System.Windows.Forms.DragEventHandler(this.Panel_DragOver);
 			// 
 			// lblVerification
 			// 
@@ -153,19 +101,6 @@
 			this.lblReview.TabIndex = 2;
 			this.lblReview.Text = "Review";
 			// 
-			// pInProgress
-			// 
-			this.pInProgress.AllowDrop = true;
-			this.pInProgress.AutoScroll = true;
-			this.pInProgress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pInProgress.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pInProgress.Location = new System.Drawing.Point(166, 39);
-			this.pInProgress.Name = "pInProgress";
-			this.pInProgress.Size = new System.Drawing.Size(151, 254);
-			this.pInProgress.TabIndex = 2;
-			this.pInProgress.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
-			this.pInProgress.DragOver += new System.Windows.Forms.DragEventHandler(this.Panel_DragOver);
-			// 
 			// lblInProgress
 			// 
 			this.lblInProgress.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -185,6 +120,57 @@
 			this.lblToDo.Size = new System.Drawing.Size(35, 13);
 			this.lblToDo.TabIndex = 0;
 			this.lblToDo.Text = "To do";
+			// 
+			// tcToDo
+			// 
+			this.tcToDo.ColumnStates = new VirtualWork.Interfaces.Enums.IssueState[] {
+        VirtualWork.Interfaces.Enums.IssueState.ToDo};
+			this.tcToDo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcToDo.Location = new System.Drawing.Point(6, 39);
+			this.tcToDo.Name = "tcToDo";
+			this.tcToDo.Size = new System.Drawing.Size(151, 254);
+			this.tcToDo.TabIndex = 5;
+			// 
+			// tcInProgress
+			// 
+			this.tcInProgress.ColumnStates = new VirtualWork.Interfaces.Enums.IssueState[] {
+        VirtualWork.Interfaces.Enums.IssueState.InProgress};
+			this.tcInProgress.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcInProgress.Location = new System.Drawing.Point(166, 39);
+			this.tcInProgress.Name = "tcInProgress";
+			this.tcInProgress.Size = new System.Drawing.Size(151, 254);
+			this.tcInProgress.TabIndex = 6;
+			// 
+			// tcReview
+			// 
+			this.tcReview.ColumnStates = new VirtualWork.Interfaces.Enums.IssueState[] {
+        VirtualWork.Interfaces.Enums.IssueState.UnderReview};
+			this.tcReview.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcReview.Location = new System.Drawing.Point(326, 39);
+			this.tcReview.Name = "tcReview";
+			this.tcReview.Size = new System.Drawing.Size(151, 254);
+			this.tcReview.TabIndex = 7;
+			// 
+			// tcVerification
+			// 
+			this.tcVerification.ColumnStates = new VirtualWork.Interfaces.Enums.IssueState[] {
+        VirtualWork.Interfaces.Enums.IssueState.UnderVerification};
+			this.tcVerification.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcVerification.Location = new System.Drawing.Point(486, 39);
+			this.tcVerification.Name = "tcVerification";
+			this.tcVerification.Size = new System.Drawing.Size(151, 254);
+			this.tcVerification.TabIndex = 8;
+			// 
+			// tcDone
+			// 
+			this.tcDone.ColumnStates = new VirtualWork.Interfaces.Enums.IssueState[] {
+        VirtualWork.Interfaces.Enums.IssueState.Done,
+        VirtualWork.Interfaces.Enums.IssueState.Cancelled};
+			this.tcDone.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcDone.Location = new System.Drawing.Point(646, 39);
+			this.tcDone.Name = "tcDone";
+			this.tcDone.Size = new System.Drawing.Size(152, 254);
+			this.tcDone.TabIndex = 9;
 			// 
 			// Taskboard
 			// 
@@ -208,10 +194,10 @@
 		private System.Windows.Forms.Label lblVerification;
 		private System.Windows.Forms.Label lblReview;
 		private System.Windows.Forms.Label lblInProgress;
-		private System.Windows.Forms.Panel pInProgress;
-		private System.Windows.Forms.Panel pReview;
-		private System.Windows.Forms.Panel pVerification;
-		private System.Windows.Forms.Panel pDone;
-		private System.Windows.Forms.Panel pToDo;
+		private TaskboardColumn tcToDo;
+		private TaskboardColumn tcInProgress;
+		private TaskboardColumn tcReview;
+		private TaskboardColumn tcVerification;
+		private TaskboardColumn tcDone;
 	}
 }

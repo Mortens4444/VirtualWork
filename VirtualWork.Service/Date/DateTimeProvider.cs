@@ -30,12 +30,12 @@ namespace VirtualWork.Service.Date
 				var now = DateTime.Now;
 
 				var dateTimeString = $"{now.ToShortDateString()} {now.ToLongTimeString()} ({Lng.Elem("Week of the year")}: {now.GetWeekNumber()})";
-				OnMyEvent(this, new ActualDateTimeReportEventArgs(dateTimeString));
+				OnDateTimeReport(this, new ActualDateTimeReportEventArgs(dateTimeString));
 				Thread.Sleep(RefreshInterval);
 			}
 		}
 
-		protected virtual void OnMyEvent(DateTimeProvider sender, ActualDateTimeReportEventArgs e)
+		protected virtual void OnDateTimeReport(DateTimeProvider sender, ActualDateTimeReportEventArgs e)
 		{
 			var handler = ActualDateTimeReport;
 			handler?.Invoke(sender, e);

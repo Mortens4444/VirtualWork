@@ -113,10 +113,9 @@ namespace VirtualWork.Persistence.Repositories
 
 		public TDtoType Update(TDtoType dto)
 		{
-			var entity = GetEntity(dto.Id, DatabaseTable);
-			PropertyCopier.CopyProperties(dto, entity);
+			var updatedEntity = Converter.ToEntity(dto);
 			VirtualWorkDatabase.SaveChanges();
-			return Converter.ToDto(entity);
+			return Converter.ToDto(updatedEntity);
 		}
 
 		public void Remove(int id)

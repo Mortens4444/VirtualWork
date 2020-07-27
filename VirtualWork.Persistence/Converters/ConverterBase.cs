@@ -46,7 +46,7 @@ namespace VirtualWork.Persistence.Converters
 		public virtual TEntityType ToEntity(TDtoType dto)
 		{
 			var (entity, fabricated) = ConvertToEntity(dto);
-			if (fabricated)
+			//if (fabricated) // Need to copy when updating issue state with mouse move
 			{
 				CopyTypeMismatchingDtoParameters(dto, entity);
 			}

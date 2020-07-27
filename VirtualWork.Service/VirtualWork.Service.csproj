@@ -87,6 +87,7 @@
     <Compile Include="Process\ProcessUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceInjectionModule.cs" />
+    <Compile Include="Utils\ErrorBoxHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtualWork.Core\VirtualWork.Core.csproj">

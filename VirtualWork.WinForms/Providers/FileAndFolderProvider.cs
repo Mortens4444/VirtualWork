@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using MessageBoxes;
+using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Dto;
 using VirtualWork.WinForms.Extensions;
 using static System.Windows.Forms.ListViewItem;
@@ -64,7 +64,7 @@ namespace VirtualWork.WinForms.Providers
 			}
 			catch (Exception ex)
 			{
-				ErrorBox.Show(ex);				
+				ErrorBoxHelper.Show(ex);
 			}
 
 			return result;

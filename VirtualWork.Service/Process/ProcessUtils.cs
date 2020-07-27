@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using MessageBoxes;
+using VirtualWork.Service.Utils;
 
 namespace VirtualWork.Service.Process
 {
@@ -29,12 +29,12 @@ namespace VirtualWork.Service.Process
 				}
 				else
 				{
-					ErrorBox.Show(ex);
+					ErrorBoxHelper.Show(ex);
 				}
 			}
 			catch (Exception ex)
 			{
-				ErrorBox.Show(ex);
+				ErrorBoxHelper.Show(ex);
 			}
 		}
 
@@ -51,7 +51,7 @@ namespace VirtualWork.Service.Process
 			}
 			catch (Exception ex)
 			{
-				ErrorBox.Show(ex);
+				ErrorBoxHelper.Show(ex);
 			}
 		}
 	}

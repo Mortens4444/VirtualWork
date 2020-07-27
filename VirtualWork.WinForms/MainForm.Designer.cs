@@ -190,6 +190,7 @@
 			// 
 			// taskboard
 			// 
+			this.taskboard.AutoScroll = true;
 			this.taskboard.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.taskboard.Location = new System.Drawing.Point(3, 3);
 			this.taskboard.Name = "taskboard";
@@ -304,6 +305,7 @@
 			this.images.Images.SetKeyName(30, "help");
 			this.images.Images.SetKeyName(31, "security-camera.ico");
 			this.images.Images.SetKeyName(32, "bug.ico");
+			this.images.Images.SetKeyName(33, "tick.ico");
 			// 
 			// pFileExplorerRightHeader
 			// 
