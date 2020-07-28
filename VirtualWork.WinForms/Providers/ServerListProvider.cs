@@ -7,6 +7,8 @@ namespace VirtualWork.WinForms.Providers
 {
 	public class ServerListProvider
 	{
+		public const string Servers = "Servers";
+
 		private readonly ServerRepository serverRepository;
 		private readonly CameraRepository cameraRepository;
 
@@ -19,7 +21,7 @@ namespace VirtualWork.WinForms.Providers
 
 		public void GetServersAndCamera(TreeView treeView)
 		{
-			var serverGroupNode = treeView.Nodes["Servers"];
+			var serverGroupNode = treeView.Nodes[Servers];
 			var serverNodes = serverGroupNode.Nodes;
 			serverNodes.Clear();
 			serverNodes.FillTreeNodeCollectionWithName(serverRepository);

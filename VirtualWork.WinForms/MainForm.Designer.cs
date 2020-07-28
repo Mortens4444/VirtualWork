@@ -85,6 +85,11 @@
 			this.pLeft = new System.Windows.Forms.Panel();
 			this.tvItems = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.cmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiNewMeeting = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiCreateServer = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiCreateCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
@@ -129,6 +134,7 @@
 			this.tpCalendar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).BeginInit();
 			this.pLeft.SuspendLayout();
+			this.contextMenuStrip.SuspendLayout();
 			this.statusStrip.SuspendLayout();
 			this.menuStrip.SuspendLayout();
 			this.SuspendLayout();
@@ -683,8 +689,55 @@
 			// 
 			// contextMenuStrip
 			// 
+			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmiNewIssue,
+            this.cmiNewEvent,
+            this.cmiNewMeeting,
+            this.cmiCreateServer,
+            this.cmiCreateCamera});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(61, 4);
+			this.contextMenuStrip.Size = new System.Drawing.Size(181, 136);
+			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
+			// 
+			// cmiNewIssue
+			// 
+			this.cmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
+			this.cmiNewIssue.Name = "cmiNewIssue";
+			this.cmiNewIssue.Size = new System.Drawing.Size(180, 22);
+			this.cmiNewIssue.Text = "New issue";
+			this.cmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
+			// 
+			// cmiNewEvent
+			// 
+			this.cmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
+			this.cmiNewEvent.Name = "cmiNewEvent";
+			this.cmiNewEvent.Size = new System.Drawing.Size(180, 22);
+			this.cmiNewEvent.Text = "New event";
+			this.cmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
+			// 
+			// cmiNewMeeting
+			// 
+			this.cmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
+			this.cmiNewMeeting.Name = "cmiNewMeeting";
+			this.cmiNewMeeting.Size = new System.Drawing.Size(180, 22);
+			this.cmiNewMeeting.Text = "New meeting";
+			this.cmiNewMeeting.Click += new System.EventHandler(this.TsmiNewEvent_Click);
+			// 
+			// cmiCreateServer
+			// 
+			this.cmiCreateServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
+			this.cmiCreateServer.Name = "cmiCreateServer";
+			this.cmiCreateServer.Size = new System.Drawing.Size(180, 22);
+			this.cmiCreateServer.Text = "Create server";
+			this.cmiCreateServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
+			// 
+			// cmiCreateCamera
+			// 
+			this.cmiCreateCamera.Image = global::VirtualWork.WinForms.Properties.Resources.security_camera;
+			this.cmiCreateCamera.Name = "cmiCreateCamera";
+			this.cmiCreateCamera.Size = new System.Drawing.Size(180, 22);
+			this.cmiCreateCamera.Text = "Create camera";
+			this.cmiCreateCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
 			// 
 			// statusStrip
 			// 
@@ -939,6 +992,7 @@
 			this.tpCalendar.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).EndInit();
 			this.pLeft.ResumeLayout(false);
+			this.contextMenuStrip.ResumeLayout(false);
 			this.statusStrip.ResumeLayout(false);
 			this.statusStrip.PerformLayout();
 			this.menuStrip.ResumeLayout(false);
@@ -1022,6 +1076,11 @@
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 		private System.Windows.Forms.MonthCalendar monthCalendar1;
 		private Controls.Taskboard taskboard;
+		private System.Windows.Forms.ToolStripMenuItem cmiNewIssue;
+		private System.Windows.Forms.ToolStripMenuItem cmiNewEvent;
+		private System.Windows.Forms.ToolStripMenuItem cmiNewMeeting;
+		private System.Windows.Forms.ToolStripMenuItem cmiCreateServer;
+		private System.Windows.Forms.ToolStripMenuItem cmiCreateCamera;
 	}
 }
 

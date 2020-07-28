@@ -9,6 +9,8 @@ namespace VirtualWork.WinForms.Providers
 {
 	public class MeetingsListProvider : ListProviderBase<MeetingDto, Meeting>
 	{
+		public const string Meetings = "Meetings";
+
 		public MeetingsListProvider(MeetingRepository meetingRepository)
 			: base(meetingRepository)
 		{
@@ -16,7 +18,7 @@ namespace VirtualWork.WinForms.Providers
 
 		public void GetUpcomingMeetings(TreeView treeView)
 		{
-			base.GetNodes(treeView, "Meetings", 2, meeting => meeting.MeetingDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0);
+			base.GetNodes(treeView, Meetings, 2, meeting => meeting.MeetingDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0);
 		}
 	}
 }

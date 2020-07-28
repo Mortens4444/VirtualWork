@@ -177,6 +177,7 @@
     <Compile Include="Extensions\LongExtensions.cs" />
     <Compile Include="Extensions\ListViewExtensions.cs" />
     <Compile Include="Extensions\ListViewItemCollectionExtensions.cs" />
+    <Compile Include="Extensions\ToolStripMenuItemExtensions.cs" />
     <Compile Include="Extensions\TreeNodeExtensions.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="KernelProvider.cs" />

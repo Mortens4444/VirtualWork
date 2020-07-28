@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Enums;
 using LanguageService;
@@ -419,6 +421,35 @@ namespace VirtualWork.WinForms
 		private void TvItems_MouseDown(object sender, MouseEventArgs e)
 		{
 			tvItems.SelectedNode = tvItems.GetNodeAt(e.X, e.Y);
+		}
+
+		private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
+		{
+			e.Cancel = false;
+			if (tvItems.SelectedNode == null)
+			{
+				cmiNewEvent.SetEnabled(true);
+				cmiNewIssue.SetEnabled(true);
+				cmiNewMeeting.SetEnabled(true);
+				cmiCreateServer.SetEnabled(true);
+				cmiCreateCamera.SetEnabled(true);
+				return;
+			}
+
+			cmiNewEvent.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[EventListProvider.Events]);
+			cmiNewIssue.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[IssueListProvider.Issues]);
+			cmiNewMeeting.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[MeetingsListProvider.Meetings]);
+			var serverRootSelected = tvItems.SelectedNode == tvItems.Nodes[ServerListProvider.Servers];
+			cmiCreateServer.SetEnabled(serverRootSelected);
+
+			var serverSelected = tvItems.SelectedNode.Parent == tvItems.Nodes[ServerListProvider.Servers];
+			cmiCreateCamera.SetEnabled(serverRootSelected || serverSelected);
+
+			var menuItems = new[] { cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera };
+			if (menuItems.All(menuItem => !menuItem.Enabled))
+			{
+				e.Cancel = true;
+			}			
 		}
 	}
 }

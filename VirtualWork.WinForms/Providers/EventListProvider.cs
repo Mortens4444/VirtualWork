@@ -9,6 +9,8 @@ namespace VirtualWork.WinForms.Providers
 {
 	public class EventListProvider : ListProviderBase<EventDto, Event>
 	{
+		public const string Events = "Events";
+
 		public EventListProvider(EventRepository eventRepository)
 			: base(eventRepository)
 		{
@@ -16,7 +18,7 @@ namespace VirtualWork.WinForms.Providers
 
 		public void GetUpcomingEvents(TreeView treeView)
 		{
-			GetNodes(treeView, "Events", 3, myEvent => myEvent.EventDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0);
+			GetNodes(treeView, Events, 3, myEvent => myEvent.EventDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0);
 		}
 	}
 }
