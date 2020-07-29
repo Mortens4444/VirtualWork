@@ -339,6 +339,10 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\modify_camera.ico" />
+    <None Include="Resources\remove_camera.ico" />
+    <None Include="Resources\computer_edit.ico" />
+    <None Include="Resources\computer_delete.ico" />
     <None Include="Resources\powershell_ise.ico" />
     <None Include="Resources\arrow_right_2.ico" />
     <None Include="Resources\security-camera.ico" />

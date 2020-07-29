@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Converters;
-using VirtualWork.Persistence.Helper;
 
 namespace VirtualWork.Persistence.Repositories
 {

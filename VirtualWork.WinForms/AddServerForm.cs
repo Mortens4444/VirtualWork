@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Infrastructure;
 using VirtualWork.Persistence.Repositories;
@@ -14,6 +15,7 @@ namespace VirtualWork.WinForms
 		private readonly ServerRepository serverRepository;
 		private readonly HostnameProvider hostnameProvider;
 		private readonly WindowsMacAddressProvider windowsMacAddressProvider;
+		private Server server;
 
 		public AddServerForm(ServerRepository serverRepository,
 			HostnameProvider hostnameProvider,
@@ -29,11 +31,25 @@ namespace VirtualWork.WinForms
 
 		private void AddServerForm_Shown(object sender, EventArgs e)
 		{
-			tbIpAddress.Text = String.Empty;
-			tbMacAddress.Text = String.Empty;
-			tbName.Text = String.Empty;
-			tbUsername.Text = String.Empty;
-			tbPassword.Text = String.Empty;
+			if (server == null)
+			{
+				tbIpAddress.Text = String.Empty;
+				tbMacAddress.Text = String.Empty;
+				tbName.Text = String.Empty;
+				tbUsername.Text = String.Empty;
+				tbPassword.Text = String.Empty;
+			}
+			else
+			{
+				Text = Lng.Elem("Modify server");
+				btnAdd.Text = Lng.Elem("Modify");
+
+				tbIpAddress.Text = server.IpAddress;
+				tbMacAddress.Text = server.MacAddress;
+				tbName.Text = server.Name;
+				tbUsername.Text = server.Username;
+				tbPassword.Text = server.Password;
+			}
 		}
 
 		private void BtnRemoteConnection_Click(object sender, EventArgs e)
@@ -47,28 +63,50 @@ namespace VirtualWork.WinForms
 
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
-			var server = new Server
+			bool add = server == null;
+			if (add)
 			{
-				Name = tbName.Text,
-				IpAddress = tbIpAddress.Text,
-				MacAddress = tbMacAddress.Text,
-				Password = tbPassword.Text,
-				Username = tbUsername.Text
-			};
-			serverRepository.Add(server);
+				server = new Server();
+			}
+			server.Name = tbName.Text;
+			server.IpAddress = tbIpAddress.Text;
+			server.MacAddress = tbMacAddress.Text;
+			server.Password = tbPassword.Text;
+			server.Username = tbUsername.Text;
+
+			if (add)
+			{
+				serverRepository.Add(server);
+			}
+			else
+			{
+				serverRepository.Update(server);
+			}
 		}
 
 		private void TbIpAddress_Leave(object sender, EventArgs e)
 		{
 			try
 			{
-				tbName.Text = hostnameProvider.GetHostName(tbIpAddress.Text);
-				tbMacAddress.Text = windowsMacAddressProvider.GetMacAddress(tbIpAddress.Text);
+				if (String.IsNullOrEmpty(tbName.Text))
+				{
+					tbName.Text = hostnameProvider.GetHostName(tbIpAddress.Text);
+				}
+				if (String.IsNullOrEmpty(tbMacAddress.Text))
+				{
+					tbMacAddress.Text = windowsMacAddressProvider.GetMacAddress(tbIpAddress.Text);
+				}
 			}
 			catch (Exception ex)
 			{
 				ErrorBoxHelper.Show(ex);
 			}
+		}
+
+		public DialogResult ShowDialog(Server server = null)
+		{
+			this.server = server;
+			return base.ShowDialog();
 		}
 	}
 }

@@ -30,6 +30,8 @@ namespace VirtualWork.WinForms.Providers
 				var server = serverTreeNode.Tag as Server;
 				serverTreeNode.Nodes.FillTreeNodeCollectionWithName(cameraRepository, 31, camera => camera.ServerId == server.Id);
 			}
+
+			serverNodes.FillTreeNodeCollectionWithName(cameraRepository, 31, camera => camera.ServerId == null);
 			serverGroupNode.ExpandAll();
 		}
 	}

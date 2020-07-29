@@ -7,6 +7,9 @@ using Enums;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using MessageBoxes;
+using VirtualWork.Core.Appointment;
+using VirtualWork.Core.Infrastructure;
+using VirtualWork.Core.Job;
 using VirtualWork.Interfaces.Date;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Job;
@@ -42,6 +45,8 @@ namespace VirtualWork.WinForms
 		private readonly MeetingsListProvider meetingsListProvider;
 		private readonly EventListProvider eventListProvider;
 		private readonly IssueRepository issueRepository;
+		private readonly ServerRepository serverRepository;
+		private readonly CameraRepository cameraRepository;
 		private readonly IDateTimeProvider dateTimeProvider;
 
 		private string workingDirectoryOnLeft;
@@ -67,6 +72,8 @@ namespace VirtualWork.WinForms
 			MeetingsListProvider meetingsListProvider,
 			EventListProvider eventListProvider,
 			IssueRepository issueRepository,
+			ServerRepository serverRepository,
+			CameraRepository cameraRepository,
 			IDateTimeProvider dateTimeProvider)
 		{
 			InitializeComponent();
@@ -88,6 +95,8 @@ namespace VirtualWork.WinForms
 			this.fileAndFolderProvider = fileAndFolderProvider;
 			this.issueListProvider = issueListProvider;
 			this.issueRepository = issueRepository;
+			this.serverRepository = serverRepository;
+			this.cameraRepository = cameraRepository;
 			this.meetingsListProvider = meetingsListProvider;
 			this.eventListProvider = eventListProvider;
 			this.aboutBox = aboutBox;
@@ -436,20 +445,71 @@ namespace VirtualWork.WinForms
 				return;
 			}
 
-			cmiNewEvent.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[EventListProvider.Events]);
-			cmiNewIssue.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[IssueListProvider.Issues]);
-			cmiNewMeeting.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[MeetingsListProvider.Meetings]);
+			cmiNewEvent.SetEnabled(tvItems.SelectedNode.Tag is Event);
+			cmiNewIssue.SetEnabled(tvItems.SelectedNode.Tag is Issue);
+			cmiNewMeeting.SetEnabled(tvItems.SelectedNode.Tag is Meeting);
+
 			var serverRootSelected = tvItems.SelectedNode == tvItems.Nodes[ServerListProvider.Servers];
 			cmiCreateServer.SetEnabled(serverRootSelected);
 
-			var serverSelected = tvItems.SelectedNode.Parent == tvItems.Nodes[ServerListProvider.Servers];
+			var serverSelected = tvItems.SelectedNode.Tag is Server;
 			cmiCreateCamera.SetEnabled(serverRootSelected || serverSelected);
+			cmiModifyServer.SetEnabled(serverSelected);
+			cmiDeleteServer.SetEnabled(serverSelected);
 
-			var menuItems = new[] { cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera };
+			var cameraSelected = tvItems.SelectedNode.Tag is Camera;
+			cmiModifyCamera.SetEnabled(cameraSelected);
+			cmiDeleteCamera.SetEnabled(cameraSelected);
+
+			var menuItems = new[]
+			{
+				cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera,
+				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera
+			};
 			if (menuItems.All(menuItem => !menuItem.Enabled))
 			{
 				e.Cancel = true;
 			}			
+		}
+
+		private void CmiModifyServer_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Server server)
+			{
+				addServerForm.ShowDialog(server);
+				serverListProvider.GetServersAndCamera(tvItems);
+			}
+		}
+
+		private void CmiDeleteServer_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Server server &&
+				ConfirmBox.Show(Lng.Elem("Confirmation"),
+					Lng.Elem("Are you sure you want to delete the selected server?"), Decide.No) == DialogResult.Yes)
+			{
+				serverRepository.Remove(server.Id);
+				serverListProvider.GetServersAndCamera(tvItems);
+			}
+		}
+
+		private void CmiModifyCamera_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Camera camera)
+			{
+				addCameraForm.ShowDialog(camera);
+				serverListProvider.GetServersAndCamera(tvItems);
+			}
+		}
+
+		private void CmiDeleteCamera_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Camera camera &&
+				ConfirmBox.Show(Lng.Elem("Confirmation"),
+					Lng.Elem("Are you sure you want to delete the selected camera?"), Decide.No) == DialogResult.Yes)
+			{
+				cameraRepository.Remove(camera.Id);
+				serverListProvider.GetServersAndCamera(tvItems);
+			}
 		}
 	}
 }

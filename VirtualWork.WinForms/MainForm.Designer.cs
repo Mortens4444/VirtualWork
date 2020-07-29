@@ -36,7 +36,7 @@
 			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
 			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Events", 3, 3);
 			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Servers");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Servers and cameras");
 			this.pMain = new System.Windows.Forms.Panel();
 			this.pContent = new System.Windows.Forms.Panel();
 			this.pRight = new System.Windows.Forms.Panel();
@@ -89,14 +89,18 @@
 			this.cmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiNewMeeting = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiCreateServer = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiModifyServer = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiDeleteServer = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiCreateCamera = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiModifyCamera = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiDeleteCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenCmd = new System.Windows.Forms.ToolStripSplitButton();
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
-			this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewMeeting = new System.Windows.Forms.ToolStripMenuItem();
@@ -676,7 +680,7 @@
 			treeNode3.SelectedImageIndex = 2;
 			treeNode3.Text = "Meetings";
 			treeNode4.Name = "Servers";
-			treeNode4.Text = "Servers";
+			treeNode4.Text = "Servers and cameras";
 			this.tvItems.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -694,9 +698,13 @@
             this.cmiNewEvent,
             this.cmiNewMeeting,
             this.cmiCreateServer,
-            this.cmiCreateCamera});
+            this.cmiModifyServer,
+            this.cmiDeleteServer,
+            this.cmiCreateCamera,
+            this.cmiModifyCamera,
+            this.cmiDeleteCamera});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(181, 136);
+			this.contextMenuStrip.Size = new System.Drawing.Size(181, 224);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
 			// 
 			// cmiNewIssue
@@ -731,13 +739,45 @@
 			this.cmiCreateServer.Text = "Create server";
 			this.cmiCreateServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
 			// 
+			// cmiModifyServer
+			// 
+			this.cmiModifyServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_edit;
+			this.cmiModifyServer.Name = "cmiModifyServer";
+			this.cmiModifyServer.Size = new System.Drawing.Size(180, 22);
+			this.cmiModifyServer.Text = "Modify server";
+			this.cmiModifyServer.Click += new System.EventHandler(this.CmiModifyServer_Click);
+			// 
+			// cmiDeleteServer
+			// 
+			this.cmiDeleteServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_delete;
+			this.cmiDeleteServer.Name = "cmiDeleteServer";
+			this.cmiDeleteServer.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteServer.Text = "Delete server";
+			this.cmiDeleteServer.Click += new System.EventHandler(this.CmiDeleteServer_Click);
+			// 
 			// cmiCreateCamera
 			// 
-			this.cmiCreateCamera.Image = global::VirtualWork.WinForms.Properties.Resources.security_camera;
+			this.cmiCreateCamera.Image = global::VirtualWork.WinForms.Properties.Resources.camera;
 			this.cmiCreateCamera.Name = "cmiCreateCamera";
 			this.cmiCreateCamera.Size = new System.Drawing.Size(180, 22);
 			this.cmiCreateCamera.Text = "Create camera";
 			this.cmiCreateCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
+			// 
+			// cmiModifyCamera
+			// 
+			this.cmiModifyCamera.Image = global::VirtualWork.WinForms.Properties.Resources.modify_camera;
+			this.cmiModifyCamera.Name = "cmiModifyCamera";
+			this.cmiModifyCamera.Size = new System.Drawing.Size(180, 22);
+			this.cmiModifyCamera.Text = "Modify camera";
+			this.cmiModifyCamera.Click += new System.EventHandler(this.CmiModifyCamera_Click);
+			// 
+			// cmiDeleteCamera
+			// 
+			this.cmiDeleteCamera.Image = global::VirtualWork.WinForms.Properties.Resources.remove_camera;
+			this.cmiDeleteCamera.Name = "cmiDeleteCamera";
+			this.cmiDeleteCamera.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteCamera.Text = "Delete camera";
+			this.cmiDeleteCamera.Click += new System.EventHandler(this.CmiDeleteCamera_Click);
 			// 
 			// statusStrip
 			// 
@@ -788,7 +828,7 @@
 			// menuStrip
 			// 
 			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiFile,
+            this.tsmiNew,
             this.tsmiSettings,
             this.tsmiHelp});
 			this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -797,9 +837,9 @@
 			this.menuStrip.TabIndex = 0;
 			this.menuStrip.Text = "menuStrip1";
 			// 
-			// tsmiFile
+			// tsmiNew
 			// 
-			this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.tsmiNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiNewIssue,
             this.tsmiNewEvent,
             this.tsmiNewMeeting,
@@ -810,9 +850,10 @@
             this.tsmiSendEmail,
             this.toolStripSeparator1,
             this.tsmiExit});
-			this.tsmiFile.Name = "tsmiFile";
-			this.tsmiFile.Size = new System.Drawing.Size(37, 20);
-			this.tsmiFile.Text = "File";
+			this.tsmiNew.Image = global::VirtualWork.WinForms.Properties.Resources.add;
+			this.tsmiNew.Name = "tsmiNew";
+			this.tsmiNew.Size = new System.Drawing.Size(59, 20);
+			this.tsmiNew.Text = "New";
 			// 
 			// tsmiNewIssue
 			// 
@@ -853,7 +894,7 @@
 			// 
 			// tsmiNewCamera
 			// 
-			this.tsmiNewCamera.Image = global::VirtualWork.WinForms.Properties.Resources.security_camera;
+			this.tsmiNewCamera.Image = global::VirtualWork.WinForms.Properties.Resources.camera;
 			this.tsmiNewCamera.Name = "tsmiNewCamera";
 			this.tsmiNewCamera.Size = new System.Drawing.Size(150, 22);
 			this.tsmiNewCamera.Text = "Create camera";
@@ -1007,7 +1048,7 @@
 		private System.Windows.Forms.Panel pContent;
 		private System.Windows.Forms.StatusStrip statusStrip;
 		private System.Windows.Forms.MenuStrip menuStrip;
-		private System.Windows.Forms.ToolStripMenuItem tsmiFile;
+		private System.Windows.Forms.ToolStripMenuItem tsmiNew;
 		private System.Windows.Forms.ToolStripMenuItem tsmiExit;
 		private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
 		private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
@@ -1081,6 +1122,10 @@
 		private System.Windows.Forms.ToolStripMenuItem cmiNewMeeting;
 		private System.Windows.Forms.ToolStripMenuItem cmiCreateServer;
 		private System.Windows.Forms.ToolStripMenuItem cmiCreateCamera;
+		private System.Windows.Forms.ToolStripMenuItem cmiModifyServer;
+		private System.Windows.Forms.ToolStripMenuItem cmiDeleteServer;
+		private System.Windows.Forms.ToolStripMenuItem cmiModifyCamera;
+		private System.Windows.Forms.ToolStripMenuItem cmiDeleteCamera;
 	}
 }
 

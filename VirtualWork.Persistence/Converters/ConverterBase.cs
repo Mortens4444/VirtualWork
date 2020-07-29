@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Helper;
@@ -45,34 +44,19 @@ namespace VirtualWork.Persistence.Converters
 
 		public virtual TEntityType ToEntity(TDtoType dto)
 		{
-			var (entity, fabricated) = ConvertToEntity(dto);
-			//if (fabricated) // Need to copy when updating issue state with mouse move
+			if (dto == null)
 			{
-				CopyTypeMismatchingDtoParameters(dto, entity);
+				return null;
 			}
-			return entity;
+
+			var result = entityProvider.GetEntity(dto.Id, dataTable) ?? new TEntityType();
+			PropertyCopier.CopyProperties(dto, result);
+			CopyTypeMismatchingDtoParameters(dto, result);
+			return result;
 		}
 
 		protected virtual void CopyTypeMismatchingDtoParameters(TDtoType dto, TEntityType entity)
 		{
-		}
-
-		protected (TEntityType Entity, bool Fabricated) ConvertToEntity(TDtoType dto)
-		{
-			if (dto == null)
-			{
-				return (Entity: null, Fabricated: false);
-			}
-
-			var existingEntity = entityProvider.GetEntity(dto.Id, dataTable);
-			if (existingEntity != null)
-			{
-				return (Entity: existingEntity, Fabricated: false);
-			}
-
-			var result = new TEntityType();
-			PropertyCopier.CopyProperties(dto, result);
-			return (Entity: result, Fabricated: true);
 		}
 	}
 }
