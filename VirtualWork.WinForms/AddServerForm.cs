@@ -74,14 +74,8 @@ namespace VirtualWork.WinForms
 			server.Password = tbPassword.Text;
 			server.Username = tbUsername.Text;
 
-			if (add)
-			{
-				serverRepository.Add(server);
-			}
-			else
-			{
-				serverRepository.Update(server);
-			}
+			serverRepository.AddOrUpdate(server);
+			server = null;
 		}
 
 		private void TbIpAddress_Leave(object sender, EventArgs e)

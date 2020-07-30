@@ -45,6 +45,8 @@ namespace VirtualWork.WinForms
 		private readonly MeetingsListProvider meetingsListProvider;
 		private readonly EventListProvider eventListProvider;
 		private readonly IssueRepository issueRepository;
+		private readonly EventRepository eventRepository;
+		private readonly MeetingRepository meetingRepository;
 		private readonly ServerRepository serverRepository;
 		private readonly CameraRepository cameraRepository;
 		private readonly IDateTimeProvider dateTimeProvider;
@@ -74,6 +76,9 @@ namespace VirtualWork.WinForms
 			IssueRepository issueRepository,
 			ServerRepository serverRepository,
 			CameraRepository cameraRepository,
+			MeetingRepository meetingRepository,
+			EventRepository eventRepository,
+
 			IDateTimeProvider dateTimeProvider)
 		{
 			InitializeComponent();
@@ -95,6 +100,8 @@ namespace VirtualWork.WinForms
 			this.fileAndFolderProvider = fileAndFolderProvider;
 			this.issueListProvider = issueListProvider;
 			this.issueRepository = issueRepository;
+			this.eventRepository = eventRepository;
+			this.meetingRepository = meetingRepository;
 			this.serverRepository = serverRepository;
 			this.cameraRepository = cameraRepository;
 			this.meetingsListProvider = meetingsListProvider;
@@ -442,12 +449,35 @@ namespace VirtualWork.WinForms
 				cmiNewMeeting.SetEnabled(true);
 				cmiCreateServer.SetEnabled(true);
 				cmiCreateCamera.SetEnabled(true);
+
+				cmiModifyServer.SetEnabled(false);
+				cmiDeleteServer.SetEnabled(false);
+				cmiModifyCamera.SetEnabled(false);
+				cmiDeleteCamera.SetEnabled(false);
+				cmiModifyIssue.SetEnabled(false);
+				cmiModifyEvent.SetEnabled(false);
+				cmiModifyMeeting.SetEnabled(false);
+				cmiDeleteIssue.SetEnabled(false);
+				cmiDeleteEvent.SetEnabled(false);
+				cmiDeleteMeeting.SetEnabled(false);
+
 				return;
 			}
 
-			cmiNewEvent.SetEnabled(tvItems.SelectedNode.Tag is Event);
-			cmiNewIssue.SetEnabled(tvItems.SelectedNode.Tag is Issue);
-			cmiNewMeeting.SetEnabled(tvItems.SelectedNode.Tag is Meeting);
+			cmiNewEvent.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[EventListProvider.Events]);
+			var eventSelected = tvItems.SelectedNode.Tag is Event;
+			cmiModifyEvent.SetEnabled(eventSelected);
+			cmiDeleteEvent.SetEnabled(eventSelected);
+
+			cmiNewIssue.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[IssueListProvider.Issues]);
+			var issueSelected = tvItems.SelectedNode.Tag is Issue;
+			cmiModifyIssue.SetEnabled(issueSelected);
+			cmiDeleteIssue.SetEnabled(issueSelected);
+
+			cmiNewMeeting.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[MeetingsListProvider.Meetings]);
+			var meetingSelected = tvItems.SelectedNode.Tag is Meeting;
+			cmiModifyMeeting.SetEnabled(meetingSelected);
+			cmiDeleteMeeting.SetEnabled(meetingSelected);
 
 			var serverRootSelected = tvItems.SelectedNode == tvItems.Nodes[ServerListProvider.Servers];
 			cmiCreateServer.SetEnabled(serverRootSelected);
@@ -464,7 +494,9 @@ namespace VirtualWork.WinForms
 			var menuItems = new[]
 			{
 				cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera,
-				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera
+				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera,
+				cmiModifyIssue, cmiModifyEvent, cmiModifyMeeting,
+				cmiDeleteIssue, cmiDeleteEvent, cmiDeleteMeeting
 			};
 			if (menuItems.All(menuItem => !menuItem.Enabled))
 			{
@@ -509,6 +541,66 @@ namespace VirtualWork.WinForms
 			{
 				cameraRepository.Remove(camera.Id);
 				serverListProvider.GetServersAndCamera(tvItems);
+			}
+		}
+
+		private void CmiModifyIssue_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Issue issue)
+			{
+				createIssueForm.ShowDialog(issue);
+				issueListProvider.GetOngoingIssues(tvItems, taskboard);
+			}
+		}
+
+		private void CmiDeleteIssue_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Issue issue &&
+				ConfirmBox.Show(Lng.Elem("Confirmation"),
+				Lng.Elem("Are you sure you want to delete the selected issue?"), Decide.No) == DialogResult.Yes)
+			{
+				issueRepository.Remove(issue.Id);
+				issueListProvider.GetOngoingIssues(tvItems, taskboard);
+			}
+		}
+
+		private void CmiModifyEvent_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Event myEvent)
+			{
+				createEventForm.ShowDialog(myEvent);
+				eventListProvider.GetUpcomingEvents(tvItems);
+			}
+		}
+
+		private void CmiDeleteEvent_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Event myEvent &&
+				ConfirmBox.Show(Lng.Elem("Confirmation"),
+				Lng.Elem("Are you sure you want to delete the selected event?"), Decide.No) == DialogResult.Yes)
+			{
+				eventRepository.Remove(myEvent.Id);
+				eventListProvider.GetUpcomingEvents(tvItems);
+			}
+		}
+
+		private void CmiModifyMeeting_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Meeting meeting)
+			{
+				createMeetingForm.ShowDialog(meeting);
+				meetingsListProvider.GetUpcomingMeetings(tvItems);
+			}
+		}
+
+		private void CmiDeleteMeeting_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Meeting meeting &&
+				ConfirmBox.Show(Lng.Elem("Confirmation"),
+				Lng.Elem("Are you sure you want to delete the selected meeting?"), Decide.No) == DialogResult.Yes)
+			{
+				meetingRepository.Remove(meeting.Id);
+				meetingsListProvider.GetUpcomingMeetings(tvItems);
 			}
 		}
 	}

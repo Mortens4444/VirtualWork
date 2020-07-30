@@ -339,6 +339,12 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\remove_operation.ico" />
+    <None Include="Resources\remove_event.ico" />
+    <None Include="Resources\modify_operation.ico" />
+    <None Include="Resources\modify_event.ico" />
+    <None Include="Resources\delete_clock.ico" />
+    <None Include="Resources\modify_clock.ico" />
     <None Include="Resources\modify_camera.ico" />
     <None Include="Resources\remove_camera.ico" />
     <None Include="Resources\computer_edit.ico" />

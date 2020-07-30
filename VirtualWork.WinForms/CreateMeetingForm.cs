@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Interfaces.Enums;
@@ -12,6 +13,7 @@ namespace VirtualWork.WinForms
 	public partial class CreateMeetingForm : Form
 	{
 		private readonly MeetingRepository meetingRepository;
+		private Meeting meeting;
 
 		public CreateMeetingForm(MeetingRepository meetingRepository)
 		{
@@ -37,20 +39,75 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			dtpMeetingDate.Value = new DateTime(dtpMeetingDate.Value.Year, dtpMeetingDate.Value.Month, dtpMeetingDate.Value.Day, dtpMeetingTime.Value.Hour, dtpMeetingTime.Value.Minute, dtpMeetingTime.Value.Second);
-			var meeting = new Meeting
+			bool create = meeting == null;
+			if (create)
 			{
-				Title = tbTitle.Text,
-				CreationDate = DateTime.UtcNow,
-				Description = rtbDescription.Text,
-				ExpirationDate = dtpExpirationDate.Value,
-				MeetingDate = dtpMeetingDate.Value,
-				Owner = Initializer.LoggedInUser,
-				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),
-				RepeationValue = (int)nudRepeationValue.Value,
-				MeetingPoint = cbMeetingPoint.Text
-			};
-			meetingRepository.Add(meeting);
+				meeting = new Meeting();
+			}
+
+			meeting.Title = tbTitle.Text;
+			meeting.CreationDate = DateTime.UtcNow;
+			meeting.Description = rtbDescription.Text;
+			meeting.ExpirationDate = dtpExpirationDate.Value;
+			meeting.MeetingDate = dtpMeetingDate.Value;
+			meeting.Owner = Initializer.LoggedInUser;
+			meeting.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
+			meeting.RepeationValue = (int)nudRepeationValue.Value;
+			meeting.MeetingPoint = cbMeetingPoint.Text;
+
+			meetingRepository.AddOrUpdate(meeting);
+			meeting = null;
+		}
+
+		public DialogResult ShowDialog(Meeting meeting = null)
+		{
+			this.meeting = meeting;
+			return base.ShowDialog();
+		}
+
+		private void CreateMeetingForm_Shown(object sender, EventArgs e)
+		{
+			if (meeting == null)
+			{
+				tbTitle.Text = String.Empty;
+				rtbDescription.Text = String.Empty;
+				cbPartner.SelectedIndex = -1;
+				cbMeetingPoint.SelectedIndex = -1;
+				dtpMeetingDate.Value = DateTime.Now.AddDays(1);
+			}
+			else
+			{
+				Text = Lng.Elem("Modify meeting");
+				btnCreate.Text = Lng.Elem("Modify");
+
+				tbTitle.Text = meeting.Title;
+				rtbDescription.Text = meeting.Description;
+				dtpMeetingDate.Value = meeting.MeetingDate;
+
+				//if (meeting.PartnerId != null)
+				//{
+				//	foreach (Server server in cbServer.Items)
+				//	{
+				//		if (server.Id == camera.ServerId)
+				//		{
+				//			cbServer.SelectedItem = server;
+				//			break;
+				//		}
+				//	}
+				//}
+
+				//if (meeting.MeetingPoint != null)
+				//{
+				//	foreach (MeetingPoint meetingPoint in cbMeetingPoint.Items)
+				//	{
+				//		if (meetingPoint.Id == meeting.MeetingPointId)
+				//		{
+				//			cbMeetingPoint.SelectedItem = meetingPoint;
+				//			break;
+				//		}
+				//	}
+				//}
+			}
 		}
 	}
 }

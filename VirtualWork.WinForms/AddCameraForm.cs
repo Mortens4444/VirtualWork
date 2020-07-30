@@ -36,6 +36,7 @@ namespace VirtualWork.WinForms
 				tbName.Text = String.Empty;
 				tbUsername.Text = String.Empty;
 				tbPassword.Text = String.Empty;
+				cbServer.SelectedIndex = -1;
 			}
 			else
 			{
@@ -77,14 +78,7 @@ namespace VirtualWork.WinForms
 			camera.Username = tbUsername.Text;
 			camera.ServerId = ((Server)cbServer.SelectedItem)?.Id;
 
-			if (add)
-			{
-				cameraRepository.Add(camera);
-			}
-			else
-			{
-				cameraRepository.Update(camera);
-			}
+			cameraRepository.AddOrUpdate(camera);
 			camera = null;
 		}
 

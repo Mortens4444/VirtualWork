@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
 using VirtualWork.Core.Job;
@@ -15,6 +16,7 @@ namespace VirtualWork.WinForms
 		private readonly IssueRepository issueRepository;
 		private readonly UserRepository userRepository;
 		private bool selectingOwner;
+		private Issue issue;
 
 		public CreateIssueForm(IssueRepository issueRepository,
 			UserRepository userRepository)
@@ -72,23 +74,28 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			var issue = new Issue
+			bool create = issue == null;
+			if (create)
 			{
-				IssueState = IssueState.ToDo,
-				Creator = Initializer.LoggedInUser,
-				Description = rtbDescription.Text,
-				Title = tbTitle.Text,
-				IssueType = EnumUtils.GetByDescription<IssueType>((string)cbIssueType.SelectedItem),
-				Epic = (Issue)cbEpic.SelectedItem,
-				DueDate = dtpDueTo.Value.ToUniversalTime(),
-				Owner = (User)cbOwnedBy.SelectedItem,
-				Priority = EnumUtils.GetByDescription<Priority>((string)cbIssuePriority.SelectedItem),
-				RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem),
-				RepeationValue = (int)nudRepeationValue.Value,
-				ExpirationDate = dtpExpirationDate.Value.ToUniversalTime(),
-				CreationDate = DateTime.UtcNow
-			};
-			issueRepository.Add(issue);
+				issue = new Issue();
+			}
+
+			issue.IssueState = IssueState.ToDo;
+			issue.Creator = Initializer.LoggedInUser;
+			issue.Description = rtbDescription.Text;
+			issue.Title = tbTitle.Text;
+			issue.IssueType = EnumUtils.GetByDescription<IssueType>((string)cbIssueType.SelectedItem);
+			issue.Epic = (Issue)cbEpic.SelectedItem;
+			issue.DueDate = dtpDueTo.Value.ToUniversalTime();
+			issue.Owner = (User)cbOwnedBy.SelectedItem;
+			issue.Priority = EnumUtils.GetByDescription<Priority>((string)cbIssuePriority.SelectedItem);
+			issue.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
+			issue.RepeationValue = (int)nudRepeationValue.Value;
+			issue.ExpirationDate = dtpExpirationDate.Value.ToUniversalTime();
+			issue.CreationDate = DateTime.UtcNow;
+
+			issueRepository.AddOrUpdate(issue);
+			issue = null;
 		}
 
 		private void CbOwnedBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,7 +110,37 @@ namespace VirtualWork.WinForms
 
 		private void CreateIssueForm_Shown(object sender, EventArgs e)
 		{
-			dtpDueTo.Value = DateTime.Now.AddDays(7);
+			if (issue == null)
+			{
+				tbTitle.Text = String.Empty;
+				tbBlocking.Text = String.Empty;
+				tbBlockedBy.Text = String.Empty;
+				rtbDescription.Text = String.Empty;
+				dtpDueTo.Value = DateTime.Now.AddDays(7);
+				cbEpic.SelectedIndex = -1;
+				cbIssuePriority.SelectedIndex = -1;
+				cbOwnedBy.SelectedIndex = -1;
+			}
+			else
+			{
+				Text = Lng.Elem("Modify issue");
+				btnCreate.Text = Lng.Elem("Modify");
+
+				tbTitle.Text = issue.Title;
+				//tbBlocking.Text = issue;
+				//tbBlockedBy.Text = issue;
+				rtbDescription.Text = issue.Description;
+				dtpDueTo.Value = issue.DueDate;
+				//cbEpic.SelectedIndex = -1;
+				//cbIssuePriority.SelectedIndex = -1;
+				//cbOwnedBy.SelectedIndex = -1;
+			}
+		}
+
+		public DialogResult ShowDialog(Issue issue = null)
+		{
+			this.issue = issue;
+			return base.ShowDialog();
 		}
 	}
 }

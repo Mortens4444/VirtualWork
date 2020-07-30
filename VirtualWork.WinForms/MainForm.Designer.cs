@@ -73,7 +73,6 @@
 			this.pBrowser = new System.Windows.Forms.Panel();
 			this.webBrowser = new System.Windows.Forms.WebBrowser();
 			this.pBrowserHeader = new System.Windows.Forms.Panel();
-			this.btnVisit = new System.Windows.Forms.Button();
 			this.tbWebAddress = new System.Windows.Forms.TextBox();
 			this.tpCalendar = new System.Windows.Forms.TabPage();
 			this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -85,21 +84,28 @@
 			this.pLeft = new System.Windows.Forms.Panel();
 			this.tvItems = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.cmiDeleteIssue = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiModifyEvent = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiDeleteEvent = new System.Windows.Forms.ToolStripMenuItem();
+			this.statusStrip = new System.Windows.Forms.StatusStrip();
+			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
+			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
+			this.menuStrip = new System.Windows.Forms.MenuStrip();
+			this.btnVisit = new System.Windows.Forms.Button();
 			this.cmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiModifyIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiNewMeeting = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiModifyMeeting = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiDeleteMeeting = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiCreateServer = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyServer = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteServer = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiCreateCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteCamera = new System.Windows.Forms.ToolStripMenuItem();
-			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
-			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenCmd = new System.Windows.Forms.ToolStripSplitButton();
-			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
@@ -540,17 +546,6 @@
 			this.pBrowserHeader.Size = new System.Drawing.Size(724, 26);
 			this.pBrowserHeader.TabIndex = 0;
 			// 
-			// btnVisit
-			// 
-			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
-			this.btnVisit.Location = new System.Drawing.Point(689, 1);
-			this.btnVisit.Name = "btnVisit";
-			this.btnVisit.Size = new System.Drawing.Size(31, 23);
-			this.btnVisit.TabIndex = 1;
-			this.btnVisit.UseVisualStyleBackColor = true;
-			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
-			// 
 			// tbWebAddress
 			// 
 			this.tbWebAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -695,8 +690,14 @@
 			// 
 			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmiNewIssue,
+            this.cmiModifyIssue,
+            this.cmiDeleteIssue,
             this.cmiNewEvent,
+            this.cmiModifyEvent,
+            this.cmiDeleteEvent,
             this.cmiNewMeeting,
+            this.cmiModifyMeeting,
+            this.cmiDeleteMeeting,
             this.cmiCreateServer,
             this.cmiModifyServer,
             this.cmiDeleteServer,
@@ -704,8 +705,79 @@
             this.cmiModifyCamera,
             this.cmiDeleteCamera});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(181, 224);
+			this.contextMenuStrip.Size = new System.Drawing.Size(181, 356);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
+			// 
+			// cmiDeleteIssue
+			// 
+			this.cmiDeleteIssue.Image = global::VirtualWork.WinForms.Properties.Resources.remove_operation;
+			this.cmiDeleteIssue.Name = "cmiDeleteIssue";
+			this.cmiDeleteIssue.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteIssue.Text = "Delete issue";
+			this.cmiDeleteIssue.Click += new System.EventHandler(this.CmiDeleteIssue_Click);
+			// 
+			// cmiModifyEvent
+			// 
+			this.cmiModifyEvent.Image = global::VirtualWork.WinForms.Properties.Resources.modify_event;
+			this.cmiModifyEvent.Name = "cmiModifyEvent";
+			this.cmiModifyEvent.Size = new System.Drawing.Size(180, 22);
+			this.cmiModifyEvent.Text = "Modify event";
+			this.cmiModifyEvent.Click += new System.EventHandler(this.CmiModifyEvent_Click);
+			// 
+			// cmiDeleteEvent
+			// 
+			this.cmiDeleteEvent.Image = global::VirtualWork.WinForms.Properties.Resources.remove_event;
+			this.cmiDeleteEvent.Name = "cmiDeleteEvent";
+			this.cmiDeleteEvent.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteEvent.Text = "Delete event";
+			this.cmiDeleteEvent.Click += new System.EventHandler(this.CmiDeleteEvent_Click);
+			// 
+			// statusStrip
+			// 
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslDate,
+            this.tsslPlaceHolder,
+            this.toolStripSplitButton1,
+            this.tssbOpenCmd});
+			this.statusStrip.Location = new System.Drawing.Point(0, 490);
+			this.statusStrip.Name = "statusStrip";
+			this.statusStrip.Size = new System.Drawing.Size(941, 22);
+			this.statusStrip.TabIndex = 1;
+			this.statusStrip.Text = "statusStrip1";
+			// 
+			// tsslDate
+			// 
+			this.tsslDate.Name = "tsslDate";
+			this.tsslDate.Size = new System.Drawing.Size(0, 17);
+			// 
+			// tsslPlaceHolder
+			// 
+			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
+			this.tsslPlaceHolder.Size = new System.Drawing.Size(884, 17);
+			this.tsslPlaceHolder.Spring = true;
+			// 
+			// menuStrip
+			// 
+			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNew,
+            this.tsmiSettings,
+            this.tsmiHelp});
+			this.menuStrip.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip.Name = "menuStrip";
+			this.menuStrip.Size = new System.Drawing.Size(941, 24);
+			this.menuStrip.TabIndex = 0;
+			this.menuStrip.Text = "menuStrip1";
+			// 
+			// btnVisit
+			// 
+			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
+			this.btnVisit.Location = new System.Drawing.Point(689, 1);
+			this.btnVisit.Name = "btnVisit";
+			this.btnVisit.Size = new System.Drawing.Size(31, 23);
+			this.btnVisit.TabIndex = 1;
+			this.btnVisit.UseVisualStyleBackColor = true;
+			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
 			// 
 			// cmiNewIssue
 			// 
@@ -714,6 +786,14 @@
 			this.cmiNewIssue.Size = new System.Drawing.Size(180, 22);
 			this.cmiNewIssue.Text = "New issue";
 			this.cmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
+			// 
+			// cmiModifyIssue
+			// 
+			this.cmiModifyIssue.Image = global::VirtualWork.WinForms.Properties.Resources.modify_operation;
+			this.cmiModifyIssue.Name = "cmiModifyIssue";
+			this.cmiModifyIssue.Size = new System.Drawing.Size(180, 22);
+			this.cmiModifyIssue.Text = "Modify issue";
+			this.cmiModifyIssue.Click += new System.EventHandler(this.CmiModifyIssue_Click);
 			// 
 			// cmiNewEvent
 			// 
@@ -730,6 +810,22 @@
 			this.cmiNewMeeting.Size = new System.Drawing.Size(180, 22);
 			this.cmiNewMeeting.Text = "New meeting";
 			this.cmiNewMeeting.Click += new System.EventHandler(this.TsmiNewEvent_Click);
+			// 
+			// cmiModifyMeeting
+			// 
+			this.cmiModifyMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.modify_clock;
+			this.cmiModifyMeeting.Name = "cmiModifyMeeting";
+			this.cmiModifyMeeting.Size = new System.Drawing.Size(180, 22);
+			this.cmiModifyMeeting.Text = "Modify meeting";
+			this.cmiModifyMeeting.Click += new System.EventHandler(this.CmiModifyMeeting_Click);
+			// 
+			// cmiDeleteMeeting
+			// 
+			this.cmiDeleteMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.delete_clock;
+			this.cmiDeleteMeeting.Name = "cmiDeleteMeeting";
+			this.cmiDeleteMeeting.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteMeeting.Text = "Delete meeting";
+			this.cmiDeleteMeeting.Click += new System.EventHandler(this.CmiDeleteMeeting_Click);
 			// 
 			// cmiCreateServer
 			// 
@@ -779,30 +875,6 @@
 			this.cmiDeleteCamera.Text = "Delete camera";
 			this.cmiDeleteCamera.Click += new System.EventHandler(this.CmiDeleteCamera_Click);
 			// 
-			// statusStrip
-			// 
-			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslDate,
-            this.tsslPlaceHolder,
-            this.toolStripSplitButton1,
-            this.tssbOpenCmd});
-			this.statusStrip.Location = new System.Drawing.Point(0, 490);
-			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(941, 22);
-			this.statusStrip.TabIndex = 1;
-			this.statusStrip.Text = "statusStrip1";
-			// 
-			// tsslDate
-			// 
-			this.tsslDate.Name = "tsslDate";
-			this.tsslDate.Size = new System.Drawing.Size(0, 17);
-			// 
-			// tsslPlaceHolder
-			// 
-			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
-			this.tsslPlaceHolder.Size = new System.Drawing.Size(884, 17);
-			this.tsslPlaceHolder.Spring = true;
-			// 
 			// toolStripSplitButton1
 			// 
 			this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -824,18 +896,6 @@
 			this.tssbOpenCmd.Size = new System.Drawing.Size(21, 20);
 			this.tssbOpenCmd.Text = "Command prompt";
 			this.tssbOpenCmd.ButtonClick += new System.EventHandler(this.TssbOpenCmd_ButtonClick);
-			// 
-			// menuStrip
-			// 
-			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNew,
-            this.tsmiSettings,
-            this.tsmiHelp});
-			this.menuStrip.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(941, 24);
-			this.menuStrip.TabIndex = 0;
-			this.menuStrip.Text = "menuStrip1";
 			// 
 			// tsmiNew
 			// 
@@ -1126,6 +1186,12 @@
 		private System.Windows.Forms.ToolStripMenuItem cmiDeleteServer;
 		private System.Windows.Forms.ToolStripMenuItem cmiModifyCamera;
 		private System.Windows.Forms.ToolStripMenuItem cmiDeleteCamera;
+		private System.Windows.Forms.ToolStripMenuItem cmiModifyIssue;
+		private System.Windows.Forms.ToolStripMenuItem cmiDeleteIssue;
+		private System.Windows.Forms.ToolStripMenuItem cmiModifyEvent;
+		private System.Windows.Forms.ToolStripMenuItem cmiDeleteEvent;
+		private System.Windows.Forms.ToolStripMenuItem cmiModifyMeeting;
+		private System.Windows.Forms.ToolStripMenuItem cmiDeleteMeeting;
 	}
 }
 

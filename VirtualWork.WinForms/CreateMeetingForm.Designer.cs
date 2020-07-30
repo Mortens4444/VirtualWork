@@ -43,7 +43,6 @@
 			this.dtpExpirationDate = new System.Windows.Forms.DateTimePicker();
 			this.lblExpirationDate = new System.Windows.Forms.Label();
 			this.nudRepeationValue = new System.Windows.Forms.NumericUpDown();
-			this.dtpMeetingTime = new System.Windows.Forms.DateTimePicker();
 			this.dtpMeetingDate = new System.Windows.Forms.DateTimePicker();
 			this.lblMeetingDate = new System.Windows.Forms.Label();
 			this.lblPartner = new System.Windows.Forms.Label();
@@ -63,9 +62,8 @@
 			this.pMain.Controls.Add(this.lblDescription);
 			this.pMain.Controls.Add(this.tbTitle);
 			this.pMain.Controls.Add(this.lblTitle);
-			this.pMain.Controls.Add(this.gbRecurring);
-			this.pMain.Controls.Add(this.dtpMeetingTime);
 			this.pMain.Controls.Add(this.dtpMeetingDate);
+			this.pMain.Controls.Add(this.gbRecurring);
 			this.pMain.Controls.Add(this.lblMeetingDate);
 			this.pMain.Controls.Add(this.lblPartner);
 			this.pMain.Controls.Add(this.cbPartner);
@@ -179,9 +177,11 @@
 			// 
 			// dtpExpirationDate
 			// 
+			this.dtpExpirationDate.CustomFormat = "yyyy.MM.dd. hh:mm";
+			this.dtpExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpExpirationDate.Location = new System.Drawing.Point(362, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
-			this.dtpExpirationDate.Size = new System.Drawing.Size(200, 20);
+			this.dtpExpirationDate.Size = new System.Drawing.Size(156, 20);
 			this.dtpExpirationDate.TabIndex = 35;
 			// 
 			// lblExpirationDate
@@ -210,20 +210,13 @@
             0,
             0});
 			// 
-			// dtpMeetingTime
-			// 
-			this.dtpMeetingTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dtpMeetingTime.Location = new System.Drawing.Point(316, 189);
-			this.dtpMeetingTime.Name = "dtpMeetingTime";
-			this.dtpMeetingTime.ShowUpDown = true;
-			this.dtpMeetingTime.Size = new System.Drawing.Size(70, 20);
-			this.dtpMeetingTime.TabIndex = 26;
-			// 
 			// dtpMeetingDate
 			// 
-			this.dtpMeetingDate.Location = new System.Drawing.Point(110, 189);
+			this.dtpMeetingDate.CustomFormat = "yyyy.MM.dd. hh:mm";
+			this.dtpMeetingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpMeetingDate.Location = new System.Drawing.Point(110, 193);
 			this.dtpMeetingDate.Name = "dtpMeetingDate";
-			this.dtpMeetingDate.Size = new System.Drawing.Size(200, 20);
+			this.dtpMeetingDate.Size = new System.Drawing.Size(156, 20);
 			this.dtpMeetingDate.TabIndex = 25;
 			// 
 			// lblMeetingDate
@@ -289,6 +282,7 @@
 			this.Name = "CreateMeetingForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Create meeting";
+			this.Shown += new System.EventHandler(this.CreateMeetingForm_Shown);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			this.gbRecurring.ResumeLayout(false);
@@ -305,7 +299,6 @@
 		private System.Windows.Forms.Button btnCreate;
 		private System.Windows.Forms.Label lblPartner;
 		private System.Windows.Forms.ComboBox cbPartner;
-		private System.Windows.Forms.DateTimePicker dtpMeetingTime;
 		private System.Windows.Forms.DateTimePicker dtpMeetingDate;
 		private System.Windows.Forms.Label lblMeetingDate;
 		private System.Windows.Forms.GroupBox gbRecurring;

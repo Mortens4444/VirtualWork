@@ -1,9 +1,11 @@
-- Store resources (like a car, devices, hardware information) Resource groups, with JSON definition
+- Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
 - Locations where these resources are available
 - Consultation with link to synchronize (family doctor)
 - Send mails
-- Execute more commands when an event triggered
+- Execute one or more commands when an event triggered, notifications
 - Manage passwords
 - Upload invoices, images, documents
 - System settings search
 - Log table and viewer
+- Permissions
+- Calendar
