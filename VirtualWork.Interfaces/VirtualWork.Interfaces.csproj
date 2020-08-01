@@ -65,7 +65,10 @@
     <Compile Include="IHaveName.cs" />
     <Compile Include="IHaveIdentifier.cs" />
     <Compile Include="Job\IIssue.cs" />
+    <Compile Include="Job\IssueBlockedStateChangedEventArgs.cs" />
+    <Compile Include="Job\IssueCancelledEventArgs.cs" />
     <Compile Include="Job\IssueStateChangedEventArgs.cs" />
+    <Compile Include="Job\IssueVerifiedStateChangedEventArgs.cs" />
     <Compile Include="Log\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Windows\IWindow.cs" />

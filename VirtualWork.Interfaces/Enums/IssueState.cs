@@ -16,10 +16,6 @@ namespace VirtualWork.Interfaces.Enums
 		[Description("Verification")]
 		UnderVerification,
 
-		Verified,
-
-		Blocked,
-
 		[Description("Done")]
 		Cancelled,
 

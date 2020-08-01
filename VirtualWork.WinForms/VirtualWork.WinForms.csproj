@@ -200,6 +200,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Providers\ActualUserGroupsProvider.cs" />
+    <Compile Include="Providers\CalendarItemsProvider.cs" />
     <Compile Include="Providers\ListProviderBase.cs" />
     <Compile Include="Providers\FileAndFolderProvider.cs" />
     <Compile Include="Providers\EventListProvider.cs" />

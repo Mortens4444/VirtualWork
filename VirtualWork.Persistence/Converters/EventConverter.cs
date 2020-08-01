@@ -21,6 +21,9 @@ namespace VirtualWork.Persistence.Converters
 		{
 			entity.CreatorId = dto.Creator.Id;
 			entity.StartApplication = $"{dto.ApplicationToStart} {dto.Arguments}";
+
+			entity.EventDate = dto.EventDate.GetRepositoryDateTimeFormat();
+			entity.ExpirationDate = dto.ExpirationDate?.GetRepositoryDateTimeFormat();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
@@ -29,6 +32,9 @@ namespace VirtualWork.Persistence.Converters
 			var (application, parameters) = entity.StartApplication.GetExecutionParameters();
 			dto.ApplicationToStart = application;
 			dto.Arguments = parameters;
+
+			dto.EventDate = entity.EventDate.GetViewDateTimeFormat();
+			dto.ExpirationDate = entity.ExpirationDate?.GetViewDateTimeFormat();
 		}
 	}
 }

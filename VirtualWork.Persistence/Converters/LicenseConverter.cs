@@ -1,4 +1,5 @@
-﻿using VirtualWork.Interfaces.Enums;
+﻿using VirtualWork.Core.Extensions;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Production.License;
 using EntityType = VirtualWork.Persistence.Entities.License;
@@ -21,12 +22,18 @@ namespace VirtualWork.Persistence.Converters
 		{
 			entity.ActorId = dto.Actor.Id;
 			entity.ActorType = (int)dto.ActorType;
+
+			entity.OrderDate = dto.OrderDate.GetRepositoryDateTimeFormat();
+			entity.RenewalDate = dto.RenewalDate?.GetRepositoryDateTimeFormat();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Actor = userRepository.Get(entity.ActorId);
 			dto.ActorType = (ActorType)entity.ActorType;
+
+			dto.OrderDate = entity.OrderDate.GetViewDateTimeFormat();
+			dto.RenewalDate = entity.RenewalDate?.GetViewDateTimeFormat();
 		}
 	}
 }

@@ -248,7 +248,7 @@
 			// 
 			// dtpExpirationDate
 			// 
-			this.dtpExpirationDate.CustomFormat = "yyyy.MM.dd. hh:mm";
+			this.dtpExpirationDate.CustomFormat = "yyyy.MM.dd. HH:mm";
 			this.dtpExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpExpirationDate.Location = new System.Drawing.Point(403, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
@@ -283,7 +283,7 @@
 			// 
 			// dtpEventDate
 			// 
-			this.dtpEventDate.CustomFormat = "yyyy.MM.dd. hh:mm";
+			this.dtpEventDate.CustomFormat = "yyyy.MM.dd. HH:mm";
 			this.dtpEventDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpEventDate.Location = new System.Drawing.Point(101, 141);
 			this.dtpEventDate.Name = "dtpEventDate";

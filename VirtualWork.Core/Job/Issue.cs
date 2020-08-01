@@ -18,6 +18,10 @@ namespace VirtualWork.Core.Job
 
 		public string Title { get; set; }
 
+		public bool IsVerified { get; set; }
+
+		public bool IsBlocked { get; set; }
+
 		public DateTime CreationDate { get; set; }
 
 		public DateTime DueDate { get; set; }

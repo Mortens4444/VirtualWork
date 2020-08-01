@@ -86,12 +86,12 @@ namespace VirtualWork.WinForms
 			issue.Title = tbTitle.Text;
 			issue.IssueType = EnumUtils.GetByDescription<IssueType>((string)cbIssueType.SelectedItem);
 			issue.Epic = (Issue)cbEpic.SelectedItem;
-			issue.DueDate = dtpDueTo.Value.ToUniversalTime();
+			issue.DueDate = dtpDueTo.Value;
 			issue.Owner = (User)cbOwnedBy.SelectedItem;
 			issue.Priority = EnumUtils.GetByDescription<Priority>((string)cbIssuePriority.SelectedItem);
 			issue.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
 			issue.RepeationValue = (int)nudRepeationValue.Value;
-			issue.ExpirationDate = dtpExpirationDate.Value.ToUniversalTime();
+			issue.ExpirationDate = dtpExpirationDate.Value;
 			issue.CreationDate = DateTime.UtcNow;
 
 			issueRepository.AddOrUpdate(issue);

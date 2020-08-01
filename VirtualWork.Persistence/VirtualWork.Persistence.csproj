@@ -134,6 +134,10 @@
     <Compile Include="Migrations\202007261236228_ChangeEventDescriptionToOptional.designer.cs">
       <DependentUpon>202007261236228_ChangeEventDescriptionToOptional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008011955280_ModifyIssueStates.cs" />
+    <Compile Include="Migrations\202008011955280_ModifyIssueStates.designer.cs">
+      <DependentUpon>202008011955280_ModifyIssueStates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\CameraRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
@@ -208,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007261236228_ChangeEventDescriptionToOptional.resx">
       <DependentUpon>202007261236228_ChangeEventDescriptionToOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008011955280_ModifyIssueStates.resx">
+      <DependentUpon>202008011955280_ModifyIssueStates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

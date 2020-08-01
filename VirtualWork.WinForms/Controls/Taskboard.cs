@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using VirtualWork.Core.Job;
 using VirtualWork.Interfaces.Enums;
@@ -14,8 +13,9 @@ namespace VirtualWork.WinForms.Controls
 			InitializeComponent();
 		}
 
-		public void FillWithItems(IEnumerable<Issue> issues, bool appendItems = false)
+		public List<IssueView> FillWithItems(IEnumerable<Issue> issues, bool appendItems = false)
 		{
+			var result = new List<IssueView>();
 			if (!appendItems)
 			{
 				var columns = GetColumns();
@@ -32,7 +32,20 @@ namespace VirtualWork.WinForms.Controls
 
 				var taskboardColumn = GetTaskboardColumn(issue.IssueState);
 				taskboardColumn?.CreateChildControl(issueView);
+				result.Add(issueView);
 			}
+			return result;
+		}
+
+		public IList<IssueView> GetIssueViews()
+		{
+			var result = new List<IssueView>();
+			var columns = GetColumns();
+			foreach (var column in columns)
+			{
+				result.AddRange(column.GetIssueViews());
+			}
+			return result;
 		}
 
 		public IList<TaskboardColumn> GetColumns()

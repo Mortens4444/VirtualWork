@@ -1,4 +1,5 @@
-﻿using VirtualWork.Interfaces.Enums;
+﻿using VirtualWork.Core.Extensions;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Job.Issue;
 using EntityType = VirtualWork.Persistence.Entities.Issue;
@@ -25,6 +26,10 @@ namespace VirtualWork.Persistence.Converters
 			entity.IssueType = (int)dto.IssueType;
 			entity.OwnerId = dto.Owner?.Id;
 			entity.Priority = (int)dto.Priority;
+
+			entity.CreationDate = dto.CreationDate.GetRepositoryDateTimeFormat();
+			entity.DueDate = dto.DueDate.GetRepositoryDateTimeFormat();
+			entity.ExpirationDate = dto.ExpirationDate?.GetRepositoryDateTimeFormat();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
@@ -35,6 +40,10 @@ namespace VirtualWork.Persistence.Converters
 			dto.IssueType = (IssueType)entity.IssueType;
 			dto.Owner = userRepository.Get(entity.OwnerId);
 			dto.Priority = (Priority)entity.Priority;
+
+			dto.CreationDate = entity.CreationDate.GetViewDateTimeFormat();
+			dto.DueDate = entity.DueDate.GetViewDateTimeFormat();
+			dto.ExpirationDate = entity.ExpirationDate?.GetViewDateTimeFormat();
 		}
 	}
 }

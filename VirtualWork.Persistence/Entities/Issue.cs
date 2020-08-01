@@ -39,6 +39,16 @@ namespace VirtualWork.Persistence.Entities
 
 		public TimeSpan Interval { get; set; }
 
+		public bool IsVerified { get; set; }
+
+		public bool IsBlocked { get; set; }
+
+		public int IssueType { get; set; }
+
+		public int IssueState { get; set; }
+
+		public int Priority { get; set; }
+
 		public virtual ICollection<User> Followers { get; set; }
 
 		public virtual ICollection<IssueConnection> IssueConnections { get; set; }
@@ -46,12 +56,6 @@ namespace VirtualWork.Persistence.Entities
 		public virtual ICollection<IssueHistory> IssueHistoryEntries { get; set; }
 
 		public virtual ICollection<Comment> Comments { get; set; }
-
-		public int IssueType { get; set; }
-
-		public int IssueState { get; set; }
-
-		public int Priority { get; set; }
 
 		public bool IsMatchingPattern(string pattern)
 		{

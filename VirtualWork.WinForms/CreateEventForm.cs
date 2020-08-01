@@ -68,9 +68,9 @@ namespace VirtualWork.WinForms
 			myEvent.CreationDate = DateTime.UtcNow;
 			myEvent.Creator = Initializer.LoggedInUser;
 			myEvent.Description = rtbDescription.Text;
-			myEvent.EventDate = dtpEventDate.Value.ToUniversalTime();
+			myEvent.EventDate = dtpEventDate.Value;
 			myEvent.EventLocation = tbEventLocation.Text;
-			myEvent.ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value.ToUniversalTime() : (DateTime?)null;
+			myEvent.ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value : (DateTime?)null;
 			myEvent.RepeationValue = (int)nudRepeationValue.Value;
 			myEvent.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
 			myEvent.Title = tbTitle.Text;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -38,6 +39,18 @@ namespace VirtualWork.WinForms.Controls
 			issueView.Issue.IssueState = ColumnStates.First();
 			pMain.Controls.Add(issueView);
 			OnIssueStateChanged(this, new IssueStateChangedEventArgs(issueView.Issue, previousState));
+		}
+
+
+		public IList<IssueView> GetIssueViews()
+		{
+			var result = new List<IssueView>();
+			var controls = pMain.Controls;
+			foreach (var control in controls)
+			{
+				result.Add(control as IssueView);
+			}
+			return result;
 		}
 
 		public void RecalculateLocations()

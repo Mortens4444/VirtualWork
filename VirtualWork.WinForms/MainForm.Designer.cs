@@ -30,13 +30,13 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Events", 3, 3);
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Servers and cameras");
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Events", 3, 3);
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Servers and cameras");
 			this.pMain = new System.Windows.Forms.Panel();
 			this.pContent = new System.Windows.Forms.Panel();
 			this.pRight = new System.Windows.Forms.Panel();
@@ -73,28 +73,25 @@
 			this.pBrowser = new System.Windows.Forms.Panel();
 			this.webBrowser = new System.Windows.Forms.WebBrowser();
 			this.pBrowserHeader = new System.Windows.Forms.Panel();
+			this.btnVisit = new System.Windows.Forms.Button();
 			this.tbWebAddress = new System.Windows.Forms.TextBox();
 			this.tpCalendar = new System.Windows.Forms.TabPage();
-			this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+			this.monthCalendar = new System.Windows.Forms.MonthCalendar();
 			this.cbView = new System.Windows.Forms.ComboBox();
 			this.lblView = new System.Windows.Forms.Label();
 			this.dgvCalendar = new System.Windows.Forms.DataGridView();
+			this.dgvcActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.pLeft = new System.Windows.Forms.Panel();
 			this.tvItems = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.cmiDeleteIssue = new System.Windows.Forms.ToolStripMenuItem();
-			this.cmiModifyEvent = new System.Windows.Forms.ToolStripMenuItem();
-			this.cmiDeleteEvent = new System.Windows.Forms.ToolStripMenuItem();
-			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
-			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
-			this.menuStrip = new System.Windows.Forms.MenuStrip();
-			this.btnVisit = new System.Windows.Forms.Button();
 			this.cmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyIssue = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiDeleteIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiModifyEvent = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiDeleteEvent = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiNewMeeting = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyMeeting = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteMeeting = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,8 +101,12 @@
 			this.cmiCreateCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteCamera = new System.Windows.Forms.ToolStripMenuItem();
+			this.statusStrip = new System.Windows.Forms.StatusStrip();
+			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
+			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenCmd = new System.Windows.Forms.ToolStripSplitButton();
+			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
@@ -546,6 +547,17 @@
 			this.pBrowserHeader.Size = new System.Drawing.Size(724, 26);
 			this.pBrowserHeader.TabIndex = 0;
 			// 
+			// btnVisit
+			// 
+			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
+			this.btnVisit.Location = new System.Drawing.Point(689, 1);
+			this.btnVisit.Name = "btnVisit";
+			this.btnVisit.Size = new System.Drawing.Size(31, 23);
+			this.btnVisit.TabIndex = 1;
+			this.btnVisit.UseVisualStyleBackColor = true;
+			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
+			// 
 			// tbWebAddress
 			// 
 			this.tbWebAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -558,7 +570,7 @@
 			// 
 			// tpCalendar
 			// 
-			this.tpCalendar.Controls.Add(this.monthCalendar1);
+			this.tpCalendar.Controls.Add(this.monthCalendar);
 			this.tpCalendar.Controls.Add(this.cbView);
 			this.tpCalendar.Controls.Add(this.lblView);
 			this.tpCalendar.Controls.Add(this.dgvCalendar);
@@ -571,11 +583,11 @@
 			this.tpCalendar.Text = "Calendar";
 			this.tpCalendar.UseVisualStyleBackColor = true;
 			// 
-			// monthCalendar1
+			// monthCalendar
 			// 
-			this.monthCalendar1.Location = new System.Drawing.Point(12, 72);
-			this.monthCalendar1.Name = "monthCalendar1";
-			this.monthCalendar1.TabIndex = 4;
+			this.monthCalendar.Location = new System.Drawing.Point(12, 72);
+			this.monthCalendar.Name = "monthCalendar";
+			this.monthCalendar.TabIndex = 4;
 			// 
 			// cbView
 			// 
@@ -597,38 +609,55 @@
 			// 
 			// dgvCalendar
 			// 
+			this.dgvCalendar.AllowUserToAddRows = false;
+			this.dgvCalendar.AllowUserToDeleteRows = false;
+			this.dgvCalendar.AllowUserToResizeColumns = false;
+			this.dgvCalendar.AllowUserToResizeRows = false;
 			this.dgvCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvCalendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgvCalendar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCalendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgvCalendar.DefaultCellStyle = dataGridViewCellStyle2;
+			this.dgvCalendar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvcActivity});
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvCalendar.DefaultCellStyle = dataGridViewCellStyle5;
+			this.dgvCalendar.EnableHeadersVisualStyles = false;
 			this.dgvCalendar.Location = new System.Drawing.Point(214, 11);
 			this.dgvCalendar.Name = "dgvCalendar";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvCalendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this.dgvCalendar.ReadOnly = true;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCalendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			this.dgvCalendar.RowHeadersWidth = 80;
 			this.dgvCalendar.Size = new System.Drawing.Size(510, 423);
 			this.dgvCalendar.TabIndex = 1;
+			this.dgvCalendar.SizeChanged += new System.EventHandler(this.DgvCalendar_SizeChanged);
+			// 
+			// dgvcActivity
+			// 
+			this.dgvcActivity.HeaderText = "Activity";
+			this.dgvcActivity.Name = "dgvcActivity";
+			this.dgvcActivity.ReadOnly = true;
 			// 
 			// dateTimePicker
 			// 
@@ -636,6 +665,7 @@
 			this.dateTimePicker.Name = "dateTimePicker";
 			this.dateTimePicker.Size = new System.Drawing.Size(193, 20);
 			this.dateTimePicker.TabIndex = 0;
+			this.dateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
 			// 
 			// splitter1
 			// 
@@ -662,25 +692,25 @@
 			this.tvItems.ImageList = this.images;
 			this.tvItems.Location = new System.Drawing.Point(0, 0);
 			this.tvItems.Name = "tvItems";
-			treeNode1.ImageIndex = 1;
-			treeNode1.Name = "Issues";
-			treeNode1.SelectedImageIndex = 1;
-			treeNode1.Text = "Issues";
-			treeNode2.ImageIndex = 3;
-			treeNode2.Name = "Events";
-			treeNode2.SelectedImageIndex = 3;
-			treeNode2.Text = "Events";
-			treeNode3.ImageIndex = 2;
-			treeNode3.Name = "Meetings";
-			treeNode3.SelectedImageIndex = 2;
-			treeNode3.Text = "Meetings";
-			treeNode4.Name = "Servers";
-			treeNode4.Text = "Servers and cameras";
+			treeNode5.ImageIndex = 1;
+			treeNode5.Name = "Issues";
+			treeNode5.SelectedImageIndex = 1;
+			treeNode5.Text = "Issues";
+			treeNode6.ImageIndex = 3;
+			treeNode6.Name = "Events";
+			treeNode6.SelectedImageIndex = 3;
+			treeNode6.Text = "Events";
+			treeNode7.ImageIndex = 2;
+			treeNode7.Name = "Meetings";
+			treeNode7.SelectedImageIndex = 2;
+			treeNode7.Text = "Meetings";
+			treeNode8.Name = "Servers";
+			treeNode8.Text = "Servers and cameras";
 			this.tvItems.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8});
 			this.tvItems.SelectedImageIndex = 0;
 			this.tvItems.Size = new System.Drawing.Size(200, 466);
 			this.tvItems.TabIndex = 0;
@@ -705,22 +735,46 @@
             this.cmiModifyCamera,
             this.cmiDeleteCamera});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(181, 356);
+			this.contextMenuStrip.Size = new System.Drawing.Size(160, 334);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
+			// 
+			// cmiNewIssue
+			// 
+			this.cmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
+			this.cmiNewIssue.Name = "cmiNewIssue";
+			this.cmiNewIssue.Size = new System.Drawing.Size(159, 22);
+			this.cmiNewIssue.Text = "New issue";
+			this.cmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
+			// 
+			// cmiModifyIssue
+			// 
+			this.cmiModifyIssue.Image = global::VirtualWork.WinForms.Properties.Resources.modify_operation;
+			this.cmiModifyIssue.Name = "cmiModifyIssue";
+			this.cmiModifyIssue.Size = new System.Drawing.Size(159, 22);
+			this.cmiModifyIssue.Text = "Modify issue";
+			this.cmiModifyIssue.Click += new System.EventHandler(this.CmiModifyIssue_Click);
 			// 
 			// cmiDeleteIssue
 			// 
 			this.cmiDeleteIssue.Image = global::VirtualWork.WinForms.Properties.Resources.remove_operation;
 			this.cmiDeleteIssue.Name = "cmiDeleteIssue";
-			this.cmiDeleteIssue.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteIssue.Size = new System.Drawing.Size(159, 22);
 			this.cmiDeleteIssue.Text = "Delete issue";
 			this.cmiDeleteIssue.Click += new System.EventHandler(this.CmiDeleteIssue_Click);
+			// 
+			// cmiNewEvent
+			// 
+			this.cmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
+			this.cmiNewEvent.Name = "cmiNewEvent";
+			this.cmiNewEvent.Size = new System.Drawing.Size(159, 22);
+			this.cmiNewEvent.Text = "New event";
+			this.cmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
 			// 
 			// cmiModifyEvent
 			// 
 			this.cmiModifyEvent.Image = global::VirtualWork.WinForms.Properties.Resources.modify_event;
 			this.cmiModifyEvent.Name = "cmiModifyEvent";
-			this.cmiModifyEvent.Size = new System.Drawing.Size(180, 22);
+			this.cmiModifyEvent.Size = new System.Drawing.Size(159, 22);
 			this.cmiModifyEvent.Text = "Modify event";
 			this.cmiModifyEvent.Click += new System.EventHandler(this.CmiModifyEvent_Click);
 			// 
@@ -728,9 +782,81 @@
 			// 
 			this.cmiDeleteEvent.Image = global::VirtualWork.WinForms.Properties.Resources.remove_event;
 			this.cmiDeleteEvent.Name = "cmiDeleteEvent";
-			this.cmiDeleteEvent.Size = new System.Drawing.Size(180, 22);
+			this.cmiDeleteEvent.Size = new System.Drawing.Size(159, 22);
 			this.cmiDeleteEvent.Text = "Delete event";
 			this.cmiDeleteEvent.Click += new System.EventHandler(this.CmiDeleteEvent_Click);
+			// 
+			// cmiNewMeeting
+			// 
+			this.cmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
+			this.cmiNewMeeting.Name = "cmiNewMeeting";
+			this.cmiNewMeeting.Size = new System.Drawing.Size(159, 22);
+			this.cmiNewMeeting.Text = "New meeting";
+			this.cmiNewMeeting.Click += new System.EventHandler(this.TsmiNewEvent_Click);
+			// 
+			// cmiModifyMeeting
+			// 
+			this.cmiModifyMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.modify_clock;
+			this.cmiModifyMeeting.Name = "cmiModifyMeeting";
+			this.cmiModifyMeeting.Size = new System.Drawing.Size(159, 22);
+			this.cmiModifyMeeting.Text = "Modify meeting";
+			this.cmiModifyMeeting.Click += new System.EventHandler(this.CmiModifyMeeting_Click);
+			// 
+			// cmiDeleteMeeting
+			// 
+			this.cmiDeleteMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.delete_clock;
+			this.cmiDeleteMeeting.Name = "cmiDeleteMeeting";
+			this.cmiDeleteMeeting.Size = new System.Drawing.Size(159, 22);
+			this.cmiDeleteMeeting.Text = "Delete meeting";
+			this.cmiDeleteMeeting.Click += new System.EventHandler(this.CmiDeleteMeeting_Click);
+			// 
+			// cmiCreateServer
+			// 
+			this.cmiCreateServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
+			this.cmiCreateServer.Name = "cmiCreateServer";
+			this.cmiCreateServer.Size = new System.Drawing.Size(159, 22);
+			this.cmiCreateServer.Text = "Create server";
+			this.cmiCreateServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
+			// 
+			// cmiModifyServer
+			// 
+			this.cmiModifyServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_edit;
+			this.cmiModifyServer.Name = "cmiModifyServer";
+			this.cmiModifyServer.Size = new System.Drawing.Size(159, 22);
+			this.cmiModifyServer.Text = "Modify server";
+			this.cmiModifyServer.Click += new System.EventHandler(this.CmiModifyServer_Click);
+			// 
+			// cmiDeleteServer
+			// 
+			this.cmiDeleteServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_delete;
+			this.cmiDeleteServer.Name = "cmiDeleteServer";
+			this.cmiDeleteServer.Size = new System.Drawing.Size(159, 22);
+			this.cmiDeleteServer.Text = "Delete server";
+			this.cmiDeleteServer.Click += new System.EventHandler(this.CmiDeleteServer_Click);
+			// 
+			// cmiCreateCamera
+			// 
+			this.cmiCreateCamera.Image = global::VirtualWork.WinForms.Properties.Resources.camera;
+			this.cmiCreateCamera.Name = "cmiCreateCamera";
+			this.cmiCreateCamera.Size = new System.Drawing.Size(159, 22);
+			this.cmiCreateCamera.Text = "Create camera";
+			this.cmiCreateCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
+			// 
+			// cmiModifyCamera
+			// 
+			this.cmiModifyCamera.Image = global::VirtualWork.WinForms.Properties.Resources.modify_camera;
+			this.cmiModifyCamera.Name = "cmiModifyCamera";
+			this.cmiModifyCamera.Size = new System.Drawing.Size(159, 22);
+			this.cmiModifyCamera.Text = "Modify camera";
+			this.cmiModifyCamera.Click += new System.EventHandler(this.CmiModifyCamera_Click);
+			// 
+			// cmiDeleteCamera
+			// 
+			this.cmiDeleteCamera.Image = global::VirtualWork.WinForms.Properties.Resources.remove_camera;
+			this.cmiDeleteCamera.Name = "cmiDeleteCamera";
+			this.cmiDeleteCamera.Size = new System.Drawing.Size(159, 22);
+			this.cmiDeleteCamera.Text = "Delete camera";
+			this.cmiDeleteCamera.Click += new System.EventHandler(this.CmiDeleteCamera_Click);
 			// 
 			// statusStrip
 			// 
@@ -756,125 +882,6 @@
 			this.tsslPlaceHolder.Size = new System.Drawing.Size(884, 17);
 			this.tsslPlaceHolder.Spring = true;
 			// 
-			// menuStrip
-			// 
-			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNew,
-            this.tsmiSettings,
-            this.tsmiHelp});
-			this.menuStrip.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(941, 24);
-			this.menuStrip.TabIndex = 0;
-			this.menuStrip.Text = "menuStrip1";
-			// 
-			// btnVisit
-			// 
-			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
-			this.btnVisit.Location = new System.Drawing.Point(689, 1);
-			this.btnVisit.Name = "btnVisit";
-			this.btnVisit.Size = new System.Drawing.Size(31, 23);
-			this.btnVisit.TabIndex = 1;
-			this.btnVisit.UseVisualStyleBackColor = true;
-			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
-			// 
-			// cmiNewIssue
-			// 
-			this.cmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
-			this.cmiNewIssue.Name = "cmiNewIssue";
-			this.cmiNewIssue.Size = new System.Drawing.Size(180, 22);
-			this.cmiNewIssue.Text = "New issue";
-			this.cmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
-			// 
-			// cmiModifyIssue
-			// 
-			this.cmiModifyIssue.Image = global::VirtualWork.WinForms.Properties.Resources.modify_operation;
-			this.cmiModifyIssue.Name = "cmiModifyIssue";
-			this.cmiModifyIssue.Size = new System.Drawing.Size(180, 22);
-			this.cmiModifyIssue.Text = "Modify issue";
-			this.cmiModifyIssue.Click += new System.EventHandler(this.CmiModifyIssue_Click);
-			// 
-			// cmiNewEvent
-			// 
-			this.cmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
-			this.cmiNewEvent.Name = "cmiNewEvent";
-			this.cmiNewEvent.Size = new System.Drawing.Size(180, 22);
-			this.cmiNewEvent.Text = "New event";
-			this.cmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
-			// 
-			// cmiNewMeeting
-			// 
-			this.cmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
-			this.cmiNewMeeting.Name = "cmiNewMeeting";
-			this.cmiNewMeeting.Size = new System.Drawing.Size(180, 22);
-			this.cmiNewMeeting.Text = "New meeting";
-			this.cmiNewMeeting.Click += new System.EventHandler(this.TsmiNewEvent_Click);
-			// 
-			// cmiModifyMeeting
-			// 
-			this.cmiModifyMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.modify_clock;
-			this.cmiModifyMeeting.Name = "cmiModifyMeeting";
-			this.cmiModifyMeeting.Size = new System.Drawing.Size(180, 22);
-			this.cmiModifyMeeting.Text = "Modify meeting";
-			this.cmiModifyMeeting.Click += new System.EventHandler(this.CmiModifyMeeting_Click);
-			// 
-			// cmiDeleteMeeting
-			// 
-			this.cmiDeleteMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.delete_clock;
-			this.cmiDeleteMeeting.Name = "cmiDeleteMeeting";
-			this.cmiDeleteMeeting.Size = new System.Drawing.Size(180, 22);
-			this.cmiDeleteMeeting.Text = "Delete meeting";
-			this.cmiDeleteMeeting.Click += new System.EventHandler(this.CmiDeleteMeeting_Click);
-			// 
-			// cmiCreateServer
-			// 
-			this.cmiCreateServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
-			this.cmiCreateServer.Name = "cmiCreateServer";
-			this.cmiCreateServer.Size = new System.Drawing.Size(180, 22);
-			this.cmiCreateServer.Text = "Create server";
-			this.cmiCreateServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
-			// 
-			// cmiModifyServer
-			// 
-			this.cmiModifyServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_edit;
-			this.cmiModifyServer.Name = "cmiModifyServer";
-			this.cmiModifyServer.Size = new System.Drawing.Size(180, 22);
-			this.cmiModifyServer.Text = "Modify server";
-			this.cmiModifyServer.Click += new System.EventHandler(this.CmiModifyServer_Click);
-			// 
-			// cmiDeleteServer
-			// 
-			this.cmiDeleteServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_delete;
-			this.cmiDeleteServer.Name = "cmiDeleteServer";
-			this.cmiDeleteServer.Size = new System.Drawing.Size(180, 22);
-			this.cmiDeleteServer.Text = "Delete server";
-			this.cmiDeleteServer.Click += new System.EventHandler(this.CmiDeleteServer_Click);
-			// 
-			// cmiCreateCamera
-			// 
-			this.cmiCreateCamera.Image = global::VirtualWork.WinForms.Properties.Resources.camera;
-			this.cmiCreateCamera.Name = "cmiCreateCamera";
-			this.cmiCreateCamera.Size = new System.Drawing.Size(180, 22);
-			this.cmiCreateCamera.Text = "Create camera";
-			this.cmiCreateCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
-			// 
-			// cmiModifyCamera
-			// 
-			this.cmiModifyCamera.Image = global::VirtualWork.WinForms.Properties.Resources.modify_camera;
-			this.cmiModifyCamera.Name = "cmiModifyCamera";
-			this.cmiModifyCamera.Size = new System.Drawing.Size(180, 22);
-			this.cmiModifyCamera.Text = "Modify camera";
-			this.cmiModifyCamera.Click += new System.EventHandler(this.CmiModifyCamera_Click);
-			// 
-			// cmiDeleteCamera
-			// 
-			this.cmiDeleteCamera.Image = global::VirtualWork.WinForms.Properties.Resources.remove_camera;
-			this.cmiDeleteCamera.Name = "cmiDeleteCamera";
-			this.cmiDeleteCamera.Size = new System.Drawing.Size(180, 22);
-			this.cmiDeleteCamera.Text = "Delete camera";
-			this.cmiDeleteCamera.Click += new System.EventHandler(this.CmiDeleteCamera_Click);
-			// 
 			// toolStripSplitButton1
 			// 
 			this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -896,6 +903,18 @@
 			this.tssbOpenCmd.Size = new System.Drawing.Size(21, 20);
 			this.tssbOpenCmd.Text = "Command prompt";
 			this.tssbOpenCmd.ButtonClick += new System.EventHandler(this.TssbOpenCmd_ButtonClick);
+			// 
+			// menuStrip
+			// 
+			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNew,
+            this.tsmiSettings,
+            this.tsmiHelp});
+			this.menuStrip.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip.Name = "menuStrip";
+			this.menuStrip.Size = new System.Drawing.Size(941, 24);
+			this.menuStrip.TabIndex = 0;
+			this.menuStrip.Text = "menuStrip1";
 			// 
 			// tsmiNew
 			// 
@@ -1175,7 +1194,7 @@
 		private System.Windows.Forms.ComboBox cbView;
 		private System.Windows.Forms.Label lblView;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-		private System.Windows.Forms.MonthCalendar monthCalendar1;
+		private System.Windows.Forms.MonthCalendar monthCalendar;
 		private Controls.Taskboard taskboard;
 		private System.Windows.Forms.ToolStripMenuItem cmiNewIssue;
 		private System.Windows.Forms.ToolStripMenuItem cmiNewEvent;
@@ -1192,6 +1211,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmiDeleteEvent;
 		private System.Windows.Forms.ToolStripMenuItem cmiModifyMeeting;
 		private System.Windows.Forms.ToolStripMenuItem cmiDeleteMeeting;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dgvcActivity;
 	}
 }
 

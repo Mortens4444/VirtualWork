@@ -9,5 +9,9 @@ namespace VirtualWork.Interfaces.Job
 		IssueType IssueType { get; set; }
 
 		IssueState IssueState { get; set; }
+
+		bool IsBlocked { get; set; }
+
+		bool IsVerified { get; set; }
 	}
 }

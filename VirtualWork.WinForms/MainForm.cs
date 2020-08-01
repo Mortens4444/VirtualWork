@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -49,6 +50,7 @@ namespace VirtualWork.WinForms
 		private readonly MeetingRepository meetingRepository;
 		private readonly ServerRepository serverRepository;
 		private readonly CameraRepository cameraRepository;
+		private readonly CalendarItemsProvider calendarItemsProvider;
 		private readonly IDateTimeProvider dateTimeProvider;
 
 		private string workingDirectoryOnLeft;
@@ -78,12 +80,9 @@ namespace VirtualWork.WinForms
 			CameraRepository cameraRepository,
 			MeetingRepository meetingRepository,
 			EventRepository eventRepository,
-
+			CalendarItemsProvider calendarItemsProvider,
 			IDateTimeProvider dateTimeProvider)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
 			this.databaseSettingsForm = databaseSettingsForm;
 			this.userManagementForm = userManagementForm;
 			this.userProfileForm = userProfileForm;
@@ -106,7 +105,11 @@ namespace VirtualWork.WinForms
 			this.cameraRepository = cameraRepository;
 			this.meetingsListProvider = meetingsListProvider;
 			this.eventListProvider = eventListProvider;
+			this.calendarItemsProvider = calendarItemsProvider;
 			this.aboutBox = aboutBox;
+
+			InitializeComponent();
+			Translator.Translate(this);
 
 			active = lvFileExplorerLeft;
 			workingDirectoryOnLeft = (DriveInfo.GetDrives())[0].Name;
@@ -120,6 +123,8 @@ namespace VirtualWork.WinForms
 			{
 				column.IssueStateChanged += TaskboardColumn_IssueStateChanged;
 			}
+
+			SetCalendarColumnSize();
 		}
 
 		private void TaskboardColumn_IssueStateChanged(object sender, IssueStateChangedEventArgs e)
@@ -602,6 +607,21 @@ namespace VirtualWork.WinForms
 				meetingRepository.Remove(meeting.Id);
 				meetingsListProvider.GetUpcomingMeetings(tvItems);
 			}
+		}
+
+		private void DgvCalendar_SizeChanged(object sender, EventArgs e)
+		{
+			SetCalendarColumnSize();
+		}
+
+		private void SetCalendarColumnSize()
+		{
+			dgvCalendar.Columns[0].Width = dgvCalendar.Size.Width - dgvCalendar.RowHeadersWidth - 20;
+		}
+
+		private void DateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			calendarItemsProvider.GetItems(dgvCalendar, dateTimePicker.Value);
 		}
 	}
 }
