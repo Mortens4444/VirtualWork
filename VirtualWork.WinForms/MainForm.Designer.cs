@@ -30,13 +30,13 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Events", 3, 3);
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Servers and cameras");
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Issues", 1, 1);
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Events", 3, 3);
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Meetings", 2, 2);
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Servers and cameras");
 			this.pMain = new System.Windows.Forms.Panel();
 			this.pContent = new System.Windows.Forms.Panel();
 			this.pRight = new System.Windows.Forms.Panel();
@@ -73,7 +73,6 @@
 			this.pBrowser = new System.Windows.Forms.Panel();
 			this.webBrowser = new System.Windows.Forms.WebBrowser();
 			this.pBrowserHeader = new System.Windows.Forms.Panel();
-			this.btnVisit = new System.Windows.Forms.Button();
 			this.tbWebAddress = new System.Windows.Forms.TextBox();
 			this.tpCalendar = new System.Windows.Forms.TabPage();
 			this.monthCalendar = new System.Windows.Forms.MonthCalendar();
@@ -86,6 +85,11 @@
 			this.pLeft = new System.Windows.Forms.Panel();
 			this.tvItems = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.statusStrip = new System.Windows.Forms.StatusStrip();
+			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
+			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
+			this.menuStrip = new System.Windows.Forms.MenuStrip();
+			this.btnVisit = new System.Windows.Forms.Button();
 			this.cmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteIssue = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,12 +105,8 @@
 			this.cmiCreateCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteCamera = new System.Windows.Forms.ToolStripMenuItem();
-			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
-			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenCmd = new System.Windows.Forms.ToolStripSplitButton();
-			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,6 +124,8 @@
 			this.tsmiUserManagement = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiUserProfile = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiUserSettings = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiLogViewer = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.pMain.SuspendLayout();
@@ -547,17 +549,6 @@
 			this.pBrowserHeader.Size = new System.Drawing.Size(724, 26);
 			this.pBrowserHeader.TabIndex = 0;
 			// 
-			// btnVisit
-			// 
-			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
-			this.btnVisit.Location = new System.Drawing.Point(689, 1);
-			this.btnVisit.Name = "btnVisit";
-			this.btnVisit.Size = new System.Drawing.Size(31, 23);
-			this.btnVisit.TabIndex = 1;
-			this.btnVisit.UseVisualStyleBackColor = true;
-			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
-			// 
 			// tbWebAddress
 			// 
 			this.tbWebAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -617,37 +608,37 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvCalendar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvCalendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCalendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvCalendar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcActivity});
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgvCalendar.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvCalendar.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvCalendar.EnableHeadersVisualStyles = false;
 			this.dgvCalendar.Location = new System.Drawing.Point(214, 11);
 			this.dgvCalendar.Name = "dgvCalendar";
 			this.dgvCalendar.ReadOnly = true;
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvCalendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCalendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgvCalendar.RowHeadersWidth = 80;
 			this.dgvCalendar.Size = new System.Drawing.Size(510, 423);
 			this.dgvCalendar.TabIndex = 1;
@@ -692,25 +683,25 @@
 			this.tvItems.ImageList = this.images;
 			this.tvItems.Location = new System.Drawing.Point(0, 0);
 			this.tvItems.Name = "tvItems";
-			treeNode5.ImageIndex = 1;
-			treeNode5.Name = "Issues";
-			treeNode5.SelectedImageIndex = 1;
-			treeNode5.Text = "Issues";
-			treeNode6.ImageIndex = 3;
-			treeNode6.Name = "Events";
-			treeNode6.SelectedImageIndex = 3;
-			treeNode6.Text = "Events";
-			treeNode7.ImageIndex = 2;
-			treeNode7.Name = "Meetings";
-			treeNode7.SelectedImageIndex = 2;
-			treeNode7.Text = "Meetings";
-			treeNode8.Name = "Servers";
-			treeNode8.Text = "Servers and cameras";
+			treeNode1.ImageIndex = 1;
+			treeNode1.Name = "Issues";
+			treeNode1.SelectedImageIndex = 1;
+			treeNode1.Text = "Issues";
+			treeNode2.ImageIndex = 3;
+			treeNode2.Name = "Events";
+			treeNode2.SelectedImageIndex = 3;
+			treeNode2.Text = "Events";
+			treeNode3.ImageIndex = 2;
+			treeNode3.Name = "Meetings";
+			treeNode3.SelectedImageIndex = 2;
+			treeNode3.Text = "Meetings";
+			treeNode4.Name = "Servers";
+			treeNode4.Text = "Servers and cameras";
 			this.tvItems.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
 			this.tvItems.SelectedImageIndex = 0;
 			this.tvItems.Size = new System.Drawing.Size(200, 466);
 			this.tvItems.TabIndex = 0;
@@ -737,6 +728,54 @@
 			this.contextMenuStrip.Name = "contextMenuStrip";
 			this.contextMenuStrip.Size = new System.Drawing.Size(160, 334);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
+			// 
+			// statusStrip
+			// 
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslDate,
+            this.tsslPlaceHolder,
+            this.toolStripSplitButton1,
+            this.tssbOpenCmd});
+			this.statusStrip.Location = new System.Drawing.Point(0, 490);
+			this.statusStrip.Name = "statusStrip";
+			this.statusStrip.Size = new System.Drawing.Size(941, 22);
+			this.statusStrip.TabIndex = 1;
+			this.statusStrip.Text = "statusStrip1";
+			// 
+			// tsslDate
+			// 
+			this.tsslDate.Name = "tsslDate";
+			this.tsslDate.Size = new System.Drawing.Size(0, 17);
+			// 
+			// tsslPlaceHolder
+			// 
+			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
+			this.tsslPlaceHolder.Size = new System.Drawing.Size(884, 17);
+			this.tsslPlaceHolder.Spring = true;
+			// 
+			// menuStrip
+			// 
+			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNew,
+            this.tsmiTools,
+            this.tsmiSettings,
+            this.tsmiHelp});
+			this.menuStrip.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip.Name = "menuStrip";
+			this.menuStrip.Size = new System.Drawing.Size(941, 24);
+			this.menuStrip.TabIndex = 0;
+			this.menuStrip.Text = "menuStrip1";
+			// 
+			// btnVisit
+			// 
+			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
+			this.btnVisit.Location = new System.Drawing.Point(689, 1);
+			this.btnVisit.Name = "btnVisit";
+			this.btnVisit.Size = new System.Drawing.Size(31, 23);
+			this.btnVisit.TabIndex = 1;
+			this.btnVisit.UseVisualStyleBackColor = true;
+			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
 			// 
 			// cmiNewIssue
 			// 
@@ -858,30 +897,6 @@
 			this.cmiDeleteCamera.Text = "Delete camera";
 			this.cmiDeleteCamera.Click += new System.EventHandler(this.CmiDeleteCamera_Click);
 			// 
-			// statusStrip
-			// 
-			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslDate,
-            this.tsslPlaceHolder,
-            this.toolStripSplitButton1,
-            this.tssbOpenCmd});
-			this.statusStrip.Location = new System.Drawing.Point(0, 490);
-			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(941, 22);
-			this.statusStrip.TabIndex = 1;
-			this.statusStrip.Text = "statusStrip1";
-			// 
-			// tsslDate
-			// 
-			this.tsslDate.Name = "tsslDate";
-			this.tsslDate.Size = new System.Drawing.Size(0, 17);
-			// 
-			// tsslPlaceHolder
-			// 
-			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
-			this.tsslPlaceHolder.Size = new System.Drawing.Size(884, 17);
-			this.tsslPlaceHolder.Spring = true;
-			// 
 			// toolStripSplitButton1
 			// 
 			this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -903,18 +918,6 @@
 			this.tssbOpenCmd.Size = new System.Drawing.Size(21, 20);
 			this.tssbOpenCmd.Text = "Command prompt";
 			this.tssbOpenCmd.ButtonClick += new System.EventHandler(this.TssbOpenCmd_ButtonClick);
-			// 
-			// menuStrip
-			// 
-			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNew,
-            this.tsmiSettings,
-            this.tsmiHelp});
-			this.menuStrip.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(941, 24);
-			this.menuStrip.TabIndex = 0;
-			this.menuStrip.Text = "menuStrip1";
 			// 
 			// tsmiNew
 			// 
@@ -1057,6 +1060,23 @@
 			this.tsmiUserSettings.Size = new System.Drawing.Size(171, 22);
 			this.tsmiUserSettings.Text = "User settings";
 			this.tsmiUserSettings.Click += new System.EventHandler(this.TsmiUserSettings_Click);
+			// 
+			// tsmiTools
+			// 
+			this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiLogViewer});
+			this.tsmiTools.Image = global::VirtualWork.WinForms.Properties.Resources.application;
+			this.tsmiTools.Name = "tsmiTools";
+			this.tsmiTools.Size = new System.Drawing.Size(62, 20);
+			this.tsmiTools.Text = "Tools";
+			// 
+			// tsmiLogViewer
+			// 
+			this.tsmiLogViewer.Image = global::VirtualWork.WinForms.Properties.Resources.log;
+			this.tsmiLogViewer.Name = "tsmiLogViewer";
+			this.tsmiLogViewer.Size = new System.Drawing.Size(180, 22);
+			this.tsmiLogViewer.Text = "Log viewer";
+			this.tsmiLogViewer.Click += new System.EventHandler(this.TsmiLogViewer_Click);
 			// 
 			// tsmiHelp
 			// 
@@ -1212,6 +1232,8 @@
 		private System.Windows.Forms.ToolStripMenuItem cmiModifyMeeting;
 		private System.Windows.Forms.ToolStripMenuItem cmiDeleteMeeting;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dgvcActivity;
+		private System.Windows.Forms.ToolStripMenuItem tsmiTools;
+		private System.Windows.Forms.ToolStripMenuItem tsmiLogViewer;
 	}
 }
 

@@ -38,6 +38,7 @@ namespace VirtualWork.WinForms
 		private readonly AddServerForm addServerForm;
 		private readonly AddCameraForm addCameraForm;
 		private readonly SendMailForm sendMailForm;
+		private readonly LogViewer logViewer;
 		private readonly EmailSettingsForm emailSettingsForm;
 		private readonly AboutBox aboutBox;
 		private readonly ServerListProvider serverListProvider;
@@ -68,6 +69,7 @@ namespace VirtualWork.WinForms
 			AddServerForm addServerForm,
 			AddCameraForm addCameraForm,
 			SendMailForm sendMailForm,
+			LogViewer logViewer,
 			EmailSettingsForm emailSettingsForm,
 			AboutBox aboutBox,
 			ServerListProvider serverListProvider,
@@ -91,6 +93,7 @@ namespace VirtualWork.WinForms
 			this.createEventForm = createEventForm;
 			this.createMeetingForm = createMeetingForm;
 			this.sendMailForm = sendMailForm;
+			this.logViewer = logViewer;
 			this.emailSettingsForm = emailSettingsForm;
 			this.dateTimeProvider = dateTimeProvider;
 			this.addServerForm = addServerForm;
@@ -622,6 +625,11 @@ namespace VirtualWork.WinForms
 		private void DateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
 			calendarItemsProvider.GetItems(dgvCalendar, dateTimePicker.Value);
+		}
+
+		private void TsmiLogViewer_Click(object sender, EventArgs e)
+		{
+			logViewer.ShowDialog();
 		}
 	}
 }

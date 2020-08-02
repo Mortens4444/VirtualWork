@@ -67,18 +67,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cryptography\ByteXorCypher.cs" />
-    <Compile Include="Cryptography\Hash.cs" />
-    <Compile Include="Cryptography\CaesarCypher.cs" />
-    <Compile Include="Cryptography\RotateCypher.cs" />
-    <Compile Include="Cryptography\XorCypher.cs" />
     <Compile Include="Date\DateTimeProvider.cs" />
     <Compile Include="EmailService\EmailSender.cs" />
     <Compile Include="EmailService\SmtpConfigurationProvider.cs" />
     <Compile Include="EmailService\SmtpServerOptions.cs" />
     <Compile Include="EmailService\EmailSenderOptions.cs" />
     <Compile Include="Log\FileLogger.cs" />
-    <Compile Include="Log\LogLevel.cs" />
+    <Compile Include="Log\DatabaseLogger.cs" />
     <Compile Include="Network\HostnameProvider.cs" />
     <Compile Include="Network\MacAddressConverter.cs" />
     <Compile Include="Network\MagicPacketForger.cs" />
@@ -97,6 +92,10 @@
     <ProjectReference Include="..\VirtualWork.Interfaces\VirtualWork.Interfaces.csproj">
       <Project>{c86e343f-bffa-4e35-b8ef-8b98e2e1f7df}</Project>
       <Name>VirtualWork.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualWork.Persistence\VirtualWork.Persistence.csproj">
+      <Project>{7c700068-7e24-4c49-ad66-a1cffbfee3c4}</Project>
+      <Name>VirtualWork.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

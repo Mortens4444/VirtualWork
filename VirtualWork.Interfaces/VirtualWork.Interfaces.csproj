@@ -57,6 +57,7 @@
     <Compile Include="Enums\ConnectionType.cs" />
     <Compile Include="Enums\IssueState.cs" />
     <Compile Include="Enums\IssueType.cs" />
+    <Compile Include="Enums\LogLevel.cs" />
     <Compile Include="Enums\Priority.cs" />
     <Compile Include="Enums\PublicAreaKind.cs" />
     <Compile Include="Enums\ResourceType.cs" />

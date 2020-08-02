@@ -3,12 +3,14 @@ using System.Windows.Forms;
 using LanguageService;
 using MessageBoxes;
 using Ninject;
+using VirtualWork.Core.Exceptions;
 
 namespace VirtualWork.WinForms
 {
 	static class Program
 	{
 		private static readonly IKernel kernel = KernelProvider.Get();
+		private static readonly ExceptionCatcher exceptionCatcher = kernel.Get<ExceptionCatcher>();
 
 		/// <summary>
 		/// The main entry point for the application.

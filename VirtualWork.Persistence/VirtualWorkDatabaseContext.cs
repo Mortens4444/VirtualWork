@@ -27,6 +27,8 @@ namespace VirtualWork.Persistence
 
 		public DbSet<License> Licenses { get; set; }
 
+		public DbSet<LogEntry> Logs { get; set; }
+
 		public DbSet<Meeting> Meetings { get; set; }
 
 		public DbSet<Permission> Permisssions { get; set; }

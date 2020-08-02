@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace VirtualWork.Service.Cryptography
+namespace VirtualWork.Core.Cryptography
 {
 	public class XorCypher
 	{

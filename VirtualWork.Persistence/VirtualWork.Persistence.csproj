@@ -64,6 +64,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\LogEntryConverter.cs" />
     <Compile Include="Converters\ResourceConverter.cs" />
     <Compile Include="Converters\CameraConverter.cs" />
     <Compile Include="Converters\EventConverter.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\LogEntry.cs" />
     <Compile Include="Entities\Meeting.cs" />
     <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\Repeatable.cs" />
@@ -138,6 +140,11 @@
     <Compile Include="Migrations\202008011955280_ModifyIssueStates.designer.cs">
       <DependentUpon>202008011955280_ModifyIssueStates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008022310557_AddLogsTable.cs" />
+    <Compile Include="Migrations\202008022310557_AddLogsTable.designer.cs">
+      <DependentUpon>202008022310557_AddLogsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\LogEntryRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\CameraRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
@@ -185,10 +192,6 @@
       <Project>{c86e343f-bffa-4e35-b8ef-8b98e2e1f7df}</Project>
       <Name>VirtualWork.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VirtualWork.Service\VirtualWork.Service.csproj">
-      <Project>{1343ECA4-6962-4951-8315-04FC2CBD08DC}</Project>
-      <Name>VirtualWork.Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -215,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008011955280_ModifyIssueStates.resx">
       <DependentUpon>202008011955280_ModifyIssueStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008022310557_AddLogsTable.resx">
+      <DependentUpon>202008022310557_AddLogsTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

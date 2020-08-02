@@ -74,6 +74,11 @@
     <Compile Include="Contacts\ContactBase.cs" />
     <Compile Include="Contacts\Email.cs" />
     <Compile Include="Contacts\TelephoneNumber.cs" />
+    <Compile Include="Cryptography\ByteXorCypher.cs" />
+    <Compile Include="Cryptography\CaesarCypher.cs" />
+    <Compile Include="Cryptography\Hash.cs" />
+    <Compile Include="Cryptography\RotateCypher.cs" />
+    <Compile Include="Cryptography\XorCypher.cs" />
     <Compile Include="Directories\DirectoryProvider.cs" />
     <Compile Include="Directories\DirectoryUtils.cs" />
     <Compile Include="Exceptions\ExceptionDetails.cs" />
@@ -85,6 +90,7 @@
     <Compile Include="Infrastructure\Server.cs" />
     <Compile Include="Job\Issue.cs" />
     <Compile Include="Job\IssueHistory.cs" />
+    <Compile Include="Log\LogEntry.cs" />
     <Compile Include="Media\ActorImage.cs" />
     <Compile Include="Media\ResourceImage.cs" />
     <Compile Include="Media\Image.cs" />

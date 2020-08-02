@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
+using VirtualWork.Core.Cryptography;
 using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Windows;
 using VirtualWork.Persistence.Repositories;
-using VirtualWork.Service.Cryptography;
 using VirtualWork.WinForms.Providers;
 
 namespace VirtualWork.WinForms

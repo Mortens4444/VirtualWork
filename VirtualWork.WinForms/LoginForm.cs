@@ -2,8 +2,8 @@
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
+using VirtualWork.Core.Cryptography;
 using VirtualWork.Persistence.Repositories;
-using VirtualWork.Service.Cryptography;
 
 namespace VirtualWork.WinForms
 {

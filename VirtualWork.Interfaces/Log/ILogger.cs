@@ -1,4 +1,6 @@
-﻿namespace VirtualWork.Interfaces.Log
+﻿using System;
+
+namespace VirtualWork.Interfaces.Log
 {
 	public interface ILogger
 	{
@@ -7,6 +9,8 @@
 		void Warning(string logInfo);
 
 		void Error(string logInfo);
+
+		void Error(Exception exception);
 
 		void Debug(string logInfo);
 	}

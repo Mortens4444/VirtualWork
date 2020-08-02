@@ -6,6 +6,8 @@
 - Manage passwords
 - Upload invoices, images, documents
 - System settings search
-- Log table and viewer
+- Log user info
+- Log search and paging
+- Use virtual items in log list view
 - Permissions
-- Calendar
+- Calendar (week/month)

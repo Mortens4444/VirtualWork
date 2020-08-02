@@ -12,7 +12,8 @@ namespace VirtualWork.Service
 	{
 		public override void Load()
 		{
-			Bind<ILogger>().To<FileLogger>();
+			//Bind<ILogger>().To<FileLogger>();
+			Bind<ILogger>().To<DatabaseLogger>();
 			Bind<ISmtpServerOptions>().To<SmtpServerOptions>().InSingletonScope();
 			Bind<ISmtpConfigurationProvider>().To<SmtpConfigurationProvider>();
 			Bind<IEmailSender>().To<EmailSender>();

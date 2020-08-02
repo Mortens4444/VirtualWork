@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using VirtualWork.Core.Cryptography;
 using VirtualWork.Persistence.Repositories;
-using VirtualWork.Service.Cryptography;
 using DtoType = VirtualWork.Core.Infrastructure.Server;
 using EntityType = VirtualWork.Persistence.Entities.Server;
 

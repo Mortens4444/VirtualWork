@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace VirtualWork.Service.Cryptography
+namespace VirtualWork.Core.Cryptography
 {
 	public class ByteXorCypher
 	{

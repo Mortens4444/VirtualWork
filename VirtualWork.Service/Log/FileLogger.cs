@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using SourceInfo;
 using VirtualWork.Core.Directories;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Log;
 
 namespace VirtualWork.Service.Log
 {
-	class FileLogger : ILogger
+	public class FileLogger : ILogger
 	{
 		private readonly string LogFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"VIRtualWork\Log.txt");
 
@@ -20,27 +22,30 @@ namespace VirtualWork.Service.Log
 
 		public void Debug(string logMessage)
 		{
-			#if DEBUG
-				WriteToLogFile(logMessage, LogLevel.DEBUG);
-			#endif
+			WriteToLogFile(logMessage, LogLevel.Debug);
 		}
 
 		public void Error(string logMessage)
 		{
-			WriteToLogFile(logMessage, LogLevel.ERROR);
+			WriteToLogFile(logMessage, LogLevel.Error);
+		}
+
+		public void Error(Exception exception)
+		{
+			Error(exception.GetDetails());
 		}
 
 		public void Info(string logMessage)
 		{
-			WriteToLogFile(logMessage, LogLevel.INFO);
+			WriteToLogFile(logMessage, LogLevel.Info);
 		}
 
 		public void Warning(string logMessage)
 		{
-			WriteToLogFile(logMessage, LogLevel.WARNING);
+			WriteToLogFile(logMessage, LogLevel.Warning);
 		}
 
-		private void WriteToLogFile(string text, LogLevel logLevel = LogLevel.INFO)
+		private void WriteToLogFile(string text, LogLevel logLevel = LogLevel.Info)
 		{
 			var logMessage = ComposeLogMessage(text, logLevel);
 			using (var streamWriter = File.AppendText(LogFile))
