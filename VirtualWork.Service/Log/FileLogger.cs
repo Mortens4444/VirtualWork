@@ -2,6 +2,7 @@
 using System.IO;
 using SourceInfo;
 using VirtualWork.Core.Directories;
+using VirtualWork.Interfaces.Actors;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Log;
 
@@ -20,37 +21,39 @@ namespace VirtualWork.Service.Log
 			}
 		}
 
-		public void Debug(string logMessage)
+		public void Debug(string logMessage, IUser user = null)
 		{
-			WriteToLogFile(logMessage, LogLevel.Debug);
+			WriteToLogFile(logMessage, user, LogLevel.Debug);
 		}
 
-		public void Error(string logMessage)
+		public void Error(string logMessage, IUser user = null)
 		{
-			WriteToLogFile(logMessage, LogLevel.Error);
+			WriteToLogFile(logMessage, user, LogLevel.Error);
 		}
 
-		public void Error(Exception exception)
+		public void Error(Exception exception, IUser user = null)
 		{
-			Error(exception.GetDetails());
+			Error(exception.GetDetails(), user);
 		}
 
-		public void Info(string logMessage)
+		public void Info(string logMessage, IUser user = null)
 		{
-			WriteToLogFile(logMessage, LogLevel.Info);
+			WriteToLogFile(logMessage, user, LogLevel.Info);
 		}
 
-		public void Warning(string logMessage)
+		public void Warning(string logMessage, IUser user = null)
 		{
-			WriteToLogFile(logMessage, LogLevel.Warning);
+			WriteToLogFile(logMessage, user, LogLevel.Warning);
 		}
 
-		private void WriteToLogFile(string text, LogLevel logLevel = LogLevel.Info)
+		private void WriteToLogFile(string text, IUser user = null, LogLevel logLevel = LogLevel.Info)
 		{
 			var logMessage = ComposeLogMessage(text, logLevel);
 			using (var streamWriter = File.AppendText(LogFile))
 			{
-				streamWriter.WriteLine(logMessage);
+				var executor = user?.Name ?? String.Empty;
+				executor = executor != String.Empty ? $"{executor}: " : executor;
+				streamWriter.WriteLine($"{executor} {logMessage}");
 				streamWriter.Flush();
 			}
 		}

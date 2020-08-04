@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using VirtualWork.Core.Security;
+using VirtualWork.Interfaces.Actors;
 
 namespace VirtualWork.Core.Actors
 {
-	public class User : Actor
+	public class User : Actor, IUser
 	{
 		public bool IsActive { get; set; }
 

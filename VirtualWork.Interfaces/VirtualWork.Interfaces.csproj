@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\INotifiable.cs" />
+    <Compile Include="Actors\IUser.cs" />
     <Compile Include="Attributes\Coloring.cs" />
     <Compile Include="Attributes\FontColoring.cs" />
     <Compile Include="Attributes\TitleBarColoring.cs" />

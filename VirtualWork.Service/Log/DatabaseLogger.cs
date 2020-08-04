@@ -1,6 +1,7 @@
 ﻿using System;
 using SourceInfo;
 using VirtualWork.Core.Log;
+using VirtualWork.Interfaces.Actors;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Log;
 using VirtualWork.Persistence.Repositories;
@@ -16,42 +17,42 @@ namespace VirtualWork.Service.Log
 			this.logEntryRepository = logEntryRepository;
 		}
 
-		public void Debug(string logInfo)
+		public void Debug(string logInfo, IUser user = null)
 		{
-			var logEntry = GetLogEntry(logInfo, LogLevel.Debug);
+			var logEntry = GetLogEntry(logInfo, LogLevel.Debug, user);
 			logEntryRepository.Add(logEntry);
 		}
 
-		public void Error(string logInfo)
+		public void Error(string logInfo, IUser user = null)
 		{
-			var logEntry = GetLogEntry(logInfo, LogLevel.Error);
+			var logEntry = GetLogEntry(logInfo, LogLevel.Error, user);
 			logEntryRepository.Add(logEntry);
 		}
 
-		public void Error(Exception exception)
+		public void Error(Exception exception, IUser user = null)
 		{
-			Error(exception.GetDetails());
+			Error(exception.GetDetails(), user);
 		}
 
-		public void Info(string logInfo)
+		public void Info(string logInfo, IUser user = null)
 		{
-			var logEntry = GetLogEntry(logInfo, LogLevel.Info);
+			var logEntry = GetLogEntry(logInfo, LogLevel.Info, user);
 			logEntryRepository.Add(logEntry);
 		}
 
-		public void Warning(string logInfo)
+		public void Warning(string logInfo, IUser user = null)
 		{
-			var logEntry = GetLogEntry(logInfo, LogLevel.Warning);
+			var logEntry = GetLogEntry(logInfo, LogLevel.Warning, user);
 			logEntryRepository.Add(logEntry);
 		}
 
-		private static LogEntry GetLogEntry(string logInfo, LogLevel logLevel)
+		private static LogEntry GetLogEntry(string logInfo, LogLevel logLevel, IUser user)
 		{
 			return new LogEntry
 			{
 				LogLevel = logLevel,
 				Message = logInfo,
-				//User = user
+				User = user
 			};
 		}
 	}
