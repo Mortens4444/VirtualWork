@@ -17,14 +17,14 @@ namespace VirtualWork.WinForms
 		public AddCameraForm(CameraRepository cameraRepository,
 			ServerRepository serverRepository)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
 			this.cameraRepository = cameraRepository;
 			this.serverRepository = serverRepository;
+
+			InitializeComponent();
+			Translator.Translate(this);
 		}
 
-		private void AddCameraForm_Shown(object sender, System.EventArgs e)
+		private void AddCameraForm_Shown(object sender, EventArgs e)
 		{
 			var servers = serverRepository.GetAll();
 			cbServer.Items.AddRange(servers.ToArray());
@@ -63,7 +63,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
-		private void BtnAdd_Click(object sender, System.EventArgs e)
+		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			bool add = camera == null;
 			if (add)

@@ -87,7 +87,7 @@
 			this.btnTest.Location = new System.Drawing.Point(13, 398);
 			this.btnTest.Name = "btnTest";
 			this.btnTest.Size = new System.Drawing.Size(75, 23);
-			this.btnTest.TabIndex = 22;
+			this.btnTest.TabIndex = 18;
 			this.btnTest.Text = "Test";
 			this.btnTest.UseVisualStyleBackColor = true;
 			this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
@@ -110,7 +110,7 @@
 			this.btnCreate.Location = new System.Drawing.Point(631, 400);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(75, 23);
-			this.btnCreate.TabIndex = 21;
+			this.btnCreate.TabIndex = 19;
 			this.btnCreate.Text = "OK";
 			this.btnCreate.UseVisualStyleBackColor = true;
 			this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
@@ -165,7 +165,7 @@
 			this.tbEventLocation.Location = new System.Drawing.Point(101, 171);
 			this.tbEventLocation.Name = "tbEventLocation";
 			this.tbEventLocation.Size = new System.Drawing.Size(679, 20);
-			this.tbEventLocation.TabIndex = 31;
+			this.tbEventLocation.TabIndex = 8;
 			// 
 			// lblEventLocation
 			// 
@@ -173,7 +173,7 @@
 			this.lblEventLocation.Location = new System.Drawing.Point(6, 174);
 			this.lblEventLocation.Name = "lblEventLocation";
 			this.lblEventLocation.Size = new System.Drawing.Size(75, 13);
-			this.lblEventLocation.TabIndex = 30;
+			this.lblEventLocation.TabIndex = 7;
 			this.lblEventLocation.Text = "Event location";
 			// 
 			// gbStartInfo
@@ -186,7 +186,7 @@
 			this.gbStartInfo.MinimumSize = new System.Drawing.Size(774, 48);
 			this.gbStartInfo.Name = "gbStartInfo";
 			this.gbStartInfo.Size = new System.Drawing.Size(774, 88);
-			this.gbStartInfo.TabIndex = 29;
+			this.gbStartInfo.TabIndex = 16;
 			this.gbStartInfo.TabStop = false;
 			this.gbStartInfo.Text = "Start application";
 			// 
@@ -198,7 +198,7 @@
 			this.rtbStartApplication.Location = new System.Drawing.Point(3, 19);
 			this.rtbStartApplication.Name = "rtbStartApplication";
 			this.rtbStartApplication.Size = new System.Drawing.Size(765, 63);
-			this.rtbStartApplication.TabIndex = 0;
+			this.rtbStartApplication.TabIndex = 17;
 			this.rtbStartApplication.Text = "";
 			// 
 			// gbRecurring
@@ -214,7 +214,7 @@
 			this.gbRecurring.Location = new System.Drawing.Point(6, 190);
 			this.gbRecurring.Name = "gbRecurring";
 			this.gbRecurring.Size = new System.Drawing.Size(774, 77);
-			this.gbRecurring.TabIndex = 28;
+			this.gbRecurring.TabIndex = 9;
 			this.gbRecurring.TabStop = false;
 			// 
 			// lblRepetition
@@ -223,7 +223,7 @@
 			this.lblRepetition.Location = new System.Drawing.Point(6, 19);
 			this.lblRepetition.Name = "lblRepetition";
 			this.lblRepetition.Size = new System.Drawing.Size(55, 13);
-			this.lblRepetition.TabIndex = 33;
+			this.lblRepetition.TabIndex = 10;
 			this.lblRepetition.Text = "Repetition";
 			// 
 			// chkExpire
@@ -232,7 +232,7 @@
 			this.chkExpire.Location = new System.Drawing.Point(289, 19);
 			this.chkExpire.Name = "chkExpire";
 			this.chkExpire.Size = new System.Drawing.Size(55, 17);
-			this.chkExpire.TabIndex = 31;
+			this.chkExpire.TabIndex = 13;
 			this.chkExpire.Text = "Expire";
 			this.chkExpire.UseVisualStyleBackColor = true;
 			// 
@@ -243,7 +243,7 @@
 			this.cbRepeationType.Location = new System.Drawing.Point(53, 40);
 			this.cbRepeationType.Name = "cbRepeationType";
 			this.cbRepeationType.Size = new System.Drawing.Size(227, 21);
-			this.cbRepeationType.TabIndex = 30;
+			this.cbRepeationType.TabIndex = 12;
 			this.cbRepeationType.SelectedIndexChanged += new System.EventHandler(this.CbRepeationType_SelectedIndexChanged);
 			// 
 			// dtpExpirationDate
@@ -253,7 +253,7 @@
 			this.dtpExpirationDate.Location = new System.Drawing.Point(403, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
 			this.dtpExpirationDate.Size = new System.Drawing.Size(152, 20);
-			this.dtpExpirationDate.TabIndex = 29;
+			this.dtpExpirationDate.TabIndex = 15;
 			// 
 			// lblExpirationDate
 			// 
@@ -261,7 +261,7 @@
 			this.lblExpirationDate.Location = new System.Drawing.Point(286, 46);
 			this.lblExpirationDate.Name = "lblExpirationDate";
 			this.lblExpirationDate.Size = new System.Drawing.Size(77, 13);
-			this.lblExpirationDate.TabIndex = 28;
+			this.lblExpirationDate.TabIndex = 14;
 			this.lblExpirationDate.Text = "Expiration date";
 			// 
 			// nudRepeationValue
@@ -274,7 +274,7 @@
             0});
 			this.nudRepeationValue.Name = "nudRepeationValue";
 			this.nudRepeationValue.Size = new System.Drawing.Size(41, 20);
-			this.nudRepeationValue.TabIndex = 22;
+			this.nudRepeationValue.TabIndex = 11;
 			this.nudRepeationValue.Value = new decimal(new int[] {
             100,
             0,
@@ -288,7 +288,7 @@
 			this.dtpEventDate.Location = new System.Drawing.Point(101, 141);
 			this.dtpEventDate.Name = "dtpEventDate";
 			this.dtpEventDate.Size = new System.Drawing.Size(156, 20);
-			this.dtpEventDate.TabIndex = 11;
+			this.dtpEventDate.TabIndex = 6;
 			// 
 			// lblDueTo
 			// 
@@ -296,7 +296,7 @@
 			this.lblDueTo.Location = new System.Drawing.Point(6, 147);
 			this.lblDueTo.Name = "lblDueTo";
 			this.lblDueTo.Size = new System.Drawing.Size(57, 13);
-			this.lblDueTo.TabIndex = 10;
+			this.lblDueTo.TabIndex = 5;
 			this.lblDueTo.Text = "Event time";
 			// 
 			// rtbDescription
@@ -306,7 +306,7 @@
 			this.rtbDescription.Location = new System.Drawing.Point(6, 48);
 			this.rtbDescription.Name = "rtbDescription";
 			this.rtbDescription.Size = new System.Drawing.Size(774, 85);
-			this.rtbDescription.TabIndex = 7;
+			this.rtbDescription.TabIndex = 4;
 			this.rtbDescription.Text = "";
 			// 
 			// lblDescription
@@ -316,7 +316,7 @@
 			this.lblDescription.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblDescription.Name = "lblDescription";
 			this.lblDescription.Size = new System.Drawing.Size(60, 13);
-			this.lblDescription.TabIndex = 6;
+			this.lblDescription.TabIndex = 3;
 			this.lblDescription.Text = "Description";
 			// 
 			// tbTitle
@@ -327,7 +327,7 @@
 			this.tbTitle.MaxLength = 100;
 			this.tbTitle.Name = "tbTitle";
 			this.tbTitle.Size = new System.Drawing.Size(679, 20);
-			this.tbTitle.TabIndex = 5;
+			this.tbTitle.TabIndex = 2;
 			// 
 			// lblTitle
 			// 
@@ -336,7 +336,7 @@
 			this.lblTitle.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblTitle.Name = "lblTitle";
 			this.lblTitle.Size = new System.Drawing.Size(27, 13);
-			this.lblTitle.TabIndex = 4;
+			this.lblTitle.TabIndex = 1;
 			this.lblTitle.Text = "Title";
 			// 
 			// tpHistory
@@ -360,7 +360,7 @@
 			this.lvHistory.Location = new System.Drawing.Point(8, 31);
 			this.lvHistory.Name = "lvHistory";
 			this.lvHistory.Size = new System.Drawing.Size(776, 276);
-			this.lvHistory.TabIndex = 1;
+			this.lvHistory.TabIndex = 21;
 			this.lvHistory.UseCompatibleStateImageBehavior = false;
 			this.lvHistory.View = System.Windows.Forms.View.Details;
 			// 

@@ -62,7 +62,7 @@
 			this.groupBox1.Location = new System.Drawing.Point(0, 0);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(254, 136);
-			this.groupBox1.TabIndex = 1;
+			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			// 
 			// btnCancel
@@ -72,7 +72,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(173, 107);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 5;
+			this.btnCancel.TabIndex = 6;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -83,7 +83,7 @@
 			this.btnOk.Location = new System.Drawing.Point(92, 107);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(75, 23);
-			this.btnOk.TabIndex = 4;
+			this.btnOk.TabIndex = 5;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
 			this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
@@ -97,7 +97,7 @@
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(242, 20);
-			this.tbPassword.TabIndex = 3;
+			this.tbPassword.TabIndex = 4;
 			// 
 			// lblPassword
 			// 
@@ -105,7 +105,7 @@
 			this.lblPassword.Location = new System.Drawing.Point(3, 56);
 			this.lblPassword.Name = "lblPassword";
 			this.lblPassword.Size = new System.Drawing.Size(53, 13);
-			this.lblPassword.TabIndex = 2;
+			this.lblPassword.TabIndex = 3;
 			this.lblPassword.Text = "Password";
 			// 
 			// tbUserName
@@ -116,7 +116,7 @@
 			this.tbUserName.MaxLength = 100;
 			this.tbUserName.Name = "tbUserName";
 			this.tbUserName.Size = new System.Drawing.Size(242, 20);
-			this.tbUserName.TabIndex = 1;
+			this.tbUserName.TabIndex = 2;
 			// 
 			// lblUserName
 			// 
@@ -124,7 +124,7 @@
 			this.lblUserName.Location = new System.Drawing.Point(3, 12);
 			this.lblUserName.Name = "lblUserName";
 			this.lblUserName.Size = new System.Drawing.Size(58, 13);
-			this.lblUserName.TabIndex = 0;
+			this.lblUserName.TabIndex = 1;
 			this.lblUserName.Text = "User name";
 			// 
 			// LoginForm

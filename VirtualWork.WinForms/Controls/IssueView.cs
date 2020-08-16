@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using LanguageService.Windows.Forms;
 using VirtualWork.Core.Job;
 using VirtualWork.Core.Utils;
 using VirtualWork.Interfaces.Attributes;
@@ -16,6 +17,8 @@ namespace VirtualWork.WinForms.Controls
 		public IssueView()
 		{
 			InitializeComponent();
+			Translator.Translate(this);
+
 			Anchor = AnchorStyles.Top | AnchorStyles.Left;
 		}
 
@@ -29,7 +32,7 @@ namespace VirtualWork.WinForms.Controls
 			toolStrip.ForeColor = issue.IssueType.GetColoring<FontColoring>();
 			rtbDescription.ForeColor = issue.IssueType.GetColoring<FontColoring>();
 
-			tslTitle.Text = $"{issue.Id} - {issue.Title}";
+			tslTitle.Text = issue.ToString();
 			rtbDescription.Text = issue.Description;
 		}
 

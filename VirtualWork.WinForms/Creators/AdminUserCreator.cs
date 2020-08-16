@@ -1,5 +1,6 @@
 ﻿using LanguageService;
 using VirtualWork.Core.Cryptography;
+using VirtualWork.Core.Cryptography.Hashing;
 using VirtualWork.Persistence.Repositories;
 using User = VirtualWork.Persistence.Entities.User;
 using UserDto = VirtualWork.Core.Actors.User;

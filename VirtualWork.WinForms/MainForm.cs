@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,10 +14,12 @@ using VirtualWork.Interfaces.Date;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Job;
 using VirtualWork.Persistence.Repositories;
+using VirtualWork.Service.Network;
 using VirtualWork.Service.Process;
 using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
 using VirtualWork.WinForms.Providers;
+using VirtualWork.WinForms.Utils;
 
 namespace VirtualWork.WinForms
 {
@@ -37,12 +38,16 @@ namespace VirtualWork.WinForms
 		private readonly CreateMeetingForm createMeetingForm;
 		private readonly AddServerForm addServerForm;
 		private readonly AddCameraForm addCameraForm;
+		private readonly CalculatorForm calculatorForm;
+		private readonly EditorForm editorForm;
+		private readonly PasswordManager passwordManager;
+		private readonly CipherForm cipherForm;
 		private readonly SendMailForm sendMailForm;
 		private readonly LogViewer logViewer;
 		private readonly EmailSettingsForm emailSettingsForm;
 		private readonly AboutBox aboutBox;
 		private readonly ServerListProvider serverListProvider;
-		private readonly FileAndFolderProvider fileAndFolderProvider;
+		private readonly FileManager fileManager;		
 		private readonly IssueListProvider issueListProvider;
 		private readonly MeetingsListProvider meetingsListProvider;
 		private readonly EventListProvider eventListProvider;
@@ -52,12 +57,9 @@ namespace VirtualWork.WinForms
 		private readonly ServerRepository serverRepository;
 		private readonly CameraRepository cameraRepository;
 		private readonly CalendarItemsProvider calendarItemsProvider;
+		private readonly SystemSettingsRepository systemSettingsRepository;
+		private readonly WakeOnLan wakeOnLan;
 		private readonly IDateTimeProvider dateTimeProvider;
-
-		private string workingDirectoryOnLeft;
-		private string workingDirectoryOnRight;
-
-		private ListView active;
 
 		public MainForm(DatabaseSettingsForm databaseSettingsForm,
 			UserManagementForm userManagementForm,
@@ -68,12 +70,16 @@ namespace VirtualWork.WinForms
 			CreateMeetingForm createMeetingForm,
 			AddServerForm addServerForm,
 			AddCameraForm addCameraForm,
+			CalculatorForm calculatorForm,
+			EditorForm editorForm,
+			PasswordManager passwordManager,
+			CipherForm cipherForm,
 			SendMailForm sendMailForm,
 			LogViewer logViewer,
 			EmailSettingsForm emailSettingsForm,
 			AboutBox aboutBox,
 			ServerListProvider serverListProvider,
-			FileAndFolderProvider fileAndFolderProvider,
+			FileManager fileManager,
 			IssueListProvider issueListProvider,
 			MeetingsListProvider meetingsListProvider,
 			EventListProvider eventListProvider,
@@ -83,6 +89,8 @@ namespace VirtualWork.WinForms
 			MeetingRepository meetingRepository,
 			EventRepository eventRepository,
 			CalendarItemsProvider calendarItemsProvider,
+			WakeOnLan wakeOnLan,
+			SystemSettingsRepository systemSettingsRepository,
 			IDateTimeProvider dateTimeProvider)
 		{
 			this.databaseSettingsForm = databaseSettingsForm;
@@ -98,8 +106,12 @@ namespace VirtualWork.WinForms
 			this.dateTimeProvider = dateTimeProvider;
 			this.addServerForm = addServerForm;
 			this.addCameraForm = addCameraForm;
+			this.calculatorForm = calculatorForm;
+			this.editorForm = editorForm;
+			this.passwordManager = passwordManager;
+			this.cipherForm = cipherForm;
 			this.serverListProvider = serverListProvider;
-			this.fileAndFolderProvider = fileAndFolderProvider;
+			this.fileManager = fileManager;
 			this.issueListProvider = issueListProvider;
 			this.issueRepository = issueRepository;
 			this.eventRepository = eventRepository;
@@ -109,14 +121,14 @@ namespace VirtualWork.WinForms
 			this.meetingsListProvider = meetingsListProvider;
 			this.eventListProvider = eventListProvider;
 			this.calendarItemsProvider = calendarItemsProvider;
+			this.systemSettingsRepository = systemSettingsRepository;
 			this.aboutBox = aboutBox;
+			this.wakeOnLan = wakeOnLan;
 
 			InitializeComponent();
 			Translator.Translate(this);
 
-			active = lvFileExplorerLeft;
-			workingDirectoryOnLeft = (DriveInfo.GetDrives())[0].Name;
-			workingDirectoryOnRight = workingDirectoryOnLeft;
+			fileManager.Active = lvFileExplorerLeft;
 			GetDrives();
 
 			cbView.FillWithEnum<CalendarViewType>();
@@ -303,71 +315,29 @@ namespace VirtualWork.WinForms
 
 		private void CbDrive_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			ListDrive((ComboBox)sender, lvFileExplorerLeft, ref workingDirectoryOnLeft);
+			fileManager.ListDriveOnTheLeft((ComboBox)sender, lvFileExplorerLeft);
 		}
 
 		private void CbDrive2_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			ListDrive((ComboBox)sender, lvFileExplorerRight, ref workingDirectoryOnRight);
+			fileManager.ListDriveOnTheRight((ComboBox)sender, lvFileExplorerRight);
 		}
 
 		private void LvFileExplorerLeft_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			ListFiles(lvFileExplorerLeft, ref workingDirectoryOnLeft);
+			fileManager.ListFilesOnTheLeft(lvFileExplorerLeft);
 		}
 
 		private void LvFileExplorerRight_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			ListFiles(lvFileExplorerRight, ref workingDirectoryOnRight);
-		}
-
-		private void ListDrive(ComboBox comboBox, ListView listView, ref string workingDirectory)
-		{
-			var filesAndFolders = fileAndFolderProvider.Get(comboBox.Text);
-			if (filesAndFolders.Success)
-			{
-				listView.FillItems(filesAndFolders.Items);
-				workingDirectory = comboBox.Text;
-			}
-			if (listView == active)
-			{
-				lblWorkingDirectory.Text = workingDirectory;
-			}
-		}
-
-		private void ListFiles(ListView listView, ref string workingDirectory)
-		{
-			if (listView.SelectedItems.Count == 1)
-			{
-				var navigateToParent = listView.SelectedItems[0].Text == FileAndFolderProvider.ParentDirectory;
-				var fullPath = navigateToParent ? Directory.GetParent(workingDirectory).FullName :
-					Path.Combine(workingDirectory, listView.SelectedItems[0].Text);
-
-				if (File.Exists(fullPath))
-				{
-					ProcessUtils.Start(fullPath);
-				}
-				else if (Directory.Exists(fullPath))
-				{
-					var filesAndFolders = fileAndFolderProvider.Get(fullPath);
-					if (filesAndFolders.Success)
-					{
-						listView.FillItems(filesAndFolders.Items, navigateToParent ? workingDirectory : null);
-						workingDirectory = fullPath;
-					}
-				}
-			}
-			if (listView == active)
-			{
-				lblWorkingDirectory.Text = workingDirectory;
-			}
+			fileManager.ListFilesOnTheRight(lvFileExplorerRight);
 		}
 
 		private void LvFileExplorerLeft_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == (int)Keys.Enter)
 			{
-				ListFiles(lvFileExplorerLeft, ref workingDirectoryOnLeft);
+				fileManager.ListFilesOnTheLeft(lvFileExplorerLeft);
 			}
 		}
 
@@ -375,52 +345,19 @@ namespace VirtualWork.WinForms
 		{
 			if (e.KeyChar == (int)Keys.Enter)
 			{
-				ListFiles(lvFileExplorerRight, ref workingDirectoryOnRight);
+				fileManager.ListFilesOnTheRight(lvFileExplorerRight);
 			}
 		}
 
 		private void BtnCopy_Click(object sender, EventArgs e)
 		{
-			var source = active == lvFileExplorerLeft ? workingDirectoryOnLeft : workingDirectoryOnRight;
-			var destination = active == lvFileExplorerLeft ? workingDirectoryOnRight : workingDirectoryOnLeft;
-
-			foreach (ListViewItem item in active.SelectedItems)
+			try
 			{
-				if (item.Text == FileAndFolderProvider.ParentDirectory)
-				{
-					continue;
-				}
-
-				var sourceFile = Path.Combine(source, item.Text);
-				var destinationFile = Path.Combine(destination, item.Text);
-
-				DialogResult dialogResult;
-				if (File.Exists(destinationFile))
-				{
-					dialogResult = ConfirmBox.Show(Lng.Elem("Confirmation"),
-						String.Concat(Lng.Elem("Are you sure you want to overwrite this file?"), Environment.NewLine, destinationFile), Decide.No);
-				}
-				else
-				{
-					dialogResult = DialogResult.Yes;
-				}
-
-				try
-				{
-					File.Copy(sourceFile, destinationFile, dialogResult == DialogResult.Yes);
-					if (active == lvFileExplorerLeft)
-					{
-						ListFiles(lvFileExplorerLeft, ref workingDirectoryOnLeft);
-					}
-					else
-					{
-						ListFiles(lvFileExplorerRight, ref workingDirectoryOnRight);
-					}
-				}
-				catch (Exception ex)
-				{
-					ErrorBoxHelper.Show(ex);
-				}
+				fileManager.Copy(lvFileExplorerLeft, lvFileExplorerRight);
+			}
+			catch (Exception ex)
+			{
+				ErrorBoxHelper.Show(ex);
 			}
 		}
 
@@ -439,7 +376,7 @@ namespace VirtualWork.WinForms
 
 		private void ListView_Enter(object sender, EventArgs e)
 		{
-			active = (ListView)sender;
+			fileManager.Active = (ListView)sender;
 		}
 
 		private void TvItems_MouseDown(object sender, MouseEventArgs e)
@@ -494,6 +431,8 @@ namespace VirtualWork.WinForms
 			cmiCreateCamera.SetEnabled(serverRootSelected || serverSelected);
 			cmiModifyServer.SetEnabled(serverSelected);
 			cmiDeleteServer.SetEnabled(serverSelected);
+			cmiWakeOnLAN.SetEnabled(serverSelected);
+			cmiCommandSender.SetEnabled(serverSelected);
 
 			var cameraSelected = tvItems.SelectedNode.Tag is Camera;
 			cmiModifyCamera.SetEnabled(cameraSelected);
@@ -630,6 +569,58 @@ namespace VirtualWork.WinForms
 		private void TsmiLogViewer_Click(object sender, EventArgs e)
 		{
 			logViewer.ShowDialog();
+		}
+
+		private void TssbCalculator_ButtonClick(object sender, EventArgs e)
+		{
+			calculatorForm.ShowDialog();
+		}
+
+		private void TssbEditor_ButtonClick(object sender, EventArgs e)
+		{
+			editorForm.ShowDialog();
+		}
+
+		private void PasswordManagerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			passwordManager.ShowDialog();
+		}
+
+		private void BtnEdit_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (fileManager.Active.SelectedItems.Count == 1)
+				{
+					var path = (fileManager.Active == lvFileExplorerLeft) ? fileManager.WorkingDirectoryOnLeft : fileManager.WorkingDirectoryOnRight;
+					editorForm.ShowDialog(Path.Combine(path, fileManager.Active.SelectedItems[0].Text));
+				}
+			}
+			catch (Exception ex)
+			{
+				ErrorBoxHelper.Show(ex);
+			}
+		}
+
+		private void CmiWakeOnLAN_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Server server)
+			{
+				wakeOnLan.SendMagicPacket(server.MacAddress);
+			}
+		}
+
+		private void CmiCommandSender_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Server server)
+			{
+				ProcessUtils.Start("CommandSender", server.IpAddress);
+			}
+		}
+
+		private void CipherToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			cipherForm.ShowDialog();
 		}
 	}
 }

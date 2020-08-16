@@ -70,8 +70,9 @@
     <Compile Include="Date\DateTimeProvider.cs" />
     <Compile Include="EmailService\EmailSender.cs" />
     <Compile Include="EmailService\SmtpConfigurationProvider.cs" />
-    <Compile Include="EmailService\SmtpServerOptions.cs" />
     <Compile Include="EmailService\EmailSenderOptions.cs" />
+    <Compile Include="FileHandling\FileReader.cs" />
+    <Compile Include="FileHandling\FileWriter.cs" />
     <Compile Include="Log\FileLogger.cs" />
     <Compile Include="Log\DatabaseLogger.cs" />
     <Compile Include="Network\HostnameProvider.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Process\ProcessUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceInjectionModule.cs" />
+    <Compile Include="Utils\ClipboardHelper.cs" />
     <Compile Include="Utils\ErrorBoxHelper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,10 +15,10 @@ namespace VirtualWork.WinForms
 
 		public LogViewer(LogEntryRepository logEntryRepository)
 		{
+			this.logEntryRepository = logEntryRepository;
+
 			InitializeComponent();
 			Translator.Translate(this);
-
-			this.logEntryRepository = logEntryRepository;
 		}
 
 		private void LogViewer_Shown(object sender, System.EventArgs e)
@@ -39,6 +40,18 @@ namespace VirtualWork.WinForms
 				lvLogs.Items.Add(listViewItem);
 				i++;
 			}
+		}
+
+		private void TsmiExceptionViewer_Click(object sender, EventArgs e)
+		{
+			var selectedItem = lvLogs.SelectedItems[0];
+			var exceptionViewer = new ExceptionViewer(selectedItem.SubItems[3].Text);
+			exceptionViewer.Show();
+		}
+
+		private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
+		{
+			tsmiExceptionViewer.Enabled = lvLogs.SelectedItems.Count == 1;
 		}
 	}
 }

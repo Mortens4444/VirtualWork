@@ -36,12 +36,12 @@
 			this.chkIsActive = new System.Windows.Forms.CheckBox();
 			this.rtbDescription = new System.Windows.Forms.RichTextBox();
 			this.tvUsersAndGroups = new System.Windows.Forms.TreeView();
+			this.images = new System.Windows.Forms.ImageList(this.components);
 			this.btn_Close = new System.Windows.Forms.Button();
 			this.btnCreateNewGroup = new System.Windows.Forms.Button();
 			this.btnModifyUserOrGroup = new System.Windows.Forms.Button();
 			this.btnRemoveUserOrGroup = new System.Windows.Forms.Button();
 			this.btnCreateNewUser = new System.Windows.Forms.Button();
-			this.images = new System.Windows.Forms.ImageList(this.components);
 			this.pMain.SuspendLayout();
 			this.gbUsersAndGroups.SuspendLayout();
 			this.SuspendLayout();
@@ -70,7 +70,7 @@
 			this.gbUsersAndGroups.Location = new System.Drawing.Point(0, 0);
 			this.gbUsersAndGroups.Name = "gbUsersAndGroups";
 			this.gbUsersAndGroups.Size = new System.Drawing.Size(800, 450);
-			this.gbUsersAndGroups.TabIndex = 4;
+			this.gbUsersAndGroups.TabIndex = 0;
 			this.gbUsersAndGroups.TabStop = false;
 			this.gbUsersAndGroups.Text = "Groups and users";
 			// 
@@ -80,7 +80,7 @@
 			this.lblDescription.Location = new System.Drawing.Point(467, 53);
 			this.lblDescription.Name = "lblDescription";
 			this.lblDescription.Size = new System.Drawing.Size(60, 13);
-			this.lblDescription.TabIndex = 9;
+			this.lblDescription.TabIndex = 3;
 			this.lblDescription.Text = "Description";
 			// 
 			// chkIsActive
@@ -89,7 +89,7 @@
 			this.chkIsActive.Location = new System.Drawing.Point(467, 19);
 			this.chkIsActive.Name = "chkIsActive";
 			this.chkIsActive.Size = new System.Drawing.Size(66, 17);
-			this.chkIsActive.TabIndex = 8;
+			this.chkIsActive.TabIndex = 2;
 			this.chkIsActive.Text = "Is active";
 			this.chkIsActive.UseVisualStyleBackColor = true;
 			// 
@@ -99,7 +99,7 @@
 			this.rtbDescription.Name = "rtbDescription";
 			this.rtbDescription.ReadOnly = true;
 			this.rtbDescription.Size = new System.Drawing.Size(321, 336);
-			this.rtbDescription.TabIndex = 7;
+			this.rtbDescription.TabIndex = 4;
 			this.rtbDescription.Text = "";
 			// 
 			// tvUsersAndGroups
@@ -110,7 +110,14 @@
 			this.tvUsersAndGroups.Name = "tvUsersAndGroups";
 			this.tvUsersAndGroups.SelectedImageIndex = 0;
 			this.tvUsersAndGroups.Size = new System.Drawing.Size(455, 388);
-			this.tvUsersAndGroups.TabIndex = 6;
+			this.tvUsersAndGroups.TabIndex = 1;
+			// 
+			// images
+			// 
+			this.images.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("images.ImageStream")));
+			this.images.TransparentColor = System.Drawing.Color.Transparent;
+			this.images.Images.SetKeyName(0, "group.ico");
+			this.images.Images.SetKeyName(1, "user.ico");
 			// 
 			// btn_Close
 			// 
@@ -119,7 +126,7 @@
 			this.btn_Close.Location = new System.Drawing.Point(669, 421);
 			this.btn_Close.Name = "btn_Close";
 			this.btn_Close.Size = new System.Drawing.Size(125, 23);
-			this.btn_Close.TabIndex = 5;
+			this.btn_Close.TabIndex = 9;
 			this.btn_Close.Text = "Close";
 			this.btn_Close.UseVisualStyleBackColor = true;
 			// 
@@ -131,7 +138,7 @@
 			this.btnCreateNewGroup.Location = new System.Drawing.Point(6, 421);
 			this.btnCreateNewGroup.Name = "btnCreateNewGroup";
 			this.btnCreateNewGroup.Size = new System.Drawing.Size(125, 23);
-			this.btnCreateNewGroup.TabIndex = 1;
+			this.btnCreateNewGroup.TabIndex = 5;
 			this.btnCreateNewGroup.Text = "New group";
 			this.btnCreateNewGroup.UseVisualStyleBackColor = true;
 			this.btnCreateNewGroup.Click += new System.EventHandler(this.BtnCreateNewGroup_Click);
@@ -144,7 +151,7 @@
 			this.btnModifyUserOrGroup.Location = new System.Drawing.Point(268, 421);
 			this.btnModifyUserOrGroup.Name = "btnModifyUserOrGroup";
 			this.btnModifyUserOrGroup.Size = new System.Drawing.Size(125, 23);
-			this.btnModifyUserOrGroup.TabIndex = 3;
+			this.btnModifyUserOrGroup.TabIndex = 7;
 			this.btnModifyUserOrGroup.Text = "Modify";
 			this.btnModifyUserOrGroup.UseVisualStyleBackColor = true;
 			// 
@@ -156,7 +163,7 @@
 			this.btnRemoveUserOrGroup.Location = new System.Drawing.Point(399, 421);
 			this.btnRemoveUserOrGroup.Name = "btnRemoveUserOrGroup";
 			this.btnRemoveUserOrGroup.Size = new System.Drawing.Size(125, 23);
-			this.btnRemoveUserOrGroup.TabIndex = 4;
+			this.btnRemoveUserOrGroup.TabIndex = 8;
 			this.btnRemoveUserOrGroup.Text = "Remove";
 			this.btnRemoveUserOrGroup.UseVisualStyleBackColor = true;
 			// 
@@ -168,17 +175,10 @@
 			this.btnCreateNewUser.Location = new System.Drawing.Point(137, 421);
 			this.btnCreateNewUser.Name = "btnCreateNewUser";
 			this.btnCreateNewUser.Size = new System.Drawing.Size(125, 23);
-			this.btnCreateNewUser.TabIndex = 2;
+			this.btnCreateNewUser.TabIndex = 6;
 			this.btnCreateNewUser.Text = "New user";
 			this.btnCreateNewUser.UseVisualStyleBackColor = true;
 			this.btnCreateNewUser.Click += new System.EventHandler(this.BtnCreateNewUser_Click);
-			// 
-			// images
-			// 
-			this.images.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("images.ImageStream")));
-			this.images.TransparentColor = System.Drawing.Color.Transparent;
-			this.images.Images.SetKeyName(0, "group.ico");
-			this.images.Images.SetKeyName(1, "user.ico");
 			// 
 			// UserManagementForm
 			// 

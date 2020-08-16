@@ -13,9 +13,9 @@ namespace VirtualWork.Persistence.Entities
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		[ForeignKey(nameof(Epic))]
-		public int? EpicId { get; set; }
-		public virtual Issue Epic { get; set; }
+		[ForeignKey(nameof(Parent))]
+		public int? ParentId { get; set; }
+		public virtual Issue Parent { get; set; }
 
 		[ForeignKey(nameof(Creator))]
 		[Required]
@@ -59,12 +59,16 @@ namespace VirtualWork.Persistence.Entities
 
 		public bool IsMatchingPattern(string pattern)
 		{
-			return Title.ContainsIgnoreCase(pattern);
+			if (String.IsNullOrEmpty(pattern))
+			{
+				return true;
+			}
+			return Id.ToString().ContainsIgnoreCase(pattern) ||Title.ContainsIgnoreCase(pattern);
 		}
 
 		public override string ToString()
 		{
-			return Title;
+			return $"{Id} - {Title}";
 		}
 	}
 }

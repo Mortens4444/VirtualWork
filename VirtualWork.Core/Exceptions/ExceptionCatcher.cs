@@ -21,18 +21,9 @@ namespace VirtualWork.Core.Exceptions
 		private void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
 		{
 			var ex = e.ExceptionObject as Exception;
-			LogException(ex);
+			logger.Error(ex);
 			ShowUnhandledException(ex);
 			Environment.Exit(-1);
-		}
-
-		private void LogException(Exception ex)
-		{
-			var now = DateTime.UtcNow;
-			var errorDetails = new StringBuilder();
-			errorDetails.AppendLine($"{now.ToShortDateString()} {now.ToLongTimeString()}");
-			errorDetails.Append(new ExceptionDetails(ex).Details);
-			logger.Error(errorDetails.ToString());
 		}
 
 		private static void ShowUnhandledException(Exception ex)

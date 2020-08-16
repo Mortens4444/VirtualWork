@@ -36,6 +36,7 @@
 			this.lblDescription = new System.Windows.Forms.Label();
 			this.tbTitle = new System.Windows.Forms.TextBox();
 			this.lblTitle = new System.Windows.Forms.Label();
+			this.dtpMeetingDate = new System.Windows.Forms.DateTimePicker();
 			this.gbRecurring = new System.Windows.Forms.GroupBox();
 			this.lblRepetition = new System.Windows.Forms.Label();
 			this.chkExpire = new System.Windows.Forms.CheckBox();
@@ -43,7 +44,6 @@
 			this.dtpExpirationDate = new System.Windows.Forms.DateTimePicker();
 			this.lblExpirationDate = new System.Windows.Forms.Label();
 			this.nudRepeationValue = new System.Windows.Forms.NumericUpDown();
-			this.dtpMeetingDate = new System.Windows.Forms.DateTimePicker();
 			this.lblMeetingDate = new System.Windows.Forms.Label();
 			this.lblPartner = new System.Windows.Forms.Label();
 			this.cbPartner = new System.Windows.Forms.ComboBox();
@@ -81,7 +81,7 @@
 			this.cbMeetingPoint.Location = new System.Drawing.Point(110, 221);
 			this.cbMeetingPoint.Name = "cbMeetingPoint";
 			this.cbMeetingPoint.Size = new System.Drawing.Size(487, 21);
-			this.cbMeetingPoint.TabIndex = 36;
+			this.cbMeetingPoint.TabIndex = 9;
 			// 
 			// lblMeetingPoint
 			// 
@@ -89,7 +89,7 @@
 			this.lblMeetingPoint.Location = new System.Drawing.Point(15, 224);
 			this.lblMeetingPoint.Name = "lblMeetingPoint";
 			this.lblMeetingPoint.Size = new System.Drawing.Size(71, 13);
-			this.lblMeetingPoint.TabIndex = 35;
+			this.lblMeetingPoint.TabIndex = 8;
 			this.lblMeetingPoint.Text = "Meeting point";
 			// 
 			// rtbDescription
@@ -99,7 +99,7 @@
 			this.rtbDescription.Location = new System.Drawing.Point(18, 83);
 			this.rtbDescription.Name = "rtbDescription";
 			this.rtbDescription.Size = new System.Drawing.Size(579, 50);
-			this.rtbDescription.TabIndex = 34;
+			this.rtbDescription.TabIndex = 3;
 			this.rtbDescription.Text = "";
 			// 
 			// lblDescription
@@ -109,7 +109,7 @@
 			this.lblDescription.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblDescription.Name = "lblDescription";
 			this.lblDescription.Size = new System.Drawing.Size(60, 13);
-			this.lblDescription.TabIndex = 33;
+			this.lblDescription.TabIndex = 2;
 			this.lblDescription.Text = "Description";
 			// 
 			// tbTitle
@@ -120,7 +120,7 @@
 			this.tbTitle.MaxLength = 100;
 			this.tbTitle.Name = "tbTitle";
 			this.tbTitle.Size = new System.Drawing.Size(579, 20);
-			this.tbTitle.TabIndex = 32;
+			this.tbTitle.TabIndex = 1;
 			// 
 			// lblTitle
 			// 
@@ -129,8 +129,17 @@
 			this.lblTitle.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblTitle.Name = "lblTitle";
 			this.lblTitle.Size = new System.Drawing.Size(27, 13);
-			this.lblTitle.TabIndex = 31;
+			this.lblTitle.TabIndex = 0;
 			this.lblTitle.Text = "Title";
+			// 
+			// dtpMeetingDate
+			// 
+			this.dtpMeetingDate.CustomFormat = "yyyy.MM.dd. HH:mm";
+			this.dtpMeetingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpMeetingDate.Location = new System.Drawing.Point(110, 193);
+			this.dtpMeetingDate.Name = "dtpMeetingDate";
+			this.dtpMeetingDate.Size = new System.Drawing.Size(156, 20);
+			this.dtpMeetingDate.TabIndex = 7;
 			// 
 			// gbRecurring
 			// 
@@ -152,7 +161,7 @@
 			this.lblRepetition.Location = new System.Drawing.Point(3, 20);
 			this.lblRepetition.Name = "lblRepetition";
 			this.lblRepetition.Size = new System.Drawing.Size(55, 13);
-			this.lblRepetition.TabIndex = 38;
+			this.lblRepetition.TabIndex = 10;
 			this.lblRepetition.Text = "Repetition";
 			// 
 			// chkExpire
@@ -161,7 +170,7 @@
 			this.chkExpire.Location = new System.Drawing.Point(263, 19);
 			this.chkExpire.Name = "chkExpire";
 			this.chkExpire.Size = new System.Drawing.Size(55, 17);
-			this.chkExpire.TabIndex = 37;
+			this.chkExpire.TabIndex = 13;
 			this.chkExpire.Text = "Expire";
 			this.chkExpire.UseVisualStyleBackColor = true;
 			// 
@@ -172,7 +181,7 @@
 			this.cbRepeationType.Location = new System.Drawing.Point(53, 40);
 			this.cbRepeationType.Name = "cbRepeationType";
 			this.cbRepeationType.Size = new System.Drawing.Size(201, 21);
-			this.cbRepeationType.TabIndex = 36;
+			this.cbRepeationType.TabIndex = 12;
 			this.cbRepeationType.SelectedIndexChanged += new System.EventHandler(this.CbRepeationType_SelectedIndexChanged);
 			// 
 			// dtpExpirationDate
@@ -182,7 +191,7 @@
 			this.dtpExpirationDate.Location = new System.Drawing.Point(362, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
 			this.dtpExpirationDate.Size = new System.Drawing.Size(156, 20);
-			this.dtpExpirationDate.TabIndex = 35;
+			this.dtpExpirationDate.TabIndex = 15;
 			// 
 			// lblExpirationDate
 			// 
@@ -190,7 +199,7 @@
 			this.lblExpirationDate.Location = new System.Drawing.Point(260, 45);
 			this.lblExpirationDate.Name = "lblExpirationDate";
 			this.lblExpirationDate.Size = new System.Drawing.Size(77, 13);
-			this.lblExpirationDate.TabIndex = 34;
+			this.lblExpirationDate.TabIndex = 14;
 			this.lblExpirationDate.Text = "Expiration date";
 			// 
 			// nudRepeationValue
@@ -203,21 +212,12 @@
             0});
 			this.nudRepeationValue.Name = "nudRepeationValue";
 			this.nudRepeationValue.Size = new System.Drawing.Size(41, 20);
-			this.nudRepeationValue.TabIndex = 33;
+			this.nudRepeationValue.TabIndex = 11;
 			this.nudRepeationValue.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
-			// 
-			// dtpMeetingDate
-			// 
-			this.dtpMeetingDate.CustomFormat = "yyyy.MM.dd. HH:mm";
-			this.dtpMeetingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpMeetingDate.Location = new System.Drawing.Point(110, 193);
-			this.dtpMeetingDate.Name = "dtpMeetingDate";
-			this.dtpMeetingDate.Size = new System.Drawing.Size(156, 20);
-			this.dtpMeetingDate.TabIndex = 25;
 			// 
 			// lblMeetingDate
 			// 
@@ -225,7 +225,7 @@
 			this.lblMeetingDate.Location = new System.Drawing.Point(15, 195);
 			this.lblMeetingDate.Name = "lblMeetingDate";
 			this.lblMeetingDate.Size = new System.Drawing.Size(69, 13);
-			this.lblMeetingDate.TabIndex = 24;
+			this.lblMeetingDate.TabIndex = 6;
 			this.lblMeetingDate.Text = "Meeting date";
 			// 
 			// lblPartner
@@ -234,7 +234,7 @@
 			this.lblPartner.Location = new System.Drawing.Point(15, 145);
 			this.lblPartner.Name = "lblPartner";
 			this.lblPartner.Size = new System.Drawing.Size(41, 13);
-			this.lblPartner.TabIndex = 23;
+			this.lblPartner.TabIndex = 4;
 			this.lblPartner.Text = "Partner";
 			// 
 			// cbPartner
@@ -245,7 +245,7 @@
 			this.cbPartner.Location = new System.Drawing.Point(18, 161);
 			this.cbPartner.Name = "cbPartner";
 			this.cbPartner.Size = new System.Drawing.Size(579, 21);
-			this.cbPartner.TabIndex = 22;
+			this.cbPartner.TabIndex = 5;
 			// 
 			// btnCancel
 			// 
@@ -254,7 +254,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(522, 348);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 20;
+			this.btnCancel.TabIndex = 17;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -265,7 +265,7 @@
 			this.btnCreate.Location = new System.Drawing.Point(441, 348);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(75, 23);
-			this.btnCreate.TabIndex = 21;
+			this.btnCreate.TabIndex = 16;
 			this.btnCreate.Text = "OK";
 			this.btnCreate.UseVisualStyleBackColor = true;
 			this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);

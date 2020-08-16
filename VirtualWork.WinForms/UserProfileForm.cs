@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
+using VirtualWork.Core.Contacts;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 
 namespace VirtualWork.WinForms
@@ -19,14 +21,14 @@ namespace VirtualWork.WinForms
 			ImageRepository userImagesRepository,
 			UserRepository userRepository)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
 			this.addressRepository = addressRepository;
 			this.emailRepository = emailRepository;
 			this.telephoneNumberRepository = telephoneNumberRepository;
 			this.userImagesRepository = userImagesRepository;
 			this.userRepository = userRepository;
+
+			InitializeComponent();
+			Translator.Translate(this);
 		}
 
 		private void UserProfileForm_Shown(object sender, EventArgs e)
@@ -43,7 +45,15 @@ namespace VirtualWork.WinForms
 
 		private void Btn_Save_Click(object sender, EventArgs e)
 		{
-
+			if (!String.IsNullOrEmpty(tb_EmailAddress.Text))
+			{
+				emailRepository.AddOrUpdate(new Email
+				{
+					Address = tb_EmailAddress.Text,
+					ActorId = Initializer.LoggedInUser.Id,
+					ActorType = ActorType.User
+				});
+			}
 		}
 	}
 }

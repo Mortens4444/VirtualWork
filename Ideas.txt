@@ -3,10 +3,13 @@
 - Consultation with link to synchronize (family doctor)
 - Send mails
 - Execute one or more commands when an event triggered, notifications
-- Manage passwords
 - Upload invoices, images, documents
 - System settings search
-- Log search and paging
+- Log filter and paging
 - Use virtual items in log list view
 - Permissions
+- Store passwords for groups
 - Calendar (week/month)
+- Source code highlight in editor / save editor settings
+- Implement calculator
+- Incoming / outgoing money

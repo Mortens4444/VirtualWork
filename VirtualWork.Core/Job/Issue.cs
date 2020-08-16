@@ -26,7 +26,7 @@ namespace VirtualWork.Core.Job
 
 		public DateTime DueDate { get; set; }
 
-		public Issue Epic { get; set; }
+		public Issue Parent { get; set; }
 
 		public HashSet<INotifiable> Followers { get; set; }
 
@@ -48,12 +48,9 @@ namespace VirtualWork.Core.Job
 
 		public RepeationType RepeationType { get; set; }
 
-		/// <summary>
-		/// @param notifiable
-		/// </summary>
-		public void Assign(INotifiable notifiable)
+		public override string ToString()
 		{
-			throw new NotImplementedException();
+			return Title;
 		}
 	}
 }

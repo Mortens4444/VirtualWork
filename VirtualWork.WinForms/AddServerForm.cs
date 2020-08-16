@@ -21,12 +21,12 @@ namespace VirtualWork.WinForms
 			HostnameProvider hostnameProvider,
 			WindowsMacAddressProvider windowsMacAddressProvider)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
 			this.serverRepository = serverRepository;
 			this.hostnameProvider = hostnameProvider;
 			this.windowsMacAddressProvider = windowsMacAddressProvider;
+
+			InitializeComponent();
+			Translator.Translate(this);
 		}
 
 		private void AddServerForm_Shown(object sender, EventArgs e)

@@ -17,6 +17,6 @@ namespace VirtualWork.Core.Contacts
 
 		public PublicAreaKind PublicAreaKind { get; set; }
 
-		public ActorType ActorType { get; set; }
+		public EntityType EntityType { get; set; }
 	}
 }

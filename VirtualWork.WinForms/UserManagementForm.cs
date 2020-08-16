@@ -15,12 +15,12 @@ namespace VirtualWork.WinForms
 			AddUserForm addUserForm,
 			UserListProvider userListProvider)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
 			this.addGroupForm = addGroupForm;
 			this.addUserForm = addUserForm;
 			this.userListProvider = userListProvider;
+
+			InitializeComponent();
+			Translator.Translate(this);
 		}
 
 		private void UserManagementForm_Shown(object sender, EventArgs e)

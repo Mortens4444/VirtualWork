@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
 
-namespace VirtualWork.Core.Cryptography
+namespace VirtualWork.Core.Cryptography.Ciphers
 {
-	public class XorCypher
+	public class XorCipher
 	{
 		public string Encrypt(string source, string password)
 		{

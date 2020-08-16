@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
-using VirtualWork.Core.Cryptography;
+using VirtualWork.Core.Cryptography.Hashing;
 using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Windows;
 using VirtualWork.Persistence.Repositories;
@@ -20,9 +20,10 @@ namespace VirtualWork.WinForms
 			UserRepository userRepository,
 			GroupRepository groupRepository)
 		{
+			this.userRepository = userRepository;
+
 			InitializeComponent();
 			Translator.Translate(this);
-			this.userRepository = userRepository;
 
 			groups = !userRepository.HasAny() ? new[] { groupRepository.GetAdminGroup() } : actualUserGroupsProvider.Get();
 		}

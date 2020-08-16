@@ -15,24 +15,21 @@ namespace VirtualWork.WinForms
 	{
 		private readonly IssueRepository issueRepository;
 		private readonly UserRepository userRepository;
-		private bool selectingOwner;
+		private bool selectingOwner, selectingIssue;
 		private Issue issue;
 
 		public CreateIssueForm(IssueRepository issueRepository,
 			UserRepository userRepository)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
 			this.issueRepository = issueRepository;
 			this.userRepository = userRepository;
+
+			InitializeComponent();
+			Translator.Translate(this);
 
 			cbIssueType.FillWithEnum<IssueType>();
 			cbIssuePriority.FillWithEnum<Priority>(2);
 			cbRepeationType.FillWithEnum<RepeationType>();
-
-			GetUsers();
-			GetEpics();
 		}
 
 		private void CbRepeationType_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,19 +54,27 @@ namespace VirtualWork.WinForms
 
 		private void CbEpic_TextChanged(object sender, EventArgs e)
 		{
-			GetEpics();
+			if (!selectingIssue)
+			{
+				GetEpicsAndStories();
+			}
 		}
 
 		private void GetUsers()
 		{
-			var users = userRepository.GetMatchings(cbOwnedBy.Text, user => user.IsMatchingPattern(cbOwnedBy.Text));
+			var users = userRepository.GetAll(user => user.IsMatchingPattern(cbOwnedBy.Text));
 			cbOwnedBy.AddMatchingItems(users);
 		}
 
-		private void GetEpics()
+		private void GetEpicsAndStories()
 		{
-			var epics = issueRepository.GetMatchings(cbEpic.Text, issue => issue.IssueType == (int)IssueType.Epic && issue.IsMatchingPattern(cbIssueType.Text));
-			cbEpic.AddMatchingItems(epics);
+			var issueId = issue?.Id ?? 0;
+			var parents = issueRepository.GetAll(currentIssue =>
+				((currentIssue.IssueState != (int)IssueState.Cancelled) &&
+				(currentIssue.IssueState != (int)IssueState.Done)) &&
+				currentIssue.IsMatchingPattern(cbParent.Text) &&
+				currentIssue.Id != issueId);
+			cbParent.AddMatchingItems(parents);
 		}
 
 		private void BtnCreate_Click(object sender, EventArgs e)
@@ -85,7 +90,7 @@ namespace VirtualWork.WinForms
 			issue.Description = rtbDescription.Text;
 			issue.Title = tbTitle.Text;
 			issue.IssueType = EnumUtils.GetByDescription<IssueType>((string)cbIssueType.SelectedItem);
-			issue.Epic = (Issue)cbEpic.SelectedItem;
+			issue.Parent = (Issue)cbParent.SelectedItem;
 			issue.DueDate = dtpDueTo.Value;
 			issue.Owner = (User)cbOwnedBy.SelectedItem;
 			issue.Priority = EnumUtils.GetByDescription<Priority>((string)cbIssuePriority.SelectedItem);
@@ -110,6 +115,9 @@ namespace VirtualWork.WinForms
 
 		private void CreateIssueForm_Shown(object sender, EventArgs e)
 		{
+			GetUsers();
+			GetEpicsAndStories();
+
 			if (issue == null)
 			{
 				tbTitle.Text = String.Empty;
@@ -117,8 +125,8 @@ namespace VirtualWork.WinForms
 				tbBlockedBy.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
 				dtpDueTo.Value = DateTime.Now.AddDays(7);
-				cbEpic.SelectedIndex = -1;
-				cbIssuePriority.SelectedIndex = -1;
+				cbParent.SelectedIndex = -1;
+				cbIssuePriority.SelectedIndex = 2;
 				cbOwnedBy.SelectedIndex = -1;
 			}
 			else
@@ -141,6 +149,16 @@ namespace VirtualWork.WinForms
 		{
 			this.issue = issue;
 			return base.ShowDialog();
+		}
+
+		private void CbEpic_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			selectingIssue = false;
+		}
+
+		private void CbEpic_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			selectingIssue = true;
 		}
 	}
 }

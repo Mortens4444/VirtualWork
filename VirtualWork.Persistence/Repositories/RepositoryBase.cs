@@ -33,14 +33,14 @@ namespace VirtualWork.Persistence.Repositories
 			return Converter.ToDto(addedEntity);
 		}
 
-		protected virtual Expression<Func<TEntityType, bool>> EntitySearchPredicate(object value)
+		protected virtual Expression<Func<TEntityType, bool>> EntitySearchPredicate(TDtoType dto)
 		{
-			return dbEntity => dbEntity.Id == (int)value;
+			return dbEntity => dbEntity.Id == dto.Id;
 		}
 
 		public TDtoType AddOrUpdate(TDtoType dto)
 		{
-			var expression = EntitySearchPredicate(dto.Id);
+			var expression = EntitySearchPredicate(dto);
 			var entity = Get(expression.Compile());
 			if (entity == null)
 			{
@@ -48,6 +48,7 @@ namespace VirtualWork.Persistence.Repositories
 			}
 			else
 			{
+				dto.Id = entity.Id;
 				return Update(dto);
 			}
 		}
@@ -81,12 +82,8 @@ namespace VirtualWork.Persistence.Repositories
 
 		public IEnumerable<TDtoType> GetMany(Func<TEntityType, bool> predicate)
 		{
-			return DatabaseTable.AsNoTracking().Where(predicate).Select(Converter.ToDto);
-		}
-
-		public IEnumerable<TDtoType> GetMatchings(string pattern, Func<TEntityType, bool> predicate)
-		{
-			return String.IsNullOrEmpty(pattern) ? GetAll() : GetAll(predicate);
+			var entities = DatabaseTable.AsNoTracking().Where(predicate);
+			return entities.Select(Converter.ToDto);
 		}
 
 		public IEnumerable<TDtoType> GetAll()
@@ -100,8 +97,7 @@ namespace VirtualWork.Persistence.Repositories
 			{
 				return GetAll();
 			}
-			var entities = DatabaseTable.AsNoTracking().Where(predicate);
-			return entities.Select(entity => Converter.ToDto(entity));
+			return GetMany(predicate);
 		}
 
 		public TDtoType GetSingle(Func<TEntityType, bool> predicate)

@@ -39,6 +39,15 @@
     <StartupObject>VirtualWork.WinForms.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandExecutor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\CommandExecutor.exe</HintPath>
+    </Reference>
+    <Reference Include="CommandSender, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\CommandSender.exe</HintPath>
+    </Reference>
+    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\Common.dll</HintPath>
+    </Reference>
     <Reference Include="EmailService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Mtf.EmailService.1.0.1\lib\EmailService.dll</HintPath>
     </Reference>
@@ -52,13 +61,13 @@
       <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\Enums.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.Windows.Forms.LanguageService.1.0.2\lib\net48\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="LanguageService, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.Windows.Forms.LanguageService.1.0.2\lib\net48\LanguageService.dll</HintPath>
+      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\LanguageService.dll</HintPath>
     </Reference>
     <Reference Include="LanguageService.Windows.Forms, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.Windows.Forms.LanguageService.1.0.2\lib\net48\LanguageService.Windows.Forms.dll</HintPath>
+      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\LanguageService.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="MessageBoxes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\MessageBoxes.dll</HintPath>
@@ -98,6 +107,12 @@
     <Compile Include="AddAdminGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AddCredentialsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCredentialsForm.Designer.cs">
+      <DependentUpon>AddCredentialsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +130,18 @@
     </Compile>
     <Compile Include="AddCameraForm.Designer.cs">
       <DependentUpon>AddCameraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalculatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalculatorForm.Designer.cs">
+      <DependentUpon>CalculatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileTabPage.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\IssueView.cs">
       <SubType>UserControl</SubType>
@@ -160,18 +187,37 @@
     <Compile Include="CreateIssueForm.Designer.cs">
       <DependentUpon>CreateIssueForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CipherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CipherForm.Designer.cs">
+      <DependentUpon>CipherForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DatabaseSettingsForm.Designer.cs">
       <DependentUpon>DatabaseSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dto\FileDetails.cs" />
     <Compile Include="Dto\ListViewItemsResult.cs" />
+    <Compile Include="EditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditorForm.Designer.cs">
+      <DependentUpon>EditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmailSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmailSettingsForm.Designer.cs">
       <DependentUpon>EmailSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExceptionViewer.Designer.cs">
+      <DependentUpon>ExceptionViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
     <Compile Include="Extensions\LongExtensions.cs" />
@@ -179,6 +225,7 @@
     <Compile Include="Extensions\ListViewItemCollectionExtensions.cs" />
     <Compile Include="Extensions\ToolStripMenuItemExtensions.cs" />
     <Compile Include="Extensions\TreeNodeExtensions.cs" />
+    <Compile Include="Factories\FileTabPageFactory.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="KernelProvider.cs" />
     <Compile Include="LoginForm.cs">
@@ -199,6 +246,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordManager.Designer.cs">
+      <DependentUpon>PasswordManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +265,8 @@
     <Compile Include="Providers\EventListProvider.cs" />
     <Compile Include="Providers\MeetingsListProvider.cs" />
     <Compile Include="Providers\IssueListProvider.cs" />
+    <Compile Include="Providers\CredentialsProvider.cs" />
+    <Compile Include="Providers\PasswordManagerGroupsProvider.cs" />
     <Compile Include="Providers\UserListProvider.cs" />
     <Compile Include="Providers\ServerListProvider.cs" />
     <Compile Include="SendMailForm.cs">
@@ -240,12 +295,17 @@
       <DependentUpon>UserSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Utils\FileManager.cs" />
     <Compile Include="WinFormsNinjectModule.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddCameraForm.resx">
       <DependentUpon>AddCameraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCredentialsForm.resx">
+      <DependentUpon>AddCredentialsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AddGroupForm.resx">
       <DependentUpon>AddGroupForm.cs</DependentUpon>
@@ -256,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalculatorForm.resx">
+      <DependentUpon>CalculatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IssueView.resx">
       <DependentUpon>IssueView.cs</DependentUpon>
@@ -275,11 +338,20 @@
     <EmbeddedResource Include="CreateMeetingForm.resx">
       <DependentUpon>CreateMeetingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CipherForm.resx">
+      <DependentUpon>CipherForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseSettingsForm.resx">
       <DependentUpon>DatabaseSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditorForm.resx">
+      <DependentUpon>EditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmailSettingsForm.resx">
       <DependentUpon>EmailSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionViewer.resx">
+      <DependentUpon>ExceptionViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -289,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordManager.resx">
+      <DependentUpon>PasswordManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -349,6 +424,20 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\lock.ico" />
+    <None Include="Resources\computer_go.ico" />
+    <None Include="Resources\wol.ico" />
+    <None Include="Resources\bug.ico" />
+    <None Include="Resources\key.ico" />
+    <None Include="Resources\file_edit.ico" />
+    <None Include="Resources\text_page.ico" />
+    <None Include="Resources\save.ico" />
+    <None Include="Resources\paste_plain.ico" />
+    <None Include="Resources\folder_explore.ico" />
+    <None Include="Resources\cut_red.ico" />
+    <None Include="Resources\cut.ico" />
+    <None Include="Resources\copy.ico" />
+    <None Include="Resources\calculator %282%29.ico" />
     <None Include="Resources\application.ico" />
     <None Include="Resources\log.ico" />
     <None Include="Resources\remove_operation.ico" />

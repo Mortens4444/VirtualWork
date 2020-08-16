@@ -13,6 +13,8 @@ namespace VirtualWork.Persistence
 
 		public DbSet<Comment> Comments { get; set; }
 
+		public DbSet<Credentials> Credentials { get; set; }
+
 		public DbSet<Server> Servers { get; set; }
 
 		public DbSet<Email> Emails { get; set; }
@@ -27,7 +29,7 @@ namespace VirtualWork.Persistence
 
 		public DbSet<License> Licenses { get; set; }
 
-		public DbSet<LogEntry> Logs { get; set; }
+		public DbSet<LogEntry> LogEntries { get; set; }
 
 		public DbSet<Meeting> Meetings { get; set; }
 

@@ -29,13 +29,13 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.logoPictureBox = new System.Windows.Forms.PictureBox();
 			this.labelProductName = new System.Windows.Forms.Label();
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelCopyright = new System.Windows.Forms.Label();
 			this.labelCompanyName = new System.Windows.Forms.Label();
 			this.textBoxDescription = new System.Windows.Forms.TextBox();
 			this.okButton = new System.Windows.Forms.Button();
-			this.logoPictureBox = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
 			this.SuspendLayout();
@@ -65,6 +65,18 @@
 			this.tableLayoutPanel.Size = new System.Drawing.Size(664, 228);
 			this.tableLayoutPanel.TabIndex = 0;
 			// 
+			// logoPictureBox
+			// 
+			this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+			this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+			this.logoPictureBox.Name = "logoPictureBox";
+			this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
+			this.logoPictureBox.Size = new System.Drawing.Size(213, 222);
+			this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.logoPictureBox.TabIndex = 12;
+			this.logoPictureBox.TabStop = false;
+			// 
 			// labelProductName
 			// 
 			this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -73,7 +85,7 @@
 			this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
 			this.labelProductName.Name = "labelProductName";
 			this.labelProductName.Size = new System.Drawing.Size(436, 17);
-			this.labelProductName.TabIndex = 19;
+			this.labelProductName.TabIndex = 1;
 			this.labelProductName.Text = "Product Name";
 			this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -85,7 +97,7 @@
 			this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
 			this.labelVersion.Name = "labelVersion";
 			this.labelVersion.Size = new System.Drawing.Size(436, 17);
-			this.labelVersion.TabIndex = 0;
+			this.labelVersion.TabIndex = 2;
 			this.labelVersion.Text = "Version";
 			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -97,7 +109,7 @@
 			this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
 			this.labelCopyright.Name = "labelCopyright";
 			this.labelCopyright.Size = new System.Drawing.Size(436, 17);
-			this.labelCopyright.TabIndex = 21;
+			this.labelCopyright.TabIndex = 3;
 			this.labelCopyright.Text = "Copyright";
 			this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -109,7 +121,7 @@
 			this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
 			this.labelCompanyName.Name = "labelCompanyName";
 			this.labelCompanyName.Size = new System.Drawing.Size(436, 17);
-			this.labelCompanyName.TabIndex = 22;
+			this.labelCompanyName.TabIndex = 4;
 			this.labelCompanyName.Text = "Company Name";
 			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -123,7 +135,7 @@
 			this.textBoxDescription.ReadOnly = true;
 			this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBoxDescription.Size = new System.Drawing.Size(436, 108);
-			this.textBoxDescription.TabIndex = 23;
+			this.textBoxDescription.TabIndex = 5;
 			this.textBoxDescription.TabStop = false;
 			this.textBoxDescription.Text = "Description";
 			// 
@@ -134,20 +146,8 @@
 			this.okButton.Location = new System.Drawing.Point(586, 205);
 			this.okButton.Name = "okButton";
 			this.okButton.Size = new System.Drawing.Size(75, 20);
-			this.okButton.TabIndex = 24;
+			this.okButton.TabIndex = 6;
 			this.okButton.Text = "&OK";
-			// 
-			// logoPictureBox
-			// 
-			this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-			this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
-			this.logoPictureBox.Name = "logoPictureBox";
-			this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-			this.logoPictureBox.Size = new System.Drawing.Size(213, 222);
-			this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.logoPictureBox.TabIndex = 12;
-			this.logoPictureBox.TabStop = false;
 			// 
 			// AboutBox
 			// 

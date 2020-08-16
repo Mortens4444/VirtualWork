@@ -11,10 +11,10 @@ namespace VirtualWork.WinForms
 
 		public UserSettingsForm(UserSettingsRepository userSettingsRepository)
 		{
+			this.userSettingsRepository = userSettingsRepository;
+
 			InitializeComponent();
 			Translator.Translate(this);
-
-			this.userSettingsRepository = userSettingsRepository;
 		}
 
 		private void Btn_Save_Click(object sender, EventArgs e)

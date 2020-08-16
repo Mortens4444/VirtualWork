@@ -15,10 +15,11 @@ namespace VirtualWork.WinForms
 		public DatabaseSettingsForm(AdminGroupCreator adminGroupCreator,
 			AdminUserCreator adminUserCreator)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
 			this.adminGroupCreator = adminGroupCreator;
 			this.adminUserCreator = adminUserCreator;
+
+			InitializeComponent();
+			Translator.Translate(this);
 
 			var connectionString = ConfigurationManager.ConnectionStrings["VirtualWorkDbConnectionString"].ConnectionString;
 			if (!String.IsNullOrEmpty(connectionString))

@@ -19,16 +19,17 @@ namespace VirtualWork.WinForms
 		public AddGroupForm(GroupRepository groupRepository,
 			PermissionRepository permissionRepository)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
 			this.groupRepository = groupRepository;
 			this.permissionRepository = permissionRepository;
+
+			InitializeComponent();
+			Translator.Translate(this);
 
 			if (this is AddAdminGroupForm)
 			{
 				gb_Permissions.Visible = false;
-				this.MinimumSize = new Size(816, 221);
-				this.Size = new Size(816, 221);
+				MinimumSize = new Size(816, 221);
+				Size = new Size(816, 221);
 			}
 			else
 			{

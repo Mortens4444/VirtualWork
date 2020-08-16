@@ -75,7 +75,7 @@
 			this.gb_Permissions.Location = new System.Drawing.Point(0, 145);
 			this.gb_Permissions.Name = "gb_Permissions";
 			this.gb_Permissions.Size = new System.Drawing.Size(800, 242);
-			this.gb_Permissions.TabIndex = 10;
+			this.gb_Permissions.TabIndex = 5;
 			this.gb_Permissions.TabStop = false;
 			this.gb_Permissions.Text = "Permissions";
 			// 
@@ -106,7 +106,7 @@
 			this.lvAvailablePermissions.Location = new System.Drawing.Point(6, 19);
 			this.lvAvailablePermissions.Name = "lvAvailablePermissions";
 			this.lvAvailablePermissions.Size = new System.Drawing.Size(359, 204);
-			this.lvAvailablePermissions.TabIndex = 8;
+			this.lvAvailablePermissions.TabIndex = 6;
 			this.lvAvailablePermissions.UseCompatibleStateImageBehavior = false;
 			this.lvAvailablePermissions.View = System.Windows.Forms.View.Details;
 			// 
@@ -122,7 +122,7 @@
 			this.btnRemoveSelectedPermissions.Location = new System.Drawing.Point(386, 120);
 			this.btnRemoveSelectedPermissions.Name = "btnRemoveSelectedPermissions";
 			this.btnRemoveSelectedPermissions.Size = new System.Drawing.Size(28, 23);
-			this.btnRemoveSelectedPermissions.TabIndex = 6;
+			this.btnRemoveSelectedPermissions.TabIndex = 8;
 			this.btnRemoveSelectedPermissions.UseVisualStyleBackColor = true;
 			// 
 			// btnAddSelectedPermissions
@@ -132,7 +132,7 @@
 			this.btnAddSelectedPermissions.Location = new System.Drawing.Point(386, 91);
 			this.btnAddSelectedPermissions.Name = "btnAddSelectedPermissions";
 			this.btnAddSelectedPermissions.Size = new System.Drawing.Size(28, 23);
-			this.btnAddSelectedPermissions.TabIndex = 4;
+			this.btnAddSelectedPermissions.TabIndex = 7;
 			this.btnAddSelectedPermissions.UseVisualStyleBackColor = true;
 			// 
 			// btnCancel
@@ -142,7 +142,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(719, 393);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 9;
+			this.btnCancel.TabIndex = 11;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -154,7 +154,7 @@
 			this.btnAdd.Location = new System.Drawing.Point(638, 393);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
-			this.btnAdd.TabIndex = 8;
+			this.btnAdd.TabIndex = 10;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
@@ -169,7 +169,7 @@
 			this.gb_GeneralDetails.Location = new System.Drawing.Point(0, 0);
 			this.gb_GeneralDetails.Name = "gb_GeneralDetails";
 			this.gb_GeneralDetails.Size = new System.Drawing.Size(800, 145);
-			this.gb_GeneralDetails.TabIndex = 1;
+			this.gb_GeneralDetails.TabIndex = 0;
 			this.gb_GeneralDetails.TabStop = false;
 			this.gb_GeneralDetails.Text = "General details";
 			// 
@@ -180,7 +180,7 @@
 			this.rtbDescription.Location = new System.Drawing.Point(6, 76);
 			this.rtbDescription.Name = "rtbDescription";
 			this.rtbDescription.Size = new System.Drawing.Size(788, 63);
-			this.rtbDescription.TabIndex = 3;
+			this.rtbDescription.TabIndex = 4;
 			this.rtbDescription.Text = "";
 			// 
 			// lblDescription
@@ -190,7 +190,7 @@
 			this.lblDescription.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblDescription.Name = "lblDescription";
 			this.lblDescription.Size = new System.Drawing.Size(60, 13);
-			this.lblDescription.TabIndex = 2;
+			this.lblDescription.TabIndex = 3;
 			this.lblDescription.Text = "Description";
 			// 
 			// tbGroupName
@@ -201,7 +201,7 @@
 			this.tbGroupName.MaxLength = 100;
 			this.tbGroupName.Name = "tbGroupName";
 			this.tbGroupName.Size = new System.Drawing.Size(788, 20);
-			this.tbGroupName.TabIndex = 1;
+			this.tbGroupName.TabIndex = 2;
 			this.tbGroupName.TextChanged += new System.EventHandler(this.NameChanged);
 			// 
 			// lblName
@@ -211,7 +211,7 @@
 			this.lblName.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblName.Name = "lblName";
 			this.lblName.Size = new System.Drawing.Size(35, 13);
-			this.lblName.TabIndex = 0;
+			this.lblName.TabIndex = 1;
 			this.lblName.Text = "Name";
 			// 
 			// ch_SelectableOperationsAndCameras

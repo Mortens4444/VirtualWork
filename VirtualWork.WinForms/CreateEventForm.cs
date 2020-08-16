@@ -19,10 +19,10 @@ namespace VirtualWork.WinForms
 
 		public CreateEventForm(EventRepository eventRepository)
 		{
+			this.eventRepository = eventRepository;
+
 			InitializeComponent();
 			Translator.Translate(this);
-
-			this.eventRepository = eventRepository;
 
 			cbRepeationType.FillWithEnum<RepeationType>();
 		}

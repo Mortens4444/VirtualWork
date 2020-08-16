@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
-using VirtualWork.Core.Settings;
 using VirtualWork.Interfaces.EmailService;
 using VirtualWork.Persistence.Repositories;
 
@@ -9,17 +8,20 @@ namespace VirtualWork.WinForms
 {
 	public partial class EmailSettingsForm : Form
 	{
+		private readonly ISmtpServerOptions smtpServerOptions;
 		private readonly ISmtpConfigurationProvider smtpConfigurationProvider;
 		private readonly SystemSettingsRepository systemSettingsRepository;
 
-		public EmailSettingsForm(ISmtpConfigurationProvider smtpConfigurationProvider,
+		public EmailSettingsForm(ISmtpServerOptions smtpServerOptions,
+			ISmtpConfigurationProvider smtpConfigurationProvider,			
 			SystemSettingsRepository systemSettingsRepository)
 		{
-			InitializeComponent();
-			Translator.Translate(this);
-
+			this.smtpServerOptions = smtpServerOptions;
 			this.smtpConfigurationProvider = smtpConfigurationProvider;
 			this.systemSettingsRepository = systemSettingsRepository;
+
+			InitializeComponent();
+			Translator.Translate(this);
 		}
 
 		private void CbConfigurationSchema_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,36 +52,26 @@ namespace VirtualWork.WinForms
 
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
-			systemSettingsRepository.AddOrUpdate(new SystemSetting
-			{
-				Name = "SmtpServer",
-				Value = tbSmtpServer.Text
-			});
-			systemSettingsRepository.AddOrUpdate(new SystemSetting
-			{
-				Name = "SmtpServerPort",
-				Value = nudPort.Value.ToString()
-			});
-			systemSettingsRepository.AddOrUpdate(new SystemSetting
-			{
-				Name = "SmtpSslEncryption",
-				Value = chkSslEncryption.Checked.ToString()
-			});
-			systemSettingsRepository.AddOrUpdate(new SystemSetting
-			{
-				Name = "SmtpAuthentication",
-				Value = (cbSmtpAuthentication.SelectedIndex - 1).ToString()
-			});
-			systemSettingsRepository.AddOrUpdate(new SystemSetting
-			{
-				Name = "SmtpServerUsername",
-				Value = tbUsername.Text
-			});
-			systemSettingsRepository.AddOrUpdate(new SystemSetting
-			{
-				Name = "SmtpServerPassword",
-				Value = tbPassword.Text
-			});
+			smtpServerOptions.SmtpServer = tbSmtpServer.Text;
+			smtpServerOptions.SmtpServerPort = (int)nudPort.Value;
+			smtpServerOptions.SmtpServerUseSSl = chkSslEncryption.Checked;
+			smtpServerOptions.SmtpAuthentication = cbSmtpAuthentication.SelectedIndex - 1;
+			smtpServerOptions.SmtpServerUser = tbUsername.Text;
+			smtpServerOptions.SmtpServerPassword = tbPassword.Text;
+
+			systemSettingsRepository.Update(smtpServerOptions);
+		}
+
+		private void EmailSettingsForm_Shown(object sender, EventArgs e)
+		{
+			var smtpServerOptions = systemSettingsRepository.GetSmtpServerOptions();
+
+			tbSmtpServer.Text = smtpServerOptions.SmtpServer;
+			nudPort.Value = smtpServerOptions.SmtpServerPort;
+			chkSslEncryption.Checked = smtpServerOptions.SmtpServerUseSSl;
+			cbSmtpAuthentication.SelectedIndex = smtpServerOptions.SmtpAuthentication;
+			tbUsername.Text = smtpServerOptions.SmtpServerUser;
+			tbPassword.Text = smtpServerOptions.SmtpServerPassword;
 		}
 	}
 }

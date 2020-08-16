@@ -1,3 +1,4 @@
+using System;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Actors;
 using VirtualWork.Interfaces.Enums;
@@ -13,5 +14,7 @@ namespace VirtualWork.Core.Log
 		public string Message { get; set; }
 
 		public IUser User { get; set; }
+
+		public DateTime TimeStamp { get; set; }
 	}
 }

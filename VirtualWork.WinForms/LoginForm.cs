@@ -2,7 +2,8 @@
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
-using VirtualWork.Core.Cryptography;
+using VirtualWork.Core.Cryptography.Ciphers;
+using VirtualWork.Core.Cryptography.Hashing;
 using VirtualWork.Persistence.Repositories;
 
 namespace VirtualWork.WinForms
@@ -15,9 +16,10 @@ namespace VirtualWork.WinForms
 
 		public LoginForm(UserRepository usersRepository)
 		{
+			this.usersRepository = usersRepository;
+
 			InitializeComponent();
 			Translator.Translate(this);
-			this.usersRepository = usersRepository;
 		}
 
 		private void BtnOk_Click(object sender, EventArgs e)
@@ -35,8 +37,8 @@ namespace VirtualWork.WinForms
 				while (xorPwdPart2 <= Byte.MaxValue)
 				{
 					var xorPassword = new byte[] { (byte)xorPwdPart1, (byte)xorPwdPart2 };
-					var byteXorCypher = new ByteXorCypher(xorPassword);
-					var saltedPasswordHash = Hash.GetSaltedPasswordHash(byteXorCypher, tbPassword.Text);
+					var byteXorCipher = new ByteXorCipher(xorPassword);
+					var saltedPasswordHash = Hash.GetSaltedPasswordHash(byteXorCipher, tbPassword.Text);
 
 					if (LoggedInUser.PasswordHash == saltedPasswordHash)
 					{

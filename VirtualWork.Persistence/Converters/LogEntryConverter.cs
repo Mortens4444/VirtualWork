@@ -1,4 +1,5 @@
-﻿using VirtualWork.Interfaces.Enums;
+﻿using VirtualWork.Core.Extensions;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Log.LogEntry;
 using EntityType = VirtualWork.Persistence.Entities.LogEntry;
@@ -21,12 +22,14 @@ namespace VirtualWork.Persistence.Converters
 		{
 			entity.UserId = dto.User?.Id;
 			entity.LogLevel = (int)dto.LogLevel;
+			entity.TimeStamp = dto.TimeStamp.GetRepositoryDateTimeFormat();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.User = userRepository.Get(entity.UserId);
 			dto.LogLevel = (LogLevel)entity.LogLevel;
+			dto.TimeStamp = entity.TimeStamp.GetViewDateTimeFormat();
 		}
 	}
 }

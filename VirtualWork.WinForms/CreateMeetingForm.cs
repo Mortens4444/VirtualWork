@@ -17,10 +17,10 @@ namespace VirtualWork.WinForms
 
 		public CreateMeetingForm(MeetingRepository meetingRepository)
 		{
+			this.meetingRepository = meetingRepository;
+
 			InitializeComponent();
 			Translator.Translate(this);
-
-			this.meetingRepository = meetingRepository;
 
 			cbRepeationType.FillWithEnum<RepeationType>();
 		}

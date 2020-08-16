@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace VirtualWork.Core.Cryptography
+namespace VirtualWork.Core.Cryptography.Ciphers
 {
-	public class ByteXorCypher
+	public class ByteXorCipher
 	{
 		private readonly IEnumerable<byte> password;
 		private readonly int passwordLength;
 
-		public ByteXorCypher(IEnumerable<byte> password)
+		public ByteXorCipher(IEnumerable<byte> password)
 		{
 			this.password = password;
 			passwordLength = password.Count();

@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace VirtualWork.Core.Cryptography
+namespace VirtualWork.Core.Cryptography.Ciphers
 {
-	public class RotateCypher
+	public class RotateCipher
 	{
 		public string Encrypt(string source, int rotateKey)
 		{

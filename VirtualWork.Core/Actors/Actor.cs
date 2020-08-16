@@ -8,6 +8,11 @@ namespace VirtualWork.Core.Actors
 {
 	public abstract class Actor : INotifiable, IHaveName
 	{
+		public Actor()
+		{
+			Contacts = Enumerable.Empty<IContactInfo>();
+		}
+
 		public int Id { get; set; }
 
 		public IEnumerable<IContactInfo> Contacts { get; set; }

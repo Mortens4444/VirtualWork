@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
 
 namespace VirtualWork.Service.Network
@@ -17,6 +18,10 @@ namespace VirtualWork.Service.Network
 
 		public void SendMagicPacket(string macAddress, ushort port = 7)
 		{
+			if (String.IsNullOrWhiteSpace(macAddress))
+			{
+				return;
+			}
 			var endPoint = new IPEndPoint(IPAddress.Broadcast, port);
 			using (var clientSocket = new Socket(endPoint.AddressFamily, SocketType.Dgram, ProtocolType.Udp))
 			{

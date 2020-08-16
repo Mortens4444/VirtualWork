@@ -86,7 +86,7 @@
 			this.btn_Cancel.Location = new System.Drawing.Point(696, 425);
 			this.btn_Cancel.Name = "btn_Cancel";
 			this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-			this.btn_Cancel.TabIndex = 9;
+			this.btn_Cancel.TabIndex = 26;
 			this.btn_Cancel.Text = "Cancel";
 			this.btn_Cancel.UseVisualStyleBackColor = true;
 			// 
@@ -96,7 +96,7 @@
 			this.btn_Save.Location = new System.Drawing.Point(615, 425);
 			this.btn_Save.Name = "btn_Save";
 			this.btn_Save.Size = new System.Drawing.Size(75, 23);
-			this.btn_Save.TabIndex = 8;
+			this.btn_Save.TabIndex = 25;
 			this.btn_Save.Text = "Save";
 			this.btn_Save.UseVisualStyleBackColor = true;
 			this.btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
@@ -113,7 +113,7 @@
 			this.gb_Picture.Location = new System.Drawing.Point(335, 1);
 			this.gb_Picture.Name = "gb_Picture";
 			this.gb_Picture.Size = new System.Drawing.Size(440, 421);
-			this.gb_Picture.TabIndex = 7;
+			this.gb_Picture.TabIndex = 22;
 			this.gb_Picture.TabStop = false;
 			this.gb_Picture.Text = "Picture";
 			// 
@@ -137,7 +137,7 @@
 			this.lbl_SizeMode.Location = new System.Drawing.Point(6, 16);
 			this.lbl_SizeMode.Name = "lbl_SizeMode";
 			this.lbl_SizeMode.Size = new System.Drawing.Size(56, 13);
-			this.lbl_SizeMode.TabIndex = 3;
+			this.lbl_SizeMode.TabIndex = 23;
 			this.lbl_SizeMode.Text = "Size mode";
 			// 
 			// cb_SizeMode
@@ -149,7 +149,7 @@
 			this.cb_SizeMode.Location = new System.Drawing.Point(6, 36);
 			this.cb_SizeMode.Name = "cb_SizeMode";
 			this.cb_SizeMode.Size = new System.Drawing.Size(428, 21);
-			this.cb_SizeMode.TabIndex = 4;
+			this.cb_SizeMode.TabIndex = 23;
 			// 
 			// btn_SelectPicture
 			// 
@@ -157,7 +157,7 @@
 			this.btn_SelectPicture.Location = new System.Drawing.Point(340, 11);
 			this.btn_SelectPicture.Name = "btn_SelectPicture";
 			this.btn_SelectPicture.Size = new System.Drawing.Size(94, 23);
-			this.btn_SelectPicture.TabIndex = 2;
+			this.btn_SelectPicture.TabIndex = 24;
 			this.btn_SelectPicture.Text = "Select picture";
 			this.btn_SelectPicture.UseVisualStyleBackColor = true;
 			// 
@@ -180,7 +180,7 @@
 			this.gb_PersonalDetails.Location = new System.Drawing.Point(3, 115);
 			this.gb_PersonalDetails.Name = "gb_PersonalDetails";
 			this.gb_PersonalDetails.Size = new System.Drawing.Size(326, 307);
-			this.gb_PersonalDetails.TabIndex = 6;
+			this.gb_PersonalDetails.TabIndex = 9;
 			this.gb_PersonalDetails.TabStop = false;
 			this.gb_PersonalDetails.Text = "Personal details";
 			// 
@@ -192,7 +192,7 @@
 			this.tb_LicensePlate.MaxLength = 50;
 			this.tb_LicensePlate.Name = "tb_LicensePlate";
 			this.tb_LicensePlate.Size = new System.Drawing.Size(151, 20);
-			this.tb_LicensePlate.TabIndex = 11;
+			this.tb_LicensePlate.TabIndex = 19;
 			// 
 			// lbl_LicensePlate
 			// 
@@ -201,7 +201,7 @@
 			this.lbl_LicensePlate.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_LicensePlate.Name = "lbl_LicensePlate";
 			this.lbl_LicensePlate.Size = new System.Drawing.Size(70, 13);
-			this.lbl_LicensePlate.TabIndex = 10;
+			this.lbl_LicensePlate.TabIndex = 18;
 			this.lbl_LicensePlate.Text = "License-plate";
 			// 
 			// lbl_OtherInformations
@@ -210,7 +210,7 @@
 			this.lbl_OtherInformations.Location = new System.Drawing.Point(9, 134);
 			this.lbl_OtherInformations.Name = "lbl_OtherInformations";
 			this.lbl_OtherInformations.Size = new System.Drawing.Size(87, 13);
-			this.lbl_OtherInformations.TabIndex = 8;
+			this.lbl_OtherInformations.TabIndex = 20;
 			this.lbl_OtherInformations.Text = "Other information";
 			// 
 			// tb_OtherInformations
@@ -223,7 +223,7 @@
 			this.tb_OtherInformations.Multiline = true;
 			this.tb_OtherInformations.Name = "tb_OtherInformations";
 			this.tb_OtherInformations.Size = new System.Drawing.Size(314, 151);
-			this.tb_OtherInformations.TabIndex = 9;
+			this.tb_OtherInformations.TabIndex = 21;
 			// 
 			// tb_TelephoneNumber
 			// 
@@ -233,7 +233,7 @@
 			this.tb_TelephoneNumber.MaxLength = 50;
 			this.tb_TelephoneNumber.Name = "tb_TelephoneNumber";
 			this.tb_TelephoneNumber.Size = new System.Drawing.Size(151, 20);
-			this.tb_TelephoneNumber.TabIndex = 7;
+			this.tb_TelephoneNumber.TabIndex = 17;
 			// 
 			// lbl_TelephoneNumber
 			// 
@@ -242,7 +242,7 @@
 			this.lbl_TelephoneNumber.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_TelephoneNumber.Name = "lbl_TelephoneNumber";
 			this.lbl_TelephoneNumber.Size = new System.Drawing.Size(96, 13);
-			this.lbl_TelephoneNumber.TabIndex = 6;
+			this.lbl_TelephoneNumber.TabIndex = 16;
 			this.lbl_TelephoneNumber.Text = "Telephone number";
 			// 
 			// tb_EmailAddress
@@ -253,7 +253,7 @@
 			this.tb_EmailAddress.MaxLength = 200;
 			this.tb_EmailAddress.Name = "tb_EmailAddress";
 			this.tb_EmailAddress.Size = new System.Drawing.Size(151, 20);
-			this.tb_EmailAddress.TabIndex = 5;
+			this.tb_EmailAddress.TabIndex = 15;
 			// 
 			// lbl_EmailAddress
 			// 
@@ -262,7 +262,7 @@
 			this.lbl_EmailAddress.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_EmailAddress.Name = "lbl_EmailAddress";
 			this.lbl_EmailAddress.Size = new System.Drawing.Size(75, 13);
-			this.lbl_EmailAddress.TabIndex = 4;
+			this.lbl_EmailAddress.TabIndex = 14;
 			this.lbl_EmailAddress.Text = "E-mail address";
 			// 
 			// tb_Address
@@ -273,7 +273,7 @@
 			this.tb_Address.MaxLength = 1000;
 			this.tb_Address.Name = "tb_Address";
 			this.tb_Address.Size = new System.Drawing.Size(151, 20);
-			this.tb_Address.TabIndex = 3;
+			this.tb_Address.TabIndex = 13;
 			// 
 			// lbl_Address
 			// 
@@ -282,7 +282,7 @@
 			this.lbl_Address.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_Address.Name = "lbl_Address";
 			this.lbl_Address.Size = new System.Drawing.Size(45, 13);
-			this.lbl_Address.TabIndex = 2;
+			this.lbl_Address.TabIndex = 12;
 			this.lbl_Address.Text = "Address";
 			// 
 			// tb_FullName
@@ -293,7 +293,7 @@
 			this.tb_FullName.MaxLength = 100;
 			this.tb_FullName.Name = "tb_FullName";
 			this.tb_FullName.Size = new System.Drawing.Size(151, 20);
-			this.tb_FullName.TabIndex = 1;
+			this.tb_FullName.TabIndex = 11;
 			// 
 			// lbl_FullName
 			// 
@@ -302,7 +302,7 @@
 			this.lbl_FullName.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_FullName.Name = "lbl_FullName";
 			this.lbl_FullName.Size = new System.Drawing.Size(52, 13);
-			this.lbl_FullName.TabIndex = 0;
+			this.lbl_FullName.TabIndex = 10;
 			this.lbl_FullName.Text = "Full name";
 			// 
 			// gb_Credentials
@@ -318,7 +318,7 @@
 			this.gb_Credentials.Location = new System.Drawing.Point(3, 1);
 			this.gb_Credentials.Name = "gb_Credentials";
 			this.gb_Credentials.Size = new System.Drawing.Size(326, 108);
-			this.gb_Credentials.TabIndex = 5;
+			this.gb_Credentials.TabIndex = 0;
 			this.gb_Credentials.TabStop = false;
 			this.gb_Credentials.Text = "Credentials";
 			// 
@@ -331,7 +331,7 @@
 			this.tb_CurrentPassword.Name = "tb_CurrentPassword";
 			this.tb_CurrentPassword.PasswordChar = '*';
 			this.tb_CurrentPassword.Size = new System.Drawing.Size(151, 20);
-			this.tb_CurrentPassword.TabIndex = 3;
+			this.tb_CurrentPassword.TabIndex = 4;
 			// 
 			// lbl_CurrentPassword
 			// 
@@ -340,7 +340,7 @@
 			this.lbl_CurrentPassword.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_CurrentPassword.Name = "lbl_CurrentPassword";
 			this.lbl_CurrentPassword.Size = new System.Drawing.Size(89, 13);
-			this.lbl_CurrentPassword.TabIndex = 2;
+			this.lbl_CurrentPassword.TabIndex = 3;
 			this.lbl_CurrentPassword.Text = "Current password";
 			// 
 			// tb_ConfirmNewPassword
@@ -352,7 +352,7 @@
 			this.tb_ConfirmNewPassword.Name = "tb_ConfirmNewPassword";
 			this.tb_ConfirmNewPassword.PasswordChar = '*';
 			this.tb_ConfirmNewPassword.Size = new System.Drawing.Size(151, 20);
-			this.tb_ConfirmNewPassword.TabIndex = 7;
+			this.tb_ConfirmNewPassword.TabIndex = 8;
 			// 
 			// lbl_ConfirmNewPassword
 			// 
@@ -361,7 +361,7 @@
 			this.lbl_ConfirmNewPassword.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_ConfirmNewPassword.Name = "lbl_ConfirmNewPassword";
 			this.lbl_ConfirmNewPassword.Size = new System.Drawing.Size(113, 13);
-			this.lbl_ConfirmNewPassword.TabIndex = 6;
+			this.lbl_ConfirmNewPassword.TabIndex = 7;
 			this.lbl_ConfirmNewPassword.Text = "Confirm new password";
 			// 
 			// tb_NewPassword
@@ -373,7 +373,7 @@
 			this.tb_NewPassword.Name = "tb_NewPassword";
 			this.tb_NewPassword.PasswordChar = '*';
 			this.tb_NewPassword.Size = new System.Drawing.Size(151, 20);
-			this.tb_NewPassword.TabIndex = 5;
+			this.tb_NewPassword.TabIndex = 6;
 			// 
 			// lbl_NewPassword
 			// 
@@ -382,7 +382,7 @@
 			this.lbl_NewPassword.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_NewPassword.Name = "lbl_NewPassword";
 			this.lbl_NewPassword.Size = new System.Drawing.Size(77, 13);
-			this.lbl_NewPassword.TabIndex = 4;
+			this.lbl_NewPassword.TabIndex = 5;
 			this.lbl_NewPassword.Text = "New password";
 			// 
 			// tb_Username
@@ -394,7 +394,7 @@
 			this.tb_Username.Name = "tb_Username";
 			this.tb_Username.ReadOnly = true;
 			this.tb_Username.Size = new System.Drawing.Size(151, 20);
-			this.tb_Username.TabIndex = 1;
+			this.tb_Username.TabIndex = 2;
 			this.tb_Username.TabStop = false;
 			// 
 			// lbl_Username
@@ -404,7 +404,7 @@
 			this.lbl_Username.MaximumSize = new System.Drawing.Size(151, 13);
 			this.lbl_Username.Name = "lbl_Username";
 			this.lbl_Username.Size = new System.Drawing.Size(55, 13);
-			this.lbl_Username.TabIndex = 0;
+			this.lbl_Username.TabIndex = 1;
 			this.lbl_Username.Text = "Username";
 			// 
 			// UserProfileForm

@@ -71,10 +71,11 @@
 			// 
 			// btnSend
 			// 
+			this.btnSend.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnSend.Location = new System.Drawing.Point(632, 421);
 			this.btnSend.Name = "btnSend";
 			this.btnSend.Size = new System.Drawing.Size(75, 23);
-			this.btnSend.TabIndex = 13;
+			this.btnSend.TabIndex = 12;
 			this.btnSend.Text = "Send";
 			this.btnSend.UseVisualStyleBackColor = true;
 			this.btnSend.Click += new System.EventHandler(this.BtnSend_Click);
@@ -85,7 +86,7 @@
 			this.btnClose.Location = new System.Drawing.Point(713, 421);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
-			this.btnClose.TabIndex = 12;
+			this.btnClose.TabIndex = 13;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			// 
@@ -214,6 +215,7 @@
 			this.Name = "SendMailForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Send e-mail";
+			this.Shown += new System.EventHandler(this.SendMailForm_Shown);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			this.ResumeLayout(false);

@@ -12,6 +12,6 @@
 
 		string SmtpServerPassword { get; set; }
 
-		int SmtpAuthentication { get; }
+		int SmtpAuthentication { get; set; }
 	}
 }

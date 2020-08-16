@@ -10,6 +10,18 @@ namespace VirtualWork.Service.Process
 	{
 		private const string NotepadPlusPlus = @"C:\Program Files\Notepad++\notepad++.exe";
 
+		public static void OpenInBrowser(string link)
+		{
+			try
+			{
+				System.Diagnostics.Process.Start(link);
+			}
+			catch (Exception ex)
+			{
+				ErrorBoxHelper.Show(ex);
+			}
+		}
+
 		public static void Start(string process, string arguments = null)
 		{
 			try

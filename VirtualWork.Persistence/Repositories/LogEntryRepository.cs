@@ -9,7 +9,7 @@ namespace VirtualWork.Persistence.Repositories
         public LogEntryRepository(
 			VirtualWorkDatabaseContext mtfDatabase,
 			LogEntryConverter logEntryConverter)
-            : base(mtfDatabase, logEntryConverter, mtfDatabase.Logs)
+            : base(mtfDatabase, logEntryConverter, mtfDatabase.LogEntries)
         {
         }
 	}

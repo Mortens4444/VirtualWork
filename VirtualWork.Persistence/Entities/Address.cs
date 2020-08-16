@@ -12,9 +12,9 @@ namespace VirtualWork.Persistence.Entities
 		public int Id { get; set; }
 
 		[Required]
-		public int ActorId { get; set; }
+		public int EntityId { get; set; }
 
-		public int ActorType { get; set; }
+		public int EntityType { get; set; }
 
 		[StringLength(100)]
 		public string City { get; set; }

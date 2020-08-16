@@ -40,8 +40,8 @@
 			this.dtpExpirationDate = new System.Windows.Forms.DateTimePicker();
 			this.lblExpirationDate = new System.Windows.Forms.Label();
 			this.nudRepeationValue = new System.Windows.Forms.NumericUpDown();
-			this.cbEpic = new System.Windows.Forms.ComboBox();
-			this.lblEpic = new System.Windows.Forms.Label();
+			this.cbParent = new System.Windows.Forms.ComboBox();
+			this.lblParent = new System.Windows.Forms.Label();
 			this.cbIssuePriority = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.cbIssueType = new System.Windows.Forms.ComboBox();
@@ -112,8 +112,8 @@
 			// gbMain
 			// 
 			this.gbMain.Controls.Add(this.gbRecurring);
-			this.gbMain.Controls.Add(this.cbEpic);
-			this.gbMain.Controls.Add(this.lblEpic);
+			this.gbMain.Controls.Add(this.cbParent);
+			this.gbMain.Controls.Add(this.lblParent);
 			this.gbMain.Controls.Add(this.cbIssuePriority);
 			this.gbMain.Controls.Add(this.label1);
 			this.gbMain.Controls.Add(this.cbIssueType);
@@ -134,7 +134,7 @@
 			this.gbMain.Location = new System.Drawing.Point(3, 3);
 			this.gbMain.Name = "gbMain";
 			this.gbMain.Size = new System.Drawing.Size(814, 420);
-			this.gbMain.TabIndex = 1;
+			this.gbMain.TabIndex = 0;
 			this.gbMain.TabStop = false;
 			// 
 			// gbRecurring
@@ -159,7 +159,7 @@
 			this.lblRepetition.Location = new System.Drawing.Point(3, 20);
 			this.lblRepetition.Name = "lblRepetition";
 			this.lblRepetition.Size = new System.Drawing.Size(55, 13);
-			this.lblRepetition.TabIndex = 32;
+			this.lblRepetition.TabIndex = 19;
 			this.lblRepetition.Text = "Repetition";
 			// 
 			// chkExpire
@@ -168,7 +168,7 @@
 			this.chkExpire.Location = new System.Drawing.Point(289, 19);
 			this.chkExpire.Name = "chkExpire";
 			this.chkExpire.Size = new System.Drawing.Size(55, 17);
-			this.chkExpire.TabIndex = 31;
+			this.chkExpire.TabIndex = 22;
 			this.chkExpire.Text = "Expire";
 			this.chkExpire.UseVisualStyleBackColor = true;
 			// 
@@ -179,7 +179,7 @@
 			this.cbRepeationType.Location = new System.Drawing.Point(53, 40);
 			this.cbRepeationType.Name = "cbRepeationType";
 			this.cbRepeationType.Size = new System.Drawing.Size(227, 21);
-			this.cbRepeationType.TabIndex = 30;
+			this.cbRepeationType.TabIndex = 21;
 			this.cbRepeationType.SelectedIndexChanged += new System.EventHandler(this.CbRepeationType_SelectedIndexChanged);
 			// 
 			// dtpExpirationDate
@@ -189,7 +189,7 @@
 			this.dtpExpirationDate.Location = new System.Drawing.Point(403, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
 			this.dtpExpirationDate.Size = new System.Drawing.Size(144, 20);
-			this.dtpExpirationDate.TabIndex = 29;
+			this.dtpExpirationDate.TabIndex = 24;
 			// 
 			// lblExpirationDate
 			// 
@@ -197,7 +197,7 @@
 			this.lblExpirationDate.Location = new System.Drawing.Point(286, 46);
 			this.lblExpirationDate.Name = "lblExpirationDate";
 			this.lblExpirationDate.Size = new System.Drawing.Size(77, 13);
-			this.lblExpirationDate.TabIndex = 28;
+			this.lblExpirationDate.TabIndex = 23;
 			this.lblExpirationDate.Text = "Expiration date";
 			// 
 			// nudRepeationValue
@@ -210,32 +210,34 @@
             0});
 			this.nudRepeationValue.Name = "nudRepeationValue";
 			this.nudRepeationValue.Size = new System.Drawing.Size(41, 20);
-			this.nudRepeationValue.TabIndex = 22;
+			this.nudRepeationValue.TabIndex = 20;
 			this.nudRepeationValue.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
 			// 
-			// cbEpic
+			// cbParent
 			// 
-			this.cbEpic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.cbParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbEpic.FormattingEnabled = true;
-			this.cbEpic.Location = new System.Drawing.Point(101, 300);
-			this.cbEpic.Name = "cbEpic";
-			this.cbEpic.Size = new System.Drawing.Size(318, 21);
-			this.cbEpic.TabIndex = 23;
-			this.cbEpic.TextChanged += new System.EventHandler(this.CbEpic_TextChanged);
+			this.cbParent.FormattingEnabled = true;
+			this.cbParent.Location = new System.Drawing.Point(101, 300);
+			this.cbParent.Name = "cbParent";
+			this.cbParent.Size = new System.Drawing.Size(318, 21);
+			this.cbParent.TabIndex = 18;
+			this.cbParent.SelectedIndexChanged += new System.EventHandler(this.CbEpic_SelectedIndexChanged);
+			this.cbParent.SelectionChangeCommitted += new System.EventHandler(this.CbEpic_SelectionChangeCommitted);
+			this.cbParent.TextChanged += new System.EventHandler(this.CbEpic_TextChanged);
 			// 
-			// lblEpic
+			// lblParent
 			// 
-			this.lblEpic.AutoSize = true;
-			this.lblEpic.Location = new System.Drawing.Point(6, 303);
-			this.lblEpic.Name = "lblEpic";
-			this.lblEpic.Size = new System.Drawing.Size(28, 13);
-			this.lblEpic.TabIndex = 22;
-			this.lblEpic.Text = "Epic";
+			this.lblParent.AutoSize = true;
+			this.lblParent.Location = new System.Drawing.Point(6, 303);
+			this.lblParent.Name = "lblParent";
+			this.lblParent.Size = new System.Drawing.Size(38, 13);
+			this.lblParent.TabIndex = 17;
+			this.lblParent.Text = "Parent";
 			// 
 			// cbIssuePriority
 			// 
@@ -246,7 +248,7 @@
 			this.cbIssuePriority.Location = new System.Drawing.Point(101, 273);
 			this.cbIssuePriority.Name = "cbIssuePriority";
 			this.cbIssuePriority.Size = new System.Drawing.Size(318, 21);
-			this.cbIssuePriority.TabIndex = 21;
+			this.cbIssuePriority.TabIndex = 16;
 			// 
 			// label1
 			// 
@@ -254,7 +256,7 @@
 			this.label1.Location = new System.Drawing.Point(6, 276);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(65, 13);
-			this.label1.TabIndex = 20;
+			this.label1.TabIndex = 15;
 			this.label1.Text = "Issue priority";
 			// 
 			// cbIssueType
@@ -266,7 +268,7 @@
 			this.cbIssueType.Location = new System.Drawing.Point(101, 246);
 			this.cbIssueType.Name = "cbIssueType";
 			this.cbIssueType.Size = new System.Drawing.Size(318, 21);
-			this.cbIssueType.TabIndex = 19;
+			this.cbIssueType.TabIndex = 14;
 			// 
 			// lblIssueType
 			// 
@@ -274,7 +276,7 @@
 			this.lblIssueType.Location = new System.Drawing.Point(6, 249);
 			this.lblIssueType.Name = "lblIssueType";
 			this.lblIssueType.Size = new System.Drawing.Size(55, 13);
-			this.lblIssueType.TabIndex = 18;
+			this.lblIssueType.TabIndex = 13;
 			this.lblIssueType.Text = "Issue type";
 			// 
 			// cbOwnedBy
@@ -285,7 +287,7 @@
 			this.cbOwnedBy.Location = new System.Drawing.Point(101, 219);
 			this.cbOwnedBy.Name = "cbOwnedBy";
 			this.cbOwnedBy.Size = new System.Drawing.Size(707, 21);
-			this.cbOwnedBy.TabIndex = 17;
+			this.cbOwnedBy.TabIndex = 12;
 			this.cbOwnedBy.SelectedIndexChanged += new System.EventHandler(this.CbOwnedBy_SelectedIndexChanged);
 			this.cbOwnedBy.SelectionChangeCommitted += new System.EventHandler(this.CbOwnedBy_SelectionChangeCommitted);
 			this.cbOwnedBy.TextChanged += new System.EventHandler(this.CbOwnedBy_TextChanged);
@@ -296,7 +298,7 @@
 			this.lblOwnedBy.Location = new System.Drawing.Point(6, 222);
 			this.lblOwnedBy.Name = "lblOwnedBy";
 			this.lblOwnedBy.Size = new System.Drawing.Size(55, 13);
-			this.lblOwnedBy.TabIndex = 16;
+			this.lblOwnedBy.TabIndex = 11;
 			this.lblOwnedBy.Text = "Owned by";
 			// 
 			// tbBlocking
@@ -306,7 +308,7 @@
 			this.tbBlocking.Location = new System.Drawing.Point(101, 193);
 			this.tbBlocking.Name = "tbBlocking";
 			this.tbBlocking.Size = new System.Drawing.Size(707, 20);
-			this.tbBlocking.TabIndex = 15;
+			this.tbBlocking.TabIndex = 10;
 			// 
 			// lblBlocking
 			// 
@@ -314,7 +316,7 @@
 			this.lblBlocking.Location = new System.Drawing.Point(6, 196);
 			this.lblBlocking.Name = "lblBlocking";
 			this.lblBlocking.Size = new System.Drawing.Size(48, 13);
-			this.lblBlocking.TabIndex = 14;
+			this.lblBlocking.TabIndex = 9;
 			this.lblBlocking.Text = "Blocking";
 			// 
 			// tbBlockedBy
@@ -324,7 +326,7 @@
 			this.tbBlockedBy.Location = new System.Drawing.Point(101, 167);
 			this.tbBlockedBy.Name = "tbBlockedBy";
 			this.tbBlockedBy.Size = new System.Drawing.Size(707, 20);
-			this.tbBlockedBy.TabIndex = 13;
+			this.tbBlockedBy.TabIndex = 8;
 			// 
 			// lblBlockedBy
 			// 
@@ -332,7 +334,7 @@
 			this.lblBlockedBy.Location = new System.Drawing.Point(6, 170);
 			this.lblBlockedBy.Name = "lblBlockedBy";
 			this.lblBlockedBy.Size = new System.Drawing.Size(60, 13);
-			this.lblBlockedBy.TabIndex = 12;
+			this.lblBlockedBy.TabIndex = 7;
 			this.lblBlockedBy.Text = "Blocked by";
 			// 
 			// dtpDueTo
@@ -342,7 +344,7 @@
 			this.dtpDueTo.Location = new System.Drawing.Point(101, 141);
 			this.dtpDueTo.Name = "dtpDueTo";
 			this.dtpDueTo.Size = new System.Drawing.Size(150, 20);
-			this.dtpDueTo.TabIndex = 11;
+			this.dtpDueTo.TabIndex = 6;
 			// 
 			// lblDueTo
 			// 
@@ -350,7 +352,7 @@
 			this.lblDueTo.Location = new System.Drawing.Point(6, 147);
 			this.lblDueTo.Name = "lblDueTo";
 			this.lblDueTo.Size = new System.Drawing.Size(39, 13);
-			this.lblDueTo.TabIndex = 10;
+			this.lblDueTo.TabIndex = 5;
 			this.lblDueTo.Text = "Due to";
 			// 
 			// rtbDescription
@@ -360,7 +362,7 @@
 			this.rtbDescription.Location = new System.Drawing.Point(6, 48);
 			this.rtbDescription.Name = "rtbDescription";
 			this.rtbDescription.Size = new System.Drawing.Size(802, 85);
-			this.rtbDescription.TabIndex = 7;
+			this.rtbDescription.TabIndex = 4;
 			this.rtbDescription.Text = "";
 			// 
 			// lblDescription
@@ -370,7 +372,7 @@
 			this.lblDescription.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblDescription.Name = "lblDescription";
 			this.lblDescription.Size = new System.Drawing.Size(60, 13);
-			this.lblDescription.TabIndex = 6;
+			this.lblDescription.TabIndex = 3;
 			this.lblDescription.Text = "Description";
 			// 
 			// tbTitle
@@ -381,7 +383,7 @@
 			this.tbTitle.MaxLength = 100;
 			this.tbTitle.Name = "tbTitle";
 			this.tbTitle.Size = new System.Drawing.Size(707, 20);
-			this.tbTitle.TabIndex = 5;
+			this.tbTitle.TabIndex = 2;
 			// 
 			// lblTitle
 			// 
@@ -390,7 +392,7 @@
 			this.lblTitle.MaximumSize = new System.Drawing.Size(117, 13);
 			this.lblTitle.Name = "lblTitle";
 			this.lblTitle.Size = new System.Drawing.Size(27, 13);
-			this.lblTitle.TabIndex = 4;
+			this.lblTitle.TabIndex = 1;
 			this.lblTitle.Text = "Title";
 			// 
 			// tpHistory
@@ -414,7 +416,7 @@
 			this.lvHistory.Location = new System.Drawing.Point(8, 6);
 			this.lvHistory.Name = "lvHistory";
 			this.lvHistory.Size = new System.Drawing.Size(776, 276);
-			this.lvHistory.TabIndex = 0;
+			this.lvHistory.TabIndex = 27;
 			this.lvHistory.UseCompatibleStateImageBehavior = false;
 			this.lvHistory.View = System.Windows.Forms.View.Details;
 			// 
@@ -440,7 +442,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(749, 458);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 8;
+			this.btnCancel.TabIndex = 26;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -451,7 +453,7 @@
 			this.btnCreate.Location = new System.Drawing.Point(668, 458);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(75, 23);
-			this.btnCreate.TabIndex = 9;
+			this.btnCreate.TabIndex = 25;
 			this.btnCreate.Text = "OK";
 			this.btnCreate.UseVisualStyleBackColor = true;
 			this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
@@ -512,8 +514,8 @@
 		private System.Windows.Forms.Label lblIssueType;
 		private System.Windows.Forms.ComboBox cbIssuePriority;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ComboBox cbEpic;
-		private System.Windows.Forms.Label lblEpic;
+		private System.Windows.Forms.ComboBox cbParent;
+		private System.Windows.Forms.Label lblParent;
 		private System.Windows.Forms.GroupBox gbRecurring;
 		private System.Windows.Forms.CheckBox chkExpire;
 		private System.Windows.Forms.ComboBox cbRepeationType;

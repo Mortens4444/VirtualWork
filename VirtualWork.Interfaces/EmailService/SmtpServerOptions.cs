@@ -1,6 +1,4 @@
-﻿using VirtualWork.Interfaces.EmailService;
-
-namespace VirtualWork.Service.EmailService
+﻿namespace VirtualWork.Interfaces.EmailService
 {
 	public class SmtpServerOptions : ISmtpServerOptions
 	{

@@ -1,0 +1,10 @@
+https://axen-cyber.com/hu/contact-2/
+
+Kétlépcsős azonosítás implementálása. ✗
+Az alkalmazás nem fogad el gyenge jelszavakat. (A gyenge jelszavak tiltása.) ✗
+Az alkalmazás rendelkezik brute force védelemmel. ✗
+Az alkalmazás biztonságos jelszó visszaállítást alkalmaz. ✗
+Az alkalmazás munkamenete lejár. (A munkamenetek érvénytelenítése.) ✗
+Az alkalmazás nem küld Session ID-t GET kérésen keresztül. (Szerver oldali, biztonságos Session menedzser implementálása.) ✗
+
+Az alkalmazás biztonságosan tárolja a jelszavakat. (A jelszavak biztonságos, hash-elt/titkosított tárolása.) ✓

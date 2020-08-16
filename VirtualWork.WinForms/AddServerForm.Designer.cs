@@ -30,6 +30,8 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddServerForm));
 			this.pMain = new System.Windows.Forms.Panel();
+			this.tbName = new System.Windows.Forms.TextBox();
+			this.lblName = new System.Windows.Forms.Label();
 			this.btnRemoteConnection = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
@@ -41,8 +43,6 @@
 			this.lblIpAddress = new System.Windows.Forms.Label();
 			this.tbMacAddress = new System.Windows.Forms.TextBox();
 			this.lblMacAddress = new System.Windows.Forms.Label();
-			this.tbName = new System.Windows.Forms.TextBox();
-			this.lblName = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -67,12 +67,30 @@
 			this.pMain.Size = new System.Drawing.Size(397, 237);
 			this.pMain.TabIndex = 0;
 			// 
+			// tbName
+			// 
+			this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbName.Location = new System.Drawing.Point(15, 64);
+			this.tbName.Name = "tbName";
+			this.tbName.Size = new System.Drawing.Size(370, 20);
+			this.tbName.TabIndex = 3;
+			// 
+			// lblName
+			// 
+			this.lblName.AutoSize = true;
+			this.lblName.Location = new System.Drawing.Point(12, 48);
+			this.lblName.Name = "lblName";
+			this.lblName.Size = new System.Drawing.Size(35, 13);
+			this.lblName.TabIndex = 2;
+			this.lblName.Text = "Name";
+			// 
 			// btnRemoteConnection
 			// 
 			this.btnRemoteConnection.Location = new System.Drawing.Point(15, 207);
 			this.btnRemoteConnection.Name = "btnRemoteConnection";
 			this.btnRemoteConnection.Size = new System.Drawing.Size(122, 23);
-			this.btnRemoteConnection.TabIndex = 9;
+			this.btnRemoteConnection.TabIndex = 10;
 			this.btnRemoteConnection.Text = "Remote connection";
 			this.btnRemoteConnection.UseVisualStyleBackColor = true;
 			this.btnRemoteConnection.Click += new System.EventHandler(this.BtnRemoteConnection_Click);
@@ -84,7 +102,7 @@
 			this.btnAdd.Location = new System.Drawing.Point(229, 207);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
-			this.btnAdd.TabIndex = 10;
+			this.btnAdd.TabIndex = 11;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
@@ -96,7 +114,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(310, 207);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 11;
+			this.btnCancel.TabIndex = 12;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -108,7 +126,7 @@
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(370, 20);
-			this.tbPassword.TabIndex = 8;
+			this.tbPassword.TabIndex = 9;
 			// 
 			// lblPassword
 			// 
@@ -116,7 +134,7 @@
 			this.lblPassword.Location = new System.Drawing.Point(12, 165);
 			this.lblPassword.Name = "lblPassword";
 			this.lblPassword.Size = new System.Drawing.Size(53, 13);
-			this.lblPassword.TabIndex = 7;
+			this.lblPassword.TabIndex = 8;
 			this.lblPassword.Text = "Password";
 			// 
 			// tbUsername
@@ -126,7 +144,7 @@
 			this.tbUsername.Location = new System.Drawing.Point(15, 142);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.Size = new System.Drawing.Size(370, 20);
-			this.tbUsername.TabIndex = 6;
+			this.tbUsername.TabIndex = 7;
 			// 
 			// lblUsername
 			// 
@@ -134,7 +152,7 @@
 			this.lblUsername.Location = new System.Drawing.Point(12, 126);
 			this.lblUsername.Name = "lblUsername";
 			this.lblUsername.Size = new System.Drawing.Size(55, 13);
-			this.lblUsername.TabIndex = 5;
+			this.lblUsername.TabIndex = 6;
 			this.lblUsername.Text = "Username";
 			// 
 			// tbIpAddress
@@ -144,7 +162,7 @@
 			this.tbIpAddress.Location = new System.Drawing.Point(15, 25);
 			this.tbIpAddress.Name = "tbIpAddress";
 			this.tbIpAddress.Size = new System.Drawing.Size(370, 20);
-			this.tbIpAddress.TabIndex = 2;
+			this.tbIpAddress.TabIndex = 1;
 			this.tbIpAddress.Leave += new System.EventHandler(this.TbIpAddress_Leave);
 			// 
 			// lblIpAddress
@@ -153,7 +171,7 @@
 			this.lblIpAddress.Location = new System.Drawing.Point(12, 9);
 			this.lblIpAddress.Name = "lblIpAddress";
 			this.lblIpAddress.Size = new System.Drawing.Size(57, 13);
-			this.lblIpAddress.TabIndex = 1;
+			this.lblIpAddress.TabIndex = 0;
 			this.lblIpAddress.Text = "IP address";
 			// 
 			// tbMacAddress
@@ -163,7 +181,7 @@
 			this.tbMacAddress.Location = new System.Drawing.Point(15, 103);
 			this.tbMacAddress.Name = "tbMacAddress";
 			this.tbMacAddress.Size = new System.Drawing.Size(370, 20);
-			this.tbMacAddress.TabIndex = 4;
+			this.tbMacAddress.TabIndex = 5;
 			// 
 			// lblMacAddress
 			// 
@@ -171,26 +189,8 @@
 			this.lblMacAddress.Location = new System.Drawing.Point(12, 87);
 			this.lblMacAddress.Name = "lblMacAddress";
 			this.lblMacAddress.Size = new System.Drawing.Size(70, 13);
-			this.lblMacAddress.TabIndex = 3;
+			this.lblMacAddress.TabIndex = 4;
 			this.lblMacAddress.Text = "MAC address";
-			// 
-			// tbName
-			// 
-			this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbName.Location = new System.Drawing.Point(15, 64);
-			this.tbName.Name = "tbName";
-			this.tbName.Size = new System.Drawing.Size(370, 20);
-			this.tbName.TabIndex = 13;
-			// 
-			// lblName
-			// 
-			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(12, 48);
-			this.lblName.Name = "lblName";
-			this.lblName.Size = new System.Drawing.Size(35, 13);
-			this.lblName.TabIndex = 12;
-			this.lblName.Text = "Name";
 			// 
 			// AddServerForm
 			// 

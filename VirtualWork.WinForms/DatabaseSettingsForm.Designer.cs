@@ -60,7 +60,7 @@
 			this.gbDatabaseOptions.Location = new System.Drawing.Point(0, 0);
 			this.gbDatabaseOptions.Name = "gbDatabaseOptions";
 			this.gbDatabaseOptions.Size = new System.Drawing.Size(694, 106);
-			this.gbDatabaseOptions.TabIndex = 2;
+			this.gbDatabaseOptions.TabIndex = 0;
 			this.gbDatabaseOptions.TabStop = false;
 			// 
 			// btnClose
@@ -70,7 +70,7 @@
 			this.btnClose.Location = new System.Drawing.Point(607, 71);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
-			this.btnClose.TabIndex = 15;
+			this.btnClose.TabIndex = 4;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			// 
@@ -81,7 +81,7 @@
 			this.btnSave.Location = new System.Drawing.Point(523, 71);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 14;
+			this.btnSave.TabIndex = 3;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
@@ -93,7 +93,7 @@
 			this.lblSqlServerConnectionString.Location = new System.Drawing.Point(11, 22);
 			this.lblSqlServerConnectionString.Name = "lblSqlServerConnectionString";
 			this.lblSqlServerConnectionString.Size = new System.Drawing.Size(144, 13);
-			this.lblSqlServerConnectionString.TabIndex = 8;
+			this.lblSqlServerConnectionString.TabIndex = 1;
 			this.lblSqlServerConnectionString.Text = "SQL server connection string";
 			// 
 			// tbSqlServerConnectionString
@@ -103,7 +103,7 @@
 			this.tbSqlServerConnectionString.Location = new System.Drawing.Point(14, 41);
 			this.tbSqlServerConnectionString.Name = "tbSqlServerConnectionString";
 			this.tbSqlServerConnectionString.Size = new System.Drawing.Size(668, 20);
-			this.tbSqlServerConnectionString.TabIndex = 9;
+			this.tbSqlServerConnectionString.TabIndex = 2;
 			this.tbSqlServerConnectionString.Text = "Data Source=.\\SQLEXPRESS;Database=VirtualWorkDb;Integrated Security=true;;Multipl" +
     "eActiveResultSets=True;App=EntityFramework";
 			// 

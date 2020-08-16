@@ -50,6 +50,7 @@ namespace VirtualWork.Service.Log
 		{
 			return new LogEntry
 			{
+				TimeStamp = DateTime.Now,
 				LogLevel = logLevel,
 				Message = logInfo,
 				User = user

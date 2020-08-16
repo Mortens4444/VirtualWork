@@ -79,7 +79,7 @@
 			this.btnTest.Location = new System.Drawing.Point(15, 217);
 			this.btnTest.Name = "btnTest";
 			this.btnTest.Size = new System.Drawing.Size(75, 23);
-			this.btnTest.TabIndex = 15;
+			this.btnTest.TabIndex = 13;
 			this.btnTest.Text = "Test";
 			this.btnTest.UseVisualStyleBackColor = true;
 			// 
@@ -90,7 +90,7 @@
 			this.btnClose.Location = new System.Drawing.Point(291, 217);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
-			this.btnClose.TabIndex = 14;
+			this.btnClose.TabIndex = 15;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			// 
@@ -101,7 +101,7 @@
 			this.btnSave.Location = new System.Drawing.Point(210, 217);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 13;
+			this.btnSave.TabIndex = 14;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
@@ -112,7 +112,7 @@
 			this.lblSmtpAuthentication.Location = new System.Drawing.Point(12, 90);
 			this.lblSmtpAuthentication.Name = "lblSmtpAuthentication";
 			this.lblSmtpAuthentication.Size = new System.Drawing.Size(107, 13);
-			this.lblSmtpAuthentication.TabIndex = 12;
+			this.lblSmtpAuthentication.TabIndex = 6;
 			this.lblSmtpAuthentication.Text = "SMTP authentication";
 			// 
 			// cbSmtpAuthentication
@@ -130,7 +130,7 @@
 			this.cbSmtpAuthentication.Location = new System.Drawing.Point(15, 106);
 			this.cbSmtpAuthentication.Name = "cbSmtpAuthentication";
 			this.cbSmtpAuthentication.Size = new System.Drawing.Size(235, 21);
-			this.cbSmtpAuthentication.TabIndex = 11;
+			this.cbSmtpAuthentication.TabIndex = 7;
 			// 
 			// tbPassword
 			// 
@@ -140,7 +140,7 @@
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(351, 20);
-			this.tbPassword.TabIndex = 10;
+			this.tbPassword.TabIndex = 12;
 			// 
 			// lblPassword
 			// 
@@ -148,7 +148,7 @@
 			this.lblPassword.Location = new System.Drawing.Point(12, 173);
 			this.lblPassword.Name = "lblPassword";
 			this.lblPassword.Size = new System.Drawing.Size(53, 13);
-			this.lblPassword.TabIndex = 9;
+			this.lblPassword.TabIndex = 11;
 			this.lblPassword.Text = "Password";
 			// 
 			// tbUsername
@@ -158,7 +158,7 @@
 			this.tbUsername.Location = new System.Drawing.Point(15, 147);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.Size = new System.Drawing.Size(351, 20);
-			this.tbUsername.TabIndex = 8;
+			this.tbUsername.TabIndex = 10;
 			// 
 			// lblUsername
 			// 
@@ -166,7 +166,7 @@
 			this.lblUsername.Location = new System.Drawing.Point(12, 131);
 			this.lblUsername.Name = "lblUsername";
 			this.lblUsername.Size = new System.Drawing.Size(55, 13);
-			this.lblUsername.TabIndex = 7;
+			this.lblUsername.TabIndex = 9;
 			this.lblUsername.Text = "Username";
 			// 
 			// chkSslEncryption
@@ -176,7 +176,7 @@
 			this.chkSslEncryption.Location = new System.Drawing.Point(256, 108);
 			this.chkSslEncryption.Name = "chkSslEncryption";
 			this.chkSslEncryption.Size = new System.Drawing.Size(98, 17);
-			this.chkSslEncryption.TabIndex = 6;
+			this.chkSslEncryption.TabIndex = 8;
 			this.chkSslEncryption.Text = "SSL encryption";
 			this.chkSslEncryption.UseVisualStyleBackColor = true;
 			// 
@@ -265,6 +265,7 @@
 			this.Name = "EmailSettingsForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "E-mail settings";
+			this.Shown += new System.EventHandler(this.EmailSettingsForm_Shown);
 			this.pMain.ResumeLayout(false);
 			this.pMain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();

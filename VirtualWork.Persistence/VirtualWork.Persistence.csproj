@@ -64,6 +64,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\CredentialsConverter.cs" />
     <Compile Include="Converters\LogEntryConverter.cs" />
     <Compile Include="Converters\ResourceConverter.cs" />
     <Compile Include="Converters\CameraConverter.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Entities\Repeatable.cs" />
     <Compile Include="Entities\Resource.cs" />
     <Compile Include="Entities\Image.cs" />
+    <Compile Include="Entities\Credentials.cs" />
     <Compile Include="Entities\Server.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Email.cs" />
@@ -144,6 +146,27 @@
     <Compile Include="Migrations\202008022310557_AddLogsTable.designer.cs">
       <DependentUpon>202008022310557_AddLogsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008052215207_AddCredentialsTable.cs" />
+    <Compile Include="Migrations\202008052215207_AddCredentialsTable.designer.cs">
+      <DependentUpon>202008052215207_AddCredentialsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061705527_AddOwnerToCredentials.cs" />
+    <Compile Include="Migrations\202008061705527_AddOwnerToCredentials.designer.cs">
+      <DependentUpon>202008061705527_AddOwnerToCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008071702150_RemoveLogMessageLengthConstraint.cs" />
+    <Compile Include="Migrations\202008071702150_RemoveLogMessageLengthConstraint.designer.cs">
+      <DependentUpon>202008071702150_RemoveLogMessageLengthConstraint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008071825135_AddTimeStampToLogEntry.cs" />
+    <Compile Include="Migrations\202008071825135_AddTimeStampToLogEntry.designer.cs">
+      <DependentUpon>202008071825135_AddTimeStampToLogEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008092206108_RenameProperties.cs" />
+    <Compile Include="Migrations\202008092206108_RenameProperties.designer.cs">
+      <DependentUpon>202008092206108_RenameProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CredentialsRepository.cs" />
     <Compile Include="Repositories\LogEntryRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\CameraRepository.cs" />
@@ -221,6 +244,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008022310557_AddLogsTable.resx">
       <DependentUpon>202008022310557_AddLogsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008052215207_AddCredentialsTable.resx">
+      <DependentUpon>202008052215207_AddCredentialsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061705527_AddOwnerToCredentials.resx">
+      <DependentUpon>202008061705527_AddOwnerToCredentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008071702150_RemoveLogMessageLengthConstraint.resx">
+      <DependentUpon>202008071702150_RemoveLogMessageLengthConstraint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008071825135_AddTimeStampToLogEntry.resx">
+      <DependentUpon>202008071825135_AddTimeStampToLogEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008092206108_RenameProperties.resx">
+      <DependentUpon>202008092206108_RenameProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

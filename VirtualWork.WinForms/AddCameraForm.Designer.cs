@@ -80,7 +80,7 @@
 			this.cbServer.Location = new System.Drawing.Point(12, 182);
 			this.cbServer.Name = "cbServer";
 			this.cbServer.Size = new System.Drawing.Size(380, 21);
-			this.cbServer.TabIndex = 29;
+			this.cbServer.TabIndex = 9;
 			// 
 			// lblServer
 			// 
@@ -88,7 +88,7 @@
 			this.lblServer.Location = new System.Drawing.Point(9, 166);
 			this.lblServer.Name = "lblServer";
 			this.lblServer.Size = new System.Drawing.Size(38, 13);
-			this.lblServer.TabIndex = 28;
+			this.lblServer.TabIndex = 8;
 			this.lblServer.Text = "Server";
 			// 
 			// rtbDescription
@@ -98,7 +98,7 @@
 			this.rtbDescription.Location = new System.Drawing.Point(12, 226);
 			this.rtbDescription.Name = "rtbDescription";
 			this.rtbDescription.Size = new System.Drawing.Size(380, 53);
-			this.rtbDescription.TabIndex = 27;
+			this.rtbDescription.TabIndex = 11;
 			this.rtbDescription.Text = "";
 			// 
 			// lblDescription
@@ -107,7 +107,7 @@
 			this.lblDescription.Location = new System.Drawing.Point(9, 210);
 			this.lblDescription.Name = "lblDescription";
 			this.lblDescription.Size = new System.Drawing.Size(60, 13);
-			this.lblDescription.TabIndex = 26;
+			this.lblDescription.TabIndex = 10;
 			this.lblDescription.Text = "Description";
 			// 
 			// btnAdd
@@ -117,7 +117,7 @@
 			this.btnAdd.Location = new System.Drawing.Point(236, 285);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
-			this.btnAdd.TabIndex = 25;
+			this.btnAdd.TabIndex = 13;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
@@ -129,7 +129,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(317, 285);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 24;
+			this.btnCancel.TabIndex = 14;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -138,7 +138,7 @@
 			this.btnRemoteConnection.Location = new System.Drawing.Point(12, 285);
 			this.btnRemoteConnection.Name = "btnRemoteConnection";
 			this.btnRemoteConnection.Size = new System.Drawing.Size(122, 23);
-			this.btnRemoteConnection.TabIndex = 23;
+			this.btnRemoteConnection.TabIndex = 12;
 			this.btnRemoteConnection.Text = "Remote connection";
 			this.btnRemoteConnection.UseVisualStyleBackColor = true;
 			// 
@@ -150,7 +150,7 @@
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(380, 20);
-			this.tbPassword.TabIndex = 22;
+			this.tbPassword.TabIndex = 7;
 			// 
 			// lblPassword
 			// 
@@ -158,7 +158,7 @@
 			this.lblPassword.Location = new System.Drawing.Point(9, 127);
 			this.lblPassword.Name = "lblPassword";
 			this.lblPassword.Size = new System.Drawing.Size(53, 13);
-			this.lblPassword.TabIndex = 21;
+			this.lblPassword.TabIndex = 6;
 			this.lblPassword.Text = "Password";
 			// 
 			// tbUsername
@@ -168,7 +168,7 @@
 			this.tbUsername.Location = new System.Drawing.Point(12, 104);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.Size = new System.Drawing.Size(380, 20);
-			this.tbUsername.TabIndex = 20;
+			this.tbUsername.TabIndex = 5;
 			// 
 			// lblUsername
 			// 
@@ -176,7 +176,7 @@
 			this.lblUsername.Location = new System.Drawing.Point(9, 88);
 			this.lblUsername.Name = "lblUsername";
 			this.lblUsername.Size = new System.Drawing.Size(55, 13);
-			this.lblUsername.TabIndex = 19;
+			this.lblUsername.TabIndex = 4;
 			this.lblUsername.Text = "Username";
 			// 
 			// tbUri
@@ -186,7 +186,7 @@
 			this.tbUri.Location = new System.Drawing.Point(12, 65);
 			this.tbUri.Name = "tbUri";
 			this.tbUri.Size = new System.Drawing.Size(380, 20);
-			this.tbUri.TabIndex = 18;
+			this.tbUri.TabIndex = 3;
 			// 
 			// lblUri
 			// 
@@ -194,7 +194,7 @@
 			this.lblUri.Location = new System.Drawing.Point(9, 49);
 			this.lblUri.Name = "lblUri";
 			this.lblUri.Size = new System.Drawing.Size(26, 13);
-			this.lblUri.TabIndex = 17;
+			this.lblUri.TabIndex = 2;
 			this.lblUri.Text = "URI";
 			// 
 			// tbName
@@ -204,7 +204,7 @@
 			this.tbName.Location = new System.Drawing.Point(12, 26);
 			this.tbName.Name = "tbName";
 			this.tbName.Size = new System.Drawing.Size(380, 20);
-			this.tbName.TabIndex = 16;
+			this.tbName.TabIndex = 1;
 			// 
 			// lblName
 			// 
@@ -212,7 +212,7 @@
 			this.lblName.Location = new System.Drawing.Point(9, 10);
 			this.lblName.Name = "lblName";
 			this.lblName.Size = new System.Drawing.Size(35, 13);
-			this.lblName.TabIndex = 15;
+			this.lblName.TabIndex = 0;
 			this.lblName.Text = "Name";
 			// 
 			// AddCameraForm
