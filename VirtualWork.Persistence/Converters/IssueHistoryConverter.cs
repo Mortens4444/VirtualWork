@@ -1,4 +1,5 @@
 ﻿using VirtualWork.Core.Extensions;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Job.IssueHistory;
 using EntityType = VirtualWork.Persistence.Entities.IssueHistory;
@@ -13,8 +14,9 @@ namespace VirtualWork.Persistence.Converters
 		public IssueHistoryConverter(EntityProvider<EntityType> entityProvider,
 			IssueRepository issueRepository,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.issueRepository = issueRepository;
 			this.userRepository = userRepository;

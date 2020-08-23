@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Contacts;
@@ -54,6 +55,12 @@ namespace VirtualWork.WinForms
 					ActorType = ActorType.User
 				});
 			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

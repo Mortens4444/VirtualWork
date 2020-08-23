@@ -1,4 +1,6 @@
 ﻿using VirtualWork.Core.Extensions;
+using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Appointment.Event;
 using EntityType = VirtualWork.Persistence.Entities.Event;
@@ -11,8 +13,9 @@ namespace VirtualWork.Persistence.Converters
 
 		public EventConverter(EntityProvider<EntityType> entityProvider,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.userRepository = userRepository;
 		}
@@ -22,6 +25,7 @@ namespace VirtualWork.Persistence.Converters
 			entity.CreatorId = dto.Creator.Id;
 			entity.StartApplication = $"{dto.ApplicationToStart} {dto.Arguments}";
 
+			entity.RepetitionType = (int)dto.RepetitionType;
 			entity.EventDate = dto.EventDate.GetRepositoryDateTimeFormat();
 			entity.ExpirationDate = dto.ExpirationDate?.GetRepositoryDateTimeFormat();
 		}
@@ -33,6 +37,7 @@ namespace VirtualWork.Persistence.Converters
 			dto.ApplicationToStart = application;
 			dto.Arguments = parameters;
 
+			dto.RepetitionType = (RepetitionType)entity.RepetitionType;
 			dto.EventDate = entity.EventDate.GetViewDateTimeFormat();
 			dto.ExpirationDate = entity.ExpirationDate?.GetViewDateTimeFormat();
 		}

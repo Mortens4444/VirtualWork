@@ -1,4 +1,5 @@
 ﻿using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Infrastructure.Resource;
 using EntityType = VirtualWork.Persistence.Entities.Resource;
@@ -11,8 +12,9 @@ namespace VirtualWork.Persistence.Converters
 		
 		public ResourceConverter(EntityProvider<EntityType> entityProvider,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.userRepository = userRepository;
 		}

@@ -1,4 +1,5 @@
 ﻿using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Contacts.Address;
 using EntityType = VirtualWork.Persistence.Entities.Address;
@@ -8,8 +9,9 @@ namespace VirtualWork.Persistence.Converters
 	public class AddressConverter : ConverterBase<DtoType, EntityType>
 	{
 		public AddressConverter(EntityProvider<EntityType> entityProvider,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 		}
 

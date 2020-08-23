@@ -3,9 +3,16 @@ using System.Windows.Forms;
 
 namespace VirtualWork.Service.Utils
 {
-	public static class ClipboardHelper
+	public class ClipboardHelper
 	{
-		public static void SetText(string text)
+		private readonly ErrorBoxHelper errorBoxHelper;
+
+		public ClipboardHelper(ErrorBoxHelper errorBoxHelper)
+		{
+			this.errorBoxHelper = errorBoxHelper;
+		}
+
+		public void SetText(string text)
 		{
 			try
 			{
@@ -13,7 +20,7 @@ namespace VirtualWork.Service.Utils
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 	}

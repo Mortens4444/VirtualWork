@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
@@ -8,12 +9,17 @@ namespace VirtualWork.WinForms
 {
 	public partial class ExceptionViewer : Form
 	{
-		public ExceptionViewer(string exception)
+		private readonly ErrorBoxHelper errorBoxHelper;
+		private readonly ClipboardHelper clipboardHelper;
+
+		public ExceptionViewer(ErrorBoxHelper errorBoxHelper,
+			ClipboardHelper clipboardHelper)
 		{
+			this.errorBoxHelper = errorBoxHelper;
+			this.clipboardHelper = clipboardHelper;
+
 			InitializeComponent();
 			Translator.Translate(this);
-
-			rtb_ExceptionText.Text = exception;
 		}
 
 		private void ExceptionViewer_Shown(object sender, EventArgs e)
@@ -78,7 +84,7 @@ namespace VirtualWork.WinForms
 							}
 							if (!String.IsNullOrWhiteSpace(tb_Filename.Text))
 							{
-								ClipboardHelper.SetText(tb_Filename.Text);
+								clipboardHelper.SetText(tb_Filename.Text);
 							}
 						}
 					}
@@ -110,7 +116,7 @@ namespace VirtualWork.WinForms
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
@@ -134,6 +140,18 @@ namespace VirtualWork.WinForms
 			tb_LastStackElement.Text = String.Empty;
 			tb_Filename.Text = String.Empty;
 			tb_FunctionName.Text = String.Empty;
+		}
+
+		public void Show(string exception)
+		{
+			rtb_ExceptionText.Text = exception;
+			Show();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

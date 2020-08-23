@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -9,8 +10,12 @@ namespace VirtualWork.WinForms
 {
 	public partial class AboutBox : Form
 	{
-		public AboutBox()
+		private readonly ErrorBoxHelper errorBoxHelper;
+
+		public AboutBox(ErrorBoxHelper errorBoxHelper)
 		{
+			this.errorBoxHelper = errorBoxHelper;
+
 			InitializeComponent();
 			Text = $"{Lng.Elem("About")} {AssemblyTitle}";
 			labelProductName.Text = AssemblyTitle;
@@ -23,7 +28,7 @@ namespace VirtualWork.WinForms
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
@@ -46,6 +51,12 @@ namespace VirtualWork.WinForms
 				return default(TAttributeType);
 			}
 			return (TAttributeType)attributes[0];
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

@@ -1,7 +1,6 @@
 - Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
 - Locations where these resources are available
 - Consultation with link to synchronize (family doctor)
-- Send mails
 - Execute one or more commands when an event triggered, notifications
 - Upload invoices, images, documents
 - System settings search
@@ -13,3 +12,5 @@
 - Source code highlight in editor / save editor settings
 - Implement calculator
 - Incoming / outgoing money
+- CreateMeetingForm remove comments
+- Get meeting/event data sheet from calendar, show it on Google Maps

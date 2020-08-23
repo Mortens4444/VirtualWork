@@ -12,16 +12,19 @@ namespace VirtualWork.WinForms
 	public partial class LogViewer : Form
 	{
 		private readonly LogEntryRepository logEntryRepository;
+		private readonly ExceptionViewer exceptionViewer;
 
-		public LogViewer(LogEntryRepository logEntryRepository)
+		public LogViewer(LogEntryRepository logEntryRepository,
+			ExceptionViewer exceptionViewer)
 		{
 			this.logEntryRepository = logEntryRepository;
+			this.exceptionViewer = exceptionViewer;
 
 			InitializeComponent();
 			Translator.Translate(this);
 		}
 
-		private void LogViewer_Shown(object sender, System.EventArgs e)
+		private void LogViewer_Shown(object sender, EventArgs e)
 		{
 			lvLogs.Items.Clear();
 			var logEntries = logEntryRepository.GetAll().OrderByDescending(logEntry => logEntry.Id);
@@ -45,13 +48,18 @@ namespace VirtualWork.WinForms
 		private void TsmiExceptionViewer_Click(object sender, EventArgs e)
 		{
 			var selectedItem = lvLogs.SelectedItems[0];
-			var exceptionViewer = new ExceptionViewer(selectedItem.SubItems[3].Text);
-			exceptionViewer.Show();
+			exceptionViewer.Show(selectedItem.SubItems[3].Text);
 		}
 
 		private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
 		{
 			tsmiExceptionViewer.Enabled = lvLogs.SelectedItems.Count == 1;
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

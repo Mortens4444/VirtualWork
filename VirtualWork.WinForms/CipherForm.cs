@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -227,6 +228,12 @@ namespace VirtualWork.WinForms
 		private void EncryptEnvironmentChanged(object sender, EventArgs e)
 		{
 			Changed();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

@@ -19,15 +19,18 @@ namespace VirtualWork.Service.EmailService
 	public class EmailSender : IEmailSender
 	{
 		private readonly ILogger logger;
+		private readonly ErrorBoxHelper errorBoxHelper;
 		private readonly SmtpServer smtpServer;
 		private readonly SendMail sendMail;
 		private string systemSenderEmailAddress = "virtualwork@noreply.com";
 		private bool showMessages;
 
 		public EmailSender(SystemSettingsRepository systemSettingsRepository,
+			ErrorBoxHelper errorBoxHelper,
 			ILogger logger)
 		{
 			this.logger = logger;
+			this.errorBoxHelper = errorBoxHelper;
 			var smtpServerOptions = systemSettingsRepository.GetSmtpServerOptions();
 			var smtpAuthentication = smtpServerOptions.SmtpAuthentication == -1 ? (SmtpAuthentication?)null : (SmtpAuthentication)smtpServerOptions.SmtpAuthentication;
 			smtpServer = new SmtpServer(smtpServerOptions.SmtpServer, smtpServerOptions.SmtpServerPort, smtpServerOptions.SmtpServerUseSSl, smtpServerOptions.SmtpServerUser, smtpServerOptions.SmtpServerPassword, smtpAuthentication, true);
@@ -83,7 +86,7 @@ namespace VirtualWork.Service.EmailService
 			if (!e.Sent)
 			{
 				logger.Error(e.Exception);
-				ErrorBoxHelper.Show(e.Exception);
+				errorBoxHelper.Show(e.Exception);
 			}
 			else
 			{

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Common.Messages;
+using LanguageService;
 using VirtualWork.Persistence.Entities;
 using VirtualWork.Persistence.Repositories;
-
+using VirtualWork.Service;
 using MeetingDto = VirtualWork.Core.Appointment.Meeting;
 
 namespace VirtualWork.WinForms.Providers
@@ -20,6 +23,19 @@ namespace VirtualWork.WinForms.Providers
 		{
 			base.GetNodes(treeView, Meetings, 2, meeting => meeting.MeetingDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0);
 		}
+
+		protected override void ProcessItems(IEnumerable<MeetingDto> items)
+		{
+			base.ProcessItems(items);
+			foreach (var item in items)
+			{
+				var notifier = new ActiveSleepNotifier();
+				notifier.NotifyAt(item.MeetingDate,
+					() => { InfoBox.Show(Lng.Elem("Upcoming meeting"), item.ToString()); },
+					cancellationToken);
+			}
+		}
+
 	}
 }
 

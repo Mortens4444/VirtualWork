@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -59,6 +60,12 @@ namespace VirtualWork.WinForms
 					btnSend.Enabled = false;
 				}
 			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

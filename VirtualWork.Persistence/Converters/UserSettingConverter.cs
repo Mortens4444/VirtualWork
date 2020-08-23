@@ -1,4 +1,5 @@
-﻿using VirtualWork.Persistence.Repositories;
+﻿using VirtualWork.Persistence.Helper;
+using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Settings.UserSetting;
 using EntityType = VirtualWork.Persistence.Entities.UserSetting;
 
@@ -10,8 +11,9 @@ namespace VirtualWork.Persistence.Converters
 
 		public UserSettingConverter(EntityProvider<EntityType> entityProvider,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.userRepository = userRepository;
 		}

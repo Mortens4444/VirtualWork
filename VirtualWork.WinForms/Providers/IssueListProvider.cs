@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using VirtualWork.Core.Job;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Job;
 using VirtualWork.Persistence.Repositories;
@@ -22,16 +23,8 @@ namespace VirtualWork.WinForms.Providers
 			this.issueRepository = issueRepository;
 		}
 
-		public void GetOngoingIssues(TreeView treeView, Taskboard taskboard)
+		public void GetOngoingIssues(TreeView treeView)
 		{
-			var issueViews = taskboard.GetIssueViews();
-			foreach (IssueView issueView in issueViews)
-			{
-				issueView.IssueBlockedStateChanged -= IssueView_IssueBlockedStateChanged;
-				issueView.IssueVerifiedStateChanged -= IssueView_IssueVerifiedStateChanged;
-				issueView.IssueCancelled -= IssueView_IssueCancelled;
-			}
-
 			var rootNode = treeView.Nodes[Issues];
 			rootNode.Nodes.Clear();
 
@@ -48,9 +41,25 @@ namespace VirtualWork.WinForms.Providers
 				rootNode.Nodes.Add(treeNode);
 			}
 
-			var taskboardItems = issues.Where(issue => issues.All(currentIssue => currentIssue.Parent?.Id != issue.Id));
-			var newIssueViews = taskboard.FillWithItems(taskboardItems);
 			rootNode.ExpandAll();
+		}
+
+		public void GetOngoingIssues(Taskboard taskboard, Issue parent)
+		{
+			var issueViews = taskboard.GetIssueViews();
+			foreach (IssueView issueView in issueViews)
+			{
+				issueView.IssueBlockedStateChanged -= IssueView_IssueBlockedStateChanged;
+				issueView.IssueVerifiedStateChanged -= IssueView_IssueVerifiedStateChanged;
+				issueView.IssueCancelled -= IssueView_IssueCancelled;
+			}
+
+			var taskboardItems = issueRepository.GetAll(issue =>
+				issue.ParentId == parent?.Id &&
+				issue.IssueState != (int)IssueState.Cancelled &&
+				issue.IssueState != (int)IssueState.Done).ToList();
+
+			var newIssueViews = taskboard.FillWithItems(taskboardItems);
 
 			foreach (IssueView issueView in newIssueViews)
 			{

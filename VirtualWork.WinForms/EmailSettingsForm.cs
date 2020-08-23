@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Interfaces.EmailService;
@@ -72,6 +73,12 @@ namespace VirtualWork.WinForms
 			cbSmtpAuthentication.SelectedIndex = smtpServerOptions.SmtpAuthentication;
 			tbUsername.Text = smtpServerOptions.SmtpServerUser;
 			tbPassword.Text = smtpServerOptions.SmtpServerPassword;
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

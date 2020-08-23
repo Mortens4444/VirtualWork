@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -29,17 +30,17 @@ namespace VirtualWork.WinForms
 
 			cbIssueType.FillWithEnum<IssueType>();
 			cbIssuePriority.FillWithEnum<Priority>(2);
-			cbRepeationType.FillWithEnum<RepeationType>();
+			cbRepetitionType.FillWithEnum<RepetitionType>();
 		}
 
-		private void CbRepeationType_SelectedIndexChanged(object sender, EventArgs e)
+		private void CbRepetitionType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			SetControlsEnable(cbRepeationType.SelectedIndex != 0);
+			SetControlsEnable(cbRepetitionType.SelectedIndex != 0);
 		}
 
 		private void SetControlsEnable(bool isEnabled)
 		{
-			nudRepeationValue.Enabled = isEnabled;
+			nudRepetitionValue.Enabled = isEnabled;
 			chkExpire.Enabled = isEnabled;
 			dtpExpirationDate.Enabled = isEnabled;
 		}
@@ -94,8 +95,8 @@ namespace VirtualWork.WinForms
 			issue.DueDate = dtpDueTo.Value;
 			issue.Owner = (User)cbOwnedBy.SelectedItem;
 			issue.Priority = EnumUtils.GetByDescription<Priority>((string)cbIssuePriority.SelectedItem);
-			issue.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
-			issue.RepeationValue = (int)nudRepeationValue.Value;
+			issue.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
+			issue.RepetitionValue = (int)nudRepetitionValue.Value;
 			issue.ExpirationDate = dtpExpirationDate.Value;
 			issue.CreationDate = DateTime.UtcNow;
 
@@ -159,6 +160,12 @@ namespace VirtualWork.WinForms
 		private void CbEpic_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			selectingIssue = true;
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

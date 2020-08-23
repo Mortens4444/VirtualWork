@@ -413,6 +413,16 @@ namespace VirtualWork.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ping {
+            get {
+                object obj = ResourceManager.GetObject("ping", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap powershell_ise {
             get {
                 object obj = ResourceManager.GetObject("powershell_ise", resourceCulture);

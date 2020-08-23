@@ -14,9 +14,12 @@ namespace VirtualWork.WinForms.Providers
 	{
 		private readonly IEnumerable<string> rootDrectories;
 		public const string ParentDirectory = "..";
+		private readonly ErrorBoxHelper errorBoxHelper;
 
-		public FileAndFolderProvider()
+		public FileAndFolderProvider(ErrorBoxHelper errorBoxHelper)
 		{
+			this.errorBoxHelper = errorBoxHelper;
+
 			rootDrectories = DriveInfo.GetDrives().Select(drive => drive.RootDirectory.Name);
 		}
 
@@ -64,7 +67,7 @@ namespace VirtualWork.WinForms.Providers
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 
 			return result;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -15,16 +16,19 @@ namespace VirtualWork.WinForms
 	public partial class CreateEventForm : Form
 	{
 		private readonly EventRepository eventRepository;
+		private readonly ProcessUtils processUtils;
 		private Event myEvent;
 
-		public CreateEventForm(EventRepository eventRepository)
+		public CreateEventForm(EventRepository eventRepository,
+			ProcessUtils processUtils)
 		{
 			this.eventRepository = eventRepository;
+			this.processUtils = processUtils;
 
 			InitializeComponent();
 			Translator.Translate(this);
 
-			cbRepeationType.FillWithEnum<RepeationType>();
+			cbRepetitionType.FillWithEnum<RepetitionType>();
 		}
 
 		private void CreateEventForm_Shown(object sender, EventArgs e)
@@ -36,7 +40,8 @@ namespace VirtualWork.WinForms
 				tbEventLocation.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
 				rtbStartApplication.Text = String.Empty;
-				cbRepeationType.SelectedIndex = -1;
+				cbRepetitionType.SelectedIndex = -1;
+				nudRepetitionValue.Value = 100;
 			}
 			else
 			{
@@ -48,7 +53,12 @@ namespace VirtualWork.WinForms
 				tbEventLocation.Text = myEvent.EventLocation;
 				rtbDescription.Text = myEvent.Description;
 				rtbStartApplication.Text = $"\"{myEvent.ApplicationToStart}\" {myEvent.Arguments}";
-				cbRepeationType.SelectedIndex = -1;
+				if (rtbStartApplication.Text == "\"\" ")
+				{
+					rtbStartApplication.Text = String.Empty;
+				}
+				nudRepetitionValue.Value = myEvent.RepetitionValue;
+				cbRepetitionType.SelectedIndex = (int)myEvent.RepetitionType;
 			}
 		}
 
@@ -60,33 +70,31 @@ namespace VirtualWork.WinForms
 				myEvent = new Event();
 			}
 
-			rtbStartApplication.Text = rtbStartApplication.Text.Trim();
-			var firstSpaceIndex = rtbStartApplication.Text.IndexOf(' ');
-
-			myEvent.ApplicationToStart = rtbStartApplication.Text.Substring(0, firstSpaceIndex);
-			myEvent.Arguments = rtbStartApplication.Text.Length > firstSpaceIndex ? rtbStartApplication.Text.Substring(firstSpaceIndex + 1) : String.Empty;
+			var applicationWithParameters = rtbStartApplication.Text.GetExecutionParameters();
+			myEvent.ApplicationToStart = applicationWithParameters.Application;
+			myEvent.Arguments = applicationWithParameters.Parameters;
 			myEvent.CreationDate = DateTime.UtcNow;
 			myEvent.Creator = Initializer.LoggedInUser;
 			myEvent.Description = rtbDescription.Text;
 			myEvent.EventDate = dtpEventDate.Value;
 			myEvent.EventLocation = tbEventLocation.Text;
 			myEvent.ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value : (DateTime?)null;
-			myEvent.RepeationValue = (int)nudRepeationValue.Value;
-			myEvent.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
+			myEvent.RepetitionValue = (int)nudRepetitionValue.Value;
+			myEvent.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
 			myEvent.Title = tbTitle.Text;
 
 			eventRepository.AddOrUpdate(myEvent);
 			myEvent = null;
 		}
 
-		private void CbRepeationType_SelectedIndexChanged(object sender, EventArgs e)
+		private void CbRepetitionType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			SetControlsEnable(cbRepeationType.SelectedIndex != 0);
+			SetControlsEnable(cbRepetitionType.SelectedIndex != 0);
 		}
 
 		private void SetControlsEnable(bool isEnabled)
 		{
-			nudRepeationValue.Enabled = isEnabled;
+			nudRepetitionValue.Enabled = isEnabled;
 			chkExpire.Enabled = isEnabled;
 			dtpExpirationDate.Enabled = isEnabled;
 		}
@@ -94,13 +102,19 @@ namespace VirtualWork.WinForms
 		private void BtnTest_Click(object sender, EventArgs e)
 		{
 			var executionParameters = rtbStartApplication.Text.GetExecutionParameters();
-			ProcessUtils.Start(executionParameters.Application, executionParameters.Parameters);
+			processUtils.Start(executionParameters.Application, executionParameters.Parameters);
 		}
 
 		public DialogResult ShowDialog(Event myEvent = null)
 		{
 			this.myEvent = myEvent;
 			return base.ShowDialog();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

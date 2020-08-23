@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
@@ -43,6 +44,12 @@ namespace VirtualWork.WinForms
 					btnSave.DialogResult = DialogResult.OK;
 				}
 			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

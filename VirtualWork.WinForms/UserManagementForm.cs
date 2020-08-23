@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.WinForms.Providers;
@@ -36,6 +37,12 @@ namespace VirtualWork.WinForms
 		private void BtnCreateNewUser_Click(object sender, EventArgs e)
 		{
 			addUserForm.ShowDialog();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

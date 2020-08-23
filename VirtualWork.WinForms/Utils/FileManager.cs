@@ -21,10 +21,16 @@ namespace VirtualWork.WinForms.Utils
 		public string WorkingDirectoryOnRight { get => workingDirectoryOnRight; }
 
 		private readonly FileAndFolderProvider fileAndFolderProvider;
+		private readonly ProcessUtils processUtils;
+		private readonly ErrorBoxHelper errorBoxHelper;
 
-		public FileManager(FileAndFolderProvider fileAndFolderProvider)
+		public FileManager(FileAndFolderProvider fileAndFolderProvider,
+			ProcessUtils processUtils,
+			ErrorBoxHelper errorBoxHelper)
 		{
 			this.fileAndFolderProvider = fileAndFolderProvider;
+			this.processUtils = processUtils;
+			this.errorBoxHelper = errorBoxHelper;
 
 			workingDirectoryOnLeft = (DriveInfo.GetDrives())[0].Name;
 			workingDirectoryOnRight = WorkingDirectoryOnLeft;
@@ -96,7 +102,7 @@ namespace VirtualWork.WinForms.Utils
 				}
 				catch (Exception ex)
 				{
-					ErrorBoxHelper.Show(ex);
+					errorBoxHelper.Show(ex);
 				}
 			}
 		}
@@ -121,7 +127,7 @@ namespace VirtualWork.WinForms.Utils
 
 				if (File.Exists(fullPath))
 				{
-					ProcessUtils.Start(fullPath);
+					processUtils.Start(fullPath);
 				}
 				else if (Directory.Exists(fullPath))
 				{

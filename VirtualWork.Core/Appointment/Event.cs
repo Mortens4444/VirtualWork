@@ -18,5 +18,7 @@ namespace VirtualWork.Core.Appointment
 		public string Arguments { get; set; }
 
 		public string EventLocation { get; set; }
+
+		public override DateTime AppointmentDate => EventDate;
 	}
 }

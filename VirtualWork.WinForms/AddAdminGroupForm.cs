@@ -20,7 +20,8 @@ namespace VirtualWork.WinForms
 		protected override void OnFormClosing(FormClosingEventArgs e)
 		{
 			actualUserGroupsProvider.Set(new List<Group> { AddedGroup });
-			base.OnFormClosing(e);
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

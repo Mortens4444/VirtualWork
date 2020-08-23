@@ -6,8 +6,8 @@ namespace VirtualWork.Persistence.Entities
 	{
 		public DateTime? ExpirationDate { get; set; }
 
-		public int RepeationValue { get; set; }
+		public int RepetitionValue { get; set; }
 
-		public int RepeationType { get; set; }
+		public int RepetitionType { get; set; }
 	}
 }

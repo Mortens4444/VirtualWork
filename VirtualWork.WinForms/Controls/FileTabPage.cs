@@ -28,18 +28,18 @@ namespace VirtualWork.WinForms.Controls
 			this.fileWriter = fileWriter;
 		}
 
-		public void Initialize(FileDetails fileDetails, int tabNumber)
+		public void Initialize(FileDetails fileDetails)
 		{
+			TextBox = new FileRichTextBox();
 			Location = new Point(4, 22);
-			Name = $"Tab{tabNumber}";
+			Name = $"Tab{TextBox.DocumentNumber}";
 			Padding = new Padding(3);
 			Size = new Size(711, 375);
 			TabIndex = 0;
-			Text = fileDetails?.ShowFileName ?? $"New Document {tabNumber}";
+			Text = fileDetails?.ShowFileName ?? $"New Document {TextBox.DocumentNumber}";
 			UseVisualStyleBackColor = true;
 			Visible = false;
 
-			TextBox = new FileRichTextBox(tabNumber);
 			Controls.Add(TextBox);
 			TextBox.FileDetails = fileDetails;
 		}

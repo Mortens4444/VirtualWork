@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Repositories;
@@ -7,11 +8,13 @@ using VirtualWork.WinForms.Extensions;
 
 namespace VirtualWork.WinForms.Providers
 {
-	public class ListProviderBase<TDtoType, TEntityType>
+	public abstract class ListProviderBase<TDtoType, TEntityType>
 		where TDtoType : class, IHaveIdentifier, IHaveTitle
 		where TEntityType : class, IHaveIdentifier
 	{
+		protected CancellationToken cancellationToken;
 		private readonly RepositoryBase<TDtoType, TEntityType> repository;
+		private CancellationTokenSource cancellationTokenSource;
 
 		public ListProviderBase(RepositoryBase<TDtoType, TEntityType> repository)
 		{
@@ -20,6 +23,10 @@ namespace VirtualWork.WinForms.Providers
 
 		public IEnumerable<TDtoType> GetNodes(TreeView treeView, string rootNodeName, int nodeIndex, Func<TEntityType, bool> predicate, bool appendItems = false)
 		{
+			if (cancellationTokenSource != null)
+			{
+				cancellationTokenSource.Cancel(); 
+			}
 			var rootNode = treeView.Nodes[rootNodeName];
 			var nodes = rootNode.Nodes;
 			if (!appendItems)
@@ -27,8 +34,15 @@ namespace VirtualWork.WinForms.Providers
 				nodes.Clear();
 			}
 			var items = nodes.FillTreeNodeCollectionWithTitle(repository, nodeIndex, predicate);
+			ProcessItems(items);
 			rootNode.ExpandAll();
 			return items;
+		}
+
+		protected virtual void ProcessItems(IEnumerable<TDtoType> items)
+		{
+			cancellationTokenSource = new CancellationTokenSource();
+			cancellationToken = cancellationTokenSource.Token;
 		}
 	}
 }

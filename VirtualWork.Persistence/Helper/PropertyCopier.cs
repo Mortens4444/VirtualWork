@@ -1,10 +1,24 @@
 ﻿using System.Linq;
+using VirtualWork.Core.Cryptography.Ciphers.Production;
+using VirtualWork.Core.Extensions;
+using VirtualWork.Interfaces.Attributes;
+using VirtualWork.Persistence.Repositories;
 
 namespace VirtualWork.Persistence.Helper
 {
-	public static class PropertyCopier
+	public class PropertyCopier
 	{
-		public static void CopyProperties(object from, object to)
+		public readonly ProductionCipher productionCipher;
+		public readonly PasswordHashRepository passwordHashRepository;
+
+		public PropertyCopier(ProductionCipher productionCipher,
+			PasswordHashRepository passwordHashRepository)
+		{
+			this.productionCipher = productionCipher;
+			this.passwordHashRepository = passwordHashRepository;
+		}
+
+		public void CopyProperties(object from, object to)
 		{
 			var fromType = from.GetType();
 			var toType = to.GetType();
@@ -20,10 +34,39 @@ namespace VirtualWork.Persistence.Helper
 					var fromValue = fromProperty.GetValue(from);
 					if (fromProperty.PropertyType == toProperty.PropertyType)
 					{
+						var encryptionKey = GetEncryptionKey(fromProperty.GetEncryptionAttribute());
+						if (encryptionKey != null)
+						{
+							fromValue = productionCipher.Decrypt(fromValue.ToString(), encryptionKey);
+						}
+						else
+						{
+							encryptionKey = GetEncryptionKey(toProperty.GetEncryptionAttribute());
+							if (encryptionKey != null)
+							{
+								fromValue = productionCipher.Encrypt(fromValue.ToString(), encryptionKey);
+							}
+						}
+
 						toProperty.SetValue(to, fromValue);
 					}
 				}
 			}
+		}
+
+		private string GetEncryptionKey(EncryptionAttribute encryptionAttribute)
+		{
+			if (encryptionAttribute is SimpleEncryptionAttribute simpleEncryptionAttribute)
+			{
+				return simpleEncryptionAttribute.EncryptionKey;
+			}
+
+			if (encryptionAttribute is SystemSpecificEncryptionAttribute systemSpecificEncryptionAttribute)
+			{
+				return passwordHashRepository.GetSystemEncryptionPassword(systemSpecificEncryptionAttribute.Salt);
+			}
+
+			return null;
 		}
 	}
 }

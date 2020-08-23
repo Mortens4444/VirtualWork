@@ -20,7 +20,7 @@ namespace VirtualWork.Core.Extensions
 
 		public static (string Application, string Parameters) GetExecutionParameters(this string applicationWithParameters)
 		{
-			if (String.IsNullOrEmpty(applicationWithParameters))
+			if (String.IsNullOrWhiteSpace(applicationWithParameters))
 			{
 				return (Application: String.Empty, Parameters: String.Empty);
 			}

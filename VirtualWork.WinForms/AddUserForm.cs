@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
@@ -48,6 +49,12 @@ namespace VirtualWork.WinForms
 		bool IWindow.ShowDialog()
 		{
 			return ShowDialog() == DialogResult.OK;
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

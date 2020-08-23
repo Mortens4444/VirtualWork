@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -22,17 +23,17 @@ namespace VirtualWork.WinForms
 			InitializeComponent();
 			Translator.Translate(this);
 
-			cbRepeationType.FillWithEnum<RepeationType>();
+			cbRepetitionType.FillWithEnum<RepetitionType>();
 		}
 
-		private void CbRepeationType_SelectedIndexChanged(object sender, EventArgs e)
+		private void CbRepetitionType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			SetControlsEnable(cbRepeationType.SelectedIndex != 0);
+			SetControlsEnable(cbRepetitionType.SelectedIndex != 0);
 		}
 
 		private void SetControlsEnable(bool isEnabled)
 		{
-			nudRepeationValue.Enabled = isEnabled;
+			nudRepetitionValue.Enabled = isEnabled;
 			chkExpire.Enabled = isEnabled;
 			dtpExpirationDate.Enabled = isEnabled;
 		}
@@ -51,8 +52,8 @@ namespace VirtualWork.WinForms
 			meeting.ExpirationDate = dtpExpirationDate.Value;
 			meeting.MeetingDate = dtpMeetingDate.Value;
 			meeting.Owner = Initializer.LoggedInUser;
-			meeting.RepeationType = EnumUtils.GetByDescription<RepeationType>((string)cbRepeationType.SelectedItem);
-			meeting.RepeationValue = (int)nudRepeationValue.Value;
+			meeting.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
+			meeting.RepetitionValue = (int)nudRepetitionValue.Value;
 			meeting.MeetingPoint = cbMeetingPoint.Text;
 
 			meetingRepository.AddOrUpdate(meeting);
@@ -74,6 +75,8 @@ namespace VirtualWork.WinForms
 				cbPartner.SelectedIndex = -1;
 				cbMeetingPoint.SelectedIndex = -1;
 				dtpMeetingDate.Value = DateTime.Now.AddDays(1);
+				cbRepetitionType.SelectedIndex = -1;
+				nudRepetitionValue.Value = 100;
 			}
 			else
 			{
@@ -83,6 +86,8 @@ namespace VirtualWork.WinForms
 				tbTitle.Text = meeting.Title;
 				rtbDescription.Text = meeting.Description;
 				dtpMeetingDate.Value = meeting.MeetingDate;
+				nudRepetitionValue.Value = meeting.RepetitionValue;
+				cbRepetitionType.SelectedIndex = (int)meeting.RepetitionType;
 
 				//if (meeting.PartnerId != null)
 				//{
@@ -108,6 +113,12 @@ namespace VirtualWork.WinForms
 				//	}
 				//}
 			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

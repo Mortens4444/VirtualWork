@@ -166,8 +166,13 @@
     <Compile Include="Migrations\202008092206108_RenameProperties.designer.cs">
       <DependentUpon>202008092206108_RenameProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008162156175_RenameColumns.cs" />
+    <Compile Include="Migrations\202008162156175_RenameColumns.designer.cs">
+      <DependentUpon>202008162156175_RenameColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\CredentialsRepository.cs" />
     <Compile Include="Repositories\LogEntryRepository.cs" />
+    <Compile Include="Repositories\PasswordHashRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\CameraRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
@@ -259,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008092206108_RenameProperties.resx">
       <DependentUpon>202008092206108_RenameProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008162156175_RenameColumns.resx">
+      <DependentUpon>202008162156175_RenameColumns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

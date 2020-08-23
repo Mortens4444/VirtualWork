@@ -1,13 +1,22 @@
 ﻿using System;
 using LanguageService;
 using MessageBoxes;
+using VirtualWork.Interfaces.Log;
 
 namespace VirtualWork.Service.Utils
 {
-	public static class ErrorBoxHelper
+	public class ErrorBoxHelper
 	{
-		public static void Show(Exception ex)
+		private readonly ILogger logger;
+
+		public ErrorBoxHelper(ILogger logger)
 		{
+			this.logger = logger;
+		}
+
+		public void Show(Exception ex)
+		{
+			logger.Error(ex);
 			ErrorBox.Show(Lng.Elem("General"), ex.Message);
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Service.FileHandling;
@@ -13,13 +14,16 @@ namespace VirtualWork.WinForms
 	{
 		private readonly FileReader fileReader;
 		private readonly FileTabPageFactory fileTabPageFactory;
+		private readonly ClipboardHelper clipboardHelper;
 		//private readonly OptionsHandler optionsHandler;
 		//private readonly OptionsDto options;
 
 		public EditorForm(FileReader fileReader,
-			FileTabPageFactory fileTabPageFactory
+			FileTabPageFactory fileTabPageFactory,
+			ClipboardHelper clipboardHelper
 			/*OptionsHandler optionsHandler*/)
 		{
+			this.clipboardHelper = clipboardHelper;
 			this.fileReader = fileReader;
 			this.fileTabPageFactory = fileTabPageFactory;
 
@@ -30,6 +34,16 @@ namespace VirtualWork.WinForms
 			}
 
 			Translator.Translate(this);
+		}
+
+
+		public void Show(string fileName = null)
+		{
+			if (fileName != null)
+			{
+				OpenFile(fileName);
+			}
+			base.Show();
 		}
 
 		public DialogResult ShowDialog(string fileName = null)
@@ -43,7 +57,6 @@ namespace VirtualWork.WinForms
 
 		private void OpenNewTab(FileDetails fileDetails)
 		{
-			var tabNumber = tabControl.Controls.Count + 1;
 			var menuItems = new ToolStripItem[]
 			{
 				/*copyPathMenuItem,
@@ -52,7 +65,7 @@ namespace VirtualWork.WinForms
 				closeAllButThisMenuItem,
 				closeAllMenuItem*/
 			};
-			var newTab = fileTabPageFactory.Create(fileDetails, tabNumber, components, menuItems);
+			var newTab = fileTabPageFactory.Create(fileDetails, components, menuItems);
 			tabControl.Controls.Add(newTab);
 			tabControl.SelectedTab = newTab;
 		}
@@ -61,7 +74,7 @@ namespace VirtualWork.WinForms
 		{
 			if (((ContextMenuStrip)((ToolStripMenuItem)sender).Owner).SourceControl is FileRichTextBox fileRichTextBox && fileRichTextBox.FileDetails != null)
 			{
-				ClipboardHelper.SetText(fileRichTextBox.FileDetails.FileName);
+				clipboardHelper.SetText(fileRichTextBox.FileDetails.FileName);
 			}
 		}
 
@@ -154,6 +167,12 @@ namespace VirtualWork.WinForms
 			OpenNewTab(fileDetails);
 			var activeTab = tabControl.SelectedTab as FileTabPage;
 			activeTab.TextBox.Text = fileContent;
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

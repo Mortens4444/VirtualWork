@@ -1,4 +1,5 @@
-﻿using VirtualWork.Persistence.Repositories;
+﻿using VirtualWork.Persistence.Helper;
+using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Media.ResourceImage;
 using EntityType = VirtualWork.Persistence.Entities.ResourceImage;
 
@@ -10,8 +11,9 @@ namespace VirtualWork.Persistence.Converters
 
 		public ResourceImageConverter(EntityProvider<EntityType> entityProvider,
 			ResourceRepository resourceRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.resourceRepository = resourceRepository;
 		}

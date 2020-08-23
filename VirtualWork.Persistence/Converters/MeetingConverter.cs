@@ -1,5 +1,6 @@
 ﻿using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Appointment.Meeting;
 using EntityType = VirtualWork.Persistence.Entities.Meeting;
@@ -12,8 +13,9 @@ namespace VirtualWork.Persistence.Converters
 
 		public MeetingConverter(EntityProvider<EntityType> entityProvider,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.userRepository = userRepository;
 		}
@@ -21,7 +23,7 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
 		{
 			entity.OwnerId = dto.Owner.Id;
-			entity.RepeationType = (int)dto.RepeationType;
+			entity.RepetitionType = (int)dto.RepetitionType;
 
 			entity.CreationDate = dto.CreationDate.GetRepositoryDateTimeFormat();
 			entity.MeetingDate = dto.MeetingDate.GetRepositoryDateTimeFormat();
@@ -31,7 +33,7 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Owner = userRepository.Get(entity.OwnerId);
-			dto.RepeationType = (RepeationType)entity.RepeationType;
+			dto.RepetitionType = (RepetitionType)entity.RepetitionType;
 
 			dto.CreationDate = entity.CreationDate.GetViewDateTimeFormat();
 			dto.MeetingDate = entity.MeetingDate.GetViewDateTimeFormat();

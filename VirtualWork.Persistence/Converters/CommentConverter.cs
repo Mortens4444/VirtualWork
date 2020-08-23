@@ -1,4 +1,5 @@
-﻿using VirtualWork.Persistence.Repositories;
+﻿using VirtualWork.Persistence.Helper;
+using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Other.Comment;
 using EntityType = VirtualWork.Persistence.Entities.Comment;
 
@@ -12,8 +13,9 @@ namespace VirtualWork.Persistence.Converters
 		public CommentConverter(EntityProvider<EntityType> entityProvider,
 			IssueRepository issueRepository,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.issueRepository = issueRepository;
 			this.userRepository = userRepository;

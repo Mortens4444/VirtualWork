@@ -16,13 +16,13 @@ namespace VirtualWork.WinForms.Factories
 			this.fileWriter = fileWriter;
 		}
 
-		public FileTabPage Create(FileDetails fileDetails, int tabNumber, IContainer components, ToolStripItem[] menuItems)
+		public FileTabPage Create(FileDetails fileDetails, IContainer components, ToolStripItem[] menuItems)
 		{
 			var result = new FileTabPage(fileWriter);
-			result.Initialize(fileDetails, tabNumber);
+			result.Initialize(fileDetails);
 			var contextMenuStrip = new ContextMenuStrip(components);
 			contextMenuStrip.Items.AddRange(menuItems);
-			contextMenuStrip.Name = $"contextMenuStrip{tabNumber}";
+			contextMenuStrip.Name = $"contextMenuStrip";
 			contextMenuStrip.Size = new Size(197, 98);
 			contextMenuStrip.Opening += (object sender, CancelEventArgs e) =>
 			{

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 using LanguageService;
@@ -15,12 +16,16 @@ namespace VirtualWork.WinForms
 		private readonly ServerRepository serverRepository;
 		private readonly HostnameProvider hostnameProvider;
 		private readonly WindowsMacAddressProvider windowsMacAddressProvider;
+		private readonly ErrorBoxHelper errorBoxHelper;
+
 		private Server server;
 
 		public AddServerForm(ServerRepository serverRepository,
 			HostnameProvider hostnameProvider,
-			WindowsMacAddressProvider windowsMacAddressProvider)
+			WindowsMacAddressProvider windowsMacAddressProvider,
+			ErrorBoxHelper errorBoxHelper)
 		{
+			this.errorBoxHelper = errorBoxHelper;
 			this.serverRepository = serverRepository;
 			this.hostnameProvider = hostnameProvider;
 			this.windowsMacAddressProvider = windowsMacAddressProvider;
@@ -93,7 +98,7 @@ namespace VirtualWork.WinForms
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
@@ -101,6 +106,12 @@ namespace VirtualWork.WinForms
 		{
 			this.server = server;
 			return base.ShowDialog();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

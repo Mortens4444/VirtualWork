@@ -59,7 +59,10 @@ namespace VirtualWork.WinForms
 		private readonly CalendarItemsProvider calendarItemsProvider;
 		private readonly SystemSettingsRepository systemSettingsRepository;
 		private readonly WakeOnLan wakeOnLan;
+		private readonly PingRequestSender pingRequestSender;
 		private readonly IDateTimeProvider dateTimeProvider;
+		private readonly ProcessUtils processUtils;
+		private readonly ErrorBoxHelper errorBoxHelper;
 
 		public MainForm(DatabaseSettingsForm databaseSettingsForm,
 			UserManagementForm userManagementForm,
@@ -90,7 +93,10 @@ namespace VirtualWork.WinForms
 			EventRepository eventRepository,
 			CalendarItemsProvider calendarItemsProvider,
 			WakeOnLan wakeOnLan,
+			PingRequestSender pingRequestSender,
 			SystemSettingsRepository systemSettingsRepository,
+			ProcessUtils processUtils,
+			ErrorBoxHelper errorBoxHelper,
 			IDateTimeProvider dateTimeProvider)
 		{
 			this.databaseSettingsForm = databaseSettingsForm;
@@ -124,6 +130,9 @@ namespace VirtualWork.WinForms
 			this.systemSettingsRepository = systemSettingsRepository;
 			this.aboutBox = aboutBox;
 			this.wakeOnLan = wakeOnLan;
+			this.pingRequestSender = pingRequestSender;
+			this.processUtils = processUtils;
+			this.errorBoxHelper = errorBoxHelper;
 
 			InitializeComponent();
 			Translator.Translate(this);
@@ -173,7 +182,7 @@ namespace VirtualWork.WinForms
 		{
 			dateTimeProvider.ActualDateTimeReport += DateTimeProvider_ActualDateTimeReport;
 			serverListProvider.GetServersAndCamera(tvItems);
-			issueListProvider.GetOngoingIssues(tvItems, taskboard);
+			GetIssues();
 			eventListProvider.GetUpcomingEvents(tvItems);
 			meetingsListProvider.GetUpcomingMeetings(tvItems);
 		}
@@ -197,33 +206,33 @@ namespace VirtualWork.WinForms
 
 		private void TsmiAbout_Click(object sender, EventArgs e)
 		{
-			aboutBox.ShowDialog();
+			aboutBox.Show();
 		}
 
 		private void TsmiDatabaseSettings_Click(object sender, EventArgs e)
 		{
-			databaseSettingsForm.ShowDialog();
+			databaseSettingsForm.Show();
 		}
 
 		private void TsmiUserManagement_Click(object sender, EventArgs e)
 		{
-			userManagementForm.ShowDialog();
+			userManagementForm.Show();
 		}
 
 		private void TsmiUserSettings_Click(object sender, EventArgs e)
 		{
-			userSettingsForm.ShowDialog();
+			userSettingsForm.Show();
 		}
 
 		private void TsmiUserProfile_Click(object sender, EventArgs e)
 		{
-			userProfileForm.ShowDialog();
+			userProfileForm.Show();
 		}
 
 		private void TsmiNewIssue_Click(object sender, EventArgs e)
 		{
 			createIssueForm.ShowDialog();
-			issueListProvider.GetOngoingIssues(tvItems, taskboard);
+			GetIssues();
 		}
 
 		private void TsmiNewEvent_Click(object sender, EventArgs e)
@@ -234,12 +243,12 @@ namespace VirtualWork.WinForms
 
 		private void TsmiSendEmail_Click(object sender, EventArgs e)
 		{
-			sendMailForm.ShowDialog();
+			sendMailForm.Show();
 		}
 
 		private void TsmiEmailSettings_Click(object sender, EventArgs e)
 		{
-			emailSettingsForm.ShowDialog();
+			emailSettingsForm.Show();
 		}
 
 		private void TsmiNewMeeting_Click(object sender, EventArgs e)
@@ -262,12 +271,12 @@ namespace VirtualWork.WinForms
 
 		private void TssbOpenCmd_ButtonClick(object sender, EventArgs e)
 		{
-			ProcessUtils.StartAsAdmin("CMD");
+			processUtils.StartAsAdmin("CMD");
 		}
 
 		private void TssbOpenPowerShellIse_ButtonClick(object sender, EventArgs e)
 		{
-			ProcessUtils.StartAsAdmin("PowerShell_ISE");
+			processUtils.StartAsAdmin("PowerShell_ISE");
 		}
 
 		private void BtnVisit_Click(object sender, EventArgs e)
@@ -283,7 +292,7 @@ namespace VirtualWork.WinForms
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
-				ProcessUtils.Start(cbCommandPrompt.Text);
+				processUtils.Start(cbCommandPrompt.Text);
 				cbCommandPrompt.Items.Insert(0, cbCommandPrompt.Text);
 				cbCommandPrompt.Text = String.Empty;
 			}
@@ -357,7 +366,7 @@ namespace VirtualWork.WinForms
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
@@ -433,6 +442,7 @@ namespace VirtualWork.WinForms
 			cmiDeleteServer.SetEnabled(serverSelected);
 			cmiWakeOnLAN.SetEnabled(serverSelected);
 			cmiCommandSender.SetEnabled(serverSelected);
+			cmiPing.SetEnabled(serverSelected);
 
 			var cameraSelected = tvItems.SelectedNode.Tag is Camera;
 			cmiModifyCamera.SetEnabled(cameraSelected);
@@ -496,8 +506,14 @@ namespace VirtualWork.WinForms
 			if (tvItems.SelectedNode?.Tag is Issue issue)
 			{
 				createIssueForm.ShowDialog(issue);
-				issueListProvider.GetOngoingIssues(tvItems, taskboard);
+				GetIssues();
 			}
+		}
+
+		private void GetIssues()
+		{
+			issueListProvider.GetOngoingIssues(tvItems);
+			issueListProvider.GetOngoingIssues(taskboard, tvItems.SelectedNode?.Tag as Issue);
 		}
 
 		private void CmiDeleteIssue_Click(object sender, EventArgs e)
@@ -507,7 +523,7 @@ namespace VirtualWork.WinForms
 				Lng.Elem("Are you sure you want to delete the selected issue?"), Decide.No) == DialogResult.Yes)
 			{
 				issueRepository.Remove(issue.Id);
-				issueListProvider.GetOngoingIssues(tvItems, taskboard);
+				GetIssues();
 			}
 		}
 
@@ -564,6 +580,12 @@ namespace VirtualWork.WinForms
 		private void DateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
 			calendarItemsProvider.GetItems(dgvCalendar, dateTimePicker.Value);
+			calendarItemsProvider.SetBoldDates(monthCalendar);
+		}
+
+		private void MonthCalendar_DateSelected(object sender, DateRangeEventArgs e)
+		{
+			dateTimePicker.Value = e.Start;
 		}
 
 		private void TsmiLogViewer_Click(object sender, EventArgs e)
@@ -573,12 +595,12 @@ namespace VirtualWork.WinForms
 
 		private void TssbCalculator_ButtonClick(object sender, EventArgs e)
 		{
-			calculatorForm.ShowDialog();
+			calculatorForm.Show();
 		}
 
 		private void TssbEditor_ButtonClick(object sender, EventArgs e)
 		{
-			editorForm.ShowDialog();
+			editorForm.Show();
 		}
 
 		private void PasswordManagerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -593,12 +615,12 @@ namespace VirtualWork.WinForms
 				if (fileManager.Active.SelectedItems.Count == 1)
 				{
 					var path = (fileManager.Active == lvFileExplorerLeft) ? fileManager.WorkingDirectoryOnLeft : fileManager.WorkingDirectoryOnRight;
-					editorForm.ShowDialog(Path.Combine(path, fileManager.Active.SelectedItems[0].Text));
+					editorForm.Show(Path.Combine(path, fileManager.Active.SelectedItems[0].Text));
 				}
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
@@ -614,13 +636,32 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Server server)
 			{
-				ProcessUtils.Start("CommandSender", server.IpAddress);
+				processUtils.Start("CommandSender", server.IpAddress);
 			}
 		}
 
 		private void CipherToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			cipherForm.ShowDialog();
+		}
+
+		private void TvItems_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			issueListProvider.GetOngoingIssues(taskboard, tvItems.SelectedNode?.Tag as Issue);
+		}
+
+		private void TsmiPing_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode.Tag is Server server)
+			{
+				pingRequestSender.SendAndShowResult(server.IpAddress);
+			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

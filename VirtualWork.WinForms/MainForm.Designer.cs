@@ -104,6 +104,7 @@
 			this.cmiDeleteCamera = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiWakeOnLAN = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiCommandSender = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmiPing = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
@@ -612,6 +613,7 @@
 			this.monthCalendar.Location = new System.Drawing.Point(12, 72);
 			this.monthCalendar.Name = "monthCalendar";
 			this.monthCalendar.TabIndex = 21;
+			this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar_DateSelected);
 			// 
 			// cbView
 			// 
@@ -738,6 +740,7 @@
 			this.tvItems.SelectedImageIndex = 0;
 			this.tvItems.Size = new System.Drawing.Size(200, 466);
 			this.tvItems.TabIndex = 1;
+			this.tvItems.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvItems_AfterSelect);
 			this.tvItems.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TvItems_MouseDown);
 			// 
 			// contextMenuStrip
@@ -759,16 +762,17 @@
             this.cmiModifyCamera,
             this.cmiDeleteCamera,
             this.cmiWakeOnLAN,
-            this.cmiCommandSender});
+            this.cmiCommandSender,
+            this.cmiPing});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(170, 378);
+			this.contextMenuStrip.Size = new System.Drawing.Size(181, 422);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
 			// 
 			// cmiNewIssue
 			// 
 			this.cmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
 			this.cmiNewIssue.Name = "cmiNewIssue";
-			this.cmiNewIssue.Size = new System.Drawing.Size(169, 22);
+			this.cmiNewIssue.Size = new System.Drawing.Size(180, 22);
 			this.cmiNewIssue.Text = "New issue";
 			this.cmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
 			// 
@@ -776,7 +780,7 @@
 			// 
 			this.cmiModifyIssue.Image = global::VirtualWork.WinForms.Properties.Resources.modify_operation;
 			this.cmiModifyIssue.Name = "cmiModifyIssue";
-			this.cmiModifyIssue.Size = new System.Drawing.Size(169, 22);
+			this.cmiModifyIssue.Size = new System.Drawing.Size(180, 22);
 			this.cmiModifyIssue.Text = "Modify issue";
 			this.cmiModifyIssue.Click += new System.EventHandler(this.CmiModifyIssue_Click);
 			// 
@@ -784,7 +788,7 @@
 			// 
 			this.cmiDeleteIssue.Image = global::VirtualWork.WinForms.Properties.Resources.remove_operation;
 			this.cmiDeleteIssue.Name = "cmiDeleteIssue";
-			this.cmiDeleteIssue.Size = new System.Drawing.Size(169, 22);
+			this.cmiDeleteIssue.Size = new System.Drawing.Size(180, 22);
 			this.cmiDeleteIssue.Text = "Delete issue";
 			this.cmiDeleteIssue.Click += new System.EventHandler(this.CmiDeleteIssue_Click);
 			// 
@@ -792,7 +796,7 @@
 			// 
 			this.cmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
 			this.cmiNewEvent.Name = "cmiNewEvent";
-			this.cmiNewEvent.Size = new System.Drawing.Size(169, 22);
+			this.cmiNewEvent.Size = new System.Drawing.Size(180, 22);
 			this.cmiNewEvent.Text = "New event";
 			this.cmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
 			// 
@@ -800,7 +804,7 @@
 			// 
 			this.cmiModifyEvent.Image = global::VirtualWork.WinForms.Properties.Resources.modify_event;
 			this.cmiModifyEvent.Name = "cmiModifyEvent";
-			this.cmiModifyEvent.Size = new System.Drawing.Size(169, 22);
+			this.cmiModifyEvent.Size = new System.Drawing.Size(180, 22);
 			this.cmiModifyEvent.Text = "Modify event";
 			this.cmiModifyEvent.Click += new System.EventHandler(this.CmiModifyEvent_Click);
 			// 
@@ -808,7 +812,7 @@
 			// 
 			this.cmiDeleteEvent.Image = global::VirtualWork.WinForms.Properties.Resources.remove_event;
 			this.cmiDeleteEvent.Name = "cmiDeleteEvent";
-			this.cmiDeleteEvent.Size = new System.Drawing.Size(169, 22);
+			this.cmiDeleteEvent.Size = new System.Drawing.Size(180, 22);
 			this.cmiDeleteEvent.Text = "Delete event";
 			this.cmiDeleteEvent.Click += new System.EventHandler(this.CmiDeleteEvent_Click);
 			// 
@@ -816,7 +820,7 @@
 			// 
 			this.cmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
 			this.cmiNewMeeting.Name = "cmiNewMeeting";
-			this.cmiNewMeeting.Size = new System.Drawing.Size(169, 22);
+			this.cmiNewMeeting.Size = new System.Drawing.Size(180, 22);
 			this.cmiNewMeeting.Text = "New meeting";
 			this.cmiNewMeeting.Click += new System.EventHandler(this.TsmiNewEvent_Click);
 			// 
@@ -824,7 +828,7 @@
 			// 
 			this.cmiModifyMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.modify_clock;
 			this.cmiModifyMeeting.Name = "cmiModifyMeeting";
-			this.cmiModifyMeeting.Size = new System.Drawing.Size(169, 22);
+			this.cmiModifyMeeting.Size = new System.Drawing.Size(180, 22);
 			this.cmiModifyMeeting.Text = "Modify meeting";
 			this.cmiModifyMeeting.Click += new System.EventHandler(this.CmiModifyMeeting_Click);
 			// 
@@ -832,7 +836,7 @@
 			// 
 			this.cmiDeleteMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.delete_clock;
 			this.cmiDeleteMeeting.Name = "cmiDeleteMeeting";
-			this.cmiDeleteMeeting.Size = new System.Drawing.Size(169, 22);
+			this.cmiDeleteMeeting.Size = new System.Drawing.Size(180, 22);
 			this.cmiDeleteMeeting.Text = "Delete meeting";
 			this.cmiDeleteMeeting.Click += new System.EventHandler(this.CmiDeleteMeeting_Click);
 			// 
@@ -840,7 +844,7 @@
 			// 
 			this.cmiCreateServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
 			this.cmiCreateServer.Name = "cmiCreateServer";
-			this.cmiCreateServer.Size = new System.Drawing.Size(169, 22);
+			this.cmiCreateServer.Size = new System.Drawing.Size(180, 22);
 			this.cmiCreateServer.Text = "Create server";
 			this.cmiCreateServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
 			// 
@@ -848,7 +852,7 @@
 			// 
 			this.cmiModifyServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_edit;
 			this.cmiModifyServer.Name = "cmiModifyServer";
-			this.cmiModifyServer.Size = new System.Drawing.Size(169, 22);
+			this.cmiModifyServer.Size = new System.Drawing.Size(180, 22);
 			this.cmiModifyServer.Text = "Modify server";
 			this.cmiModifyServer.Click += new System.EventHandler(this.CmiModifyServer_Click);
 			// 
@@ -856,7 +860,7 @@
 			// 
 			this.cmiDeleteServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer_delete;
 			this.cmiDeleteServer.Name = "cmiDeleteServer";
-			this.cmiDeleteServer.Size = new System.Drawing.Size(169, 22);
+			this.cmiDeleteServer.Size = new System.Drawing.Size(180, 22);
 			this.cmiDeleteServer.Text = "Delete server";
 			this.cmiDeleteServer.Click += new System.EventHandler(this.CmiDeleteServer_Click);
 			// 
@@ -864,7 +868,7 @@
 			// 
 			this.cmiCreateCamera.Image = global::VirtualWork.WinForms.Properties.Resources.camera;
 			this.cmiCreateCamera.Name = "cmiCreateCamera";
-			this.cmiCreateCamera.Size = new System.Drawing.Size(169, 22);
+			this.cmiCreateCamera.Size = new System.Drawing.Size(180, 22);
 			this.cmiCreateCamera.Text = "Create camera";
 			this.cmiCreateCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
 			// 
@@ -872,7 +876,7 @@
 			// 
 			this.cmiModifyCamera.Image = global::VirtualWork.WinForms.Properties.Resources.modify_camera;
 			this.cmiModifyCamera.Name = "cmiModifyCamera";
-			this.cmiModifyCamera.Size = new System.Drawing.Size(169, 22);
+			this.cmiModifyCamera.Size = new System.Drawing.Size(180, 22);
 			this.cmiModifyCamera.Text = "Modify camera";
 			this.cmiModifyCamera.Click += new System.EventHandler(this.CmiModifyCamera_Click);
 			// 
@@ -880,7 +884,7 @@
 			// 
 			this.cmiDeleteCamera.Image = global::VirtualWork.WinForms.Properties.Resources.remove_camera;
 			this.cmiDeleteCamera.Name = "cmiDeleteCamera";
-			this.cmiDeleteCamera.Size = new System.Drawing.Size(169, 22);
+			this.cmiDeleteCamera.Size = new System.Drawing.Size(180, 22);
 			this.cmiDeleteCamera.Text = "Delete camera";
 			this.cmiDeleteCamera.Click += new System.EventHandler(this.CmiDeleteCamera_Click);
 			// 
@@ -888,7 +892,7 @@
 			// 
 			this.cmiWakeOnLAN.Image = global::VirtualWork.WinForms.Properties.Resources.wol;
 			this.cmiWakeOnLAN.Name = "cmiWakeOnLAN";
-			this.cmiWakeOnLAN.Size = new System.Drawing.Size(169, 22);
+			this.cmiWakeOnLAN.Size = new System.Drawing.Size(180, 22);
 			this.cmiWakeOnLAN.Text = "Wake on LAN";
 			this.cmiWakeOnLAN.Click += new System.EventHandler(this.CmiWakeOnLAN_Click);
 			// 
@@ -896,9 +900,17 @@
 			// 
 			this.cmiCommandSender.Image = global::VirtualWork.WinForms.Properties.Resources.computer_go;
 			this.cmiCommandSender.Name = "cmiCommandSender";
-			this.cmiCommandSender.Size = new System.Drawing.Size(169, 22);
+			this.cmiCommandSender.Size = new System.Drawing.Size(180, 22);
 			this.cmiCommandSender.Text = "Command sender";
 			this.cmiCommandSender.Click += new System.EventHandler(this.CmiCommandSender_Click);
+			// 
+			// cmiPing
+			// 
+			this.cmiPing.Image = global::VirtualWork.WinForms.Properties.Resources.ping;
+			this.cmiPing.Name = "cmiPing";
+			this.cmiPing.Size = new System.Drawing.Size(180, 22);
+			this.cmiPing.Text = "Ping";
+			this.cmiPing.Click += new System.EventHandler(this.TsmiPing_Click);
 			// 
 			// statusStrip
 			// 
@@ -1324,6 +1336,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmiWakeOnLAN;
 		private System.Windows.Forms.ToolStripMenuItem cmiCommandSender;
 		private System.Windows.Forms.ToolStripMenuItem cipherToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem cmiPing;
 	}
 }
 

@@ -23,13 +23,13 @@ namespace VirtualWork.Persistence.Repositories
 		public SystemSettingsRepository(
             VirtualWorkDatabaseContext mtfDatabase,
 			SystemSettingConverter systemSettingConverter,
-			UserRepository userRepository,
+			PasswordHashRepository passwordHashRepository,
 			ProductionCipher productionCipher)
             : base(mtfDatabase, systemSettingConverter, mtfDatabase.SystemSettings)
         {
 			this.productionCipher = productionCipher;
 
-			encryptorKey = userRepository.GetSystemEncryptionPassword("sd4lrR!FÉ.4SW3");
+			encryptorKey = passwordHashRepository.GetSystemEncryptionPassword("sd4lrR!FÉ.4SW3");
 		}
 
 		public ISmtpServerOptions GetSmtpServerOptions()

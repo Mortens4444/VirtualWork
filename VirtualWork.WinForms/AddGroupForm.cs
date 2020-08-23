@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
@@ -69,6 +70,12 @@ namespace VirtualWork.WinForms
 				IsActive = true
 			};
 			AddedGroup = groupRepository.Add(AddedGroup);
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

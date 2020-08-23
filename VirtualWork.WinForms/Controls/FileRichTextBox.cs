@@ -8,13 +8,17 @@ namespace VirtualWork.WinForms.Controls
 {
 	public class FileRichTextBox : RichTextBox
 	{
+		private static int newDocumentNumber = 1;
 		public FileDetails FileDetails { get; set; }
 
-		public FileRichTextBox(int tabNumber)
+		public int DocumentNumber { get; }
+
+		public FileRichTextBox()
 		{
 			Dock = DockStyle.Fill;
 			Location = new Point(3, 3);
-			Name = $"fileContent{tabNumber}";
+			DocumentNumber = newDocumentNumber++;
+			Name = $"fileContent{DocumentNumber}";
 			Size = new Size(705, 369);
 			TabIndex = 0;
 			Text = String.Empty;

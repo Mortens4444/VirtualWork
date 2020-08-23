@@ -139,6 +139,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbPassword.Location = new System.Drawing.Point(108, 85);
 			this.tbPassword.Name = "tbPassword";
+			this.tbPassword.PasswordChar = '*';
 			this.tbPassword.Size = new System.Drawing.Size(220, 20);
 			this.tbPassword.TabIndex = 7;
 			// 

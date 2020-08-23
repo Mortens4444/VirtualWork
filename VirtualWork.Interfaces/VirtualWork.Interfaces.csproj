@@ -40,6 +40,9 @@
     <Compile Include="Actors\INotifiable.cs" />
     <Compile Include="Actors\IUser.cs" />
     <Compile Include="Attributes\Coloring.cs" />
+    <Compile Include="Attributes\SystemSpecificEncryptionAttribute.cs" />
+    <Compile Include="Attributes\SimpleEncryptionAttribute.cs" />
+    <Compile Include="Attributes\EncryptionAttribute.cs" />
     <Compile Include="Attributes\FontColoring.cs" />
     <Compile Include="Attributes\TitleBarColoring.cs" />
     <Compile Include="Attributes\BackgroundColoring.cs" />
@@ -64,10 +67,11 @@
     <Compile Include="Enums\Priority.cs" />
     <Compile Include="Enums\PublicAreaKind.cs" />
     <Compile Include="Enums\ResourceType.cs" />
-    <Compile Include="Enums\RepeationType.cs" />
+    <Compile Include="Enums\RepetitionType.cs" />
     <Compile Include="IHaveTitle.cs" />
     <Compile Include="IHaveName.cs" />
     <Compile Include="IHaveIdentifier.cs" />
+    <Compile Include="INotifier.cs" />
     <Compile Include="Job\IIssue.cs" />
     <Compile Include="Job\IssueBlockedStateChangedEventArgs.cs" />
     <Compile Include="Job\IssueCancelledEventArgs.cs" />

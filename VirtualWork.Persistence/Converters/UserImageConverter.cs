@@ -1,4 +1,5 @@
 ﻿using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Media.ActorImage;
 using EntityType = VirtualWork.Persistence.Entities.ActorImage;
@@ -11,8 +12,9 @@ namespace VirtualWork.Persistence.Converters
 
 		public UserImageConverter(EntityProvider<EntityType> entityProvider,
 			UserRepository userRepository,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.userRepository = userRepository;
 		}

@@ -10,14 +10,17 @@ namespace VirtualWork.Persistence.Converters
 		where TDtoType : class, IHaveIdentifier, new()
 		where TEntityType : class, IHaveIdentifier, new()
 	{
+		protected readonly PropertyCopier propertyCopier;
 		protected readonly VirtualWorkDatabaseContext VirtualWorkDatabaseContext;
 		protected readonly EntityProvider<TEntityType> entityProvider;
 		protected readonly DbSet<TEntityType> dataTable;
 
 		public ConverterBase(EntityProvider<TEntityType> entityProvider,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
 		{
 			this.entityProvider = entityProvider;
+			this.propertyCopier = propertyCopier;
 			VirtualWorkDatabaseContext = virtualWorkDatabaseContext;
 
 			var tables = virtualWorkDatabaseContext.GetType().GetProperties();
@@ -33,7 +36,7 @@ namespace VirtualWork.Persistence.Converters
 			}
 
 			var result = new TDtoType();
-			PropertyCopier.CopyProperties(entity, result);
+			propertyCopier.CopyProperties(entity, result);
 			CopyTypeMismatchingEntityParameters(entity, result);
 			return result;
 		}
@@ -50,7 +53,7 @@ namespace VirtualWork.Persistence.Converters
 			}
 
 			var result = entityProvider.GetEntity(dto.Id, dataTable) ?? new TEntityType();
-			PropertyCopier.CopyProperties(dto, result);
+			propertyCopier.CopyProperties(dto, result);
 			CopyTypeMismatchingDtoParameters(dto, result);
 			return result;
 		}

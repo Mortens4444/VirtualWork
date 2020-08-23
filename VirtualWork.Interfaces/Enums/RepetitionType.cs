@@ -2,7 +2,7 @@
 
 namespace VirtualWork.Interfaces.Enums
 {
-	public enum RepeationType
+	public enum RepetitionType
 	{
 		[Description("No repetition")]
 		NoRepeat,

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using LanguageService;
@@ -27,6 +28,7 @@ namespace VirtualWork.WinForms
 		private void AddCameraForm_Shown(object sender, EventArgs e)
 		{
 			var servers = serverRepository.GetAll();
+			cbServer.Items.Clear();
 			cbServer.Items.AddRange(servers.ToArray());
 
 			if (camera == null)
@@ -86,6 +88,12 @@ namespace VirtualWork.WinForms
 		{
 			this.camera = camera;
 			return base.ShowDialog();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

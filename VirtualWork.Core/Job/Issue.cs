@@ -44,9 +44,9 @@ namespace VirtualWork.Core.Job
 
 		public DateTime? ExpirationDate { get; set; }
 
-		public int RepeationValue { get; set; }
+		public int RepetitionValue { get; set; }
 
-		public RepeationType RepeationType { get; set; }
+		public RepetitionType RepetitionType { get; set; }
 
 		public override string ToString()
 		{

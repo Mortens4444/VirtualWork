@@ -36,10 +36,10 @@
 			this.gbRecurring = new System.Windows.Forms.GroupBox();
 			this.lblRepetition = new System.Windows.Forms.Label();
 			this.chkExpire = new System.Windows.Forms.CheckBox();
-			this.cbRepeationType = new System.Windows.Forms.ComboBox();
+			this.cbRepetitionType = new System.Windows.Forms.ComboBox();
 			this.dtpExpirationDate = new System.Windows.Forms.DateTimePicker();
 			this.lblExpirationDate = new System.Windows.Forms.Label();
-			this.nudRepeationValue = new System.Windows.Forms.NumericUpDown();
+			this.nudRepetitionValue = new System.Windows.Forms.NumericUpDown();
 			this.cbParent = new System.Windows.Forms.ComboBox();
 			this.lblParent = new System.Windows.Forms.Label();
 			this.cbIssuePriority = new System.Windows.Forms.ComboBox();
@@ -70,7 +70,7 @@
 			this.tpGeneral.SuspendLayout();
 			this.gbMain.SuspendLayout();
 			this.gbRecurring.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudRepeationValue)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudRepetitionValue)).BeginInit();
 			this.tpHistory.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -143,10 +143,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbRecurring.Controls.Add(this.lblRepetition);
 			this.gbRecurring.Controls.Add(this.chkExpire);
-			this.gbRecurring.Controls.Add(this.cbRepeationType);
+			this.gbRecurring.Controls.Add(this.cbRepetitionType);
 			this.gbRecurring.Controls.Add(this.dtpExpirationDate);
 			this.gbRecurring.Controls.Add(this.lblExpirationDate);
-			this.gbRecurring.Controls.Add(this.nudRepeationValue);
+			this.gbRecurring.Controls.Add(this.nudRepetitionValue);
 			this.gbRecurring.Location = new System.Drawing.Point(9, 340);
 			this.gbRecurring.Name = "gbRecurring";
 			this.gbRecurring.Size = new System.Drawing.Size(799, 77);
@@ -172,15 +172,15 @@
 			this.chkExpire.Text = "Expire";
 			this.chkExpire.UseVisualStyleBackColor = true;
 			// 
-			// cbRepeationType
+			// cbRepetitionType
 			// 
-			this.cbRepeationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbRepeationType.FormattingEnabled = true;
-			this.cbRepeationType.Location = new System.Drawing.Point(53, 40);
-			this.cbRepeationType.Name = "cbRepeationType";
-			this.cbRepeationType.Size = new System.Drawing.Size(227, 21);
-			this.cbRepeationType.TabIndex = 21;
-			this.cbRepeationType.SelectedIndexChanged += new System.EventHandler(this.CbRepeationType_SelectedIndexChanged);
+			this.cbRepetitionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbRepetitionType.FormattingEnabled = true;
+			this.cbRepetitionType.Location = new System.Drawing.Point(53, 40);
+			this.cbRepetitionType.Name = "cbRepetitionType";
+			this.cbRepetitionType.Size = new System.Drawing.Size(227, 21);
+			this.cbRepetitionType.TabIndex = 21;
+			this.cbRepetitionType.SelectedIndexChanged += new System.EventHandler(this.CbRepetitionType_SelectedIndexChanged);
 			// 
 			// dtpExpirationDate
 			// 
@@ -200,18 +200,18 @@
 			this.lblExpirationDate.TabIndex = 23;
 			this.lblExpirationDate.Text = "Expiration date";
 			// 
-			// nudRepeationValue
+			// nudRepetitionValue
 			// 
-			this.nudRepeationValue.Location = new System.Drawing.Point(6, 42);
-			this.nudRepeationValue.Maximum = new decimal(new int[] {
+			this.nudRepetitionValue.Location = new System.Drawing.Point(6, 42);
+			this.nudRepetitionValue.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-			this.nudRepeationValue.Name = "nudRepeationValue";
-			this.nudRepeationValue.Size = new System.Drawing.Size(41, 20);
-			this.nudRepeationValue.TabIndex = 20;
-			this.nudRepeationValue.Value = new decimal(new int[] {
+			this.nudRepetitionValue.Name = "nudRepetitionValue";
+			this.nudRepetitionValue.Size = new System.Drawing.Size(41, 20);
+			this.nudRepetitionValue.TabIndex = 20;
+			this.nudRepetitionValue.Value = new decimal(new int[] {
             100,
             0,
             0,
@@ -479,7 +479,7 @@
 			this.gbMain.PerformLayout();
 			this.gbRecurring.ResumeLayout(false);
 			this.gbRecurring.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudRepeationValue)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudRepetitionValue)).EndInit();
 			this.tpHistory.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -518,10 +518,10 @@
 		private System.Windows.Forms.Label lblParent;
 		private System.Windows.Forms.GroupBox gbRecurring;
 		private System.Windows.Forms.CheckBox chkExpire;
-		private System.Windows.Forms.ComboBox cbRepeationType;
+		private System.Windows.Forms.ComboBox cbRepetitionType;
 		private System.Windows.Forms.DateTimePicker dtpExpirationDate;
 		private System.Windows.Forms.Label lblExpirationDate;
-		private System.Windows.Forms.NumericUpDown nudRepeationValue;
+		private System.Windows.Forms.NumericUpDown nudRepetitionValue;
 		private System.Windows.Forms.Label lblRepetition;
 	}
 }

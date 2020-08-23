@@ -424,6 +424,7 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\ping.ico" />
     <None Include="Resources\lock.ico" />
     <None Include="Resources\computer_go.ico" />
     <None Include="Resources\wol.ico" />

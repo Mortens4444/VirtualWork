@@ -1,4 +1,5 @@
 ﻿using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Security.Credentials;
 using EntityType = VirtualWork.Persistence.Entities.Credentials;
@@ -8,8 +9,9 @@ namespace VirtualWork.Persistence.Converters
 	public class CredentialsConverter : ConverterBase<DtoType, EntityType>
 	{
 		public CredentialsConverter(EntityProvider<EntityType> entityProvider,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 		}
 

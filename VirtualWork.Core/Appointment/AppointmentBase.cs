@@ -4,7 +4,7 @@ using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Appointment
 {
-	public class AppointmentBase : IHaveIdentifier, IHaveTitle
+	public abstract class AppointmentBase : IHaveIdentifier, IHaveTitle
 	{
 		public int Id { get; set; }
 
@@ -14,10 +14,17 @@ namespace VirtualWork.Core.Appointment
 
 		public DateTime CreationDate { get; set; }
 
+		public abstract DateTime AppointmentDate { get; }
+
 		public DateTime? ExpirationDate { get; set; }
 
-		public int RepeationValue { get; set; }
+		public int RepetitionValue { get; set; }
 
-		public RepeationType RepeationType { get; set; }
+		public RepetitionType RepetitionType { get; set; }
+
+		public override string ToString()
+		{
+			return $"{Title} - {Description}";
+		}
 	}
 }

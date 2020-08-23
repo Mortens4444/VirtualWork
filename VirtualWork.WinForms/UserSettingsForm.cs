@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Persistence.Repositories;
@@ -20,6 +21,12 @@ namespace VirtualWork.WinForms
 		private void Btn_Save_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

@@ -20,7 +20,8 @@ namespace VirtualWork.Tests.Persistence.Helper
 			};
 			var userSetting = new UserSetting();
 
-			PropertyCopier.CopyProperties(systemSetting, userSetting);
+			var propertyCopier = new PropertyCopier(null, null);
+			propertyCopier.CopyProperties(systemSetting, userSetting);
 
 			Assert.AreEqual(systemSetting.Id, userSetting.Id);
 			Assert.AreEqual(systemSetting.Name, userSetting.Name);
@@ -37,7 +38,8 @@ namespace VirtualWork.Tests.Persistence.Helper
 			};
 			var userDto = new Core.Actors.User();
 
-			PropertyCopier.CopyProperties(user, userDto);
+			var propertyCopier = new PropertyCopier(null, null);
+			propertyCopier.CopyProperties(user, userDto);
 
 			Assert.AreEqual(user.Id, userDto.Id);
 			Assert.IsNotNull(user.Groups);
@@ -54,7 +56,8 @@ namespace VirtualWork.Tests.Persistence.Helper
 			};
 			var addressDto = new Core.Contacts.Address();
 
-			PropertyCopier.CopyProperties(address, addressDto);
+			var propertyCopier = new PropertyCopier(null, null);
+			propertyCopier.CopyProperties(address, addressDto);
 
 			Assert.AreEqual(address.Id, addressDto.Id);
 			Assert.AreEqual((PublicAreaKind)0, addressDto.PublicAreaKind);

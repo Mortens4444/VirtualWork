@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
@@ -112,6 +113,12 @@ namespace VirtualWork.WinForms
 			{
 				tbResult.Text += buttonText;
 			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			Hide();
 		}
 	}
 }

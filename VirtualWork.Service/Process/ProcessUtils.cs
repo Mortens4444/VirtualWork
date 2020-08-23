@@ -6,11 +6,18 @@ using VirtualWork.Service.Utils;
 
 namespace VirtualWork.Service.Process
 {
-	public static class ProcessUtils
+	public class ProcessUtils
 	{
 		private const string NotepadPlusPlus = @"C:\Program Files\Notepad++\notepad++.exe";
 
-		public static void OpenInBrowser(string link)
+		private readonly ErrorBoxHelper errorBoxHelper;
+
+		public ProcessUtils(ErrorBoxHelper errorBoxHelper)
+		{
+			this.errorBoxHelper = errorBoxHelper;
+		}
+
+		public void OpenInBrowser(string link)
 		{
 			try
 			{
@@ -18,11 +25,11 @@ namespace VirtualWork.Service.Process
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
-		public static void Start(string process, string arguments = null)
+		public void Start(string process, string arguments = null)
 		{
 			try
 			{
@@ -41,16 +48,16 @@ namespace VirtualWork.Service.Process
 				}
 				else
 				{
-					ErrorBoxHelper.Show(ex);
+					errorBoxHelper.Show(ex);
 				}
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 
-		public static void StartAsAdmin(string process, string arguments = null)
+		public void StartAsAdmin(string process, string arguments = null)
 		{
 			try
 			{
@@ -63,7 +70,7 @@ namespace VirtualWork.Service.Process
 			}
 			catch (Exception ex)
 			{
-				ErrorBoxHelper.Show(ex);
+				errorBoxHelper.Show(ex);
 			}
 		}
 	}

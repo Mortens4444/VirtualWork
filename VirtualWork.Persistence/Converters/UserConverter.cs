@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Actors.User;
 using EntityType = VirtualWork.Persistence.Entities.User;
@@ -18,8 +19,9 @@ namespace VirtualWork.Persistence.Converters
 			TelephoneNumberRepository telephoneNumberRepository,
 			AddressRepository addressRepository,
 			EntityProvider<EntityType> entityProvider,
+			PropertyCopier propertyCopier,
 			VirtualWorkDatabaseContext virtualWorkDatabaseContext)
-			: base(entityProvider, virtualWorkDatabaseContext)
+			: base(entityProvider, propertyCopier, virtualWorkDatabaseContext)
 		{
 			this.emailRepository = emailRepository;
 			this.telephoneNumberRepository = telephoneNumberRepository;
