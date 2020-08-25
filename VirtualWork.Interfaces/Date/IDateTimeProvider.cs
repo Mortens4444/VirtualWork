@@ -7,5 +7,7 @@ namespace VirtualWork.Interfaces.Date
 		TimeSpan RefreshInterval { get; set; }
 
 		event EventHandler<ActualDateTimeReportEventArgs> ActualDateTimeReport;
+
+		void Stop();
 	}
 }

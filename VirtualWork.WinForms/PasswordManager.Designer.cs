@@ -38,7 +38,6 @@
 			this.ch_5_Group = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ch_6_ExtraInformation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.p_Main = new System.Windows.Forms.Panel();
-			this.btnAdd = new System.Windows.Forms.Button();
 			this.cbGroup = new System.Windows.Forms.ComboBox();
 			this.lvCredentials = new System.Windows.Forms.ListView();
 			this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,14 +51,15 @@
 			this.tsmiCopyUsername = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiCopyPassword = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiCopyExtraInformation = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmiShowPassword = new System.Windows.Forms.ToolStripMenuItem();
 			this.tss_Separator_2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tss_Separator_3 = new System.Windows.Forms.ToolStripSeparator();
+			this.tb_Search = new System.Windows.Forms.TextBox();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.tsmiShowPassword = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-			this.tss_Separator_3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiVisitLink = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiVisitAlternativeLink = new System.Windows.Forms.ToolStripMenuItem();
-			this.tb_Search = new System.Windows.Forms.TextBox();
 			this.p_Main.SuspendLayout();
 			this.cms_Menu.SuspendLayout();
 			this.SuspendLayout();
@@ -110,16 +110,6 @@
 			this.p_Main.Name = "p_Main";
 			this.p_Main.Size = new System.Drawing.Size(1090, 450);
 			this.p_Main.TabIndex = 2;
-			// 
-			// btnAdd
-			// 
-			this.btnAdd.Image = global::VirtualWork.WinForms.Properties.Resources.add;
-			this.btnAdd.Location = new System.Drawing.Point(3, 5);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(23, 23);
-			this.btnAdd.TabIndex = 8;
-			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
 			// 
 			// cbGroup
 			// 
@@ -201,11 +191,12 @@
             this.tsmiVisitLink,
             this.tsmiVisitAlternativeLink});
 			this.cms_Menu.Name = "cms_Menu";
-			this.cms_Menu.Size = new System.Drawing.Size(198, 214);
+			this.cms_Menu.Size = new System.Drawing.Size(198, 192);
 			this.cms_Menu.Opening += new System.ComponentModel.CancelEventHandler(this.Cms_Menu_Opening);
 			// 
 			// tsmiCopyUsername
 			// 
+			this.tsmiCopyUsername.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
 			this.tsmiCopyUsername.Name = "tsmiCopyUsername";
 			this.tsmiCopyUsername.Size = new System.Drawing.Size(197, 22);
 			this.tsmiCopyUsername.Text = "Copy username";
@@ -213,6 +204,7 @@
 			// 
 			// tsmiCopyPassword
 			// 
+			this.tsmiCopyPassword.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
 			this.tsmiCopyPassword.Name = "tsmiCopyPassword";
 			this.tsmiCopyPassword.Size = new System.Drawing.Size(197, 22);
 			this.tsmiCopyPassword.Text = "Copy password";
@@ -220,55 +212,21 @@
 			// 
 			// tsmiCopyExtraInformation
 			// 
+			this.tsmiCopyExtraInformation.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
 			this.tsmiCopyExtraInformation.Name = "tsmiCopyExtraInformation";
 			this.tsmiCopyExtraInformation.Size = new System.Drawing.Size(197, 22);
 			this.tsmiCopyExtraInformation.Text = "Copy extra information";
 			this.tsmiCopyExtraInformation.Click += new System.EventHandler(this.Tsmi_CopyExtraInformation_Click);
-			// 
-			// tsmiShowPassword
-			// 
-			this.tsmiShowPassword.Name = "tsmiShowPassword";
-			this.tsmiShowPassword.Size = new System.Drawing.Size(197, 22);
-			this.tsmiShowPassword.Text = "Show password";
-			this.tsmiShowPassword.Click += new System.EventHandler(this.Tsmi_ShowPassword_Click);
 			// 
 			// tss_Separator_2
 			// 
 			this.tss_Separator_2.Name = "tss_Separator_2";
 			this.tss_Separator_2.Size = new System.Drawing.Size(194, 6);
 			// 
-			// tsmiEdit
-			// 
-			this.tsmiEdit.Name = "tsmiEdit";
-			this.tsmiEdit.Size = new System.Drawing.Size(197, 22);
-			this.tsmiEdit.Text = "Edit";
-			this.tsmiEdit.Click += new System.EventHandler(this.Tsmi_Edit_Click);
-			// 
-			// tsmiDelete
-			// 
-			this.tsmiDelete.Name = "tsmiDelete";
-			this.tsmiDelete.Size = new System.Drawing.Size(197, 22);
-			this.tsmiDelete.Text = "Delete";
-			this.tsmiDelete.Click += new System.EventHandler(this.Tsmi_Delete_Click);
-			// 
 			// tss_Separator_3
 			// 
 			this.tss_Separator_3.Name = "tss_Separator_3";
 			this.tss_Separator_3.Size = new System.Drawing.Size(194, 6);
-			// 
-			// tsmiVisitLink
-			// 
-			this.tsmiVisitLink.Name = "tsmiVisitLink";
-			this.tsmiVisitLink.Size = new System.Drawing.Size(197, 22);
-			this.tsmiVisitLink.Text = "Visit link";
-			this.tsmiVisitLink.Click += new System.EventHandler(this.Tsmi_VisitLink_Click);
-			// 
-			// tsmiVisitAlternativeLink
-			// 
-			this.tsmiVisitAlternativeLink.Name = "tsmiVisitAlternativeLink";
-			this.tsmiVisitAlternativeLink.Size = new System.Drawing.Size(197, 22);
-			this.tsmiVisitAlternativeLink.Text = "Visit alternative link";
-			this.tsmiVisitAlternativeLink.Click += new System.EventHandler(this.Tsmi_VisitLoginLink_Click);
 			// 
 			// tb_Search
 			// 
@@ -277,6 +235,56 @@
 			this.tb_Search.Size = new System.Drawing.Size(150, 20);
 			this.tb_Search.TabIndex = 0;
 			this.tb_Search.TextChanged += new System.EventHandler(this.GetPasswords);
+			// 
+			// btnAdd
+			// 
+			this.btnAdd.Image = global::VirtualWork.WinForms.Properties.Resources.add;
+			this.btnAdd.Location = new System.Drawing.Point(3, 5);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(23, 23);
+			this.btnAdd.TabIndex = 8;
+			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+			// 
+			// tsmiShowPassword
+			// 
+			this.tsmiShowPassword.Image = global::VirtualWork.WinForms.Properties.Resources.eye;
+			this.tsmiShowPassword.Name = "tsmiShowPassword";
+			this.tsmiShowPassword.Size = new System.Drawing.Size(197, 22);
+			this.tsmiShowPassword.Text = "Show password";
+			this.tsmiShowPassword.Click += new System.EventHandler(this.Tsmi_ShowPassword_Click);
+			// 
+			// tsmiEdit
+			// 
+			this.tsmiEdit.Image = global::VirtualWork.WinForms.Properties.Resources.key_modify;
+			this.tsmiEdit.Name = "tsmiEdit";
+			this.tsmiEdit.Size = new System.Drawing.Size(197, 22);
+			this.tsmiEdit.Text = "Edit";
+			this.tsmiEdit.Click += new System.EventHandler(this.Tsmi_Edit_Click);
+			// 
+			// tsmiDelete
+			// 
+			this.tsmiDelete.Image = global::VirtualWork.WinForms.Properties.Resources.key_delete;
+			this.tsmiDelete.Name = "tsmiDelete";
+			this.tsmiDelete.Size = new System.Drawing.Size(197, 22);
+			this.tsmiDelete.Text = "Delete";
+			this.tsmiDelete.Click += new System.EventHandler(this.Tsmi_Delete_Click);
+			// 
+			// tsmiVisitLink
+			// 
+			this.tsmiVisitLink.Image = global::VirtualWork.WinForms.Properties.Resources.link;
+			this.tsmiVisitLink.Name = "tsmiVisitLink";
+			this.tsmiVisitLink.Size = new System.Drawing.Size(197, 22);
+			this.tsmiVisitLink.Text = "Visit link";
+			this.tsmiVisitLink.Click += new System.EventHandler(this.Tsmi_VisitLink_Click);
+			// 
+			// tsmiVisitAlternativeLink
+			// 
+			this.tsmiVisitAlternativeLink.Image = global::VirtualWork.WinForms.Properties.Resources.link__2_;
+			this.tsmiVisitAlternativeLink.Name = "tsmiVisitAlternativeLink";
+			this.tsmiVisitAlternativeLink.Size = new System.Drawing.Size(197, 22);
+			this.tsmiVisitAlternativeLink.Text = "Visit alternative link";
+			this.tsmiVisitAlternativeLink.Click += new System.EventHandler(this.Tsmi_VisitLoginLink_Click);
 			// 
 			// PasswordManager
 			// 

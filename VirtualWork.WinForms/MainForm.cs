@@ -663,5 +663,13 @@ namespace VirtualWork.WinForms
 			e.Cancel = true;
 			Hide();
 		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			eventListProvider.StopTasks();
+			meetingsListProvider.StopTasks();
+			dateTimeProvider.Stop();
+			Application.Exit();
+		}
 	}
 }

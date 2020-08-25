@@ -81,11 +81,5 @@ namespace VirtualWork.WinForms
 			this.credentials = credentials;
 			return base.ShowDialog();
 		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
-		}
 	}
 }

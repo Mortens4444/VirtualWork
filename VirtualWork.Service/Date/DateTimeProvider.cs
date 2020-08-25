@@ -9,6 +9,8 @@ namespace VirtualWork.Service.Date
 {
 	public class DateTimeProvider : IDateTimeProvider
 	{
+		private bool running = true;
+
 		public event EventHandler<ActualDateTimeReportEventArgs> ActualDateTimeReport;
 
 		/// <summary>
@@ -23,9 +25,14 @@ namespace VirtualWork.Service.Date
 			backgroundWorker.RunWorkerAsync();
 		}
 
+		public void Stop()
+		{
+			running = false;
+		}
+
 		private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
-			while (true)
+			while (running)
 			{
 				var now = DateTime.Now;
 

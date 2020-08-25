@@ -23,10 +23,7 @@ namespace VirtualWork.WinForms.Providers
 
 		public IEnumerable<TDtoType> GetNodes(TreeView treeView, string rootNodeName, int nodeIndex, Func<TEntityType, bool> predicate, bool appendItems = false)
 		{
-			if (cancellationTokenSource != null)
-			{
-				cancellationTokenSource.Cancel(); 
-			}
+			StopTasks();
 			var rootNode = treeView.Nodes[rootNodeName];
 			var nodes = rootNode.Nodes;
 			if (!appendItems)
@@ -43,6 +40,14 @@ namespace VirtualWork.WinForms.Providers
 		{
 			cancellationTokenSource = new CancellationTokenSource();
 			cancellationToken = cancellationTokenSource.Token;
+		}
+
+		public void StopTasks()
+		{
+			if (cancellationTokenSource != null)
+			{
+				cancellationTokenSource.Cancel();
+			}
 		}
 	}
 }

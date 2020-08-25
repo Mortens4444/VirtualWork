@@ -424,6 +424,11 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\eye.ico" />
+    <None Include="Resources\link_2.ico" />
+    <None Include="Resources\link.ico" />
+    <None Include="Resources\key_delete.ico" />
+    <None Include="Resources\key_modify.ico" />
     <None Include="Resources\ping.ico" />
     <None Include="Resources\lock.ico" />
     <None Include="Resources\computer_go.ico" />
@@ -438,7 +443,7 @@
     <None Include="Resources\cut_red.ico" />
     <None Include="Resources\cut.ico" />
     <None Include="Resources\copy.ico" />
-    <None Include="Resources\calculator %282%29.ico" />
+    <None Include="Resources\calculator.ico" />
     <None Include="Resources\application.ico" />
     <None Include="Resources\log.ico" />
     <None Include="Resources\remove_operation.ico" />

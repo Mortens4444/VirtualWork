@@ -124,7 +124,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
-		private void Cms_Menu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+		private void Cms_Menu_Opening(object sender, CancelEventArgs e)
 		{
 			var selectedItemsCount = lvCredentials.SelectedItems.Count;
 			var oneSelected = selectedItemsCount == 1;

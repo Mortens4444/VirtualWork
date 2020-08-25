@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
@@ -26,9 +27,11 @@ namespace VirtualWork.Persistence.Entities
 		public string ExtraInformation { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfStrings)]
+		[SystemSpecificEncryption("d8fé4GH15kd3!5f")]
 		public string Username { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfStrings)]
+		[SystemSpecificEncryption("43lDF/%gfpsd3ny")]
 		public string Password { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
