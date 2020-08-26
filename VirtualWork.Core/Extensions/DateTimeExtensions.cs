@@ -37,6 +37,44 @@ namespace VirtualWork.Core.Extensions
 			return baseDateTime.Year == testedDateTime.Year && baseDateTime.Month == testedDateTime.Month && baseDateTime.Day == testedDateTime.Day;
 		}
 
+		public static DateTime CalculateNextOccurrence(this DateTime baseDateTime, RepetitionType repetitionType, int repetitionValue, DateTime? expirationDate)
+		{
+			DateTime result;
+			switch (repetitionType)
+			{
+				case RepetitionType.NoRepeat:
+					result = DateTime.MaxValue;
+					break;
+				case RepetitionType.EveryMillisecond:
+					result = baseDateTime.AddMilliseconds(repetitionValue);
+					break;
+				case RepetitionType.EverySecond:
+					result = baseDateTime.AddSeconds(repetitionValue);
+					break;
+				case RepetitionType.EveryMinute:
+					result = baseDateTime.AddMinutes(repetitionValue);
+					break;
+				case RepetitionType.Hourly:
+					result = baseDateTime.AddHours(repetitionValue);
+					break;
+				case RepetitionType.Daily:
+					result = baseDateTime.AddDays(repetitionValue);
+					break;
+				case RepetitionType.Weekly:
+					result = baseDateTime.AddDays(7 * repetitionValue);
+					break;
+				case RepetitionType.Monthly:
+					result = baseDateTime.AddMonths(repetitionValue);
+					break;
+				case RepetitionType.Yearly:
+					result = baseDateTime.AddYears(repetitionValue);
+					break;
+				default:
+					throw new NotImplementedException($"Repetition type not found: {repetitionType}");
+			}
+			return !expirationDate.HasValue || result < expirationDate ? result : DateTime.MaxValue;
+		}
+
 		public static bool IsRepeatedOnDate(this DateTime firstOccurrence, DateTime testedDateTime, RepetitionType repetitionType, int repetitionValue, DateTime? expirationDate)
 		{
 			if (firstOccurrence.IsOnSameDate(testedDateTime))
@@ -59,36 +97,7 @@ namespace VirtualWork.Core.Extensions
 			var actualDateTime = firstOccurrence;
 			while (actualDateTime < expirationDate)
 			{
-				switch (repetitionType)
-				{
-					case RepetitionType.EveryMillisecond:
-						actualDateTime = actualDateTime.AddMilliseconds(repetitionValue);
-						break;
-					case RepetitionType.EverySecond:
-						actualDateTime = actualDateTime.AddSeconds(repetitionValue);
-						break;
-					case RepetitionType.EveryMinute:
-						actualDateTime = actualDateTime.AddMinutes(repetitionValue);
-						break;
-					case RepetitionType.Hourly:
-						actualDateTime = actualDateTime.AddHours(repetitionValue);
-						break;
-					case RepetitionType.Daily:
-						actualDateTime = actualDateTime.AddDays(repetitionValue);
-						break;
-					case RepetitionType.Weekly:
-						actualDateTime = actualDateTime.AddDays(7 * repetitionValue);
-						break;
-					case RepetitionType.Monthly:
-						actualDateTime = actualDateTime.AddMonths(repetitionValue);
-						break;
-					case RepetitionType.Yearly:
-						actualDateTime = actualDateTime.AddYears(repetitionValue);
-						break;
-					default:
-						throw new NotImplementedException($"Repetition type not found: {repetitionType}");
-				}
-
+				actualDateTime = actualDateTime.CalculateNextOccurrence(repetitionType, repetitionValue, expirationDate);
 				if (actualDateTime.IsOnSameDate(testedDateTime))
 				{
 					return true;

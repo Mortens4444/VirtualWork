@@ -1,23 +1,46 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using VirtualWork.Interfaces;
+using VirtualWork.Core.Appointment;
+using VirtualWork.Core.Extensions;
 
 namespace VirtualWork.Service
 {
-	public class ActiveSleepNotifier : INotifier
+	public class ActiveSleepNotifier
 	{
-		public async void NotifyAt(DateTime targetDateTime, Action action, CancellationToken cancellationToken)
+		public async void NotifyAt(AppointmentBase appointment, Action action, CancellationToken cancellationToken)
 		{
 			await Task.Factory.StartNew(() =>
 			{
-				while (DateTime.Now < targetDateTime && !cancellationToken.IsCancellationRequested)
+				var targetDateTime = appointment.AppointmentDate;
+
+				// Fast forward on past occurrences.
+				while (targetDateTime < DateTime.Now)
 				{
-					Thread.Sleep(100);
+					targetDateTime = targetDateTime.CalculateNextOccurrence(appointment.RepetitionType, appointment.RepetitionValue, appointment.ExpirationDate);
 				}
-				if (!cancellationToken.IsCancellationRequested)
+
+				while (targetDateTime != DateTime.MaxValue)
 				{
-					action();
+					// Waiting for next occurrence.
+					while (DateTime.Now < targetDateTime && !cancellationToken.IsCancellationRequested)
+					{
+						Thread.Sleep(100);
+					}
+					if (!cancellationToken.IsCancellationRequested)
+					{
+						action();
+					}
+
+					// Get next occurrence.
+					while (targetDateTime < DateTime.Now)
+					{
+						targetDateTime = targetDateTime.CalculateNextOccurrence(appointment.RepetitionType, appointment.RepetitionValue, appointment.ExpirationDate);
+					}
+					if (targetDateTime == DateTime.MaxValue)
+					{
+						break;
+					}
 				}
 			}, cancellationToken);
 		}

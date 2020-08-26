@@ -71,7 +71,6 @@
     <Compile Include="IHaveTitle.cs" />
     <Compile Include="IHaveName.cs" />
     <Compile Include="IHaveIdentifier.cs" />
-    <Compile Include="INotifier.cs" />
     <Compile Include="Job\IIssue.cs" />
     <Compile Include="Job\IssueBlockedStateChangedEventArgs.cs" />
     <Compile Include="Job\IssueCancelledEventArgs.cs" />

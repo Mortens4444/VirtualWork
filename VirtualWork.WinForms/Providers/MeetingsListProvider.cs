@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Common.Messages;
 using LanguageService;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Entities;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service;
@@ -21,7 +22,10 @@ namespace VirtualWork.WinForms.Providers
 
 		public void GetUpcomingMeetings(TreeView treeView)
 		{
-			base.GetNodes(treeView, Meetings, 2, meeting => meeting.MeetingDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0);
+			base.GetNodes(treeView, Meetings, 2,
+				meeting => meeting.MeetingDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0 ||
+					(meeting.ExpirationDate.HasValue && meeting.ExpirationDate > DateTime.Now) ||
+					(meeting.RepetitionType != (int)RepetitionType.NoRepeat) && !meeting.ExpirationDate.HasValue);
 		}
 
 		protected override void ProcessItems(IEnumerable<MeetingDto> items)
@@ -30,7 +34,7 @@ namespace VirtualWork.WinForms.Providers
 			foreach (var item in items)
 			{
 				var notifier = new ActiveSleepNotifier();
-				notifier.NotifyAt(item.MeetingDate,
+				notifier.NotifyAt(item,
 					() => { InfoBox.Show(Lng.Elem("Upcoming meeting"), item.ToString()); },
 					cancellationToken);
 			}

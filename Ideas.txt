@@ -1,7 +1,7 @@
 - Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
 - Locations where these resources are available
 - Consultation with link to synchronize (family doctor)
-- Execute one or more commands when an event triggered, notifications
+- Execute more commands when an event triggered
 - Upload invoices, images, documents
 - System settings search
 - Log filter and paging
