@@ -45,11 +45,5 @@ namespace VirtualWork.WinForms
 				}
 			}
 		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
-		}
 	}
 }

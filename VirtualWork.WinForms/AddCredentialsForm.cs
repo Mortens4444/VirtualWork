@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -28,11 +27,7 @@ namespace VirtualWork.WinForms
 
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
-			bool add = credentials == null;
-			if (add)
-			{
-				credentials = new Credentials();
-			}
+			credentials = credentials ?? new Credentials();
 			credentials.Name = tbName.Text;
 			credentials.Group = cbGroup.SelectedIndex == 0 ? String.Empty : cbGroup.Text;
 			credentials.AlternativeLink = tbAlternativeLink.Text;
@@ -42,7 +37,6 @@ namespace VirtualWork.WinForms
 			credentials.ExtraInformation = rtbExtraInformation.Text;
 			credentials.ActorType = ActorType.User;
 			credentials.ActorId = Initializer.LoggedInUser.Id;
-
 			credentialsRepository.AddOrUpdate(credentials);
 			credentials = null;
 		}

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using LanguageService;
@@ -67,19 +66,13 @@ namespace VirtualWork.WinForms
 
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
-			bool add = camera == null;
-			if (add)
-			{
-				camera = new Camera();
-			}
-
+			camera = camera ?? new Camera();
 			camera.Desription = rtbDescription.Text;
 			camera.Name = tbName.Text;
 			camera.Password = tbPassword.Text;
 			camera.Uri = tbUri.Text;
 			camera.Username = tbUsername.Text;
 			camera.ServerId = ((Server)cbServer.SelectedItem)?.Id;
-
 			cameraRepository.AddOrUpdate(camera);
 			camera = null;
 		}
@@ -88,12 +81,6 @@ namespace VirtualWork.WinForms
 		{
 			this.camera = camera;
 			return base.ShowDialog();
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
 		}
 	}
 }

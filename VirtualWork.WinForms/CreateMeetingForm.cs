@@ -40,12 +40,7 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			bool create = meeting == null;
-			if (create)
-			{
-				meeting = new Meeting();
-			}
-
+			meeting = meeting ?? new Meeting();
 			meeting.Title = tbTitle.Text;
 			meeting.CreationDate = DateTime.UtcNow;
 			meeting.Description = rtbDescription.Text;
@@ -55,7 +50,6 @@ namespace VirtualWork.WinForms
 			meeting.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
 			meeting.RepetitionValue = (int)nudRepetitionValue.Value;
 			meeting.MeetingPoint = cbMeetingPoint.Text;
-
 			meetingRepository.AddOrUpdate(meeting);
 			meeting = null;
 		}
@@ -113,12 +107,6 @@ namespace VirtualWork.WinForms
 				//	}
 				//}
 			}
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
 		}
 	}
 }

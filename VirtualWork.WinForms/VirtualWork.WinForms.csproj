@@ -119,6 +119,12 @@
     <Compile Include="AddGroupForm.Designer.cs">
       <DependentUpon>AddGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddResource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddResource.Designer.cs">
+      <DependentUpon>AddResource.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +266,7 @@
     </Compile>
     <Compile Include="Providers\ActualUserGroupsProvider.cs" />
     <Compile Include="Providers\CalendarItemsProvider.cs" />
+    <Compile Include="Providers\ResourceListProvider.cs" />
     <Compile Include="Providers\ListProviderBase.cs" />
     <Compile Include="Providers\FileAndFolderProvider.cs" />
     <Compile Include="Providers\EventListProvider.cs" />
@@ -310,6 +317,9 @@
     <EmbeddedResource Include="AddGroupForm.resx">
       <DependentUpon>AddGroupForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddResource.resx">
+      <DependentUpon>AddResource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddServerForm.resx">
       <DependentUpon>AddServerForm.cs</DependentUpon>
@@ -424,6 +434,7 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\hammer_screwdriver.ico" />
     <None Include="Resources\eye.ico" />
     <None Include="Resources\link_2.ico" />
     <None Include="Resources\link.ico" />

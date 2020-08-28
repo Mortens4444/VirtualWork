@@ -36,6 +36,7 @@ namespace VirtualWork.WinForms
 		private readonly CreateIssueForm createIssueForm;
 		private readonly CreateEventForm createEventForm;
 		private readonly CreateMeetingForm createMeetingForm;
+		private readonly AddResource addResource;
 		private readonly AddServerForm addServerForm;
 		private readonly AddCameraForm addCameraForm;
 		private readonly CalculatorForm calculatorForm;
@@ -47,6 +48,7 @@ namespace VirtualWork.WinForms
 		private readonly EmailSettingsForm emailSettingsForm;
 		private readonly AboutBox aboutBox;
 		private readonly ServerListProvider serverListProvider;
+		private readonly ResourceListProvider resourceListProvider;
 		private readonly FileManager fileManager;		
 		private readonly IssueListProvider issueListProvider;
 		private readonly MeetingsListProvider meetingsListProvider;
@@ -71,6 +73,7 @@ namespace VirtualWork.WinForms
 			CreateIssueForm createIssueForm,
 			CreateEventForm createEventForm,
 			CreateMeetingForm createMeetingForm,
+			AddResource addResource,
 			AddServerForm addServerForm,
 			AddCameraForm addCameraForm,
 			CalculatorForm calculatorForm,
@@ -81,6 +84,7 @@ namespace VirtualWork.WinForms
 			LogViewer logViewer,
 			EmailSettingsForm emailSettingsForm,
 			AboutBox aboutBox,
+			ResourceListProvider resourceListProvider,
 			ServerListProvider serverListProvider,
 			FileManager fileManager,
 			IssueListProvider issueListProvider,
@@ -110,12 +114,14 @@ namespace VirtualWork.WinForms
 			this.logViewer = logViewer;
 			this.emailSettingsForm = emailSettingsForm;
 			this.dateTimeProvider = dateTimeProvider;
+			this.addResource = addResource;
 			this.addServerForm = addServerForm;
 			this.addCameraForm = addCameraForm;
 			this.calculatorForm = calculatorForm;
 			this.editorForm = editorForm;
 			this.passwordManager = passwordManager;
 			this.cipherForm = cipherForm;
+			this.resourceListProvider = resourceListProvider;
 			this.serverListProvider = serverListProvider;
 			this.fileManager = fileManager;
 			this.issueListProvider = issueListProvider;
@@ -136,6 +142,11 @@ namespace VirtualWork.WinForms
 
 			InitializeComponent();
 			Translator.Translate(this);
+
+			addResource.FormClosed += (_, __) =>
+			{
+				resourceListProvider.GetResources(tvItems);
+			};
 
 			fileManager.Active = lvFileExplorerLeft;
 			GetDrives();
@@ -182,6 +193,7 @@ namespace VirtualWork.WinForms
 		{
 			dateTimeProvider.ActualDateTimeReport += DateTimeProvider_ActualDateTimeReport;
 			serverListProvider.GetServersAndCamera(tvItems);
+			resourceListProvider.GetResources(tvItems);
 			GetIssues();
 			eventListProvider.GetUpcomingEvents(tvItems);
 			meetingsListProvider.GetUpcomingMeetings(tvItems);
@@ -658,6 +670,11 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		public new void ShowDialog()
+		{
+			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
+		}
+
 		protected override void OnClosing(CancelEventArgs e)
 		{
 			e.Cancel = true;
@@ -670,6 +687,11 @@ namespace VirtualWork.WinForms
 			meetingsListProvider.StopTasks();
 			dateTimeProvider.Stop();
 			Application.Exit();
+		}
+
+		private void TsmiNewResource_Click(object sender, EventArgs e)
+		{
+			addResource.Show();
 		}
 	}
 }

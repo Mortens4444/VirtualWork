@@ -32,9 +32,25 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
+    <ProjectReference Include="..\VirtualWork.Interfaces\VirtualWork.Interfaces.csproj">
+      <Name>VirtualWork.Interfaces</Name>
+      <Project>{c86e343f-bffa-4e35-b8ef-8b98e2e1f7df}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\VirtualWork.Persistence\VirtualWork.Persistence.csproj">
       <Name>VirtualWork.Persistence</Name>
       <Project>{7c700068-7e24-4c49-ad66-a1cffbfee3c4}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualWork.WinForms\VirtualWork.WinForms.csproj">
+      <Name>VirtualWork.WinForms</Name>
+      <Project>{5d186ae3-dc19-4fbb-af5e-0cae37cbd410}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>

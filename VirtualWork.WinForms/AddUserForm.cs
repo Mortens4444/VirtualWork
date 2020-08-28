@@ -50,11 +50,5 @@ namespace VirtualWork.WinForms
 		{
 			return ShowDialog() == DialogResult.OK;
 		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
-		}
 	}
 }

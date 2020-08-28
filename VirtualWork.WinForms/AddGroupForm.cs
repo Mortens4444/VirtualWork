@@ -71,11 +71,5 @@ namespace VirtualWork.WinForms
 			};
 			AddedGroup = groupRepository.Add(AddedGroup);
 		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
-		}
 	}
 }

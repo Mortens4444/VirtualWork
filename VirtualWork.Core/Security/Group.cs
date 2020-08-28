@@ -14,5 +14,10 @@ namespace VirtualWork.Core.Security
 		public bool IsActive { get; set; }
 
 		public IList<Permission> Permissions { get; set; }
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

@@ -39,6 +39,11 @@ namespace VirtualWork.WinForms
 			addUserForm.ShowDialog();
 		}
 
+		public new void ShowDialog()
+		{
+			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
+		}
+
 		protected override void OnClosing(CancelEventArgs e)
 		{
 			e.Cancel = true;

@@ -68,17 +68,12 @@ namespace VirtualWork.WinForms
 
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
-			bool add = server == null;
-			if (add)
-			{
-				server = new Server();
-			}
+			server = server ?? new Server();
 			server.Name = tbName.Text;
 			server.IpAddress = tbIpAddress.Text;
 			server.MacAddress = tbMacAddress.Text;
 			server.Password = tbPassword.Text;
 			server.Username = tbUsername.Text;
-
 			serverRepository.AddOrUpdate(server);
 			server = null;
 		}
@@ -106,12 +101,6 @@ namespace VirtualWork.WinForms
 		{
 			this.server = server;
 			return base.ShowDialog();
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
 		}
 	}
 }

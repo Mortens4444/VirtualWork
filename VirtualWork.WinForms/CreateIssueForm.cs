@@ -80,12 +80,7 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			bool create = issue == null;
-			if (create)
-			{
-				issue = new Issue();
-			}
-
+			issue = issue ?? new Issue();
 			issue.IssueState = IssueState.ToDo;
 			issue.Creator = Initializer.LoggedInUser;
 			issue.Description = rtbDescription.Text;
@@ -99,7 +94,6 @@ namespace VirtualWork.WinForms
 			issue.RepetitionValue = (int)nudRepetitionValue.Value;
 			issue.ExpirationDate = dtpExpirationDate.Value;
 			issue.CreationDate = DateTime.UtcNow;
-
 			issueRepository.AddOrUpdate(issue);
 			issue = null;
 		}
@@ -160,12 +154,6 @@ namespace VirtualWork.WinForms
 		private void CbEpic_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			selectingIssue = true;
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
 		}
 	}
 }

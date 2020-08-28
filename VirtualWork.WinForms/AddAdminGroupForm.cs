@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using VirtualWork.Core.Security;
 using VirtualWork.Persistence.Repositories;
@@ -20,8 +21,6 @@ namespace VirtualWork.WinForms
 		protected override void OnFormClosing(FormClosingEventArgs e)
 		{
 			actualUserGroupsProvider.Set(new List<Group> { AddedGroup });
-			e.Cancel = true;
-			Hide();
 		}
 	}
 }

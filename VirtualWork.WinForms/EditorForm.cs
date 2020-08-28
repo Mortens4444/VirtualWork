@@ -30,7 +30,7 @@ namespace VirtualWork.WinForms
 			InitializeComponent();
 			if (components == null)
 			{
-				components = new System.ComponentModel.Container();
+				components = new Container();
 			}
 
 			Translator.Translate(this);
@@ -46,13 +46,9 @@ namespace VirtualWork.WinForms
 			base.Show();
 		}
 
-		public DialogResult ShowDialog(string fileName = null)
+		public new void ShowDialog()
 		{
-			if (fileName != null)
-			{
-				OpenFile(fileName);
-			}
-			return base.ShowDialog();
+			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
 		}
 
 		private void OpenNewTab(FileDetails fileDetails)

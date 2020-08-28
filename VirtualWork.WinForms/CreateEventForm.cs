@@ -64,12 +64,7 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			bool create = myEvent == null;
-			if (create)
-			{
-				myEvent = new Event();
-			}
-
+			myEvent = myEvent ?? new Event();
 			var applicationWithParameters = rtbStartApplication.Text.GetExecutionParameters();
 			myEvent.ApplicationToStart = applicationWithParameters.Application;
 			myEvent.Arguments = applicationWithParameters.Parameters;
@@ -82,7 +77,6 @@ namespace VirtualWork.WinForms
 			myEvent.RepetitionValue = (int)nudRepetitionValue.Value;
 			myEvent.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
 			myEvent.Title = tbTitle.Text;
-
 			eventRepository.AddOrUpdate(myEvent);
 			myEvent = null;
 		}
@@ -109,12 +103,6 @@ namespace VirtualWork.WinForms
 		{
 			this.myEvent = myEvent;
 			return base.ShowDialog();
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
 		}
 	}
 }
