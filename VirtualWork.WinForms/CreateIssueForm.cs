@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -7,8 +6,8 @@ using VirtualWork.Core.Actors;
 using VirtualWork.Core.Job;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
+using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
-using VirtualWork.WinForms.Utils;
 
 namespace VirtualWork.WinForms
 {

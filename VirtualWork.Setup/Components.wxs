@@ -3,8 +3,9 @@
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
 
-			<?define SourceFolder = "$(var.VirtualWork.WinForms.TargetPath)" ?>
-				
+			<?define WpfSourceFolder = "..\VirtualWork\bin\Release\" ?>
+			<?define SourceFolder = "..\VirtualWork.WinForms\bin\Release\" ?>
+			
 			<Component>
 				<File Id="VirtualWork.Persistence.Output"
 					  Name="$(var.VirtualWork.Persistence.TargetFileName)"
@@ -25,23 +26,57 @@
 					  Source="$(var.VirtualWork.Interfaces.TargetPath)"
 					  KeyPath="yes" />
 			</Component>
+			
+			<Component>
+				<File Id="VirtualWork.Service.Output"
+					  Name="$(var.VirtualWork.Service.TargetFileName)"
+					  Source="$(var.VirtualWork.Service.TargetPath)"
+					  KeyPath="yes" />
+			</Component>
+			
 			<Component>
 				<File Id="VirtualWork.Output"
 					  Name="$(var.VirtualWork.TargetFileName)"
 					  Source="$(var.VirtualWork.TargetPath)"
 					  KeyPath="yes" />
 			</Component>
-			<Component>
-				<File Id="VirtualWork.WinForms.Output"
-					  Name="$(var.VirtualWork.WinForms.TargetFileName)"
-					  Source="$(var.SourceFolder)"
-					  KeyPath="yes" />
-			</Component>
 			
 			<Component>
 				<File Id="VirtualWork.Output.config"
 					  Name="$(var.VirtualWork.TargetFileName).config"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.VirtualWork.TargetPath).config"
+					  KeyPath="yes" />
+			</Component>
+			
+			<Component>
+				<File Id="VirtualWork.WinForms.Output"
+					  Name="$(var.VirtualWork.WinForms.TargetFileName)"
+					  Source="$(var.VirtualWork.WinForms.TargetPath)"
+					  KeyPath="yes">
+					<Shortcut Id="VirtualWork.WinForms.Output.Shortcut"
+						Name="VIRtual Work"
+						Description="VIRtual Work - Vallalat Iranyitasi Rendszer"
+						Directory="DesktopFolder"
+						Icon="VW.WinForms.exe"
+						IconIndex="0"
+						WorkingDirectory="INSTALLFOLDER"
+						Advertise="yes">
+						<Icon Id="VW.WinForms.exe" SourceFile="..\VirtualWork.WinForms\bin\Release\VirtualWork.WinForms.exe" />
+					</Shortcut>
+				</File>
+			</Component>
+			
+			<Component>
+				<File Id="VirtualWork.Output.WinForms.config"
+					  Name="$(var.VirtualWork.WinForms.TargetFileName).config"
+					  Source="$(var.VirtualWork.WinForms.TargetPath).config"
+					  KeyPath="yes" />
+			</Component>
+			
+			<Component>
+				<File Id="License.txt"
+					  Name="License.txt"
+					  Source="$(var.SourceFolder)License.txt"
 					  KeyPath="yes" />
 			</Component>
 
@@ -51,28 +86,28 @@
 			<Component>
 				<File Id="MessageBoxes.dll"
 					  Name="MessageBoxes.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)MessageBoxes.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="MessageBoxSender.exe"
 					  Name="MessageBoxSender.exe"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)MessageBoxSender.exe"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="Enums.dll"
 					  Name="Enums.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)Enums.dll"
 					  KeyPath="yes" />
 			</Component>
 			
 			<Component>
 				<File Id="SourceInfo.dll"
 					  Name="SourceInfo.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)SourceInfo.dll"
 					  KeyPath="yes" />
 			</Component>
 
@@ -80,35 +115,35 @@
 			<Component>
 				<File Id="LanguageService.dll"
 					  Name="LanguageService.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)LanguageService.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="LanguageService.WPF.dll"
 					  Name="LanguageService.WPF.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.WpfSourceFolder)LanguageService.WPF.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="LanguageService.Windows.Forms.dll"
 					  Name="LanguageService.Windows.Forms.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)LanguageService.Windows.Forms.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="Ionic.Zip.dll"
 					  Name="Ionic.Zip.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)Ionic.Zip.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="Languages.ods"
 					  Name="Languages.ods"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)Languages.ods"
 					  KeyPath="yes" />
 			</Component>
 			
@@ -116,7 +151,7 @@
 			<Component>
 				<File Id="EmailService.dll"
 					  Name="EmailService.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)EmailService.dll"
 					  KeyPath="yes" />
 			</Component>
 
@@ -124,21 +159,21 @@
 			<Component>
 				<File Id="CommandExecutor.exe"
 					  Name="CommandExecutor.exe"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)CommandExecutor.exe"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="CommandSender.exe"
 					  Name="CommandSender.exe"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)CommandSender.exe"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="Common.dll"
 					  Name="Common.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)Common.dll"
 					  KeyPath="yes" />
 			</Component>
 			
@@ -146,22 +181,22 @@
 
 			<Component>
 				<File Id="EntityFramework"
-					  Name="EntityFramework"
-					  Source="$(var.VirtualWork.Persistence.TargetPath)"
+					  Name="EntityFramework.dll"
+					  Source="$(var.SourceFolder)EntityFramework.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="EntityFramework.SqlServer"
-					  Name="EntityFramework.SqlServer"
-					  Source="$(var.VirtualWork.Persistence.TargetPath)"
+					  Name="EntityFramework.SqlServer.dll"
+					  Source="$(var.SourceFolder)EntityFramework.SqlServer.dll"
 					  KeyPath="yes" />
 			</Component>
 
 			<Component>
 				<File Id="Ninject.dll"
 					  Name="Ninject.dll"
-					  Source="$(var.SourceFolder)"
+					  Source="$(var.SourceFolder)Ninject.dll"
 					  KeyPath="yes" />
 			</Component>
 
@@ -170,7 +205,7 @@
 		<ComponentGroup Id="ProductDocumentation" Directory="Documentation">
 
 			<Component>
-				<File Id="VIRtualWorkUserGuide_pdf"
+				<File Id="VIRtualWorkUserGuide.pdf"
 					  Name="VIRtual Work User Guide.pdf"
 					  Source="..\VirtualWork\Documentation\VIRtual Work User Guide.pdf"
 					  KeyPath="yes" />

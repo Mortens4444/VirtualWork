@@ -9,7 +9,9 @@
 					<Directory Id="Documentation" Name="Documentation" />
 				</Directory>
 			</Directory>
-
+			
+			<Directory Id="DesktopFolder" SourceName="Desktop" />
+			
 		</Directory>
 	</Fragment>
 </Wix>

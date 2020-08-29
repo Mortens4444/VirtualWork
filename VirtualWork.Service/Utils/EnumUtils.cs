@@ -1,9 +1,9 @@
 ﻿using System;
 using LanguageService;
 
-namespace VirtualWork.WinForms.Utils
+namespace VirtualWork.Service.Utils
 {
-	class EnumUtils
+	public class EnumUtils
 	{
 		public static TEnumType GetByDescription<TEnumType>(string description)
 		{

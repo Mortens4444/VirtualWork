@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+	<?define NetFx480MinRelease = 528033 ?>
+
+	<Fragment>
+		<!-- .NET 4.8 -->
+		<PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
+		<Property Id="WIX_IS_NETFRAMEWORK_480_OR_LATER_INSTALLED" Secure="yes" />
+		<SetProperty Id="WIX_IS_NETFRAMEWORK_480_OR_LATER_INSTALLED" Value="1" After="AppSearch">
+			WIXNETFX4RELEASEINSTALLED >= "#$(var.NetFx480MinRelease)"
+		</SetProperty>
+
+		<PropertyRef Id="NETFRAMEWORK45" />
+		<PropertyRef Id="WIX_IS_NETFRAMEWORK_480_OR_LATER_INSTALLED"/>
+
+		<Condition Message="[ProductName] Requires .NET Framework 4.8.0 or later to be installed. Please install from the `Pre-Reqs` folder.">
+			<![CDATA[Installed OR WIX_IS_NETFRAMEWORK_480_OR_LATER_INSTALLED]]>
+		</Condition>
+
+		<!-- SQL Express -->
+		<Property Id="SQLEXPRESSINSTALLED" >
+			<RegistrySearch Id="IsSqlExpressServiceInstalled" Root="HKLM" Key="SYSTEM\CurrentControlSet\services\MSSQL$SQLEXPRESS" Name="Description" Type="raw" Win64="no"/>
+		</Property>
+
+		<Condition Message="Express Not Installed">SQLEXPRESSINSTALLED</Condition>
+
+		<Condition Message="Express Installed">NOT SQLEXPRESSINSTALLED</Condition>
+	</Fragment>
+	
+	<!--<Fragment>
+		
+		--><!-- Install SQL Server CE -->
+			<!--
+		<PackageGroup Id="SQLExpressCE">
+			<MsiPackage
+					  Cache="no"
+					  Compressed="no"
+					  ForcePerMachine="yes"
+					  Permanent="yes"
+					  Vital="yes"
+					  SourceFile=".\prerequisites\SSCERuntime-ENU.msi"
+					  InstallCondition="NOT VersionNT64 AND SqlInstance AND SqlServerInstalled AND SQLServer2008R2Installed" />
+			<MsiPackage
+					  Cache="no"
+					  Compressed="no"
+					  ForcePerMachine="yes"
+					  Permanent="yes"
+					  Vital="yes"
+					  SourceFile=".\prerequisites\SSCERuntime-ENU-x64.msi"
+					  InstallCondition="VersionNT64 AND NOT SqlInstance AND SqlServerInstalled AND SQLServer2008R2Installed" />
+		</PackageGroup>
+		
+	</Fragment>-->
+	
+</Wix>

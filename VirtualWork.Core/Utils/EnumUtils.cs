@@ -37,27 +37,5 @@ namespace VirtualWork.Core.Utils
 			var attributes = fieldInfo.GetCustomAttributes(typeof(TAttributeType), false);
 			return (TAttributeType)attributes.FirstOrDefault();
 		}
-
-		//public static HashSet<string> GetDisctintDescriptions<TEnumType>()
-		//	where TEnumType : struct, IConvertible
-		//{
-		//	var type = typeof(TEnumType);
-		//	if (!type.IsEnum)
-		//	{
-		//		throw new ArgumentException("TEnumType must be an enum type");
-		//	}
-
-		//	var result = new HashSet<string>();
-		//	var values = (TEnumType[])Enum.GetValues(type);
-		//	foreach (var value in values)
-		//	{
-		//		var attributes = (value as Enum).GetEnumAttribute<DescriptionAttribute>("Description").Select(element => element.ToString());
-		//		foreach (var attribute in attributes)
-		//		{
-		//			result.Add(attribute);
-		//		}
-		//	}
-		//	return result;
-		//}
 	}
 }
