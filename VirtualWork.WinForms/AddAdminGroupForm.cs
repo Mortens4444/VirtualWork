@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using VirtualWork.Core.Security;
 using VirtualWork.Persistence.Repositories;

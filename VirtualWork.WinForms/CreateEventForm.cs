@@ -34,12 +34,15 @@ namespace VirtualWork.WinForms
 		{
 			if (myEvent == null)
 			{
+				Text = Lng.Elem("Create event");
+				btnCreate.Text = Lng.Elem("Create");
+
 				dtpEventDate.Value = DateTime.Now.AddDays(1);
 				tbTitle.Text = String.Empty;
 				tbEventLocation.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
 				rtbStartApplication.Text = String.Empty;
-				cbRepetitionType.SelectedIndex = -1;
+				cbRepetitionType.SelectedIndex = 0;
 				nudRepetitionValue.Value = 100;
 			}
 			else

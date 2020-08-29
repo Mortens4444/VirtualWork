@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
+using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
 using VirtualWork.Core.Cryptography.Hashing;
@@ -17,6 +17,8 @@ namespace VirtualWork.WinForms
 		private readonly IList<Group> groups;
 		private readonly UserRepository userRepository;
 
+		private User user;
+
 		public AddUserForm(ActualUserGroupsProvider actualUserGroupsProvider,
 			UserRepository userRepository,
 			GroupRepository groupRepository)
@@ -31,14 +33,12 @@ namespace VirtualWork.WinForms
 
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
-			var user = new User
-			{
-				Name = tbName.Text,
-				PasswordHash = Hash.GetSaltedPasswordHash(tbPassword.Text),
-				IsActive = true,
-				Groups = groups
-			};
-			user = userRepository.Add(user);
+			user = user ?? new User();
+			user.Name = tbName.Text;
+			user.PasswordHash = Hash.GetSaltedPasswordHash(tbPassword.Text);
+			user.IsActive = true;
+			user.Groups = groups;
+			user = userRepository.AddOrUpdate(user);
 		}
 
 		private void CredentialsChanged(object sender, EventArgs e)
@@ -46,9 +46,35 @@ namespace VirtualWork.WinForms
 			btnAdd.Enabled = !String.IsNullOrEmpty(tbName.Text) && !String.IsNullOrEmpty(tbPassword.Text) && tbPassword.Text == tbConfirmPassword.Text;
 		}
 
-		bool IWindow.ShowDialog()
+		public new bool ShowDialog()
 		{
-			return ShowDialog() == DialogResult.OK;
+			return base.ShowDialog() == DialogResult.OK;
+		}
+
+		public bool ShowDialog(object obj)
+		{
+			user = (User)obj;
+			return ShowDialog();
+		}
+
+		private void AddUserForm_Shown(object sender, EventArgs e)
+		{
+			tbPassword.Text = String.Empty;
+			tbConfirmPassword.Text = String.Empty;
+			if (user == null)
+			{
+				Text = Lng.Elem("Add user");
+				btnAdd.Text = Lng.Elem("Add");
+
+				tbName.Text = String.Empty;
+			}
+			else
+			{
+				Text = Lng.Elem("Modify user");
+				btnAdd.Text = Lng.Elem("Modify");
+
+				tbName.Text = user.Name;
+			}
 		}
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
@@ -51,9 +50,15 @@ namespace VirtualWork.WinForms
 			btnAdd.Enabled = !String.IsNullOrEmpty(tbGroupName.Text);
 		}
 
-		bool IWindow.ShowDialog()
+		public new bool ShowDialog()
 		{
-			return ShowDialog() == DialogResult.OK;
+			return base.ShowDialog() == DialogResult.OK;
+		}
+
+		public bool ShowDialog(object obj)
+		{
+			//group = (Group)obj;
+			return ShowDialog();
 		}
 
 		private void BtnAdd_Click(object sender, EventArgs e)

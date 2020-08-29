@@ -63,12 +63,15 @@ namespace VirtualWork.WinForms
 		{
 			if (meeting == null)
 			{
+				Text = Lng.Elem("Create meeting");
+				btnCreate.Text = Lng.Elem("Create");
+
 				tbTitle.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
 				cbPartner.SelectedIndex = -1;
 				cbMeetingPoint.SelectedIndex = -1;
 				dtpMeetingDate.Value = DateTime.Now.AddDays(1);
-				cbRepetitionType.SelectedIndex = -1;
+				cbRepetitionType.SelectedIndex = 0;
 				nudRepetitionValue.Value = 100;
 			}
 			else

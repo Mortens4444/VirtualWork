@@ -32,6 +32,9 @@ namespace VirtualWork.WinForms
 
 			if (camera == null)
 			{
+				Text = Lng.Elem("Create camera");
+				btnAdd.Text = Lng.Elem("Add");
+
 				tbUri.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
 				tbName.Text = String.Empty;

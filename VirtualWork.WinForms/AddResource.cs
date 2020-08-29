@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
 using VirtualWork.Core.Infrastructure;
@@ -70,6 +71,9 @@ namespace VirtualWork.WinForms
 		{
 			if (resource == null)
 			{
+				Text = Lng.Elem("Create resource");
+				btnOk.Text = Lng.Elem("Add");
+
 				cbOwnerType.SelectedIndex = 0;
 				rtbKey.Text = String.Empty;
 				rtbOtherInformation.Text = String.Empty;
@@ -78,6 +82,9 @@ namespace VirtualWork.WinForms
 			}
 			else
 			{
+				Text = Lng.Elem("Modify resource");
+				btnOk.Text = Lng.Elem("Modify");
+
 				cbOwnerType.SelectedIndex = (int)resource.ActorType;
 				rtbKey.Text = resource.Key;
 				rtbOtherInformation.Text = resource.OtherInformation;

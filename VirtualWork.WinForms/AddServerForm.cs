@@ -38,6 +38,9 @@ namespace VirtualWork.WinForms
 		{
 			if (server == null)
 			{
+				Text = Lng.Elem("Create server");
+				btnAdd.Text = Lng.Elem("Add");
+
 				tbIpAddress.Text = String.Empty;
 				tbMacAddress.Text = String.Empty;
 				tbName.Text = String.Empty;

@@ -165,6 +165,7 @@
 			this.Name = "AddUserForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Add user";
+			this.Shown += new System.EventHandler(this.AddUserForm_Shown);
 			this.pMain.ResumeLayout(false);
 			this.gbMain.ResumeLayout(false);
 			this.gbMain.PerformLayout();

@@ -3,5 +3,7 @@
 	public interface IWindow
 	{
 		bool ShowDialog();
+
+		bool ShowDialog(object obj);
 	}
 }

@@ -47,6 +47,9 @@ namespace VirtualWork.WinForms
 
 			if (credentials == null)
 			{
+				Text = Lng.Elem("Add credentials");
+				btnAdd.Text = Lng.Elem("Add");
+
 				tbName.Text = String.Empty;
 				tbAlternativeLink.Text = String.Empty;
 				tbLink.Text = String.Empty;

@@ -56,7 +56,7 @@ namespace VirtualWork.WinForms
 		{
 			if (!selectingIssue)
 			{
-				GetEpicsAndStories();
+				GetUnfinishedIssues();
 			}
 		}
 
@@ -66,7 +66,7 @@ namespace VirtualWork.WinForms
 			cbOwnedBy.AddMatchingItems(users);
 		}
 
-		private void GetEpicsAndStories()
+		private void GetUnfinishedIssues()
 		{
 			var issueId = issue?.Id ?? 0;
 			var parents = issueRepository.GetAll(currentIssue =>
@@ -80,7 +80,6 @@ namespace VirtualWork.WinForms
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
 			issue = issue ?? new Issue();
-			issue.IssueState = IssueState.ToDo;
 			issue.Creator = Initializer.LoggedInUser;
 			issue.Description = rtbDescription.Text;
 			issue.Title = tbTitle.Text;
@@ -110,17 +109,22 @@ namespace VirtualWork.WinForms
 		private void CreateIssueForm_Shown(object sender, EventArgs e)
 		{
 			GetUsers();
-			GetEpicsAndStories();
+			GetUnfinishedIssues();
 
 			if (issue == null)
 			{
+				Text = Lng.Elem("Create issue");
+				btnCreate.Text = Lng.Elem("Create");
+
 				tbTitle.Text = String.Empty;
 				tbBlocking.Text = String.Empty;
 				tbBlockedBy.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
 				dtpDueTo.Value = DateTime.Now.AddDays(7);
 				cbParent.SelectedIndex = -1;
+				cbIssueType.SelectedIndex = 0;
 				cbIssuePriority.SelectedIndex = 2;
+				cbRepetitionType.SelectedIndex = 0;
 				cbOwnedBy.SelectedIndex = -1;
 			}
 			else
@@ -133,9 +137,11 @@ namespace VirtualWork.WinForms
 				//tbBlockedBy.Text = issue;
 				rtbDescription.Text = issue.Description;
 				dtpDueTo.Value = issue.DueDate;
-				//cbEpic.SelectedIndex = -1;
-				//cbIssuePriority.SelectedIndex = -1;
-				//cbOwnedBy.SelectedIndex = -1;
+				cbParent.SelectedItem = issue.Parent;
+				cbIssueType.SelectedIndex = (int)issue.IssueType;
+				cbIssuePriority.SelectedIndex = (int)issue.Priority;
+				cbRepetitionType.SelectedIndex = (int)issue.RepetitionType;
+				cbOwnedBy.SelectedItem = issue.Owner;
 			}
 		}
 

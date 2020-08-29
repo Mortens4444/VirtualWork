@@ -63,5 +63,10 @@ namespace VirtualWork.WinForms
 			e.Cancel = true;
 			Hide();
 		}
+
+		private void OkButton_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }

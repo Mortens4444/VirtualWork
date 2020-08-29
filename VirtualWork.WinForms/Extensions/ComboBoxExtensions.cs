@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LanguageService;
 using VirtualWork.Core.Utils;
+using VirtualWork.Interfaces;
 
 namespace VirtualWork.WinForms.Extensions
 {

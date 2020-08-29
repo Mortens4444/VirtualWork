@@ -1027,7 +1027,7 @@
 			// 
 			this.tsmiNewIssue.Image = global::VirtualWork.WinForms.Properties.Resources.operation;
 			this.tsmiNewIssue.Name = "tsmiNewIssue";
-			this.tsmiNewIssue.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewIssue.Size = new System.Drawing.Size(156, 22);
 			this.tsmiNewIssue.Text = "New issue";
 			this.tsmiNewIssue.Click += new System.EventHandler(this.TsmiNewIssue_Click);
 			// 
@@ -1035,7 +1035,7 @@
 			// 
 			this.tsmiNewEvent.Image = global::VirtualWork.WinForms.Properties.Resources.event2;
 			this.tsmiNewEvent.Name = "tsmiNewEvent";
-			this.tsmiNewEvent.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewEvent.Size = new System.Drawing.Size(156, 22);
 			this.tsmiNewEvent.Text = "New event";
 			this.tsmiNewEvent.Click += new System.EventHandler(this.TsmiNewEvent_Click);
 			// 
@@ -1043,20 +1043,20 @@
 			// 
 			this.tsmiNewMeeting.Image = global::VirtualWork.WinForms.Properties.Resources.clock;
 			this.tsmiNewMeeting.Name = "tsmiNewMeeting";
-			this.tsmiNewMeeting.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewMeeting.Size = new System.Drawing.Size(156, 22);
 			this.tsmiNewMeeting.Text = "New meeting";
 			this.tsmiNewMeeting.Click += new System.EventHandler(this.TsmiNewMeeting_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(153, 6);
 			// 
 			// tsmiNewServer
 			// 
 			this.tsmiNewServer.Image = global::VirtualWork.WinForms.Properties.Resources.computer;
 			this.tsmiNewServer.Name = "tsmiNewServer";
-			this.tsmiNewServer.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewServer.Size = new System.Drawing.Size(156, 22);
 			this.tsmiNewServer.Text = "Create server";
 			this.tsmiNewServer.Click += new System.EventHandler(this.TsmiNewServer_Click);
 			// 
@@ -1064,7 +1064,7 @@
 			// 
 			this.tsmiNewCamera.Image = global::VirtualWork.WinForms.Properties.Resources.camera;
 			this.tsmiNewCamera.Name = "tsmiNewCamera";
-			this.tsmiNewCamera.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewCamera.Size = new System.Drawing.Size(156, 22);
 			this.tsmiNewCamera.Text = "Create camera";
 			this.tsmiNewCamera.Click += new System.EventHandler(this.TsmiNewCamera_Click);
 			// 
@@ -1072,33 +1072,33 @@
 			// 
 			this.tsmiNewResource.Image = global::VirtualWork.WinForms.Properties.Resources.hammer_screwdriver;
 			this.tsmiNewResource.Name = "tsmiNewResource";
-			this.tsmiNewResource.Size = new System.Drawing.Size(180, 22);
+			this.tsmiNewResource.Size = new System.Drawing.Size(156, 22);
 			this.tsmiNewResource.Text = "Create resource";
 			this.tsmiNewResource.Click += new System.EventHandler(this.TsmiNewResource_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(153, 6);
 			// 
 			// tsmiSendEmail
 			// 
 			this.tsmiSendEmail.Image = global::VirtualWork.WinForms.Properties.Resources.email;
 			this.tsmiSendEmail.Name = "tsmiSendEmail";
-			this.tsmiSendEmail.Size = new System.Drawing.Size(180, 22);
+			this.tsmiSendEmail.Size = new System.Drawing.Size(156, 22);
 			this.tsmiSendEmail.Text = "Send e-mail";
 			this.tsmiSendEmail.Click += new System.EventHandler(this.TsmiSendEmail_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
 			// 
 			// tsmiExit
 			// 
 			this.tsmiExit.Image = global::VirtualWork.WinForms.Properties.Resources.exit;
 			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+			this.tsmiExit.Size = new System.Drawing.Size(156, 22);
 			this.tsmiExit.Text = "Exit";
 			this.tsmiExit.Click += new System.EventHandler(this.TsmiExit_Click);
 			// 
