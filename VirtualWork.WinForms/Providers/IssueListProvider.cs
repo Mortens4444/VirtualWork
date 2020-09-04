@@ -44,7 +44,7 @@ namespace VirtualWork.WinForms.Providers
 			rootNode.ExpandAll();
 		}
 
-		public void GetOngoingIssues(Taskboard taskboard, Issue parent)
+		public bool GetOngoingIssues(Taskboard taskboard, Issue parent)
 		{
 			var issueViews = taskboard.GetIssueViews();
 			foreach (IssueView issueView in issueViews)
@@ -59,14 +59,20 @@ namespace VirtualWork.WinForms.Providers
 				issue.IssueState != (int)IssueState.Cancelled &&
 				issue.IssueState != (int)IssueState.Done).ToList();
 
-			var newIssueViews = taskboard.FillWithItems(taskboardItems);
-
-			foreach (IssueView issueView in newIssueViews)
+			if (taskboardItems.Any())
 			{
-				issueView.IssueBlockedStateChanged += IssueView_IssueBlockedStateChanged;
-				issueView.IssueVerifiedStateChanged += IssueView_IssueVerifiedStateChanged;
-				issueView.IssueCancelled += IssueView_IssueCancelled;
+				var newIssueViews = taskboard.FillWithItems(taskboardItems);
+
+				foreach (IssueView issueView in newIssueViews)
+				{
+					issueView.IssueBlockedStateChanged += IssueView_IssueBlockedStateChanged;
+					issueView.IssueVerifiedStateChanged += IssueView_IssueVerifiedStateChanged;
+					issueView.IssueCancelled += IssueView_IssueCancelled;
+				}
+				return true;
 			}
+
+			return false;
 		}
 
 		private IList<IssueDto> GetNodes(TreeNodeCollection nodes, IList<IssueDto> issues, IssueDto parent = null)

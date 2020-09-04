@@ -111,6 +111,7 @@
 			this.tvUsersAndGroups.SelectedImageIndex = 0;
 			this.tvUsersAndGroups.Size = new System.Drawing.Size(455, 388);
 			this.tvUsersAndGroups.TabIndex = 1;
+			this.tvUsersAndGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvUsersAndGroups_AfterSelect);
 			// 
 			// images
 			// 
@@ -129,6 +130,7 @@
 			this.btn_Close.TabIndex = 9;
 			this.btn_Close.Text = "Close";
 			this.btn_Close.UseVisualStyleBackColor = true;
+			this.btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
 			// 
 			// btnCreateNewGroup
 			// 

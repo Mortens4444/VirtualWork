@@ -40,31 +40,31 @@ namespace VirtualWork.WinForms
 			resource.OtherInformation = rtbOtherInformation.Text;
 			resource.ActorType = (ActorType)cbOwnerType.SelectedIndex;
 			resource.Actor = (Actor)cbOwner.SelectedItem;
+			resource.ResourceType = (ResourceType)cbResourceType.SelectedIndex;
 			resourceRepository.AddOrUpdate(resource);
 			resource = null;
 		}
 
 		private void CbOwnerType_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			cbOwner.Items.Clear();
 			var actorType = (ActorType)cbOwnerType.SelectedIndex;
 			switch (actorType)
 			{
 				case ActorType.User:
 					var users = userRepository.GetAll();
-					cbOwner.Items.Clear();
 					cbOwner.Items.AddRange(users.ToArray());
 					break;
 				case ActorType.Partner:
 					break;
 				case ActorType.Group:
 					var groups = groupRepository.GetAll();
-					cbOwner.Items.Clear();
 					cbOwner.Items.AddRange(groups.ToArray());
 					break;
 				default:
 					throw new NotImplementedException($"ActorType is not found: {actorType}");
 			}
-			cbOwner.SelectedIndex = 0;
+			cbOwner.SelectFirstIfAny();
 		}
 
 		private void AddResource_Shown(object sender, EventArgs e)
@@ -77,7 +77,6 @@ namespace VirtualWork.WinForms
 				cbOwnerType.SelectedIndex = 0;
 				rtbKey.Text = String.Empty;
 				rtbOtherInformation.Text = String.Empty;
-				cbOwner.SelectedIndex = 0;
 				cbResourceType.SelectedIndex = 0;
 			}
 			else

@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
+using VirtualWork.Core.Actors;
+using VirtualWork.Core.Security;
 using VirtualWork.WinForms.Providers;
 
 namespace VirtualWork.WinForms
@@ -48,6 +50,26 @@ namespace VirtualWork.WinForms
 		{
 			e.Cancel = true;
 			Hide();
+		}
+
+		private void Btn_Close_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		private void TvUsersAndGroups_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			if (e.Node.Tag is User user)
+			{
+				rtbDescription.Text = $"{user.FullName}{Environment.NewLine}{user.OtherInformation}";
+				chkIsActive.Checked = user.IsActive;
+			}
+			else if (e.Node.Tag is Group group)
+			{
+				rtbDescription.Text = $"{group.Description}";
+				chkIsActive.Checked = group.IsActive;
+
+			}
 		}
 	}
 }

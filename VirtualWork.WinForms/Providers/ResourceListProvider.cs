@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 
@@ -42,13 +41,23 @@ namespace VirtualWork.WinForms.Providers
 			switch (resourceType)
 			{
 				case ResourceType.Car:
-				case ResourceType.DesktopComputer:
-				case ResourceType.Laptop:
-				case ResourceType.MobilePhone:
+					return 38;
 				case ResourceType.SoftwareLicense:
-					return 37;
+					return 39;
+				case ResourceType.DesktopComputer:
+					return 40;
+				case ResourceType.MobilePhone:
+					return 41;
+				case ResourceType.Display:
+					return 42;
+				case ResourceType.Keyboard:
+					return 43;
+				case ResourceType.Mouse:
+					return 44;
+				case ResourceType.Laptop:
+					return 45;
 				default:
-					throw new ArgumentOutOfRangeException($"No image available for resource type: {resourceType}");
+					return 37;
 			}
 		}
 	}

@@ -141,6 +141,7 @@ namespace VirtualWork.WinForms
 			this.errorBoxHelper = errorBoxHelper;
 
 			InitializeComponent();
+			pTaskDetails.Dock = DockStyle.Fill;
 			Translator.Translate(this);
 
 			addResource.FormClosed += (_, __) =>
@@ -223,7 +224,7 @@ namespace VirtualWork.WinForms
 
 		private void TsmiDatabaseSettings_Click(object sender, EventArgs e)
 		{
-			databaseSettingsForm.Show();
+			databaseSettingsForm.ShowDialog();
 		}
 
 		private void TsmiUserManagement_Click(object sender, EventArgs e)
@@ -260,7 +261,7 @@ namespace VirtualWork.WinForms
 
 		private void TsmiEmailSettings_Click(object sender, EventArgs e)
 		{
-			emailSettingsForm.Show();
+			emailSettingsForm.ShowDialog();
 		}
 
 		private void TsmiNewMeeting_Click(object sender, EventArgs e)
@@ -426,6 +427,8 @@ namespace VirtualWork.WinForms
 				cmiDeleteIssue.SetEnabled(false);
 				cmiDeleteEvent.SetEnabled(false);
 				cmiDeleteMeeting.SetEnabled(false);
+				cmiCreateResource.SetEnabled(false);
+				cmiEditResource.SetEnabled(false);
 
 				return;
 			}
@@ -460,12 +463,19 @@ namespace VirtualWork.WinForms
 			cmiModifyCamera.SetEnabled(cameraSelected);
 			cmiDeleteCamera.SetEnabled(cameraSelected);
 
+			var resourceRootSelected = tvItems.SelectedNode == tvItems.Nodes[ResourceListProvider.Resources];
+			cmiCreateResource.SetEnabled(resourceRootSelected);
+
+			var resourceSelected = tvItems.SelectedNode.Tag is Resource;
+			cmiEditResource.SetEnabled(resourceSelected);
+
 			var menuItems = new[]
 			{
 				cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera,
 				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera,
 				cmiModifyIssue, cmiModifyEvent, cmiModifyMeeting,
-				cmiDeleteIssue, cmiDeleteEvent, cmiDeleteMeeting
+				cmiDeleteIssue, cmiDeleteEvent, cmiDeleteMeeting,
+				cmiCreateResource, cmiEditResource
 			};
 			if (menuItems.All(menuItem => !menuItem.Enabled))
 			{
@@ -525,7 +535,21 @@ namespace VirtualWork.WinForms
 		private void GetIssues()
 		{
 			issueListProvider.GetOngoingIssues(tvItems);
-			issueListProvider.GetOngoingIssues(taskboard, tvItems.SelectedNode?.Tag as Issue);
+			GetTaskboradIssues();
+		}
+
+		private void GetTaskboradIssues()
+		{
+			var testedIssue = tvItems.SelectedNode?.Tag as Issue;
+			var hasChildren = issueListProvider.GetOngoingIssues(taskboard, testedIssue);
+			if (!hasChildren && testedIssue != null)
+			{
+				tbTaskTitle.Text = testedIssue.Title;
+				rtbTaskDescription.Text = testedIssue.Description;
+				dtpTaskDueTo.Value = testedIssue.DueDate;
+			}
+			taskboard.Visible = hasChildren;
+			pTaskDetails.Visible = !hasChildren;
 		}
 
 		private void CmiDeleteIssue_Click(object sender, EventArgs e)
@@ -659,7 +683,7 @@ namespace VirtualWork.WinForms
 
 		private void TvItems_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			issueListProvider.GetOngoingIssues(taskboard, tvItems.SelectedNode?.Tag as Issue);
+			GetTaskboradIssues();
 		}
 
 		private void TsmiPing_Click(object sender, EventArgs e)
@@ -691,7 +715,16 @@ namespace VirtualWork.WinForms
 
 		private void TsmiNewResource_Click(object sender, EventArgs e)
 		{
-			addResource.Show();
+			addResource.ShowDialog();
+		}
+
+		private void CmiEditResource_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Resource resource)
+			{
+				addResource.ShowDialog(resource);
+				resourceListProvider.GetResources(tvItems);
+			}
 		}
 	}
 }

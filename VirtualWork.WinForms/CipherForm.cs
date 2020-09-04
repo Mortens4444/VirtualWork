@@ -229,16 +229,5 @@ namespace VirtualWork.WinForms
 		{
 			Changed();
 		}
-
-		public new void ShowDialog()
-		{
-			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
-		}
 	}
 }

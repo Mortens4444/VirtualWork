@@ -36,7 +36,6 @@ namespace VirtualWork.WinForms
 			Translator.Translate(this);
 		}
 
-
 		public void Show(string fileName = null)
 		{
 			if (fileName != null)
@@ -44,11 +43,6 @@ namespace VirtualWork.WinForms
 				OpenFile(fileName);
 			}
 			base.Show();
-		}
-
-		public new void ShowDialog()
-		{
-			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
 		}
 
 		private void OpenNewTab(FileDetails fileDetails)
@@ -163,6 +157,11 @@ namespace VirtualWork.WinForms
 			OpenNewTab(fileDetails);
 			var activeTab = tabControl.SelectedTab as FileTabPage;
 			activeTab.TextBox.Text = fileContent;
+		}
+
+		public new void ShowDialog()
+		{
+			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
 		}
 
 		protected override void OnClosing(CancelEventArgs e)

@@ -17,6 +17,18 @@ namespace VirtualWork.Interfaces.Enums
 		SoftwareLicense,
 
 		[Description("Mobile phone")]
-		MobilePhone
+		MobilePhone,
+
+		[Description("Display")]
+		Display,
+
+		[Description("Keyboard")]
+		Keyboard,
+
+		[Description("Mouse")]
+		Mouse,
+
+		[Description("Other")]
+		Other
 	}
 }

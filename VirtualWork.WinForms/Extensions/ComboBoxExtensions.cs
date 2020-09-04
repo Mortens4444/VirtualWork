@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LanguageService;
 using VirtualWork.Core.Utils;
-using VirtualWork.Interfaces;
 
 namespace VirtualWork.WinForms.Extensions
 {
@@ -28,6 +27,14 @@ namespace VirtualWork.WinForms.Extensions
 				comboBox.Items.Add(item);
 			}
 			comboBox.SelectionStart = selectionStart;
+		}
+
+		public static void SelectFirstIfAny(this ComboBox comboBox)
+		{
+			if (comboBox.Items.Count > 0)
+			{
+				comboBox.SelectedIndex = 0;
+			}
 		}
 	}
 }
