@@ -244,14 +244,18 @@ namespace VirtualWork.WinForms
 
 		private void TsmiNewIssue_Click(object sender, EventArgs e)
 		{
-			createIssueForm.ShowDialog();
-			GetIssues();
+			if (createIssueForm.ShowDialog() == DialogResult.OK)
+			{
+				GetIssues();
+			}
 		}
 
 		private void TsmiNewEvent_Click(object sender, EventArgs e)
 		{
-			createEventForm.ShowDialog();
-			eventListProvider.GetUpcomingEvents(tvItems);
+			if (createEventForm.ShowDialog() == DialogResult.OK)
+			{
+				eventListProvider.GetUpcomingEvents(tvItems);
+			}
 		}
 
 		private void TsmiSendEmail_Click(object sender, EventArgs e)
@@ -266,20 +270,26 @@ namespace VirtualWork.WinForms
 
 		private void TsmiNewMeeting_Click(object sender, EventArgs e)
 		{
-			createMeetingForm.ShowDialog();
-			meetingsListProvider.GetUpcomingMeetings(tvItems);
+			if (createMeetingForm.ShowDialog() == DialogResult.OK)
+			{
+				meetingsListProvider.GetUpcomingMeetings(tvItems);
+			}
 		}
 
 		private void TsmiNewServer_Click(object sender, EventArgs e)
 		{
-			addServerForm.ShowDialog();
-			serverListProvider.GetServersAndCamera(tvItems);
+			if (addServerForm.ShowDialog() == DialogResult.OK)
+			{
+				serverListProvider.GetServersAndCamera(tvItems);
+			}
 		}
 
 		private void TsmiNewCamera_Click(object sender, EventArgs e)
 		{
-			addCameraForm.ShowDialog();
-			serverListProvider.GetServersAndCamera(tvItems);
+			if (addCameraForm.ShowDialog() == DialogResult.OK)
+			{
+				serverListProvider.GetServersAndCamera(tvItems);
+			}
 		}
 
 		private void TssbOpenCmd_ButtonClick(object sender, EventArgs e)
@@ -487,8 +497,10 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Server server)
 			{
-				addServerForm.ShowDialog(server);
-				serverListProvider.GetServersAndCamera(tvItems);
+				if (addServerForm.ShowDialog(server) == DialogResult.OK)
+				{
+					serverListProvider.GetServersAndCamera(tvItems);
+				}
 			}
 		}
 
@@ -507,8 +519,10 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Camera camera)
 			{
-				addCameraForm.ShowDialog(camera);
-				serverListProvider.GetServersAndCamera(tvItems);
+				if (addCameraForm.ShowDialog(camera) == DialogResult.OK)
+				{
+					serverListProvider.GetServersAndCamera(tvItems);
+				}
 			}
 		}
 
@@ -527,8 +541,10 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Issue issue)
 			{
-				createIssueForm.ShowDialog(issue);
-				GetIssues();
+				if (createIssueForm.ShowDialog(issue) == DialogResult.OK)
+				{
+					GetIssues();
+				}
 			}
 		}
 
@@ -567,8 +583,10 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Event myEvent)
 			{
-				createEventForm.ShowDialog(myEvent);
-				eventListProvider.GetUpcomingEvents(tvItems);
+				if (createEventForm.ShowDialog(myEvent) == DialogResult.OK)
+				{
+					eventListProvider.GetUpcomingEvents(tvItems);
+				}
 			}
 		}
 
@@ -587,8 +605,10 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Meeting meeting)
 			{
-				createMeetingForm.ShowDialog(meeting);
-				meetingsListProvider.GetUpcomingMeetings(tvItems);
+				if (createMeetingForm.ShowDialog(meeting) == DialogResult.OK)
+				{
+					meetingsListProvider.GetUpcomingMeetings(tvItems);
+				}
 			}
 		}
 
@@ -699,18 +719,11 @@ namespace VirtualWork.WinForms
 			throw new NotSupportedException("This method is not supported, use 'Show' instead of this function.");
 		}
 
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			e.Cancel = true;
-			Hide();
-		}
-
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			eventListProvider.StopTasks();
 			meetingsListProvider.StopTasks();
 			dateTimeProvider.Stop();
-			Application.Exit();
 		}
 
 		private void TsmiNewResource_Click(object sender, EventArgs e)
@@ -722,8 +735,10 @@ namespace VirtualWork.WinForms
 		{
 			if (tvItems.SelectedNode?.Tag is Resource resource)
 			{
-				addResource.ShowDialog(resource);
-				resourceListProvider.GetResources(tvItems);
+				if (addResource.ShowDialog(resource) == DialogResult.OK)
+				{
+					resourceListProvider.GetResources(tvItems);
+				}
 			}
 		}
 	}

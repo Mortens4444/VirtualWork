@@ -27,19 +27,20 @@ namespace VirtualWork.Service
 					{
 						Thread.Sleep(100);
 					}
-					if (!cancellationToken.IsCancellationRequested)
+					if (cancellationToken.IsCancellationRequested)
+					{
+						targetDateTime = DateTime.MaxValue;
+						break;
+					}
+					else
 					{
 						action();
-					}
 
-					// Get next occurrence.
-					while (targetDateTime < DateTime.Now)
-					{
-						targetDateTime = targetDateTime.CalculateNextOccurrence(appointment.RepetitionType, appointment.RepetitionValue, appointment.ExpirationDate);
-					}
-					if (targetDateTime == DateTime.MaxValue)
-					{
-						break;
+						// Get next occurrence.
+						while (targetDateTime < DateTime.Now)
+						{
+							targetDateTime = targetDateTime.CalculateNextOccurrence(appointment.RepetitionType, appointment.RepetitionValue, appointment.ExpirationDate);
+						}
 					}
 				}
 			}, cancellationToken);

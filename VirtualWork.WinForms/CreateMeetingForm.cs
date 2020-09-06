@@ -39,12 +39,15 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
+			var meetingDate = dtpMeetingDate.Value;
+			meetingDate = meetingDate.AddSeconds(-meetingDate.Second);
+
 			meeting = meeting ?? new Meeting();
 			meeting.Title = tbTitle.Text;
 			meeting.CreationDate = DateTime.UtcNow;
 			meeting.Description = rtbDescription.Text;
 			meeting.ExpirationDate = dtpExpirationDate.Value;
-			meeting.MeetingDate = dtpMeetingDate.Value;
+			meeting.MeetingDate = meetingDate;
 			meeting.Owner = Initializer.LoggedInUser;
 			meeting.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
 			meeting.RepetitionValue = (int)nudRepetitionValue.Value;

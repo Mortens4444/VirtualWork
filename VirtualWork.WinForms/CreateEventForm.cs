@@ -66,6 +66,9 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
+			var eventDate = dtpEventDate.Value;
+			eventDate = eventDate.AddSeconds(-eventDate.Second);
+
 			myEvent = myEvent ?? new Event();
 			var applicationWithParameters = rtbStartApplication.Text.GetExecutionParameters();
 			myEvent.ApplicationToStart = applicationWithParameters.Application;
@@ -73,7 +76,7 @@ namespace VirtualWork.WinForms
 			myEvent.CreationDate = DateTime.UtcNow;
 			myEvent.Creator = Initializer.LoggedInUser;
 			myEvent.Description = rtbDescription.Text;
-			myEvent.EventDate = dtpEventDate.Value;
+			myEvent.EventDate = eventDate;
 			myEvent.EventLocation = tbEventLocation.Text;
 			myEvent.ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value : (DateTime?)null;
 			myEvent.RepetitionValue = (int)nudRepetitionValue.Value;

@@ -1,16 +1,39 @@
-- Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
-- Locations where these resources are available
+Appointments
+------------
+- When pressing enter in RichTextBox, it should mean CTRL+enter.
+- Appointment EndDate should be introduced and used in calendar.
+- Appointment grouping, to easily copy/create a hole bunch of event.
 - Consultation with link to synchronize (family doctor)
 - Execute more commands when an event triggered
-- Upload invoices, images, documents
-- System settings search
-- Log filter and paging
-- Use virtual items in log list view
-- Permissions
-- Store passwords for groups
 - Calendar (week/month)
-- Source code highlight in editor / save editor settings
-- Implement calculator
-- Incoming / outgoing money
 - CreateMeetingForm remove comments
 - Get meeting/event data sheet from calendar, show it on Google Maps
+
+Resources
+---------
+- Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
+- Locations where these resources are available
+
+Invoices
+--------
+- Upload invoices, images, documents
+- Incoming / outgoing money
+
+Settings
+--------
+- System settings search
+
+Log
+---
+- Log filter and paging
+- Use virtual items in log list view
+
+Security
+--------
+- Permissions
+- Store passwords for groups
+
+Programs (utilities)
+--------------------
+- Source code highlight in editor / save editor settings
+- Implement calculator
