@@ -1,6 +1,5 @@
 Appointments
 ------------
-- When pressing enter in RichTextBox, it should mean CTRL+enter.
 - Appointment EndDate should be introduced and used in calendar.
 - Appointment grouping, to easily copy/create a hole bunch of event.
 - Consultation with link to synchronize (family doctor)

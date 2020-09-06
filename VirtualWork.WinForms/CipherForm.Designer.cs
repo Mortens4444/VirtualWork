@@ -114,6 +114,7 @@
 			// 
 			// rtb_CipherText
 			// 
+			this.rtb_CipherText.AcceptsTab = true;
 			this.rtb_CipherText.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rtb_CipherText.Location = new System.Drawing.Point(3, 16);
 			this.rtb_CipherText.Name = "rtb_CipherText";
@@ -145,6 +146,7 @@
 			// 
 			// rtb_PlainText
 			// 
+			this.rtb_PlainText.AcceptsTab = true;
 			this.rtb_PlainText.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rtb_PlainText.Location = new System.Drawing.Point(3, 16);
 			this.rtb_PlainText.Name = "rtb_PlainText";
