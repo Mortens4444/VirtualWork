@@ -4,12 +4,17 @@ using VirtualWork.Interfaces;
 
 namespace VirtualWork.Persistence.Entities
 {
-	public abstract class Image : IHaveIdentifier
+	public class EntityImage : IHaveIdentifier
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		public byte[] Content { get; set; }
+		public byte[] ImageBytes { get; set; }
+
+		[Required]
+		public int EntityId { get; set; }
+
+		public int EntityType { get; set; }
 	}
 }

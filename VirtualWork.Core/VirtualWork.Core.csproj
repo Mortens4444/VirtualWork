@@ -91,6 +91,7 @@
     <Compile Include="Exceptions\ExceptionDetails.cs" />
     <Compile Include="Exceptions\SystemErrorCodes.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -101,9 +102,7 @@
     <Compile Include="Job\Issue.cs" />
     <Compile Include="Job\IssueHistory.cs" />
     <Compile Include="Log\LogEntry.cs" />
-    <Compile Include="Media\ActorImage.cs" />
-    <Compile Include="Media\ResourceImage.cs" />
-    <Compile Include="Media\Image.cs" />
+    <Compile Include="Media\EntityImage.cs" />
     <Compile Include="Appointment\Event.cs" />
     <Compile Include="Other\Comment.cs" />
     <Compile Include="Production\Invoice.cs" />

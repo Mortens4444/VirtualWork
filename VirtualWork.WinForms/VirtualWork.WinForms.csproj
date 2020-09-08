@@ -436,6 +436,8 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\hammer_screwdriver_modify.ico" />
+    <None Include="Resources\hammer_screwdriver_remove.ico" />
     <Content Include="VirtualWork_374.ico" />
     <None Include="Resources\hammer_screwdriver.ico" />
     <None Include="Resources\eye.ico" />

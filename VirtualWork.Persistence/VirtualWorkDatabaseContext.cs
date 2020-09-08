@@ -19,6 +19,8 @@ namespace VirtualWork.Persistence
 
 		public DbSet<Email> Emails { get; set; }
 
+		public DbSet<EntityImage> EntityImages { get; set; }
+
 		public DbSet<Event> Events { get; set; }
 
 		public DbSet<Group> Groups { get; set; }
@@ -37,15 +39,11 @@ namespace VirtualWork.Persistence
 
 		public DbSet<Partner> Partners { get; set; }
 
-		public DbSet<ResourceImage> ResourceImages { get; set; }
-
 		public DbSet<Resource> Resources { get; set; }
 
 		public DbSet<SystemSetting> SystemSettings { get; set; }
 
 		public DbSet<TelephoneNumber> TelephoneNumbers { get; set; }
-
-		public DbSet<ActorImage> UserImages { get; set; }
 
         public DbSet<UserSetting> UserSettings { get; set; }
 

@@ -3,8 +3,10 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Contacts;
+using VirtualWork.Core.Media;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
+using VirtualWork.Service.Utils;
 
 namespace VirtualWork.WinForms
 {
@@ -13,20 +15,23 @@ namespace VirtualWork.WinForms
 		private readonly AddressRepository addressRepository;
 		private readonly EmailRepository emailRepository;
 		private readonly TelephoneNumberRepository telephoneNumberRepository;
-		private readonly ImageRepository userImagesRepository;
+		private readonly EntityImageRepository entityImagesRepository;
 		private readonly UserRepository userRepository;
+		private readonly ErrorBoxHelper errorBoxHelper;
 
 		public UserProfileForm(AddressRepository addressRepository,
 			EmailRepository emailRepository,
 			TelephoneNumberRepository telephoneNumberRepository,
-			ImageRepository userImagesRepository,
-			UserRepository userRepository)
+			EntityImageRepository entityImagesRepository,
+			UserRepository userRepository,
+			ErrorBoxHelper errorBoxHelper)
 		{
 			this.addressRepository = addressRepository;
 			this.emailRepository = emailRepository;
 			this.telephoneNumberRepository = telephoneNumberRepository;
-			this.userImagesRepository = userImagesRepository;
+			this.entityImagesRepository = entityImagesRepository;
 			this.userRepository = userRepository;
+			this.errorBoxHelper = errorBoxHelper;
 
 			InitializeComponent();
 			Translator.Translate(this);
@@ -55,6 +60,16 @@ namespace VirtualWork.WinForms
 					ActorType = ActorType.User
 				});
 			}
+			if (pb_Picture.Image != null)
+			{
+				entityImagesRepository.AddOrUpdate(new EntityImage
+				{
+					Entity = Initializer.LoggedInUser,
+					EntityType = EntityType.User,
+					Image = pb_Picture.Image
+				});
+			}
+			Close();
 		}
 
 		public new void ShowDialog()
@@ -71,6 +86,21 @@ namespace VirtualWork.WinForms
 		private void Btn_Cancel_Click(object sender, EventArgs e)
 		{
 			Close();
+		}
+
+		private void Btn_SelectPicture_Click(object sender, EventArgs e)
+		{
+			if (openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				try
+				{
+					pb_Picture.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+				}
+				catch (Exception ex)
+				{
+					errorBoxHelper.Show(ex);
+				}
+			}
 		}
 	}
 }

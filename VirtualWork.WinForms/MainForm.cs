@@ -54,6 +54,7 @@ namespace VirtualWork.WinForms
 		private readonly MeetingsListProvider meetingsListProvider;
 		private readonly EventListProvider eventListProvider;
 		private readonly IssueRepository issueRepository;
+		private readonly ResourceRepository resourceRepository;
 		private readonly EventRepository eventRepository;
 		private readonly MeetingRepository meetingRepository;
 		private readonly ServerRepository serverRepository;
@@ -91,6 +92,7 @@ namespace VirtualWork.WinForms
 			MeetingsListProvider meetingsListProvider,
 			EventListProvider eventListProvider,
 			IssueRepository issueRepository,
+			ResourceRepository resourceRepository,
 			ServerRepository serverRepository,
 			CameraRepository cameraRepository,
 			MeetingRepository meetingRepository,
@@ -126,6 +128,7 @@ namespace VirtualWork.WinForms
 			this.fileManager = fileManager;
 			this.issueListProvider = issueListProvider;
 			this.issueRepository = issueRepository;
+			this.resourceRepository = resourceRepository;
 			this.eventRepository = eventRepository;
 			this.meetingRepository = meetingRepository;
 			this.serverRepository = serverRepository;
@@ -739,6 +742,17 @@ namespace VirtualWork.WinForms
 				{
 					resourceListProvider.GetResources(tvItems);
 				}
+			}
+		}
+
+		private void CmiDeleteResource_Click(object sender, EventArgs e)
+		{
+			if (tvItems.SelectedNode?.Tag is Resource resource &&
+				ConfirmBox.Show(Lng.Elem("Confirmation"),
+				Lng.Elem("Are you sure you want to delete the selected resource?"), Decide.No) == DialogResult.Yes)
+			{
+				resourceRepository.Remove(resource.Id);
+				resourceListProvider.GetResources(tvItems);
 			}
 		}
 	}

@@ -61,6 +61,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +76,8 @@
     <Compile Include="Converters\LicenseConverter.cs" />
     <Compile Include="Converters\IssueHistoryConverter.cs" />
     <Compile Include="Converters\IssueConverter.cs" />
-    <Compile Include="Converters\ResourceImageConverter.cs" />
     <Compile Include="Converters\PartnerConverter.cs" />
-    <Compile Include="Converters\UserImageConverter.cs" />
+    <Compile Include="Converters\EntityImageConverter.cs" />
     <Compile Include="Converters\EmailConverter.cs" />
     <Compile Include="Converters\CommentConverter.cs" />
     <Compile Include="Converters\IConverter.cs" />
@@ -96,7 +96,7 @@
     <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\Repeatable.cs" />
     <Compile Include="Entities\Resource.cs" />
-    <Compile Include="Entities\Image.cs" />
+    <Compile Include="Entities\EntityImage.cs" />
     <Compile Include="Entities\Credentials.cs" />
     <Compile Include="Entities\Server.cs" />
     <Compile Include="Entities\Event.cs" />
@@ -105,9 +105,7 @@
     <Compile Include="Entities\IssueHistory.cs" />
     <Compile Include="Entities\License.cs" />
     <Compile Include="Entities\Setting.cs" />
-    <Compile Include="Entities\ResourceImage.cs" />
     <Compile Include="Entities\Partner.cs" />
-    <Compile Include="Entities\ActorImage.cs" />
     <Compile Include="Entities\TelephoneNumber.cs" />
     <Compile Include="Entities\IssueConnection.cs" />
     <Compile Include="Entities\SystemSetting.cs" />
@@ -170,6 +168,10 @@
     <Compile Include="Migrations\202008162156175_RenameColumns.designer.cs">
       <DependentUpon>202008162156175_RenameColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009082120540_MergeImageEntities.cs" />
+    <Compile Include="Migrations\202009082120540_MergeImageEntities.designer.cs">
+      <DependentUpon>202009082120540_MergeImageEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\CredentialsRepository.cs" />
     <Compile Include="Repositories\LogEntryRepository.cs" />
     <Compile Include="Repositories\PasswordHashRepository.cs" />
@@ -181,7 +183,7 @@
     <Compile Include="Repositories\EmailRepository.cs" />
     <Compile Include="Repositories\EntityProvider.cs" />
     <Compile Include="Repositories\LicenseRepository.cs" />
-    <Compile Include="Repositories\ImageRepository.cs" />
+    <Compile Include="Repositories\EntityImageRepository.cs" />
     <Compile Include="Repositories\TelephoneNumberRepository.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
@@ -267,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008162156175_RenameColumns.resx">
       <DependentUpon>202008162156175_RenameColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009082120540_MergeImageEntities.resx">
+      <DependentUpon>202009082120540_MergeImageEntities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>
