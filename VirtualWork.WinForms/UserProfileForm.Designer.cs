@@ -31,12 +31,9 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfileForm));
 			this.pMain = new System.Windows.Forms.Panel();
 			this.btn_Cancel = new System.Windows.Forms.Button();
-			this.btn_Save = new System.Windows.Forms.Button();
-			this.gb_Picture = new System.Windows.Forms.GroupBox();
-			this.pb_Picture = new System.Windows.Forms.PictureBox();
-			this.lbl_SizeMode = new System.Windows.Forms.Label();
-			this.cb_SizeMode = new System.Windows.Forms.ComboBox();
 			this.btn_SelectPicture = new System.Windows.Forms.Button();
+			this.btn_Save = new System.Windows.Forms.Button();
+			this.gb_Image = new System.Windows.Forms.GroupBox();
 			this.gb_PersonalDetails = new System.Windows.Forms.GroupBox();
 			this.tb_LicensePlate = new System.Windows.Forms.TextBox();
 			this.lbl_LicensePlate = new System.Windows.Forms.Label();
@@ -60,22 +57,25 @@
 			this.tb_Username = new System.Windows.Forms.TextBox();
 			this.lbl_Username = new System.Windows.Forms.Label();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.pb_Image = new System.Windows.Forms.PictureBox();
 			this.pMain.SuspendLayout();
-			this.gb_Picture.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb_Picture)).BeginInit();
+			this.gb_Image.SuspendLayout();
 			this.gb_PersonalDetails.SuspendLayout();
 			this.gb_Credentials.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb_Image)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pMain
 			// 
 			this.pMain.Controls.Add(this.btn_Cancel);
+			this.pMain.Controls.Add(this.btn_SelectPicture);
 			this.pMain.Controls.Add(this.btn_Save);
-			this.pMain.Controls.Add(this.gb_Picture);
+			this.pMain.Controls.Add(this.gb_Image);
 			this.pMain.Controls.Add(this.gb_PersonalDetails);
 			this.pMain.Controls.Add(this.gb_Credentials);
 			this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pMain.Location = new System.Drawing.Point(0, 0);
+			this.pMain.MinimumSize = new System.Drawing.Size(650, 400);
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(778, 454);
 			this.pMain.TabIndex = 0;
@@ -92,6 +92,17 @@
 			this.btn_Cancel.UseVisualStyleBackColor = true;
 			this.btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);
 			// 
+			// btn_SelectPicture
+			// 
+			this.btn_SelectPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btn_SelectPicture.Location = new System.Drawing.Point(341, 425);
+			this.btn_SelectPicture.Name = "btn_SelectPicture";
+			this.btn_SelectPicture.Size = new System.Drawing.Size(154, 23);
+			this.btn_SelectPicture.TabIndex = 24;
+			this.btn_SelectPicture.Text = "Select image";
+			this.btn_SelectPicture.UseVisualStyleBackColor = true;
+			this.btn_SelectPicture.Click += new System.EventHandler(this.Btn_SelectPicture_Click);
+			// 
 			// btn_Save
 			// 
 			this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -103,66 +114,19 @@
 			this.btn_Save.UseVisualStyleBackColor = true;
 			this.btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
 			// 
-			// gb_Picture
+			// gb_Image
 			// 
-			this.gb_Picture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.gb_Image.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gb_Picture.Controls.Add(this.pb_Picture);
-			this.gb_Picture.Controls.Add(this.lbl_SizeMode);
-			this.gb_Picture.Controls.Add(this.cb_SizeMode);
-			this.gb_Picture.Controls.Add(this.btn_SelectPicture);
-			this.gb_Picture.Location = new System.Drawing.Point(335, 1);
-			this.gb_Picture.Name = "gb_Picture";
-			this.gb_Picture.Size = new System.Drawing.Size(440, 421);
-			this.gb_Picture.TabIndex = 22;
-			this.gb_Picture.TabStop = false;
-			this.gb_Picture.Text = "Picture";
-			// 
-			// pb_Picture
-			// 
-			this.pb_Picture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pb_Picture.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.pb_Picture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pb_Picture.Location = new System.Drawing.Point(6, 59);
-			this.pb_Picture.Name = "pb_Picture";
-			this.pb_Picture.Size = new System.Drawing.Size(428, 356);
-			this.pb_Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pb_Picture.TabIndex = 5;
-			this.pb_Picture.TabStop = false;
-			// 
-			// lbl_SizeMode
-			// 
-			this.lbl_SizeMode.AutoSize = true;
-			this.lbl_SizeMode.Location = new System.Drawing.Point(6, 16);
-			this.lbl_SizeMode.Name = "lbl_SizeMode";
-			this.lbl_SizeMode.Size = new System.Drawing.Size(56, 13);
-			this.lbl_SizeMode.TabIndex = 23;
-			this.lbl_SizeMode.Text = "Size mode";
-			// 
-			// cb_SizeMode
-			// 
-			this.cb_SizeMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cb_SizeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cb_SizeMode.FormattingEnabled = true;
-			this.cb_SizeMode.Location = new System.Drawing.Point(6, 36);
-			this.cb_SizeMode.Name = "cb_SizeMode";
-			this.cb_SizeMode.Size = new System.Drawing.Size(428, 21);
-			this.cb_SizeMode.TabIndex = 23;
-			// 
-			// btn_SelectPicture
-			// 
-			this.btn_SelectPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_SelectPicture.Location = new System.Drawing.Point(280, 11);
-			this.btn_SelectPicture.Name = "btn_SelectPicture";
-			this.btn_SelectPicture.Size = new System.Drawing.Size(154, 23);
-			this.btn_SelectPicture.TabIndex = 24;
-			this.btn_SelectPicture.Text = "Select image";
-			this.btn_SelectPicture.UseVisualStyleBackColor = true;
-			this.btn_SelectPicture.Click += new System.EventHandler(this.Btn_SelectPicture_Click);
+			this.gb_Image.Controls.Add(this.pb_Image);
+			this.gb_Image.Location = new System.Drawing.Point(335, 1);
+			this.gb_Image.Name = "gb_Image";
+			this.gb_Image.Size = new System.Drawing.Size(440, 421);
+			this.gb_Image.TabIndex = 22;
+			this.gb_Image.TabStop = false;
+			this.gb_Image.Text = "Image";
+			this.gb_Image.UseCompatibleTextRendering = true;
 			// 
 			// gb_PersonalDetails
 			// 
@@ -411,6 +375,18 @@
 			this.lbl_Username.TabIndex = 1;
 			this.lbl_Username.Text = "Username";
 			// 
+			// pb_Image
+			// 
+			this.pb_Image.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.pb_Image.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.pb_Image.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pb_Image.Location = new System.Drawing.Point(3, 16);
+			this.pb_Image.Name = "pb_Image";
+			this.pb_Image.Size = new System.Drawing.Size(434, 402);
+			this.pb_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pb_Image.TabIndex = 5;
+			this.pb_Image.TabStop = false;
+			// 
 			// UserProfileForm
 			// 
 			this.AcceptButton = this.btn_Save;
@@ -420,18 +396,18 @@
 			this.ClientSize = new System.Drawing.Size(778, 454);
 			this.Controls.Add(this.pMain);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MinimumSize = new System.Drawing.Size(594, 393);
 			this.Name = "UserProfileForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "User profile";
 			this.Shown += new System.EventHandler(this.UserProfileForm_Shown);
 			this.pMain.ResumeLayout(false);
-			this.gb_Picture.ResumeLayout(false);
-			this.gb_Picture.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb_Picture)).EndInit();
+			this.gb_Image.ResumeLayout(false);
 			this.gb_PersonalDetails.ResumeLayout(false);
 			this.gb_PersonalDetails.PerformLayout();
 			this.gb_Credentials.ResumeLayout(false);
 			this.gb_Credentials.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb_Image)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -441,10 +417,8 @@
 		private System.Windows.Forms.Panel pMain;
 		private System.Windows.Forms.Button btn_Cancel;
 		private System.Windows.Forms.Button btn_Save;
-		private System.Windows.Forms.GroupBox gb_Picture;
-		private System.Windows.Forms.PictureBox pb_Picture;
-		private System.Windows.Forms.Label lbl_SizeMode;
-		private System.Windows.Forms.ComboBox cb_SizeMode;
+		private System.Windows.Forms.GroupBox gb_Image;
+		private System.Windows.Forms.PictureBox pb_Image;
 		private System.Windows.Forms.Button btn_SelectPicture;
 		private System.Windows.Forms.GroupBox gb_PersonalDetails;
 		private System.Windows.Forms.TextBox tb_LicensePlate;

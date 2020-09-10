@@ -16,5 +16,7 @@ namespace VirtualWork.Persistence.Entities
 		public int EntityId { get; set; }
 
 		public int EntityType { get; set; }
+
+		public string Description { get; set; }
 	}
 }

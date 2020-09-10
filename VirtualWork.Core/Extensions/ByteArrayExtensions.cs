@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Drawing;
+using System.IO;
+using System.Text;
 
 namespace VirtualWork.Core.Extensions
 {
@@ -28,6 +30,19 @@ namespace VirtualWork.Core.Extensions
 				result.AppendFormat("[{0}]", bytes[i]);
 			}
 			return result.ToString();
+		}
+
+		public static Image ToImage(this byte[] bytes)
+		{
+			if (bytes == null || bytes.Length == 0)
+			{
+				return null;
+			}
+
+			using (var memoryStream = new MemoryStream(bytes))
+			{
+				return Image.FromStream(memoryStream);
+			}
 		}
 	}
 }

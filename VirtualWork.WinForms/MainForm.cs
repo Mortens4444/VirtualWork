@@ -10,6 +10,7 @@ using MessageBoxes;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Core.Infrastructure;
 using VirtualWork.Core.Job;
+using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Date;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Job;
@@ -66,6 +67,7 @@ namespace VirtualWork.WinForms
 		private readonly IDateTimeProvider dateTimeProvider;
 		private readonly ProcessUtils processUtils;
 		private readonly ErrorBoxHelper errorBoxHelper;
+		private readonly AddImageForm addImageForm;
 
 		public MainForm(DatabaseSettingsForm databaseSettingsForm,
 			UserManagementForm userManagementForm,
@@ -103,6 +105,7 @@ namespace VirtualWork.WinForms
 			SystemSettingsRepository systemSettingsRepository,
 			ProcessUtils processUtils,
 			ErrorBoxHelper errorBoxHelper,
+			AddImageForm addImageForm,
 			IDateTimeProvider dateTimeProvider)
 		{
 			this.databaseSettingsForm = databaseSettingsForm;
@@ -142,6 +145,7 @@ namespace VirtualWork.WinForms
 			this.pingRequestSender = pingRequestSender;
 			this.processUtils = processUtils;
 			this.errorBoxHelper = errorBoxHelper;
+			this.addImageForm = addImageForm;
 
 			InitializeComponent();
 			pTaskDetails.Dock = DockStyle.Fill;
@@ -442,6 +446,8 @@ namespace VirtualWork.WinForms
 				cmiDeleteMeeting.SetEnabled(false);
 				cmiCreateResource.SetEnabled(false);
 				cmiEditResource.SetEnabled(false);
+				cmiDeleteResource.SetEnabled(false);
+				cmiAddImage.SetEnabled(false);
 
 				return;
 			}
@@ -481,6 +487,8 @@ namespace VirtualWork.WinForms
 
 			var resourceSelected = tvItems.SelectedNode.Tag is Resource;
 			cmiEditResource.SetEnabled(resourceSelected);
+			cmiDeleteResource.SetEnabled(resourceSelected);
+			cmiAddImage.SetEnabled(resourceSelected);
 
 			var menuItems = new[]
 			{
@@ -488,7 +496,7 @@ namespace VirtualWork.WinForms
 				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera,
 				cmiModifyIssue, cmiModifyEvent, cmiModifyMeeting,
 				cmiDeleteIssue, cmiDeleteEvent, cmiDeleteMeeting,
-				cmiCreateResource, cmiEditResource
+				cmiCreateResource, cmiEditResource, cmiDeleteResource, cmiAddImage
 			};
 			if (menuItems.All(menuItem => !menuItem.Enabled))
 			{
@@ -701,7 +709,7 @@ namespace VirtualWork.WinForms
 
 		private void CipherToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			cipherForm.ShowDialog();
+			cipherForm.Show();
 		}
 
 		private void TvItems_AfterSelect(object sender, TreeViewEventArgs e)
@@ -753,6 +761,15 @@ namespace VirtualWork.WinForms
 			{
 				resourceRepository.Remove(resource.Id);
 				resourceListProvider.GetResources(tvItems);
+			}
+		}
+
+		private void CmiAddImage_Click(object sender, EventArgs e)
+		{
+			var selectedNode = tvItems.SelectedNode?.Tag as IHaveIdentifier;
+			if (selectedNode != null)
+			{
+				addImageForm.Show(selectedNode);
 			}
 		}
 	}

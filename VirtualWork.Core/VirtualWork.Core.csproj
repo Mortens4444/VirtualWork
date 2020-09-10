@@ -91,6 +91,7 @@
     <Compile Include="Exceptions\ExceptionDetails.cs" />
     <Compile Include="Exceptions\SystemErrorCodes.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\IHaveIdentifierExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />

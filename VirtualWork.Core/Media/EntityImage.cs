@@ -13,5 +13,7 @@ namespace VirtualWork.Core.Media
 		public IHaveIdentifier Entity { get; set; }
 
 		public EntityType EntityType { get; set; }
+
+		public string Description { get; set; }
 	}
 }

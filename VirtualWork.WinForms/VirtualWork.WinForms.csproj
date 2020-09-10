@@ -122,6 +122,12 @@
     <Compile Include="AddGroupForm.Designer.cs">
       <DependentUpon>AddGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddImageForm.Designer.cs">
+      <DependentUpon>AddImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddResource.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +326,9 @@
       <DependentUpon>AddGroupForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddImageForm.resx">
+      <DependentUpon>AddImageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddResource.resx">
       <DependentUpon>AddResource.cs</DependentUpon>
     </EmbeddedResource>
@@ -438,6 +447,7 @@
     </Content>
     <None Include="Resources\hammer_screwdriver_modify.ico" />
     <None Include="Resources\hammer_screwdriver_remove.ico" />
+    <None Include="Resources\image_add.ico" />
     <Content Include="VirtualWork_374.ico" />
     <None Include="Resources\hammer_screwdriver.ico" />
     <None Include="Resources\eye.ico" />

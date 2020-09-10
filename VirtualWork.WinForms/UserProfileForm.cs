@@ -15,21 +15,21 @@ namespace VirtualWork.WinForms
 		private readonly AddressRepository addressRepository;
 		private readonly EmailRepository emailRepository;
 		private readonly TelephoneNumberRepository telephoneNumberRepository;
-		private readonly EntityImageRepository entityImagesRepository;
+		private readonly EntityImageRepository entityImageRepository;
 		private readonly UserRepository userRepository;
 		private readonly ErrorBoxHelper errorBoxHelper;
 
 		public UserProfileForm(AddressRepository addressRepository,
 			EmailRepository emailRepository,
 			TelephoneNumberRepository telephoneNumberRepository,
-			EntityImageRepository entityImagesRepository,
+			EntityImageRepository entityImageRepository,
 			UserRepository userRepository,
 			ErrorBoxHelper errorBoxHelper)
 		{
 			this.addressRepository = addressRepository;
 			this.emailRepository = emailRepository;
 			this.telephoneNumberRepository = telephoneNumberRepository;
-			this.entityImagesRepository = entityImagesRepository;
+			this.entityImageRepository = entityImageRepository;
 			this.userRepository = userRepository;
 			this.errorBoxHelper = errorBoxHelper;
 
@@ -47,6 +47,9 @@ namespace VirtualWork.WinForms
 			//tb_LicensePlate.Text = user.Li
 			tb_Username.Text = user.Name;
 			tb_OtherInformations.Text = user.OtherInformation;
+			var entityImage = entityImageRepository.Get(image => image.EntityId == user.Id && image.EntityType == (int)EntityType.User);
+			pb_Image.Image = entityImage?.Image;
+			pb_Image.Tag = entityImage;
 		}
 
 		private void Btn_Save_Click(object sender, EventArgs e)
@@ -60,13 +63,15 @@ namespace VirtualWork.WinForms
 					ActorType = ActorType.User
 				});
 			}
-			if (pb_Picture.Image != null)
+			if (pb_Image.Image != null)
 			{
-				entityImagesRepository.AddOrUpdate(new EntityImage
+				var entityImage = ((EntityImage)pb_Image.Tag);
+				entityImageRepository.AddOrUpdate(new EntityImage
 				{
+					Id = entityImage?.Id ?? 0,
 					Entity = Initializer.LoggedInUser,
 					EntityType = EntityType.User,
-					Image = pb_Picture.Image
+					Image = pb_Image.Image
 				});
 			}
 			Close();
@@ -94,7 +99,7 @@ namespace VirtualWork.WinForms
 			{
 				try
 				{
-					pb_Picture.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+					pb_Image.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
 				}
 				catch (Exception ex)
 				{

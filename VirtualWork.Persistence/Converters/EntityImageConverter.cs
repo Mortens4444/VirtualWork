@@ -34,11 +34,8 @@ namespace VirtualWork.Persistence.Converters
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
-			using (var memoryStream = new MemoryStream(entity.ImageBytes))
-			{
-				dto.Image = Image.FromStream(memoryStream);
-				dto.EntityType = (EntityTypeEnum)entity.EntityType;
-			}
+			dto.Image = entity.ImageBytes.ToImage();
+			dto.EntityType = (EntityTypeEnum)entity.EntityType;
 
 			switch (dto.EntityType)
 			{

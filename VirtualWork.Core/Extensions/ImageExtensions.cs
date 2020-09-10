@@ -8,6 +8,11 @@ namespace VirtualWork.Core.Extensions
 	{
 		public static byte[] ToByteArray(this Image image)
 		{
+			if (image == null)
+			{
+				return new byte[] { };
+			}
+
 			using (var memoryStream = new MemoryStream())
 			{
 				image.Save(memoryStream, ImageFormat.Png);
