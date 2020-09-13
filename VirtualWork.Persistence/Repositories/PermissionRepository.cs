@@ -1,10 +1,10 @@
-﻿using VirtualWork.Persistence.Converters;
-using VirtualWork.Persistence.Entities;
+﻿using VirtualWork.Persistence.Entities;
+using PermissionConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Security.Permission, VirtualWork.Persistence.Entities.Permission>;
 using PermissionDto = VirtualWork.Core.Security.Permission;
 
 namespace VirtualWork.Persistence.Repositories
 {
-    public class PermissionRepository : RepositoryBase<PermissionDto, Permission>
+	public class PermissionRepository : RepositoryBase<PermissionDto, Permission>
     {
         public PermissionRepository(
             VirtualWorkDatabaseContext mtfDatabase,

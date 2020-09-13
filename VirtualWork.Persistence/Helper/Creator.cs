@@ -9,8 +9,8 @@ using ExceptionDetails = VirtualWork.Core.Exceptions.ExceptionDetails;
 namespace VirtualWork.WinForms
 {
 	public abstract class Creator<TDtoType, TEntityType>
-		where TDtoType : class, IHaveIdentifier
-		where TEntityType : class, IHaveIdentifier
+		where TDtoType : class, IHaveIdentifier, new()
+		where TEntityType : class, IHaveIdentifier, new()
 	{
 		private readonly IWindow window;
 

@@ -65,10 +65,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\CredentialsConverter.cs" />
     <Compile Include="Converters\LogEntryConverter.cs" />
     <Compile Include="Converters\ResourceConverter.cs" />
-    <Compile Include="Converters\CameraConverter.cs" />
     <Compile Include="Converters\EventConverter.cs" />
     <Compile Include="Converters\MeetingConverter.cs" />
     <Compile Include="Converters\ServerConverter.cs" />
@@ -78,15 +76,9 @@
     <Compile Include="Converters\IssueConverter.cs" />
     <Compile Include="Converters\PartnerConverter.cs" />
     <Compile Include="Converters\EntityImageConverter.cs" />
-    <Compile Include="Converters\EmailConverter.cs" />
     <Compile Include="Converters\CommentConverter.cs" />
     <Compile Include="Converters\IConverter.cs" />
-    <Compile Include="Converters\PermissionConverter.cs" />
-    <Compile Include="Converters\GroupConverter.cs" />
-    <Compile Include="Converters\SystemSettingConverter.cs" />
     <Compile Include="Converters\UserSettingConverter.cs" />
-    <Compile Include="Converters\AddressConverter.cs" />
-    <Compile Include="Converters\TelephoneNumberConverter.cs" />
     <Compile Include="Converters\UserConverter.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Camera.cs" />

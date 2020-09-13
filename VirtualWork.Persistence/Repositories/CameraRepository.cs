@@ -1,10 +1,11 @@
 ﻿using VirtualWork.Persistence.Converters;
 using VirtualWork.Persistence.Entities;
-using CommentDto = VirtualWork.Core.Infrastructure.Camera;
+using CameraDto = VirtualWork.Core.Infrastructure.Camera;
+using CameraConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Infrastructure.Camera, VirtualWork.Persistence.Entities.Camera>;
 
 namespace VirtualWork.Persistence.Repositories
 {
-	public class CameraRepository : RepositoryBase<CommentDto, Camera>
+	public class CameraRepository : RepositoryBase<CameraDto, Camera>
     {
         public CameraRepository(
 			VirtualWorkDatabaseContext mtfDatabase,

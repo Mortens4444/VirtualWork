@@ -4,6 +4,7 @@ using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Actors.User;
 using EntityType = VirtualWork.Persistence.Entities.User;
+using GroupConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Security.Group, VirtualWork.Persistence.Entities.Group>;
 
 namespace VirtualWork.Persistence.Converters
 {

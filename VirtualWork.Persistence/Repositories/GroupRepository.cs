@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using VirtualWork.Persistence.Converters;
 using VirtualWork.Persistence.Entities;
+using GroupConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Security.Group, VirtualWork.Persistence.Entities.Group>;
 using GroupDto = VirtualWork.Core.Security.Group;
 
 namespace VirtualWork.Persistence.Repositories

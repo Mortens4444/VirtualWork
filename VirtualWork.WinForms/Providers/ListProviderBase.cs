@@ -9,8 +9,8 @@ using VirtualWork.WinForms.Extensions;
 namespace VirtualWork.WinForms.Providers
 {
 	public abstract class ListProviderBase<TDtoType, TEntityType>
-		where TDtoType : class, IHaveIdentifier, IHaveTitle
-		where TEntityType : class, IHaveIdentifier
+		where TDtoType : class, IHaveIdentifier, IHaveTitle, new()
+		where TEntityType : class, IHaveIdentifier, new()
 	{
 		protected CancellationToken cancellationToken;
 		private readonly RepositoryBase<TDtoType, TEntityType> repository;

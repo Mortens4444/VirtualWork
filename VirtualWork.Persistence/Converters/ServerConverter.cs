@@ -3,6 +3,7 @@ using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Infrastructure.Server;
 using EntityType = VirtualWork.Persistence.Entities.Server;
+using CameraConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Infrastructure.Camera, VirtualWork.Persistence.Entities.Camera>;
 
 namespace VirtualWork.Persistence.Converters
 {

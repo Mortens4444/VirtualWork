@@ -6,7 +6,7 @@ using VirtualWork.Persistence.Repositories;
 
 namespace VirtualWork.Persistence.Converters
 {
-	public abstract class ConverterBase<TDtoType, TEntityType> : IConverter<TDtoType, TEntityType>
+	public class ConverterBase<TDtoType, TEntityType> : IConverter<TDtoType, TEntityType>
 		where TDtoType : class, IHaveIdentifier, new()
 		where TEntityType : class, IHaveIdentifier, new()
 	{

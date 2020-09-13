@@ -8,16 +8,16 @@ using VirtualWork.Persistence.Converters;
 
 namespace VirtualWork.Persistence.Repositories
 {
-	public abstract class RepositoryBase<TDtoType, TEntityType> : EntityProvider<TEntityType>
-		where TDtoType : class, IHaveIdentifier
-		where TEntityType : class, IHaveIdentifier
+	public class RepositoryBase<TDtoType, TEntityType> : EntityProvider<TEntityType>
+		where TDtoType : class, IHaveIdentifier, new()
+		where TEntityType : class, IHaveIdentifier, new()
 	{
         protected VirtualWorkDatabaseContext VirtualWorkDatabase;
 		protected IConverter<TDtoType, TEntityType> Converter;
 		protected DbSet<TEntityType> DatabaseTable;
 
 		public RepositoryBase(VirtualWorkDatabaseContext mtfDatabase,
-			IConverter<TDtoType, TEntityType> converter,
+			ConverterBase<TDtoType, TEntityType> converter,
 			DbSet<TEntityType> databaseTable) : base()
         {
             VirtualWorkDatabase = mtfDatabase;

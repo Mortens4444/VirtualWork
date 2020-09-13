@@ -33,8 +33,8 @@ namespace VirtualWork.WinForms.Extensions
 			RepositoryBase<TDtoType, TEntityType> repository,
 			int elementImageIndex = 0,
 			Func<TEntityType, bool> predicate = null)
-			where TDtoType : class, IHaveIdentifier, IHaveName
-			where TEntityType : class, IHaveIdentifier
+			where TDtoType : class, IHaveIdentifier, IHaveName, new()
+			where TEntityType : class, IHaveIdentifier, new()
 		{
 			var elements = repository.GetAll(predicate);
 			foreach (var element in elements)
@@ -49,8 +49,8 @@ namespace VirtualWork.WinForms.Extensions
 			RepositoryBase<TDtoType, TEntityType> repository,
 			int elementImageIndex = 0,
 			Func<TEntityType, bool> predicate = null)
-			where TDtoType : class, IHaveIdentifier, IHaveTitle
-			where TEntityType : class, IHaveIdentifier
+			where TDtoType : class, IHaveIdentifier, IHaveTitle, new()
+			where TEntityType : class, IHaveIdentifier, new()
 		{
 			var elements = repository.GetAll(predicate);
 			foreach (var element in elements)

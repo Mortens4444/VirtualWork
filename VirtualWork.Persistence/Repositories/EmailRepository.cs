@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using VirtualWork.Persistence.Converters;
+using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Entities;
+using EmailConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Contacts.Email, VirtualWork.Persistence.Entities.Email>;
 using EmailDto = VirtualWork.Core.Contacts.Email;
 
 namespace VirtualWork.Persistence.Repositories

@@ -1,6 +1,6 @@
-﻿using VirtualWork.Persistence.Converters;
-using VirtualWork.Persistence.Entities;
+﻿using VirtualWork.Persistence.Entities;
 using AddressDto = VirtualWork.Core.Contacts.Address;
+using AddressConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Contacts.Address, VirtualWork.Persistence.Entities.Address>;
 
 namespace VirtualWork.Persistence.Repositories
 {

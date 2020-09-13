@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VirtualWork.Persistence.Converters;
 using VirtualWork.Persistence.Entities;
+using CredentialsConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Security.Credentials, VirtualWork.Persistence.Entities.Credentials>;
 using CredentialsDto = VirtualWork.Core.Security.Credentials;
 
 namespace VirtualWork.Persistence.Repositories

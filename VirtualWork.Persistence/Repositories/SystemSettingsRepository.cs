@@ -2,8 +2,8 @@
 using System.Linq.Expressions;
 using VirtualWork.Core.Cryptography.Ciphers.Production;
 using VirtualWork.Interfaces.EmailService;
-using VirtualWork.Persistence.Converters;
 using VirtualWork.Persistence.Entities;
+using SystemSettingConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Settings.SystemSetting, VirtualWork.Persistence.Entities.SystemSetting>;
 using SystemSettingDto = VirtualWork.Core.Settings.SystemSetting;
 
 namespace VirtualWork.Persistence.Repositories
