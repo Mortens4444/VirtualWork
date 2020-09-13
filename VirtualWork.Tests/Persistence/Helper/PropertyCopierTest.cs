@@ -47,7 +47,7 @@ namespace VirtualWork.Tests.Persistence.Helper
 		}
 
 		[TestMethod]
-		public void DoNotCopyPropertiesWhenThereIsPropertyTypeMismatchII()
+		public void CopyPropertiesWhenTheTargetIsEnumAndSourceIsInt()
 		{
 			var address = new Address
 			{
@@ -60,7 +60,24 @@ namespace VirtualWork.Tests.Persistence.Helper
 			propertyCopier.CopyProperties(address, addressDto);
 
 			Assert.AreEqual(address.Id, addressDto.Id);
-			Assert.AreEqual((PublicAreaKind)0, addressDto.PublicAreaKind);
+			Assert.AreEqual(PublicAreaKind.Road, addressDto.PublicAreaKind);
+		}
+
+		[TestMethod]
+		public void CopyPropertiesWhenTheTargetIsIntAndSourceIsEnum()
+		{
+			var addressDto = new Core.Contacts.Address
+			{
+				Id = 1,
+				PublicAreaKind = PublicAreaKind.Road
+			};
+			var address = new Address();
+
+			var propertyCopier = new PropertyCopier(null, null);
+			propertyCopier.CopyProperties(addressDto, address);
+
+			Assert.AreEqual(address.Id, addressDto.Id);
+			Assert.AreEqual(1, address.PublicAreaKind);
 		}
 	}
 }

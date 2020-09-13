@@ -1,5 +1,4 @@
-using VirtualWork.Interfaces.Enums;
-using VirtualWork.Persistence.Helper;
+﻿using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Appointment.Meeting;
 using EntityType = VirtualWork.Persistence.Entities.Meeting;
@@ -22,13 +21,11 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
 		{
 			entity.OwnerId = dto.Owner.Id;
-			entity.RepetitionType = (int)dto.RepetitionType;
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Owner = userRepository.Get(entity.OwnerId);
-			dto.RepetitionType = (RepetitionType)entity.RepetitionType;
 		}
 	}
 }

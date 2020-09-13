@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.IO;
-using VirtualWork.Core.Extensions;
+﻿using VirtualWork.Core.Extensions;
 using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Media.EntityImage;
@@ -28,14 +26,12 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingDtoParameters(DtoType dto, EntityType entity)
 		{
 			entity.EntityId = dto.Entity.Id;
-			entity.EntityType = (int)dto.EntityType;
 			entity.ImageBytes = dto.Image.ToByteArray();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Image = entity.ImageBytes.ToImage();
-			dto.EntityType = (EntityTypeEnum)entity.EntityType;
 
 			switch (dto.EntityType)
 			{

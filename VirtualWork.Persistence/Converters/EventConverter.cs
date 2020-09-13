@@ -1,5 +1,4 @@
 ﻿using VirtualWork.Core.Extensions;
-using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Appointment.Event;
@@ -24,8 +23,6 @@ namespace VirtualWork.Persistence.Converters
 		{
 			entity.CreatorId = dto.Creator.Id;
 			entity.StartApplication = $"{dto.ApplicationToStart} {dto.Arguments}";
-
-			entity.RepetitionType = (int)dto.RepetitionType;
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
@@ -34,8 +31,6 @@ namespace VirtualWork.Persistence.Converters
 			var (application, parameters) = entity.StartApplication.GetExecutionParameters();
 			dto.ApplicationToStart = application;
 			dto.Arguments = parameters;
-
-			dto.RepetitionType = (RepetitionType)entity.RepetitionType;
 		}
 	}
 }

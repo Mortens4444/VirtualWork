@@ -77,6 +77,17 @@ namespace VirtualWork.Persistence.Helper
 
 						toProperty.SetValue(to, fromValue);
 					}
+					else
+					{
+						if (toProperty.PropertyType.IsEnum)
+						{
+							toProperty.SetValue(to, Enum.ToObject(toProperty.PropertyType, fromValue));
+						}
+						else if (fromProperty.PropertyType.IsEnum)
+						{
+							toProperty.SetValue(to, Convert.ChangeType(fromValue, toProperty.PropertyType));
+						}
+					}
 				}
 			}
 		}
