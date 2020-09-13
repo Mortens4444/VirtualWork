@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Actors;
+using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
@@ -30,8 +31,10 @@ namespace VirtualWork.Persistence.Entities
 
 		public string Title { get; set; }
 
+		[UtcDateTime]
 		public DateTime CreationDate { get; set; }
 
+		[UtcDateTime]
 		public DateTime MeetingDate { get; set; }
 
 		public HashSet<INotifiable> Followers { get; set; }

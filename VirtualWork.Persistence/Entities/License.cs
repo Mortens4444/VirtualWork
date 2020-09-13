@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
@@ -22,8 +23,10 @@ namespace VirtualWork.Persistence.Entities
 
 		public string Name { get; set; }
 
+		[UtcDateTime]
 		public DateTime OrderDate { get; set; }
 
+		[UtcDateTime]
 		public DateTime? RenewalDate { get; set; }
 	}
 }

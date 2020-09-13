@@ -766,10 +766,9 @@ namespace VirtualWork.WinForms
 
 		private void CmiAddImage_Click(object sender, EventArgs e)
 		{
-			var selectedNode = tvItems.SelectedNode?.Tag as IHaveIdentifier;
-			if (selectedNode != null)
+			if (tvItems.SelectedNode?.Tag is IHaveIdentifier haveIdentifier)
 			{
-				addImageForm.Show(selectedNode);
+				addImageForm.Show(haveIdentifier);
 			}
 		}
 	}

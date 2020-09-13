@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using VirtualWork.Core.Cryptography.Ciphers.Production;
 using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Attributes;
@@ -28,23 +29,49 @@ namespace VirtualWork.Persistence.Helper
 
 			foreach (var fromProperty in fromProperties)
 			{
-				var toProperty = toProperties.FirstOrDefault(property => property.Name == fromProperty.Name);
+				var toProperty = toProperties.FirstOrDefault(property => property.Name == fromProperty.Name && property.SetMethod != null);
 				if (toProperty != null)
 				{
 					var fromValue = fromProperty.GetValue(from);
 					if (fromProperty.PropertyType == toProperty.PropertyType)
 					{
-						var encryptionKey = GetEncryptionKey(fromProperty.GetEncryptionAttribute());
-						if (encryptionKey != null)
+						// PropertyCopier should be separated and moved into Core, Encryption should be here
+						if (fromProperty.PropertyType == typeof(DateTime))
 						{
-							fromValue = productionCipher.Decrypt(fromValue.ToString(), encryptionKey);
+							if (fromProperty.HasUtcDateTimeAttribute())
+							{
+								fromValue = ((DateTime)fromValue).GetViewDateTimeFormat();
+							}
+							else if (toProperty.HasUtcDateTimeAttribute())
+							{
+								fromValue = ((DateTime)fromValue).GetRepositoryDateTimeFormat();
+							}
+						}
+						else if (fromProperty.PropertyType == typeof(DateTime?))
+						{
+							if (fromProperty.HasUtcDateTimeAttribute())
+							{
+								fromValue = ((DateTime?)fromValue)?.GetViewDateTimeFormat();
+							}
+							else if (toProperty.HasUtcDateTimeAttribute())
+							{
+								fromValue = ((DateTime?)fromValue)?.GetRepositoryDateTimeFormat();
+							}
 						}
 						else
 						{
-							encryptionKey = GetEncryptionKey(toProperty.GetEncryptionAttribute());
+							var encryptionKey = GetEncryptionKey(fromProperty.GetEncryptionAttribute());
 							if (encryptionKey != null)
 							{
-								fromValue = productionCipher.Encrypt(fromValue.ToString(), encryptionKey);
+								fromValue = productionCipher.Decrypt(fromValue.ToString(), encryptionKey);
+							}
+							else
+							{
+								encryptionKey = GetEncryptionKey(toProperty.GetEncryptionAttribute());
+								if (encryptionKey != null)
+								{
+									fromValue = productionCipher.Encrypt(fromValue.ToString(), encryptionKey);
+								}
 							}
 						}
 

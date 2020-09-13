@@ -40,6 +40,7 @@
     <Compile Include="Actors\INotifiable.cs" />
     <Compile Include="Actors\IUser.cs" />
     <Compile Include="Attributes\Coloring.cs" />
+    <Compile Include="Attributes\UtcDateTimeAttribute.cs" />
     <Compile Include="Attributes\SystemSpecificEncryptionAttribute.cs" />
     <Compile Include="Attributes\SimpleEncryptionAttribute.cs" />
     <Compile Include="Attributes\EncryptionAttribute.cs" />

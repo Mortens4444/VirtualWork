@@ -10,5 +10,10 @@ namespace VirtualWork.Core.Extensions
 		{
 			return propertyInfo.GetCustomAttributes(typeof(EncryptionAttribute), false).FirstOrDefault() as EncryptionAttribute;
 		}
+
+		public static bool HasUtcDateTimeAttribute(this PropertyInfo propertyInfo)
+		{
+			return propertyInfo.GetCustomAttributes(typeof(UtcDateTimeAttribute), false).FirstOrDefault() != null;
+		}
 	}
 }

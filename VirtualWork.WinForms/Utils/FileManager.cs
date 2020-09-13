@@ -61,7 +61,7 @@ namespace VirtualWork.WinForms.Utils
 
 			return null;
 		}
-		//lblWorkingDirectory.Text
+
 		public void Copy(ListView lvFileExplorerLeft, ListView lvFileExplorerRight)
 		{
 			var source = Active == lvFileExplorerLeft ? WorkingDirectoryOnLeft : WorkingDirectoryOnRight;

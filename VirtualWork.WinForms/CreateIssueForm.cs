@@ -52,7 +52,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
-		private void CbEpic_TextChanged(object sender, EventArgs e)
+		private void CbParent_TextChanged(object sender, EventArgs e)
 		{
 			if (!selectingIssue)
 			{

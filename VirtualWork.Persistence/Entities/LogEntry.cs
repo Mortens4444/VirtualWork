@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
@@ -15,6 +16,7 @@ namespace VirtualWork.Persistence.Entities
 		public int? UserId { get; set; }
 		public virtual User User { get; set; }
 
+		[UtcDateTime]
 		public DateTime TimeStamp { get; set; }
 
 		public string Message { get; set; }

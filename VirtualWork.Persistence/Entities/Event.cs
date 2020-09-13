@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
@@ -26,6 +27,7 @@ namespace VirtualWork.Persistence.Entities
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string EventLocation { get; set; }
 
+		[UtcDateTime]
 		public DateTime EventDate { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]

@@ -228,7 +228,7 @@
 			this.cbParent.TabIndex = 18;
 			this.cbParent.SelectedIndexChanged += new System.EventHandler(this.CbEpic_SelectedIndexChanged);
 			this.cbParent.SelectionChangeCommitted += new System.EventHandler(this.CbEpic_SelectionChangeCommitted);
-			this.cbParent.TextChanged += new System.EventHandler(this.CbEpic_TextChanged);
+			this.cbParent.TextChanged += new System.EventHandler(this.CbParent_TextChanged);
 			// 
 			// lblParent
 			// 

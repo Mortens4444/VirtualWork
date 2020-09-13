@@ -1,4 +1,3 @@
-﻿using VirtualWork.Core.Extensions;
 using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Job.IssueHistory;
@@ -26,16 +25,12 @@ namespace VirtualWork.Persistence.Converters
 		{
 			entity.IssueId = dto.Issue.Id;
 			entity.ModifierUserId = dto.ModifierUser.Id;
-
-			entity.ModifyDate = dto.ModifyDate.GetRepositoryDateTimeFormat();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Issue = issueRepository.Get(entity.IssueId);
 			dto.ModifierUser = userRepository.Get(entity.ModifierUserId);
-
-			dto.ModifyDate = entity.ModifyDate.GetViewDateTimeFormat();
 		}
 	}
 }

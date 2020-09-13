@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
@@ -33,8 +34,10 @@ namespace VirtualWork.Persistence.Entities
 		[Required]
 		public string Title { get; set; }
 
+		[UtcDateTime]
 		public DateTime CreationDate { get; set; }
 
+		[UtcDateTime]
 		public DateTime DueDate { get; set; }
 
 		public TimeSpan Interval { get; set; }

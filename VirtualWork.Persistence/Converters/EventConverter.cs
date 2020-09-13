@@ -26,8 +26,6 @@ namespace VirtualWork.Persistence.Converters
 			entity.StartApplication = $"{dto.ApplicationToStart} {dto.Arguments}";
 
 			entity.RepetitionType = (int)dto.RepetitionType;
-			entity.EventDate = dto.EventDate.GetRepositoryDateTimeFormat();
-			entity.ExpirationDate = dto.ExpirationDate?.GetRepositoryDateTimeFormat();
 		}
 
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
@@ -38,8 +36,6 @@ namespace VirtualWork.Persistence.Converters
 			dto.Arguments = parameters;
 
 			dto.RepetitionType = (RepetitionType)entity.RepetitionType;
-			dto.EventDate = entity.EventDate.GetViewDateTimeFormat();
-			dto.ExpirationDate = entity.ExpirationDate?.GetViewDateTimeFormat();
 		}
 	}
 }
