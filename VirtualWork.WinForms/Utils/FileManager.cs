@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using Enums;
@@ -127,7 +128,15 @@ namespace VirtualWork.WinForms.Utils
 
 				if (File.Exists(fullPath))
 				{
-					processUtils.Start(fullPath);
+					var mediaFileExtensions = new List<string> { ".avi", ".mp3", ".mpg", ".ogg", ".wav" };
+					if (mediaFileExtensions.Contains(Path.GetExtension(fullPath).ToLower()))
+					{
+						PlayMediaFile(fullPath);
+					}
+					else
+					{
+						processUtils.Start(fullPath);
+					}
 				}
 				else if (Directory.Exists(fullPath))
 				{
@@ -145,6 +154,18 @@ namespace VirtualWork.WinForms.Utils
 			}
 
 			return null;
+		}
+
+		private void PlayMediaFile(string filePath)
+		{
+			if (!Directory.Exists(filePath))
+			{
+				var mediaPlayer = new MediaPlayer(filePath);
+				mediaPlayer.Play(false);
+				mediaPlayer.PlayStopped += (_, __) =>
+				{
+				};
+			}
 		}
 	}
 }
