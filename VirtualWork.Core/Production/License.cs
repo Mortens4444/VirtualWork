@@ -5,7 +5,7 @@ using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Production
 {
-	public class License : IHaveIdentifier
+	public class License : IHaveIdentifier, IHaveActorOwner
 	{
 		public int Id { get; set; }
 
@@ -20,6 +20,8 @@ namespace VirtualWork.Core.Production
 		public DateTime? RenewalDate { get; set; }
 
 		public Actor Actor { get; set; }
+
+		public int ActorId { get => Actor.Id; }
 
 		public ActorType ActorType { get; set; }
 	}

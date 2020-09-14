@@ -69,6 +69,10 @@
     <Compile Include="Enums\PublicAreaKind.cs" />
     <Compile Include="Enums\ResourceType.cs" />
     <Compile Include="Enums\RepetitionType.cs" />
+    <Compile Include="IEntityHaveActorOwner.cs" />
+    <Compile Include="IEntityHaveEntityOwner.cs" />
+    <Compile Include="IHaveEntityOwner.cs" />
+    <Compile Include="IHaveActorOwner.cs" />
     <Compile Include="IHaveTitle.cs" />
     <Compile Include="IHaveName.cs" />
     <Compile Include="IHaveIdentifier.cs" />

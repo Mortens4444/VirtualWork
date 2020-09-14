@@ -6,7 +6,7 @@ using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
-	public class License : IHaveIdentifier
+	public class License : IHaveIdentifier, IEntityHaveActorOwner
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

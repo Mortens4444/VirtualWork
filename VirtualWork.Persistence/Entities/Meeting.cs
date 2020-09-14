@@ -8,7 +8,7 @@ using VirtualWork.Interfaces.Attributes;
 
 namespace VirtualWork.Persistence.Entities
 {
-	public class Meeting : Repeatable, IHaveIdentifier
+	public class Meeting : Repeatable, IHaveIdentifier, IEntityHaveActorOwner
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

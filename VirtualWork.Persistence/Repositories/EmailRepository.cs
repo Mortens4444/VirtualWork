@@ -18,7 +18,7 @@ namespace VirtualWork.Persistence.Repositories
 
 		protected override Expression<Func<Email, bool>> EntitySearchPredicate(EmailDto dto)
 		{
-			return dbEntity => dbEntity.ActorId == dto.ActorId && dbEntity.ActorType == (int)dto.ActorType;
+			return EntitySearchPredicate(dto as IHaveActorOwner);
 		}
 	}
 }

@@ -5,7 +5,7 @@ using VirtualWork.Interfaces.Contacts;
 
 namespace VirtualWork.Persistence.Entities
 {
-	public class Address : IContactInfo, IHaveIdentifier
+	public class Address : IContactInfo, IHaveIdentifier, IEntityHaveEntityOwner
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

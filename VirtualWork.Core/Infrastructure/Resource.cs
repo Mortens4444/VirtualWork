@@ -4,7 +4,7 @@ using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Infrastructure
 {
-	public class Resource : IHaveIdentifier
+	public class Resource : IHaveIdentifier, IHaveActorOwner
 	{
 		public int Id { get; set; }
 
@@ -15,6 +15,8 @@ namespace VirtualWork.Core.Infrastructure
 		public string OtherInformation { get; set; }
 
 		public Actor Actor { get; set; }
+
+		public int ActorId { get => Actor.Id; }
 
 		public ActorType ActorType { get; set; }
 	}

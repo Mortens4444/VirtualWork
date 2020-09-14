@@ -1,9 +1,10 @@
+using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Contacts;
 using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Contacts
 {
-	public class Address : ContactBase, IAddress
+	public class Address : ContactBase, IAddress, IHaveEntityOwner
 	{
 		public string City { get; set; }
 
@@ -16,6 +17,8 @@ namespace VirtualWork.Core.Contacts
 		public string FullAddress { get; set; }
 
 		public PublicAreaKind PublicAreaKind { get; set; }
+
+		public int EntityId { get; set; }
 
 		public EntityType EntityType { get; set; }
 	}

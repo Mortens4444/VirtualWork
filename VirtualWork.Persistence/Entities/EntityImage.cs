@@ -4,7 +4,7 @@ using VirtualWork.Interfaces;
 
 namespace VirtualWork.Persistence.Entities
 {
-	public class EntityImage : IHaveIdentifier
+	public class EntityImage : IHaveIdentifier, IEntityHaveEntityOwner
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

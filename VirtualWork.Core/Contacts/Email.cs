@@ -1,10 +1,10 @@
-using VirtualWork.Core.Actors;
+using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Contacts;
 using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Contacts
 {
-	public class Email : ContactBase, IEmailAddress
+	public class Email : ContactBase, IEmailAddress, IHaveActorOwner
 	{
 		public string Address { get; set; }
 

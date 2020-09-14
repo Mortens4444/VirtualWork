@@ -3,7 +3,7 @@ using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Security
 {
-	public class Credentials : IHaveIdentifier, IHaveName
+	public class Credentials : IHaveIdentifier, IHaveName, IHaveActorOwner
 	{
 		public int Id { get; set; }
 

@@ -38,6 +38,16 @@ namespace VirtualWork.Persistence.Repositories
 			return dbEntity => dbEntity.Id == dto.Id;
 		}
 
+		protected virtual Expression<Func<TEntityType, bool>> EntitySearchPredicate(IHaveActorOwner dto)
+		{
+			return dbEntity => ((IEntityHaveActorOwner)dbEntity).ActorId == dto.ActorId && ((IEntityHaveActorOwner)dbEntity).ActorType == (int)dto.ActorType;
+		}
+
+		protected virtual Expression<Func<TEntityType, bool>> EntitySearchPredicate(IHaveEntityOwner dto)
+		{
+			return dbEntity => ((IEntityHaveEntityOwner)dbEntity).EntityId == dto.EntityId && ((IEntityHaveEntityOwner)dbEntity).EntityType == (int)dto.EntityType;
+		}
+
 		public TDtoType AddOrUpdate(TDtoType dto)
 		{
 			var expression = EntitySearchPredicate(dto);
