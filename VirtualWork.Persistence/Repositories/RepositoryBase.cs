@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using VirtualWork.Core.Utils;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Converters;
 
@@ -93,6 +94,29 @@ namespace VirtualWork.Persistence.Repositories
 		public IEnumerable<TDtoType> GetMany(Func<TEntityType, bool> predicate)
 		{
 			var entities = DatabaseTable.AsNoTracking().Where(predicate);
+
+			if (TypeUtils.IsImplementingInterface<TEntityType, IHaveName>())
+			{
+				var orderableEntities = entities.Cast<IHaveName>();
+				return orderableEntities.OrderBy(orderableEntity => orderableEntity.Name)
+					.Cast<TEntityType>()
+					.Select(Converter.ToDto);
+			}
+			else if (TypeUtils.IsImplementingInterface<TEntityType, IHaveTitle>())
+			{
+				var orderableEntities = entities.Cast<IHaveTitle>();
+				return orderableEntities.OrderBy(orderableEntity => orderableEntity.Title)
+					.Cast<TEntityType>()
+					.Select(Converter.ToDto);
+			}
+			else if (TypeUtils.IsImplementingInterface<TEntityType, IResource>())
+			{
+				var orderableEntities = entities.Cast<IResource>();
+				return orderableEntities.OrderBy(orderableEntity => orderableEntity.ResourceType)
+					.ThenBy(orderableEntity => orderableEntity.Key)
+					.Cast<TEntityType>()
+					.Select(Converter.ToDto);
+			}
 			return entities.Select(Converter.ToDto);
 		}
 

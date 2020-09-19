@@ -4,7 +4,7 @@ using VirtualWork.Interfaces.Enums;
 
 namespace VirtualWork.Core.Infrastructure
 {
-	public class Resource : IHaveIdentifier, IHaveActorOwner
+	public class Resource : IHaveIdentifier, IHaveActorOwner, IResource
 	{
 		public int Id { get; set; }
 

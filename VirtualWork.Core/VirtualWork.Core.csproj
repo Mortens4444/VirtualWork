@@ -117,6 +117,7 @@
     <Compile Include="Settings\UserOption.cs" />
     <Compile Include="Utils\EnumUtils.cs" />
     <Compile Include="Exceptions\ExceptionCatcher.cs" />
+    <Compile Include="Utils\TypeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtualWork.Interfaces\VirtualWork.Interfaces.csproj">
