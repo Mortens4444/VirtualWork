@@ -28,7 +28,7 @@ namespace VirtualWork.Persistence.Converters
 		protected override void CopyTypeMismatchingEntityParameters(EntityType entity, DtoType dto)
 		{
 			dto.Creator = userRepository.Get(entity.CreatorId);
-			dto.Parent = ToDto(entityProvider.GetEntity(entity.ParentId, VirtualWorkDatabaseContext.Issues));
+			dto.Parent = ToDto(entityProvider.GetEntity(entity.ParentId));
 			dto.Owner = userRepository.Get(entity.OwnerId);
 		}
 	}

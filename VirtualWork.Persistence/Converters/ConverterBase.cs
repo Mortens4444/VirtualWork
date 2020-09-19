@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using System.Linq;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
@@ -22,10 +21,6 @@ namespace VirtualWork.Persistence.Converters
 			this.entityProvider = entityProvider;
 			this.propertyCopier = propertyCopier;
 			VirtualWorkDatabaseContext = virtualWorkDatabaseContext;
-
-			var tables = virtualWorkDatabaseContext.GetType().GetProperties();
-			var tableInfo = tables.Single(table => table.PropertyType == typeof(DbSet<TEntityType>));
-			dataTable = tableInfo.GetValue(virtualWorkDatabaseContext) as DbSet<TEntityType>;
 		}
 
 		public virtual TDtoType ToDto(TEntityType entity)
@@ -52,7 +47,7 @@ namespace VirtualWork.Persistence.Converters
 				return null;
 			}
 
-			var result = entityProvider.GetEntity(dto.Id, dataTable) ?? new TEntityType();
+			var result = entityProvider.GetEntity(dto.Id) ?? new TEntityType();
 			propertyCopier.CopyProperties(dto, result);
 			CopyTypeMismatchingDtoParameters(dto, result);
 			return result;

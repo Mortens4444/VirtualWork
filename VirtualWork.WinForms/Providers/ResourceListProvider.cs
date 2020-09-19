@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using VirtualWork.Interfaces.Enums;
-using VirtualWork.Persistence.Repositories;
+using ResourceRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Resource, VirtualWork.Persistence.Entities.Resource>;
 
 namespace VirtualWork.WinForms.Providers
 {

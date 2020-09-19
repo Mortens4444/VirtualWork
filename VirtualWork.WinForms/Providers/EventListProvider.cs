@@ -5,10 +5,10 @@ using Common.Messages;
 using LanguageService;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Entities;
-using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service;
 using VirtualWork.Service.Process;
 using EventDto = VirtualWork.Core.Appointment.Event;
+using EventRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Appointment.Event, VirtualWork.Persistence.Entities.Event>;
 
 namespace VirtualWork.WinForms.Providers
 {

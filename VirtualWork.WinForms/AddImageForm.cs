@@ -6,8 +6,8 @@ using VirtualWork.Core.Extensions;
 using VirtualWork.Core.Media;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Enums;
-using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Utils;
+using EntityImageRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Media.EntityImage, VirtualWork.Persistence.Entities.EntityImage>;
 
 namespace VirtualWork.WinForms
 {

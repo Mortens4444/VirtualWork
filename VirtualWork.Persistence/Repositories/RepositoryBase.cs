@@ -15,15 +15,13 @@ namespace VirtualWork.Persistence.Repositories
 	{
         protected VirtualWorkDatabaseContext VirtualWorkDatabase;
 		protected IConverter<TDtoType, TEntityType> Converter;
-		protected DbSet<TEntityType> DatabaseTable;
 
 		public RepositoryBase(VirtualWorkDatabaseContext mtfDatabase,
 			ConverterBase<TDtoType, TEntityType> converter,
-			DbSet<TEntityType> databaseTable) : base()
+			DbSet<TEntityType> databaseTable) : base(databaseTable)
         {
             VirtualWorkDatabase = mtfDatabase;
 			Converter = converter;
-			DatabaseTable = databaseTable;
 		}
 
 		public TDtoType Add(TDtoType dto)
@@ -81,7 +79,7 @@ namespace VirtualWork.Persistence.Repositories
 
 		public TDtoType Get(int id)
 		{
-			var result = GetEntity(id, DatabaseTable);
+			var result = GetEntity(id);
 			return Converter.ToDto(result);
 		}
 

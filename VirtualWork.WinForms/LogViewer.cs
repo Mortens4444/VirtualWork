@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
-using VirtualWork.Persistence.Repositories;
+using LogEntryRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Log.LogEntry, VirtualWork.Persistence.Entities.LogEntry>;
 
 namespace VirtualWork.WinForms
 {

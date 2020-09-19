@@ -5,9 +5,9 @@ using Common.Messages;
 using LanguageService;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Entities;
-using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service;
 using MeetingDto = VirtualWork.Core.Appointment.Meeting;
+using MeetingRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Appointment.Meeting, VirtualWork.Persistence.Entities.Meeting>;
 
 namespace VirtualWork.WinForms.Providers
 {

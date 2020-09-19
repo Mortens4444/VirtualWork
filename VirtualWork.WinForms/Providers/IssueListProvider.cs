@@ -5,10 +5,10 @@ using System.Windows.Forms;
 using VirtualWork.Core.Job;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Job;
-using VirtualWork.Persistence.Repositories;
 using VirtualWork.WinForms.Controls;
 using VirtualWork.WinForms.Extensions;
 using IssueDto = VirtualWork.Core.Job.Issue;
+using IssueRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Job.Issue, VirtualWork.Persistence.Entities.Issue>;
 
 namespace VirtualWork.WinForms.Providers
 {

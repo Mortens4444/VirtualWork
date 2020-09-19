@@ -1,7 +1,8 @@
 ﻿using System.Windows.Forms;
 using VirtualWork.Core.Infrastructure;
-using VirtualWork.Persistence.Repositories;
 using VirtualWork.WinForms.Extensions;
+using CameraRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Camera, VirtualWork.Persistence.Entities.Camera>;
+using ServerRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Server, VirtualWork.Persistence.Entities.Server>;
 
 namespace VirtualWork.WinForms.Providers
 {

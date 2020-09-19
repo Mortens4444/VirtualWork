@@ -4,9 +4,9 @@ using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Interfaces.Enums;
-using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
+using MeetingRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Appointment.Meeting, VirtualWork.Persistence.Entities.Meeting>;
 
 namespace VirtualWork.WinForms
 {

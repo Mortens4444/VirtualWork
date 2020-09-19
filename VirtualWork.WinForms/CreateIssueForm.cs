@@ -8,6 +8,7 @@ using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
+using IssueRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Job.Issue, VirtualWork.Persistence.Entities.Issue>;
 
 namespace VirtualWork.WinForms
 {

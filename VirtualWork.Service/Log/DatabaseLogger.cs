@@ -4,7 +4,7 @@ using VirtualWork.Core.Log;
 using VirtualWork.Interfaces.Actors;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Interfaces.Log;
-using VirtualWork.Persistence.Repositories;
+using LogEntryRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Log.LogEntry, VirtualWork.Persistence.Entities.LogEntry>;
 
 namespace VirtualWork.Service.Log
 {

@@ -4,6 +4,7 @@ using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Media.EntityImage;
 using EntityType = VirtualWork.Persistence.Entities.EntityImage;
 using EntityTypeEnum = VirtualWork.Interfaces.Enums.EntityType;
+using ResourceRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Resource, VirtualWork.Persistence.Entities.Resource>;
 
 namespace VirtualWork.Persistence.Converters
 {

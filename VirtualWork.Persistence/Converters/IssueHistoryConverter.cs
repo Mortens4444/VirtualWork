@@ -1,7 +1,8 @@
-using VirtualWork.Persistence.Helper;
+﻿using VirtualWork.Persistence.Helper;
 using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Job.IssueHistory;
 using EntityType = VirtualWork.Persistence.Entities.IssueHistory;
+using IssueRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Job.Issue, VirtualWork.Persistence.Entities.Issue>;
 
 namespace VirtualWork.Persistence.Converters
 {

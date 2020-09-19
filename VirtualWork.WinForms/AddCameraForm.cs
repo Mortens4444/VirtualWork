@@ -4,7 +4,8 @@ using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Infrastructure;
-using VirtualWork.Persistence.Repositories;
+using CameraRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Camera, VirtualWork.Persistence.Entities.Camera>;
+using ServerRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Server, VirtualWork.Persistence.Entities.Server>;
 
 namespace VirtualWork.WinForms
 {

@@ -7,6 +7,9 @@ using VirtualWork.Core.Media;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Utils;
+using AddressRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Contacts.Address, VirtualWork.Persistence.Entities.Address>;
+using EntityImageRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Media.EntityImage, VirtualWork.Persistence.Entities.EntityImage>;
+using TelephoneNumberRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Contacts.TelephoneNumber, VirtualWork.Persistence.Entities.TelephoneNumber>;
 
 namespace VirtualWork.WinForms
 {

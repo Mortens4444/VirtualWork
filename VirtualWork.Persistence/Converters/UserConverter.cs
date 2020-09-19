@@ -5,6 +5,8 @@ using VirtualWork.Persistence.Repositories;
 using DtoType = VirtualWork.Core.Actors.User;
 using EntityType = VirtualWork.Persistence.Entities.User;
 using GroupConverter = VirtualWork.Persistence.Converters.ConverterBase<VirtualWork.Core.Security.Group, VirtualWork.Persistence.Entities.Group>;
+using AddressRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Contacts.Address, VirtualWork.Persistence.Entities.Address>;
+using TelephoneNumberRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Contacts.TelephoneNumber, VirtualWork.Persistence.Entities.TelephoneNumber>;
 
 namespace VirtualWork.Persistence.Converters
 {

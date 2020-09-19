@@ -165,22 +165,12 @@
       <DependentUpon>202009082120540_MergeImageEntities.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\CredentialsRepository.cs" />
-    <Compile Include="Repositories\LogEntryRepository.cs" />
     <Compile Include="Repositories\PasswordHashRepository.cs" />
-    <Compile Include="Repositories\ResourceRepository.cs" />
-    <Compile Include="Repositories\CameraRepository.cs" />
-    <Compile Include="Repositories\EventRepository.cs" />
-    <Compile Include="Repositories\MeetingRepository.cs" />
-    <Compile Include="Repositories\ServerRepository.cs" />
     <Compile Include="Repositories\EmailRepository.cs" />
     <Compile Include="Repositories\EntityProvider.cs" />
     <Compile Include="Repositories\LicenseRepository.cs" />
-    <Compile Include="Repositories\EntityImageRepository.cs" />
-    <Compile Include="Repositories\TelephoneNumberRepository.cs" />
-    <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\IssueHistoryRepository.cs" />
-    <Compile Include="Repositories\IssueRepository.cs" />
     <Compile Include="Repositories\SystemSettingsRepository.cs" />
     <Compile Include="VirtualWorkDatabaseContext.cs" />
     <Compile Include="Entities\UserSetting.cs" />
