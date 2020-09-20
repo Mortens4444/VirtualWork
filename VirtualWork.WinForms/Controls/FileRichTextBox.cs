@@ -6,7 +6,7 @@ using VirtualWork.WinForms.Dto;
 
 namespace VirtualWork.WinForms.Controls
 {
-	public class FileRichTextBox : RichTextBox
+	public class FileRichTextBox : RichTextBoxWithHighlight
 	{
 		private static int newDocumentNumber = 1;
 		public FileDetails FileDetails { get; set; }

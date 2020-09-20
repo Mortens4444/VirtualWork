@@ -58,6 +58,7 @@
     <Compile Include="EmailService\IEmailSenderOptions.cs" />
     <Compile Include="EmailService\IEmailSender.cs" />
     <Compile Include="EmailService\SmtpServerOptions.cs" />
+    <Compile Include="Enums\ColoringMode.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\ActorType.cs" />
     <Compile Include="Enums\CalendarViewType.cs" />

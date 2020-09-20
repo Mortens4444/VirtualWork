@@ -164,6 +164,9 @@
     <Compile Include="Controls\IssueView.Designer.cs">
       <DependentUpon>IssueView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RichTextBoxWithHighlight.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Taskboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -275,6 +278,7 @@
     </Compile>
     <Compile Include="Providers\ActualUserGroupsProvider.cs" />
     <Compile Include="Providers\CalendarItemsProvider.cs" />
+    <Compile Include="Providers\ColoringProvider.cs" />
     <Compile Include="Providers\ResourceListProvider.cs" />
     <Compile Include="Providers\ListProviderBase.cs" />
     <Compile Include="Providers\FileAndFolderProvider.cs" />

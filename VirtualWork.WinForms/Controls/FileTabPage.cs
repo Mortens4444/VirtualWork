@@ -1,5 +1,8 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using VirtualWork.Interfaces.Enums;
 using VirtualWork.Service.FileHandling;
 using VirtualWork.WinForms.Dto;
 
@@ -7,25 +10,28 @@ namespace VirtualWork.WinForms.Controls
 {
 	public class FileTabPage : TabPage
 	{
-		public FileRichTextBox TextBox { get; private set; }
-
-		public FileDetails FileDetails
-		{
-			get
-			{
-				return TextBox.FileDetails;
-			}
-			set
-			{
-				TextBox.FileDetails = value;
-			}
-		}
-
 		private readonly FileWriter fileWriter;
+		private readonly Dictionary<string, ColoringMode> knownExtensions = new Dictionary<string, ColoringMode>
+		{
+			{ ".cpp", ColoringMode.CppCli },
+			{ ".cs", ColoringMode.CSharp },
+			{ ".java", ColoringMode.Java },
+			{ ".pde", ColoringMode.Java },
+			{ ".pas", ColoringMode.ObjectPascal },
+			{ ".vb", ColoringMode.VisualBasic },
+		};
 
 		public FileTabPage(FileWriter fileWriter)
 		{
 			this.fileWriter = fileWriter;
+		}
+
+		public FileRichTextBox TextBox { get; private set; }
+
+		public FileDetails FileDetails
+		{
+			get => TextBox.FileDetails;
+			set => TextBox.FileDetails = value;
 		}
 
 		public void Initialize(FileDetails fileDetails)
@@ -37,6 +43,14 @@ namespace VirtualWork.WinForms.Controls
 			Size = new Size(711, 375);
 			TabIndex = 0;
 			Text = fileDetails?.ShowFileName ?? $"New Document {TextBox.DocumentNumber}";
+			if (fileDetails != null)
+			{
+				var extension = Path.GetExtension(fileDetails.FileName).ToLower();
+				if (knownExtensions.ContainsKey(extension))
+				{
+					TextBox.ColoringMode = knownExtensions[extension];
+				}
+			}
 			UseVisualStyleBackColor = true;
 			Visible = false;
 
