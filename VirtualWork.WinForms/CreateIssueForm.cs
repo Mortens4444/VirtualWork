@@ -132,6 +132,7 @@ namespace VirtualWork.WinForms
 			{
 				Text = Lng.Elem("Modify issue");
 				btnCreate.Text = Lng.Elem("Modify");
+				cbParent.Text = String.Empty;
 
 				tbTitle.Text = issue.Title;
 				//tbBlocking.Text = issue;

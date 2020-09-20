@@ -3,7 +3,8 @@ using System.Linq;
 using System.Reflection;
 using Ninject;
 using Ninject.Modules;
-using VirtualWork.Persistence.Converters;
+using Ninject.Syntax;
+using VirtualWork.Core.Utils;
 
 namespace VirtualWork.Persistence
 {
@@ -14,7 +15,7 @@ namespace VirtualWork.Persistence
 			var binding = Bind<VirtualWorkDatabaseContext>().ToSelf().InSingletonScope();
 			var virtualWorkDatabaseContext = binding.Kernel.Get<VirtualWorkDatabaseContext>();
 			var properties = typeof(VirtualWorkDatabaseContext).GetProperties();
-			var bindMethod = GetType().GetMethods().First(method => method.Name == "Bind" && method.GetGenericArguments().Length == 1);
+			var bindMethod = GetType().GetFirstGenericFunctionWithNameAndOneTypeParameter("Bind");
 			foreach (var property in properties)
 			{
 				dynamic bindingToSyntax = bindMethod.MakeGenericMethod(property.PropertyType).Invoke(this, null);
@@ -22,18 +23,16 @@ namespace VirtualWork.Persistence
 				bindingToSyntax.ToConstant(value).InSingletonScope();
 			}
 
-			Bind<ConverterBase<Core.Other.Comment, Entities.Comment>>().To<CommentConverter>();
-			Bind<ConverterBase<Core.Media.EntityImage, Entities.EntityImage>>().To<EntityImageConverter>();
-			Bind<ConverterBase<Core.Appointment.Event, Entities.Event>>().To<EventConverter>();
-			Bind<ConverterBase<Core.Job.Issue, Entities.Issue>>().To<IssueConverter>();
-			Bind<ConverterBase<Core.Job.IssueHistory, Entities.IssueHistory>>().To<IssueHistoryConverter>();
-			Bind<ConverterBase<Core.Production.License, Entities.License>>().To<LicenseConverter>();
-			Bind<ConverterBase<Core.Log.LogEntry, Entities.LogEntry>>().To<LogEntryConverter>();
-			Bind<ConverterBase<Core.Appointment.Meeting, Entities.Meeting>>().To<MeetingConverter>();
-			Bind<ConverterBase<Core.Infrastructure.Resource, Entities.Resource>>().To<ResourceConverter>();
-			Bind<ConverterBase<Core.Infrastructure.Server, Entities.Server>>().To<ServerConverter>();
-			Bind<ConverterBase<Core.Actors.User, Entities.User>>().To<UserConverter>();
-			Bind<ConverterBase<Core.Settings.UserSetting, Entities.UserSetting>>().To<UserSettingConverter>();
+			var converters = TypeUtils.GetClassesInNamespace(Assembly.GetAssembly(GetType()), "VirtualWork.Persistence.Converters").
+				Where(type => type.BaseType.Name == "ConverterBase`2");
+			foreach (var converter in converters)
+			{
+				var targetToBind = typeof(IBindingToSyntax<>).MakeGenericType(converter.BaseType);
+				var bindingToSyntax = bindMethod.MakeGenericMethod(converter.BaseType).Invoke(this, null);
+				var toMethod = targetToBind.GetFirstGenericFunctionWithNameAndOneTypeParameter("To");
+				var genericToMethod = toMethod.MakeGenericMethod(converter);
+				genericToMethod.Invoke(bindingToSyntax, null);
+			}
 		}
 
 		private dynamic DynamicCast(object obj, Type to)
