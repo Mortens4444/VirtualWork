@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using VirtualWork.Service.FileHandling;
 using VirtualWork.WinForms.Controls;
@@ -20,6 +19,7 @@ namespace VirtualWork.WinForms.Factories
 		{
 			var result = new FileTabPage(fileWriter);
 			result.Initialize(fileDetails);
+			contextMenuStrip.Items[0].Enabled = fileDetails != null;
 			result.TextBox.ContextMenuStrip = contextMenuStrip;
 			return result;
 		}

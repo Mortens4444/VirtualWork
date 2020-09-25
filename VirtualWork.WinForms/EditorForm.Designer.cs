@@ -33,7 +33,6 @@
 			this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.newMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.openMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeMenuItemFM = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeAllButThisMenuItemFM = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,10 +43,11 @@
 			this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.cutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.copyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.copyPathMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pasteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.wrapLongLinesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.copyPathMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.mainPanel = new System.Windows.Forms.Panel();
 			this.tabControl = new System.Windows.Forms.TabControl();
@@ -95,10 +95,6 @@
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			// 
 			// openMenuItem
 			// 
@@ -182,14 +178,6 @@
 			this.copyMenuItem.Text = "Copy";
 			this.copyMenuItem.Click += new System.EventHandler(this.CopyMenuItem_Click);
 			// 
-			// copyPathMenuItem
-			// 
-			this.copyPathMenuItem.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
-			this.copyPathMenuItem.Name = "copyPathMenuItem";
-			this.copyPathMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.copyPathMenuItem.Text = "Copy path";
-			this.copyPathMenuItem.Click += new System.EventHandler(this.CopyPathMenuItem_Click);
-			// 
 			// pasteMenuItem
 			// 
 			this.pasteMenuItem.Image = global::VirtualWork.WinForms.Properties.Resources.paste_plain;
@@ -213,6 +201,19 @@
 			this.wrapLongLinesMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.wrapLongLinesMenuItem.Text = "Wrap long lines";
 			this.wrapLongLinesMenuItem.Click += new System.EventHandler(this.WrapLongLinesMenuItem_Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 6);
+			// 
+			// copyPathMenuItem
+			// 
+			this.copyPathMenuItem.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.copyPathMenuItem.Name = "copyPathMenuItem";
+			this.copyPathMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.copyPathMenuItem.Text = "Copy path";
+			this.copyPathMenuItem.Click += new System.EventHandler(this.CopyPathMenuItem_Click);
 			// 
 			// statusStrip
 			// 
@@ -239,6 +240,7 @@
 			this.tabControl.SelectedIndex = 0;
 			this.tabControl.Size = new System.Drawing.Size(800, 404);
 			this.tabControl.TabIndex = 1;
+			this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
 			// 
 			// EditorForm
 			// 

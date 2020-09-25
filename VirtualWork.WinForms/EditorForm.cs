@@ -71,11 +71,6 @@ namespace VirtualWork.WinForms
 			newTab.TextBox.ContextMenuStrip = contextMenuStrip;
 			tabControl.Controls.Add(newTab);
 			tabControl.SelectedTab = newTab;
-			tabControl.Selected += (object sender, TabControlEventArgs e) =>
-			{
-				var fileTabPage = e.TabPage as FileTabPage;
-				contextMenuStrip.Items[0].Enabled = fileTabPage.FileDetails != null;
-			};
 		}
 
 		private void CopyPathMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +181,15 @@ namespace VirtualWork.WinForms
 		{
 			e.Cancel = true;
 			Hide();
+		}
+
+		private void TabControl_Selected(object sender, TabControlEventArgs e)
+		{
+			var fileTabPage = e.TabPage as FileTabPage;
+			if (fileTabPage != null)
+			{
+				contextMenuStrip.Items[0].Enabled = fileTabPage.FileDetails != null;
+			}
 		}
 	}
 }
