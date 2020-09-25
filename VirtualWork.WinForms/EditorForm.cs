@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
+using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Service.FileHandling;
 using VirtualWork.Service.Utils;
@@ -15,6 +17,7 @@ namespace VirtualWork.WinForms
 		private readonly FileReader fileReader;
 		private readonly FileTabPageFactory fileTabPageFactory;
 		private readonly ClipboardHelper clipboardHelper;
+		private readonly ContextMenuStrip contextMenuStrip;
 		//private readonly OptionsHandler optionsHandler;
 		//private readonly OptionsDto options;
 
@@ -34,6 +37,23 @@ namespace VirtualWork.WinForms
 			}
 
 			Translator.Translate(this);
+			copyPathMenuItem.Text = Lng.Elem(copyPathMenuItem.Text);
+
+			var menuItems = new ToolStripItem[]
+			{
+				copyPathMenuItem,
+				toolStripSeparator2,
+				closeMenuItemFM,
+				closeAllButThisMenuItemFM,
+				closeAllMenuItemFM
+			};
+
+			contextMenuStrip = new ContextMenuStrip(components)
+			{
+				Name = $"contextMenuStrip",
+				Size = new Size(197, 98)
+			};
+			contextMenuStrip.Items.AddRange(menuItems);
 		}
 
 		public void Show(string fileName = null)
@@ -47,17 +67,15 @@ namespace VirtualWork.WinForms
 
 		private void OpenNewTab(FileDetails fileDetails)
 		{
-			var menuItems = new ToolStripItem[]
-			{
-				/*copyPathMenuItem,
-				toolStripSeparator3,
-				closeMenuItem,
-				closeAllButThisMenuItem,
-				closeAllMenuItem*/
-			};
-			var newTab = fileTabPageFactory.Create(fileDetails, components, menuItems);
+			var newTab = fileTabPageFactory.Create(fileDetails, components, contextMenuStrip);
+			newTab.TextBox.ContextMenuStrip = contextMenuStrip;
 			tabControl.Controls.Add(newTab);
 			tabControl.SelectedTab = newTab;
+			tabControl.Selected += (object sender, TabControlEventArgs e) =>
+			{
+				var fileTabPage = e.TabPage as FileTabPage;
+				contextMenuStrip.Items[0].Enabled = fileTabPage.FileDetails != null;
+			};
 		}
 
 		private void CopyPathMenuItem_Click(object sender, EventArgs e)

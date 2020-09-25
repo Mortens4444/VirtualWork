@@ -33,6 +33,7 @@
 			this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.newMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.openMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeMenuItemFM = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeAllButThisMenuItemFM = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,7 @@
 			this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.cutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.copyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.copyPathMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pasteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.wrapLongLinesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +95,10 @@
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			// 
 			// openMenuItem
 			// 
@@ -176,6 +182,14 @@
 			this.copyMenuItem.Text = "Copy";
 			this.copyMenuItem.Click += new System.EventHandler(this.CopyMenuItem_Click);
 			// 
+			// copyPathMenuItem
+			// 
+			this.copyPathMenuItem.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.copyPathMenuItem.Name = "copyPathMenuItem";
+			this.copyPathMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.copyPathMenuItem.Text = "Copy path";
+			this.copyPathMenuItem.Click += new System.EventHandler(this.CopyPathMenuItem_Click);
+			// 
 			// pasteMenuItem
 			// 
 			this.pasteMenuItem.Image = global::VirtualWork.WinForms.Properties.Resources.paste_plain;
@@ -252,6 +266,7 @@
 		private System.Windows.Forms.ToolStripMenuItem fileMenu;
 		private System.Windows.Forms.ToolStripMenuItem newMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem openMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem closeMenuItemFM;
 		private System.Windows.Forms.ToolStripMenuItem closeAllButThisMenuItemFM;
@@ -262,6 +277,7 @@
 		private System.Windows.Forms.ToolStripMenuItem editMenu;
 		private System.Windows.Forms.ToolStripMenuItem cutMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem copyMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem copyPathMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pasteMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem wrapLongLinesMenuItem;

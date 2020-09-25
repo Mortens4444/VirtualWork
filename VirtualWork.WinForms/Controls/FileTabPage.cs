@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using LanguageService;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Service.FileHandling;
 using VirtualWork.WinForms.Dto;
@@ -37,12 +38,13 @@ namespace VirtualWork.WinForms.Controls
 		public void Initialize(FileDetails fileDetails)
 		{
 			TextBox = new FileRichTextBox();
+			TextBox.Name = $"TextBox{TextBox.DocumentNumber}";
 			Location = new Point(4, 22);
 			Name = $"Tab{TextBox.DocumentNumber}";
 			Padding = new Padding(3);
 			Size = new Size(711, 375);
 			TabIndex = 0;
-			Text = fileDetails?.ShowFileName ?? $"New Document {TextBox.DocumentNumber}";
+			Text = fileDetails?.ShowFileName ?? $"{Lng.Elem("New document")} {TextBox.DocumentNumber}";
 			if (fileDetails != null)
 			{
 				var extension = Path.GetExtension(fileDetails.FileName).ToLower();

@@ -34,5 +34,5 @@ Security
 
 Programs (utilities)
 --------------------
-- Source code highlight in editor / save editor settings
+- Save editor settings
 - Implement calculator
