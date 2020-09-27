@@ -16,6 +16,8 @@ namespace VirtualWork.Core.Appointment
 
 		public abstract DateTime AppointmentDate { get; }
 
+		public abstract DateTime AppointmentEndDate { get; }
+
 		public DateTime? ExpirationDate { get; set; }
 
 		public int RepetitionValue { get; set; }

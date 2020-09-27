@@ -10,10 +10,14 @@ namespace VirtualWork.Core.Appointment
 
 		public DateTime MeetingDate { get; set; }
 
+		public DateTime MeetingEndDate { get; set; }
+
 		public virtual ICollection<User> Followers { get; set; }
 
 		public string MeetingPoint { get; set; }
 
 		public override DateTime AppointmentDate => MeetingDate;
+
+		public override DateTime AppointmentEndDate => MeetingEndDate;
 	}
 }

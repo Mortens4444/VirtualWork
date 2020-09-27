@@ -1,6 +1,5 @@
 Appointments
 ------------
-- Appointment EndDate should be introduced and used in calendar.
 - Appointment grouping, to easily copy/create a hole bunch of event.
 - Consultation with link to synchronize (family doctor)
 - Execute more commands when an event triggered

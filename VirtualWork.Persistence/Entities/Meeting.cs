@@ -37,6 +37,9 @@ namespace VirtualWork.Persistence.Entities
 		[UtcDateTime]
 		public DateTime MeetingDate { get; set; }
 
+		[UtcDateTime]
+		public DateTime MeetingEndDate { get; set; }
+
 		public HashSet<INotifiable> Followers { get; set; }
 	}
 }

@@ -48,9 +48,12 @@ namespace VirtualWork.WinForms.Providers
 			for (int i = 0; i < 48; i++)
 			{
 				var slotEndTime = slotStartTime.Add(HalfAnHour);
-				var slotMeetings = meetings.Where(meeting => meeting.MeetingDate.IsDateTimeBetweenTimeSpans(slotStartTime, slotEndTime))
+				
+				var slotMeetings = meetings
+					.Where(meeting => DateTimeExtensions.AreDatesTimeBetweenTimeSpans(meeting.MeetingDate, meeting.MeetingEndDate, slotStartTime, slotEndTime))
 					.Select(meeting => meeting.Title);
-				var slotEvents = events.Where(myEvent => myEvent.EventDate.IsDateTimeBetweenTimeSpans(slotStartTime, slotEndTime))
+				var slotEvents = events
+					.Where(myEvent => DateTimeExtensions.AreDatesTimeBetweenTimeSpans(myEvent.EventDate, myEvent.EventEndDate, slotStartTime, slotEndTime))
 					.Select(myEvent => myEvent.Title);
 
 				var formatString = i % 2 == 0 ? "hh\\:mm" : "\\ \\ \\ \\ \\ \\ mm";

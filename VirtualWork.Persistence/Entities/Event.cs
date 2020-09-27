@@ -30,6 +30,9 @@ namespace VirtualWork.Persistence.Entities
 		[UtcDateTime]
 		public DateTime EventDate { get; set; }
 
+		[UtcDateTime]
+		public DateTime EventEndDate { get; set; }
+
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string StartApplication { get; set; }
 	}

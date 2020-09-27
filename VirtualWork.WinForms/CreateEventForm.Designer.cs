@@ -48,7 +48,7 @@
 			this.lblExpirationDate = new System.Windows.Forms.Label();
 			this.nudRepetitionValue = new System.Windows.Forms.NumericUpDown();
 			this.dtpEventDate = new System.Windows.Forms.DateTimePicker();
-			this.lblDueTo = new System.Windows.Forms.Label();
+			this.lblEventTime = new System.Windows.Forms.Label();
 			this.rtbDescription = new System.Windows.Forms.RichTextBox();
 			this.lblDescription = new System.Windows.Forms.Label();
 			this.tbTitle = new System.Windows.Forms.TextBox();
@@ -58,6 +58,8 @@
 			this.chOperation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOriginator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOperationTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.dtpEventEndDate = new System.Windows.Forms.DateTimePicker();
+			this.lblEventEndTime = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tpGeneral.SuspendLayout();
@@ -141,12 +143,14 @@
 			// 
 			// gbMain
 			// 
+			this.gbMain.Controls.Add(this.dtpEventEndDate);
+			this.gbMain.Controls.Add(this.lblEventEndTime);
 			this.gbMain.Controls.Add(this.tbEventLocation);
 			this.gbMain.Controls.Add(this.lblEventLocation);
 			this.gbMain.Controls.Add(this.gbStartInfo);
 			this.gbMain.Controls.Add(this.gbRecurring);
 			this.gbMain.Controls.Add(this.dtpEventDate);
-			this.gbMain.Controls.Add(this.lblDueTo);
+			this.gbMain.Controls.Add(this.lblEventTime);
 			this.gbMain.Controls.Add(this.rtbDescription);
 			this.gbMain.Controls.Add(this.lblDescription);
 			this.gbMain.Controls.Add(this.tbTitle);
@@ -291,14 +295,14 @@
 			this.dtpEventDate.Size = new System.Drawing.Size(156, 20);
 			this.dtpEventDate.TabIndex = 6;
 			// 
-			// lblDueTo
+			// lblEventTime
 			// 
-			this.lblDueTo.AutoSize = true;
-			this.lblDueTo.Location = new System.Drawing.Point(6, 147);
-			this.lblDueTo.Name = "lblDueTo";
-			this.lblDueTo.Size = new System.Drawing.Size(57, 13);
-			this.lblDueTo.TabIndex = 5;
-			this.lblDueTo.Text = "Event time";
+			this.lblEventTime.AutoSize = true;
+			this.lblEventTime.Location = new System.Drawing.Point(6, 147);
+			this.lblEventTime.Name = "lblEventTime";
+			this.lblEventTime.Size = new System.Drawing.Size(57, 13);
+			this.lblEventTime.TabIndex = 5;
+			this.lblEventTime.Text = "Event time";
 			// 
 			// rtbDescription
 			// 
@@ -381,6 +385,24 @@
 			this.chOperationTime.Text = "Operation time";
 			this.chOperationTime.Width = 101;
 			// 
+			// dtpEventEndDate
+			// 
+			this.dtpEventEndDate.CustomFormat = "yyyy.MM.dd. HH:mm";
+			this.dtpEventEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpEventEndDate.Location = new System.Drawing.Point(387, 141);
+			this.dtpEventEndDate.Name = "dtpEventEndDate";
+			this.dtpEventEndDate.Size = new System.Drawing.Size(156, 20);
+			this.dtpEventEndDate.TabIndex = 18;
+			// 
+			// lblEventEndTime
+			// 
+			this.lblEventEndTime.AutoSize = true;
+			this.lblEventEndTime.Location = new System.Drawing.Point(292, 147);
+			this.lblEventEndTime.Name = "lblEventEndTime";
+			this.lblEventEndTime.Size = new System.Drawing.Size(78, 13);
+			this.lblEventEndTime.TabIndex = 17;
+			this.lblEventEndTime.Text = "Event end time";
+			// 
 			// CreateEventForm
 			// 
 			this.AcceptButton = this.btnCreate;
@@ -417,7 +439,7 @@
 		private System.Windows.Forms.GroupBox gbRecurring;
 		private System.Windows.Forms.NumericUpDown nudRepetitionValue;
 		private System.Windows.Forms.DateTimePicker dtpEventDate;
-		private System.Windows.Forms.Label lblDueTo;
+		private System.Windows.Forms.Label lblEventTime;
 		private System.Windows.Forms.RichTextBox rtbDescription;
 		private System.Windows.Forms.Label lblDescription;
 		private System.Windows.Forms.TextBox tbTitle;
@@ -439,5 +461,7 @@
 		private System.Windows.Forms.Button btnTest;
 		private System.Windows.Forms.TextBox tbEventLocation;
 		private System.Windows.Forms.Label lblEventLocation;
+		private System.Windows.Forms.DateTimePicker dtpEventEndDate;
+		private System.Windows.Forms.Label lblEventEndTime;
 	}
 }

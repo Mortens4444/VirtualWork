@@ -164,6 +164,10 @@
     <Compile Include="Migrations\202009082120540_MergeImageEntities.designer.cs">
       <DependentUpon>202009082120540_MergeImageEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009262144280_IntroduceAppointmentEndDate.cs" />
+    <Compile Include="Migrations\202009262144280_IntroduceAppointmentEndDate.designer.cs">
+      <DependentUpon>202009262144280_IntroduceAppointmentEndDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\CredentialsRepository.cs" />
     <Compile Include="Repositories\PasswordHashRepository.cs" />
     <Compile Include="Repositories\EmailRepository.cs" />
@@ -254,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009082120540_MergeImageEntities.resx">
       <DependentUpon>202009082120540_MergeImageEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009262144280_IntroduceAppointmentEndDate.resx">
+      <DependentUpon>202009262144280_IntroduceAppointmentEndDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

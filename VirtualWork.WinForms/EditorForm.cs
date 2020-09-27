@@ -185,8 +185,7 @@ namespace VirtualWork.WinForms
 
 		private void TabControl_Selected(object sender, TabControlEventArgs e)
 		{
-			var fileTabPage = e.TabPage as FileTabPage;
-			if (fileTabPage != null)
+			if (e.TabPage is FileTabPage fileTabPage)
 			{
 				contextMenuStrip.Items[0].Enabled = fileTabPage.FileDetails != null;
 			}

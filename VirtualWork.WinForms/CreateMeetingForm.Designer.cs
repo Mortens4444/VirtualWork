@@ -49,6 +49,8 @@
 			this.cbPartner = new System.Windows.Forms.ComboBox();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnCreate = new System.Windows.Forms.Button();
+			this.dtpMeetingEndDate = new System.Windows.Forms.DateTimePicker();
+			this.lblMeetingEndDate = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
 			this.gbRecurring.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudRepetitionValue)).BeginInit();
@@ -56,6 +58,8 @@
 			// 
 			// pMain
 			// 
+			this.pMain.Controls.Add(this.dtpMeetingEndDate);
+			this.pMain.Controls.Add(this.lblMeetingEndDate);
 			this.pMain.Controls.Add(this.cbMeetingPoint);
 			this.pMain.Controls.Add(this.lblMeetingPoint);
 			this.pMain.Controls.Add(this.rtbDescription);
@@ -189,7 +193,7 @@
 			// 
 			this.dtpExpirationDate.CustomFormat = "yyyy.MM.dd. HH:mm";
 			this.dtpExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpExpirationDate.Location = new System.Drawing.Point(362, 40);
+			this.dtpExpirationDate.Location = new System.Drawing.Point(379, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
 			this.dtpExpirationDate.Size = new System.Drawing.Size(156, 20);
 			this.dtpExpirationDate.TabIndex = 15;
@@ -271,6 +275,24 @@
 			this.btnCreate.UseVisualStyleBackColor = true;
 			this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
 			// 
+			// dtpMeetingEndDate
+			// 
+			this.dtpMeetingEndDate.CustomFormat = "yyyy.MM.dd. HH:mm";
+			this.dtpMeetingEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpMeetingEndDate.Location = new System.Drawing.Point(391, 193);
+			this.dtpMeetingEndDate.Name = "dtpMeetingEndDate";
+			this.dtpMeetingEndDate.Size = new System.Drawing.Size(156, 20);
+			this.dtpMeetingEndDate.TabIndex = 32;
+			// 
+			// lblMeetingEndDate
+			// 
+			this.lblMeetingEndDate.AutoSize = true;
+			this.lblMeetingEndDate.Location = new System.Drawing.Point(279, 197);
+			this.lblMeetingEndDate.Name = "lblMeetingEndDate";
+			this.lblMeetingEndDate.Size = new System.Drawing.Size(90, 13);
+			this.lblMeetingEndDate.TabIndex = 31;
+			this.lblMeetingEndDate.Text = "Meeting end date";
+			// 
 			// CreateMeetingForm
 			// 
 			this.AcceptButton = this.btnCreate;
@@ -315,5 +337,7 @@
 		private System.Windows.Forms.ComboBox cbMeetingPoint;
 		private System.Windows.Forms.Label lblMeetingPoint;
 		private System.Windows.Forms.Label lblRepetition;
+		private System.Windows.Forms.DateTimePicker dtpMeetingEndDate;
+		private System.Windows.Forms.Label lblMeetingEndDate;
 	}
 }

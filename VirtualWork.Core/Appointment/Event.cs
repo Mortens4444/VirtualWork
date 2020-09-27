@@ -11,6 +11,8 @@ namespace VirtualWork.Core.Appointment
 
 		public DateTime EventDate { get; set; }
 
+		public DateTime EventEndDate { get; set; }
+
 		public HashSet<INotifiable> Partners { get; set; }
 
 		public string ApplicationToStart { get; set; }
@@ -20,5 +22,7 @@ namespace VirtualWork.Core.Appointment
 		public string EventLocation { get; set; }
 
 		public override DateTime AppointmentDate => EventDate;
+
+		public override DateTime AppointmentEndDate => EventEndDate;
 	}
 }

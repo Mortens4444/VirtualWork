@@ -32,6 +32,13 @@ namespace VirtualWork.Core.Extensions
 			return time >= first && time < second;
 		}
 
+		public static bool AreDatesTimeBetweenTimeSpans(DateTime startDateTime, DateTime endDateTime, TimeSpan first, TimeSpan second)
+		{
+			var startTime = new TimeSpan(startDateTime.Hour, startDateTime.Minute, startDateTime.Second);
+			var endTime = new TimeSpan(endDateTime.Hour, endDateTime.Minute, endDateTime.Second);
+			return startTime <= first && endTime >= second;
+		}
+
 		public static bool IsOnSameDate(this DateTime baseDateTime, DateTime testedDateTime)
 		{
 			return baseDateTime.Year == testedDateTime.Year && baseDateTime.Month == testedDateTime.Month && baseDateTime.Day == testedDateTime.Day;
@@ -104,6 +111,11 @@ namespace VirtualWork.Core.Extensions
 				}
 			}
 			return false;
+		}
+
+		public static DateTime CutSeconds(this DateTime dateTime)
+		{
+			return dateTime.AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
 		}
 	}
 }

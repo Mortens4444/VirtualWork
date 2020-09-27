@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Appointment;
+using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
@@ -39,15 +40,13 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			var meetingDate = dtpMeetingDate.Value;
-			meetingDate = meetingDate.AddSeconds(-meetingDate.Second);
-
 			meeting = meeting ?? new Meeting();
 			meeting.Title = tbTitle.Text;
 			meeting.CreationDate = DateTime.UtcNow;
 			meeting.Description = rtbDescription.Text;
 			meeting.ExpirationDate = dtpExpirationDate.Value;
-			meeting.MeetingDate = meetingDate;
+			meeting.MeetingDate = dtpMeetingDate.Value.CutSeconds();
+			meeting.MeetingEndDate = dtpMeetingEndDate.Value.CutSeconds();
 			meeting.Owner = Initializer.LoggedInUser;
 			meeting.RepetitionType = EnumUtils.GetByDescription<RepetitionType>((string)cbRepetitionType.SelectedItem);
 			meeting.RepetitionValue = (int)nudRepetitionValue.Value;
@@ -74,6 +73,7 @@ namespace VirtualWork.WinForms
 				cbPartner.SelectedIndex = -1;
 				cbMeetingPoint.SelectedIndex = -1;
 				dtpMeetingDate.Value = DateTime.Now.AddDays(1);
+				dtpMeetingEndDate.Value = DateTime.Now.AddDays(1).AddHours(1);
 				cbRepetitionType.SelectedIndex = 0;
 				nudRepetitionValue.Value = 100;
 			}
@@ -85,6 +85,7 @@ namespace VirtualWork.WinForms
 				tbTitle.Text = meeting.Title;
 				rtbDescription.Text = meeting.Description;
 				dtpMeetingDate.Value = meeting.MeetingDate;
+				dtpMeetingEndDate.Value = meeting.MeetingEndDate;
 				nudRepetitionValue.Value = meeting.RepetitionValue;
 				cbRepetitionType.SelectedIndex = (int)meeting.RepetitionType;
 

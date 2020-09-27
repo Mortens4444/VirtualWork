@@ -37,7 +37,9 @@ namespace VirtualWork.WinForms
 				Text = Lng.Elem("Create event");
 				btnCreate.Text = Lng.Elem("Create");
 
-				dtpEventDate.Value = DateTime.Now.AddDays(1);
+				var now = DateTime.Now;
+				dtpEventDate.Value = now.AddDays(1);
+				dtpEventEndDate.Value = now.AddDays(1).AddHours(1);
 				tbTitle.Text = String.Empty;
 				tbEventLocation.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
@@ -51,6 +53,7 @@ namespace VirtualWork.WinForms
 				btnCreate.Text = Lng.Elem("Modify");
 
 				dtpEventDate.Value = myEvent.EventDate;
+				dtpEventEndDate.Value = myEvent.EventEndDate;
 				tbTitle.Text = myEvent.Title;
 				tbEventLocation.Text = myEvent.EventLocation;
 				rtbDescription.Text = myEvent.Description;
@@ -66,9 +69,6 @@ namespace VirtualWork.WinForms
 
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
-			var eventDate = dtpEventDate.Value;
-			eventDate = eventDate.AddSeconds(-eventDate.Second);
-
 			myEvent = myEvent ?? new Event();
 			var applicationWithParameters = rtbStartApplication.Text.GetExecutionParameters();
 			myEvent.ApplicationToStart = applicationWithParameters.Application;
@@ -76,7 +76,8 @@ namespace VirtualWork.WinForms
 			myEvent.CreationDate = DateTime.UtcNow;
 			myEvent.Creator = Initializer.LoggedInUser;
 			myEvent.Description = rtbDescription.Text;
-			myEvent.EventDate = eventDate;
+			myEvent.EventDate = dtpEventDate.Value.CutSeconds();
+			myEvent.EventEndDate = dtpEventEndDate.Value.CutSeconds();
 			myEvent.EventLocation = tbEventLocation.Text;
 			myEvent.ExpirationDate = chkExpire.Checked ? dtpExpirationDate.Value : (DateTime?)null;
 			myEvent.RepetitionValue = (int)nudRepetitionValue.Value;
