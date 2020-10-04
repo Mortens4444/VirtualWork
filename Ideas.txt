@@ -24,7 +24,6 @@ Settings
 Log
 ---
 - Log filter and paging
-- Use virtual items in log list view
 
 Security
 --------

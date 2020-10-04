@@ -37,5 +37,15 @@ namespace VirtualWork.Core.Utils
 			var attributes = fieldInfo.GetCustomAttributes(typeof(TAttributeType), false);
 			return (TAttributeType)attributes.FirstOrDefault();
 		}
+
+		public static TEnum GetEnumValue<TEnum>(this string value)
+		{
+			return GetEnumValue<TEnum>(value, true);
+		}
+
+		public static TEnum GetEnumValue<TEnum>(this string value, bool ignoreCase = true)
+		{
+			return (TEnum)Enum.Parse(typeof(TEnum), value, ignoreCase);
+		}
 	}
 }
