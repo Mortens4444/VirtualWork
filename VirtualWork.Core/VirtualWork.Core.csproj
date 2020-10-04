@@ -90,7 +90,9 @@
     <Compile Include="Directories\DirectoryUtils.cs" />
     <Compile Include="Exceptions\ExceptionDetails.cs" />
     <Compile Include="Exceptions\SystemErrorCodes.cs" />
+    <Compile Include="Expressions\ExpressionDelegateVisitor.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\IHaveIdentifierExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
