@@ -3,12 +3,15 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
+using VirtualWork.Persistence;
 using VirtualWork.WinForms.Creators;
 
 namespace VirtualWork.WinForms
 {
 	public partial class DatabaseSettingsForm : Form
 	{
+		private const string ConnectionStrings = "connectionStrings";
+
 		public string ConnectionString => tbSqlServerConnectionString.Text;
 		private readonly AdminGroupCreator adminGroupCreator;
 		private readonly AdminUserCreator adminUserCreator;
@@ -22,7 +25,7 @@ namespace VirtualWork.WinForms
 			InitializeComponent();
 			Translator.Translate(this);
 
-			var connectionString = ConfigurationManager.ConnectionStrings["VirtualWorkDbConnectionString"].ConnectionString;
+			var connectionString = ConfigurationManager.ConnectionStrings[PersistenceConstants.VirtualWorkDbConnectionString].ConnectionString;
 			if (!String.IsNullOrEmpty(connectionString))
 			{
 				tbSqlServerConnectionString.Text = connectionString;
@@ -32,10 +35,10 @@ namespace VirtualWork.WinForms
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
 			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-			var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
-			connectionStringsSection.ConnectionStrings["VirtualWorkDbConnectionString"].ConnectionString = ConnectionString;
+			var connectionStringsSection = (ConnectionStringsSection)config.GetSection(ConnectionStrings);
+			connectionStringsSection.ConnectionStrings[PersistenceConstants.VirtualWorkDbConnectionString].ConnectionString = ConnectionString;
 			config.Save();
-			ConfigurationManager.RefreshSection("connectionStrings");
+			ConfigurationManager.RefreshSection(ConnectionStrings);
 
 			if (adminGroupCreator.CheckExistence())
 			{

@@ -39,24 +39,14 @@ namespace VirtualWork.WinForms
 
 		private void GetLogItems(Func<Persistence.Entities.LogEntry, bool> predicate = null)
 		{
-			var items = logEntryRepository.GetAll(predicate);
-			var convertedItems = items.Select((item, index) => { return LogEntryToListViewItem(item, index); });
+			var filteredLogEntries = logEntryRepository.GetAll(predicate);
+			var convertedItems = filteredLogEntries.Select((logEntry, index) =>
+			{
+				var backColor = index % 2 == 0 ? lvLogs.BackColor : Color.LightBlue;
+				return logEntry.ToListViewItem(backColor);
+			});
 			logEntries = convertedItems.OrderByDescending(listviewItem => ((LogEntry)listviewItem.Tag).Id).ToList();
 			lvLogs.VirtualListSize = logEntries.Count;
-		}
-
-		private ListViewItem LogEntryToListViewItem(LogEntry logEntry, int itemIndex)
-		{
-			var backColor = itemIndex % 2 == 0 ? lvLogs.BackColor : Color.LightBlue;
-			var listViewItem = new ListViewItem(logEntry.Id.ToString())
-			{
-				BackColor = backColor
-			};
-			listViewItem.SubItems.Add(logEntry.User?.ToString() ?? String.Empty);
-			listViewItem.SubItems.Add(Lng.Elem(logEntry.LogLevel.ToString()));
-			listViewItem.SubItems.Add(logEntry.Message);
-			listViewItem.Tag = logEntry;
-			return listViewItem;
 		}
 
 		private void TsmiExceptionViewer_Click(object sender, EventArgs e)
@@ -107,9 +97,4 @@ namespace VirtualWork.WinForms
 			GetLogItems(resultExpression.Compile());
 		}
 	}
-
-
-
-
-
 }

@@ -34,6 +34,10 @@ namespace VirtualWork.Core.Extensions
 
 		public static bool AreDatesTimeBetweenTimeSpans(DateTime startDateTime, DateTime endDateTime, TimeSpan first, TimeSpan second)
 		{
+			if (startDateTime == endDateTime)
+			{
+				return IsDateTimeBetweenTimeSpans(startDateTime, first, second);
+			}
 			var startTime = new TimeSpan(startDateTime.Hour, startDateTime.Minute, startDateTime.Second);
 			var endTime = new TimeSpan(endDateTime.Hour, endDateTime.Minute, endDateTime.Second);
 			return startTime <= first && endTime >= second;

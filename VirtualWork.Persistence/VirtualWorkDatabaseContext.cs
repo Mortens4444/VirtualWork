@@ -5,7 +5,7 @@ namespace VirtualWork.Persistence
 {
 	public class VirtualWorkDatabaseContext : DbContext
     {
-        public VirtualWorkDatabaseContext() : base("name=VirtualWorkDbConnectionString") { }
+        public VirtualWorkDatabaseContext() : base($"name={PersistenceConstants.VirtualWorkDbConnectionString}") { }
 
 		public DbSet<Address> Addresses { get; set; }
 

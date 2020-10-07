@@ -2,7 +2,9 @@
 {
     public static class PersistenceConstants
     {
-        public const int MaxLengthOfStrings = 50;
+		public const string VirtualWorkDbConnectionString = "VirtualWorkDbConnectionString";
+
+		public const int MaxLengthOfStrings = 50;
 
         public const int MaxLengthMediumOfStrings = 150;
 

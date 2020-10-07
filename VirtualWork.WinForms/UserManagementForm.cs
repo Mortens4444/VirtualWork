@@ -68,7 +68,6 @@ namespace VirtualWork.WinForms
 			{
 				rtbDescription.Text = $"{group.Description}";
 				chkIsActive.Checked = group.IsActive;
-
 			}
 		}
 	}

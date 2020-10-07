@@ -128,7 +128,6 @@ namespace VirtualWork.WinForms.Providers
 						break;
 				}
 			}
-
 		}
 
 		private static void MakeDatesBold(MonthCalendar monthCalendar, AppointmentBase appointment, double modifyValue)

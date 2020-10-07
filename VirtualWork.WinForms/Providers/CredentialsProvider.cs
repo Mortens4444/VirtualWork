@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows.Forms;
+using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Entities;
 using VirtualWork.Persistence.Repositories;
+using VirtualWork.WinForms.Extensions;
 
 namespace VirtualWork.WinForms.Providers
 {
@@ -19,55 +22,28 @@ namespace VirtualWork.WinForms.Providers
 
 		public void GetCredentials(ListView listView, string searchPattern, string selectedGroup)
 		{
-			Func<Credentials, bool> predicate;
-			if (String.IsNullOrEmpty(searchPattern))
+			Expression<Func<Credentials, bool>> resultExpression = credentials =>
+				(credentials.ActorType == (int)ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
+				(credentials.ActorType == (int)ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId));
+			Expression<Func<Credentials, bool>> groupFilter = credentials => credentials.Group == selectedGroup;
+			Expression<Func<Credentials, bool>> searchPatternFilter = credentials => credentials.Name.ToLower().Contains(searchPattern.ToLower());
+
+			if (!String.IsNullOrEmpty(selectedGroup))
 			{
-				predicate = String.IsNullOrEmpty(selectedGroup) ?
-
-					(Func<Credentials, bool>)(credentials =>
-					(credentials.ActorType == (int)ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
-					(credentials.ActorType == (int)ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId))) :
-
-					credentials => ((credentials.ActorType == (int)ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
-					(credentials.ActorType == (int)ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId))) &&
-					credentials.Group == selectedGroup;
+				resultExpression = resultExpression.And(groupFilter);
 			}
-			else
+			if (!String.IsNullOrEmpty(searchPattern))
 			{
-				predicate = String.IsNullOrEmpty(selectedGroup) ?
-
-					(Func<Credentials, bool>)(credentials => ((credentials.ActorType == (int)ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
-					(credentials.ActorType == (int)ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId))) &&
-					credentials.Name.ToLower().Contains(searchPattern.ToLower())) :
-
-					credentials => ((credentials.ActorType == (int)ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
-					(credentials.ActorType == (int)ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId))) &&
-					credentials.Name.ToLower().Contains(searchPattern.ToLower()) && credentials.Group == selectedGroup;
+				resultExpression = resultExpression.And(searchPatternFilter);
 			}
 			listView.Items.Clear();
-			var allCredentials = credentialsRepository.GetAll(predicate);
+			var allCredentials = credentialsRepository.GetAll(resultExpression.Compile());
 
-			var random = new Random();
 			int i = 0;
-			foreach (var credential in allCredentials)
+			foreach (var credentials in allCredentials)
 			{
-				var item = new ListViewItem(credential.Name)
-				{
-					Tag = credential,
-					BackColor = i % 2 == 0 ? listView.BackColor : Color.LightBlue
-				};
-				item.SubItems.Add(credential.Group);
-				item.SubItems.Add(credential.Username);
-				var fakePasswordLength = random.Next(5, 12);
-				var stars = new char[fakePasswordLength];
-				for (int j = 0; j < stars.Length; j++)
-				{
-					stars[j] = '*';
-				}
-				item.SubItems.Add(new String(stars));
-				item.SubItems.Add(credential.Link);
-				item.SubItems.Add(credential.AlternativeLink);
-				item.SubItems.Add(credential.ExtraInformation);
+				var backColor = i % 2 == 0 ? listView.BackColor : Color.LightBlue;
+				var item = credentials.ToListViewItem(backColor);
 				listView.Items.Add(item);
 				i++;
 			}

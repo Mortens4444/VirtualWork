@@ -241,6 +241,7 @@
       <DependentUpon>ExceptionViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\ListViewItemExtensions.cs" />
     <Compile Include="Extensions\LongExtensions.cs" />
     <Compile Include="Extensions\ListViewExtensions.cs" />
     <Compile Include="Extensions\ListViewItemCollectionExtensions.cs" />
