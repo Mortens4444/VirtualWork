@@ -41,7 +41,7 @@ namespace VirtualWork.WinForms
 
 		public void CreateDefaultInstancesAndLogin()
 		{
-			var connectionString = ConfigurationManager.ConnectionStrings["VirtualWorkDbConnectionString"].ConnectionString;
+			var connectionString = ConfigurationManager.ConnectionStrings[PersistenceConstants.VirtualWorkDbConnectionString].ConnectionString;
 			if (String.IsNullOrEmpty(connectionString))
 			{
 				if (databaseSettingsForm.ShowDialog() == DialogResult.OK)

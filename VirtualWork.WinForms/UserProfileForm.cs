@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Contacts;
@@ -102,7 +103,7 @@ namespace VirtualWork.WinForms
 			{
 				try
 				{
-					pb_Image.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+					pb_Image.Image = Image.FromFile(openFileDialog.FileName);
 				}
 				catch (Exception ex)
 				{

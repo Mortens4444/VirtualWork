@@ -349,8 +349,6 @@ namespace VirtualWork.WinForms
 				switch (m.WParam.ToInt32())
 				{
 					case DBT_DEVICEARRIVAL:
-						GetDrives();
-						break;
 					case DBT_DEVICEREMOVECOMPLETE:
 						GetDrives();
 						break;
@@ -431,30 +429,27 @@ namespace VirtualWork.WinForms
 
 		private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
 		{
+			var enabledMenuItems = new[] { cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera };
+
+			var disabledMenuItems = new[]
+			{
+				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera,
+				cmiModifyIssue, cmiModifyEvent, cmiModifyMeeting,
+				cmiDeleteIssue, cmiDeleteEvent, cmiDeleteMeeting,
+				cmiCreateResource, cmiEditResource, cmiDeleteResource, cmiAddImage
+			};
+
 			e.Cancel = false;
 			if (tvItems.SelectedNode == null)
 			{
-				cmiNewEvent.SetEnabled(true);
-				cmiNewIssue.SetEnabled(true);
-				cmiNewMeeting.SetEnabled(true);
-				cmiCreateServer.SetEnabled(true);
-				cmiCreateCamera.SetEnabled(true);
-
-				cmiModifyServer.SetEnabled(false);
-				cmiDeleteServer.SetEnabled(false);
-				cmiModifyCamera.SetEnabled(false);
-				cmiDeleteCamera.SetEnabled(false);
-				cmiModifyIssue.SetEnabled(false);
-				cmiModifyEvent.SetEnabled(false);
-				cmiModifyMeeting.SetEnabled(false);
-				cmiDeleteIssue.SetEnabled(false);
-				cmiDeleteEvent.SetEnabled(false);
-				cmiDeleteMeeting.SetEnabled(false);
-				cmiCreateResource.SetEnabled(false);
-				cmiEditResource.SetEnabled(false);
-				cmiDeleteResource.SetEnabled(false);
-				cmiAddImage.SetEnabled(false);
-
+				foreach (var menuItem in enabledMenuItems)
+				{
+					menuItem.SetEnabled(true);
+				}
+				foreach (var menuItem in disabledMenuItems)
+				{
+					menuItem.SetEnabled(false);
+				}
 				return;
 			}
 
@@ -496,14 +491,7 @@ namespace VirtualWork.WinForms
 			cmiDeleteResource.SetEnabled(resourceSelected);
 			cmiAddImage.SetEnabled(resourceSelected);
 
-			var menuItems = new[]
-			{
-				cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera,
-				cmiModifyServer, cmiDeleteServer, cmiModifyCamera, cmiDeleteCamera,
-				cmiModifyIssue, cmiModifyEvent, cmiModifyMeeting,
-				cmiDeleteIssue, cmiDeleteEvent, cmiDeleteMeeting,
-				cmiCreateResource, cmiEditResource, cmiDeleteResource, cmiAddImage
-			};
+			var menuItems = enabledMenuItems.Concat(disabledMenuItems);
 			if (menuItems.All(menuItem => !menuItem.Enabled))
 			{
 				e.Cancel = true;

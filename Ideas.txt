@@ -23,7 +23,7 @@ Settings
 
 Log
 ---
-- Log filter and paging
+- Log paging
 
 Security
 --------
@@ -34,3 +34,8 @@ Programs (utilities)
 --------------------
 - Save editor settings
 - Implement calculator
+
+User Interface
+--------------
+- Create WPF UI in VirtualWork project
+- Create ASP.NET UI interface in a new project

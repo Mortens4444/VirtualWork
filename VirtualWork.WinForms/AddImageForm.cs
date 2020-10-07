@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Extensions;
@@ -72,7 +73,7 @@ namespace VirtualWork.WinForms
 			{
 				try
 				{
-					pbImage.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+					pbImage.Image = Image.FromFile(openFileDialog.FileName);
 				}
 				catch (Exception ex)
 				{
