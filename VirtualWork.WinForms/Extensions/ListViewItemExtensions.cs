@@ -45,5 +45,14 @@ namespace VirtualWork.WinForms.Extensions
 			item.SubItems.Add(credentials.ExtraInformation);
 			return item;
 		}
+
+		public static ListViewItem ToListViewItem(this Permission permission, Color backColor)
+		{
+			return new ListViewItem(Lng.Elem(permission.Description))
+			{
+				Tag = permission,
+				BackColor = backColor
+			};
+		}
 	}
 }

@@ -33,13 +33,12 @@ namespace VirtualWork.WinForms
 			}
 			else
 			{
+				int i = 0;
 				var permissions = permissionRepository.GetAll();
 				foreach (var permission in permissions)
 				{
-					var item = new ListViewItem(permission.Name)
-					{						
-						Tag = permission
-					};					
+					var backColor = i++ % 2 == 0 ? lvAvailablePermissions.BackColor : Color.LightBlue;
+					var item = permission.ToListViewItem(backColor);
 					lvAvailablePermissions.Items.Add(item);
 				}
 			}

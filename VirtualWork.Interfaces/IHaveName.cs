@@ -1,6 +1,6 @@
 ﻿namespace VirtualWork.Interfaces
 {
-	public interface IHaveName
+	public interface IHaveName : ICanBeOrdered
 	{
 		string Name { get; set; }
 	}

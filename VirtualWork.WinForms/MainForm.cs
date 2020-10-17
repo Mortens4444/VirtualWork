@@ -765,5 +765,18 @@ namespace VirtualWork.WinForms
 				addImageForm.Show(haveIdentifier);
 			}
 		}
+
+		private void TvItems_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
+		{
+			if (e.Node?.Tag is AppointmentBase appointment)
+			{
+				var nextOccurenceDate = appointment.GetNextOccurenceAfterDate(DateTime.Now);
+				toolTip.SetToolTip(e.Node.TreeView, $"{Lng.Elem("Next occasion")}: {nextOccurenceDate}");
+			}
+			else
+			{
+				toolTip.SetToolTip(e.Node.TreeView, String.Empty);
+			}
+		}
 	}
 }

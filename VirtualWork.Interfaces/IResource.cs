@@ -2,7 +2,7 @@
 
 namespace VirtualWork.Interfaces
 {
-	public interface IResource
+	public interface IResource : ICanBeOrdered
 	{
 		ResourceType ResourceType { get; }
 

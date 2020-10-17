@@ -82,6 +82,7 @@
 			this.pBrowser = new System.Windows.Forms.Panel();
 			this.webBrowser = new System.Windows.Forms.WebBrowser();
 			this.pBrowserHeader = new System.Windows.Forms.Panel();
+			this.btnVisit = new System.Windows.Forms.Button();
 			this.tbWebAddress = new System.Windows.Forms.TextBox();
 			this.tpCalendar = new System.Windows.Forms.TabPage();
 			this.monthCalendar = new System.Windows.Forms.MonthCalendar();
@@ -94,11 +95,6 @@
 			this.pLeft = new System.Windows.Forms.Panel();
 			this.tvItems = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
-			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
-			this.menuStrip = new System.Windows.Forms.MenuStrip();
-			this.btnVisit = new System.Windows.Forms.Button();
 			this.cmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiModifyIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteIssue = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,10 +117,14 @@
 			this.cmiEditResource = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiDeleteResource = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmiAddImage = new System.Windows.Forms.ToolStripMenuItem();
+			this.statusStrip = new System.Windows.Forms.StatusStrip();
+			this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
+			this.tsslPlaceHolder = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssbEditor = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbCalculator = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenPowerShell = new System.Windows.Forms.ToolStripSplitButton();
 			this.tssbOpenCmd = new System.Windows.Forms.ToolStripSplitButton();
+			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewIssue = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiNewEvent = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,6 +149,7 @@
 			this.tsmiUserSettings = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pMain.SuspendLayout();
 			this.pContent.SuspendLayout();
 			this.pRight.SuspendLayout();
@@ -671,6 +672,17 @@
 			this.pBrowserHeader.Size = new System.Drawing.Size(724, 26);
 			this.pBrowserHeader.TabIndex = 0;
 			// 
+			// btnVisit
+			// 
+			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
+			this.btnVisit.Location = new System.Drawing.Point(689, 1);
+			this.btnVisit.Name = "btnVisit";
+			this.btnVisit.Size = new System.Drawing.Size(31, 23);
+			this.btnVisit.TabIndex = 1;
+			this.btnVisit.UseVisualStyleBackColor = true;
+			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
+			// 
 			// tbWebAddress
 			// 
 			this.tbWebAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -833,6 +845,7 @@
 			this.tvItems.SelectedImageIndex = 0;
 			this.tvItems.Size = new System.Drawing.Size(200, 466);
 			this.tvItems.TabIndex = 1;
+			this.tvItems.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.TvItems_NodeMouseHover);
 			this.tvItems.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvItems_AfterSelect);
 			this.tvItems.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TvItems_MouseDown);
 			// 
@@ -864,56 +877,6 @@
 			this.contextMenuStrip.Name = "contextMenuStrip";
 			this.contextMenuStrip.Size = new System.Drawing.Size(170, 488);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
-			// 
-			// statusStrip
-			// 
-			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslDate,
-            this.tsslPlaceHolder,
-            this.tssbEditor,
-            this.tssbCalculator,
-            this.tssbOpenPowerShell,
-            this.tssbOpenCmd});
-			this.statusStrip.Location = new System.Drawing.Point(0, 490);
-			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(941, 22);
-			this.statusStrip.TabIndex = 1;
-			this.statusStrip.Text = "statusStrip1";
-			// 
-			// tsslDate
-			// 
-			this.tsslDate.Name = "tsslDate";
-			this.tsslDate.Size = new System.Drawing.Size(0, 17);
-			// 
-			// tsslPlaceHolder
-			// 
-			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
-			this.tsslPlaceHolder.Size = new System.Drawing.Size(863, 17);
-			this.tsslPlaceHolder.Spring = true;
-			// 
-			// menuStrip
-			// 
-			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNew,
-            this.tsmiTools,
-            this.tsmiSettings,
-            this.tsmiHelp});
-			this.menuStrip.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(941, 24);
-			this.menuStrip.TabIndex = 0;
-			this.menuStrip.Text = "menuStrip1";
-			// 
-			// btnVisit
-			// 
-			this.btnVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnVisit.Image = global::VirtualWork.WinForms.Properties.Resources.arrow_right_2;
-			this.btnVisit.Location = new System.Drawing.Point(689, 1);
-			this.btnVisit.Name = "btnVisit";
-			this.btnVisit.Size = new System.Drawing.Size(31, 23);
-			this.btnVisit.TabIndex = 1;
-			this.btnVisit.UseVisualStyleBackColor = true;
-			this.btnVisit.Click += new System.EventHandler(this.BtnVisit_Click);
 			// 
 			// cmiNewIssue
 			// 
@@ -1091,6 +1054,32 @@
 			this.cmiAddImage.Text = "Add image";
 			this.cmiAddImage.Click += new System.EventHandler(this.CmiAddImage_Click);
 			// 
+			// statusStrip
+			// 
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslDate,
+            this.tsslPlaceHolder,
+            this.tssbEditor,
+            this.tssbCalculator,
+            this.tssbOpenPowerShell,
+            this.tssbOpenCmd});
+			this.statusStrip.Location = new System.Drawing.Point(0, 490);
+			this.statusStrip.Name = "statusStrip";
+			this.statusStrip.Size = new System.Drawing.Size(941, 22);
+			this.statusStrip.TabIndex = 1;
+			this.statusStrip.Text = "statusStrip1";
+			// 
+			// tsslDate
+			// 
+			this.tsslDate.Name = "tsslDate";
+			this.tsslDate.Size = new System.Drawing.Size(0, 17);
+			// 
+			// tsslPlaceHolder
+			// 
+			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
+			this.tsslPlaceHolder.Size = new System.Drawing.Size(863, 17);
+			this.tsslPlaceHolder.Spring = true;
+			// 
 			// tssbEditor
 			// 
 			this.tssbEditor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1135,6 +1124,19 @@
 			this.tssbOpenCmd.Size = new System.Drawing.Size(21, 20);
 			this.tssbOpenCmd.Text = "Command prompt";
 			this.tssbOpenCmd.ButtonClick += new System.EventHandler(this.TssbOpenCmd_ButtonClick);
+			// 
+			// menuStrip
+			// 
+			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNew,
+            this.tsmiTools,
+            this.tsmiSettings,
+            this.tsmiHelp});
+			this.menuStrip.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip.Name = "menuStrip";
+			this.menuStrip.Size = new System.Drawing.Size(941, 24);
+			this.menuStrip.TabIndex = 0;
+			this.menuStrip.Text = "menuStrip1";
 			// 
 			// tsmiNew
 			// 
@@ -1501,6 +1503,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmiEditResource;
 		private System.Windows.Forms.ToolStripMenuItem cmiDeleteResource;
 		private System.Windows.Forms.ToolStripMenuItem cmiAddImage;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }
 

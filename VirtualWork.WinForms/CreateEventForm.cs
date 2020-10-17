@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Core.Extensions;
+using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Service.Process;
 using VirtualWork.Service.Utils;
@@ -32,6 +34,8 @@ namespace VirtualWork.WinForms
 
 		private void CreateEventForm_Shown(object sender, EventArgs e)
 		{
+			btnCreate.Enabled = Initializer.LoggedInUser.IsInRole(Roles.AppointmentCrud);
+
 			if (myEvent == null)
 			{
 				Text = Lng.Elem("Create event");
@@ -67,6 +71,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.AppointmentCrud)]
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
 			myEvent = myEvent ?? new Event();
