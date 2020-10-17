@@ -127,6 +127,7 @@
     <Compile Include="Security\Group.cs" />
     <Compile Include="Security\Credentials.cs" />
     <Compile Include="Security\Permission.cs" />
+    <Compile Include="Security\Roles.cs" />
     <Compile Include="Settings\SystemSetting.cs" />
     <Compile Include="Settings\UserOption.cs" />
     <Compile Include="Utils\EnumUtils.cs" />

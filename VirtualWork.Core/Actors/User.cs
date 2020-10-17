@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Actors;
 
@@ -31,6 +32,11 @@ namespace VirtualWork.Core.Actors
 		public override string ToString()
 		{
 			return FullName ?? Name;
+		}
+
+		public bool IsInRole(string role)
+		{
+			return Thread.CurrentPrincipal.IsInRole(role);
 		}
 	}
 }

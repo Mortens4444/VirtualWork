@@ -27,7 +27,7 @@ Log
 
 Security
 --------
-- Permissions
+- Assign permissions to groups
 - Store passwords for groups
 
 Programs (utilities)

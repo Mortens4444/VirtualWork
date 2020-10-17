@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using VirtualWork.Core.Cryptography.Ciphers.Production;
 using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Attributes;
@@ -35,46 +36,7 @@ namespace VirtualWork.Persistence.Helper
 					var fromValue = fromProperty.GetValue(from);
 					if (fromProperty.PropertyType == toProperty.PropertyType)
 					{
-						// PropertyCopier should be separated and moved into Core, Encryption should be here
-						if (fromProperty.PropertyType == typeof(DateTime))
-						{
-							if (fromProperty.HasUtcDateTimeAttribute())
-							{
-								fromValue = ((DateTime)fromValue).GetViewDateTimeFormat();
-							}
-							else if (toProperty.HasUtcDateTimeAttribute())
-							{
-								fromValue = ((DateTime)fromValue).GetRepositoryDateTimeFormat();
-							}
-						}
-						else if (fromProperty.PropertyType == typeof(DateTime?))
-						{
-							if (fromProperty.HasUtcDateTimeAttribute())
-							{
-								fromValue = ((DateTime?)fromValue)?.GetViewDateTimeFormat();
-							}
-							else if (toProperty.HasUtcDateTimeAttribute())
-							{
-								fromValue = ((DateTime?)fromValue)?.GetRepositoryDateTimeFormat();
-							}
-						}
-						else
-						{
-							var encryptionKey = GetEncryptionKey(fromProperty.GetEncryptionAttribute());
-							if (encryptionKey != null)
-							{
-								fromValue = productionCipher.Decrypt(fromValue.ToString(), encryptionKey);
-							}
-							else
-							{
-								encryptionKey = GetEncryptionKey(toProperty.GetEncryptionAttribute());
-								if (encryptionKey != null)
-								{
-									fromValue = productionCipher.Encrypt(fromValue.ToString(), encryptionKey);
-								}
-							}
-						}
-
+						fromValue = SetSpecificValue(fromProperty, toProperty, fromValue);
 						toProperty.SetValue(to, fromValue);
 					}
 					else
@@ -90,6 +52,48 @@ namespace VirtualWork.Persistence.Helper
 					}
 				}
 			}
+		}
+
+		private object SetSpecificValue(PropertyInfo fromProperty, PropertyInfo toProperty, object fromValue)
+		{
+			if (fromProperty.PropertyType == typeof(DateTime))
+			{
+				return AutoConvertDateTime(fromProperty, toProperty, (DateTime)fromValue);
+			}
+			if (fromProperty.PropertyType == typeof(DateTime?))
+			{
+				var nullableDate = (DateTime?)fromValue;
+				if (nullableDate.HasValue)
+				{
+					return AutoConvertDateTime(fromProperty, toProperty, nullableDate.Value);
+				}
+			}
+			var encryptionKey = GetEncryptionKey(fromProperty.GetEncryptionAttribute());
+			if (encryptionKey != null)
+			{
+				return productionCipher.Decrypt(fromValue.ToString(), encryptionKey);
+			}
+			encryptionKey = GetEncryptionKey(toProperty.GetEncryptionAttribute());
+			if (encryptionKey != null)
+			{
+				return productionCipher.Encrypt(fromValue.ToString(), encryptionKey);
+			}
+
+			return fromValue;
+		}
+
+		private static object AutoConvertDateTime(PropertyInfo fromProperty, PropertyInfo toProperty, DateTime fromValue)
+		{
+			if (fromProperty.HasUtcDateTimeAttribute())
+			{
+				return fromValue.GetViewDateTimeFormat();
+			}
+			else if (toProperty.HasUtcDateTimeAttribute())
+			{
+				return fromValue.GetRepositoryDateTimeFormat();
+			}
+
+			return fromValue;
 		}
 
 		private string GetEncryptionKey(EncryptionAttribute encryptionAttribute)

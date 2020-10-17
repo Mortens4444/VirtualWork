@@ -9,5 +9,10 @@ namespace VirtualWork.Core.Security
 		public string Description { get; set; }
 
 		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return Description;
+		}
 	}
 }

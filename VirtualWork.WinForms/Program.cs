@@ -20,6 +20,7 @@ namespace VirtualWork.WinForms
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
+			Application.ThreadException += ExceptionCatcher.ThreadExceptionHandler;
 
 			BaseBox.OK = Lng.Elem("OK");
 			BaseBox.Yes = Lng.Elem("Yes");

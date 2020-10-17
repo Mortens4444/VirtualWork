@@ -69,6 +69,7 @@
     <Compile Include="Converters\ResourceConverter.cs" />
     <Compile Include="Converters\EventConverter.cs" />
     <Compile Include="Converters\MeetingConverter.cs" />
+    <Compile Include="Converters\GroupConverter.cs" />
     <Compile Include="Converters\ServerConverter.cs" />
     <Compile Include="Converters\ConverterBase.cs" />
     <Compile Include="Converters\LicenseConverter.cs" />
@@ -168,6 +169,10 @@
     <Compile Include="Migrations\202009262144280_IntroduceAppointmentEndDate.designer.cs">
       <DependentUpon>202009262144280_IntroduceAppointmentEndDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010102110299_CreatePermissions.cs" />
+    <Compile Include="Migrations\202010102110299_CreatePermissions.designer.cs">
+      <DependentUpon>202010102110299_CreatePermissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\CredentialsRepository.cs" />
     <Compile Include="Repositories\PasswordHashRepository.cs" />
     <Compile Include="Repositories\EmailRepository.cs" />
@@ -176,6 +181,7 @@
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\IssueHistoryRepository.cs" />
     <Compile Include="Repositories\SystemSettingsRepository.cs" />
+    <EmbeddedResource Include="StoredProcedures\CreatePermissions.sql" />
     <Compile Include="VirtualWorkDatabaseContext.cs" />
     <Compile Include="Entities\UserSetting.cs" />
     <Compile Include="Entities\Permission.cs" />
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009262144280_IntroduceAppointmentEndDate.resx">
       <DependentUpon>202009262144280_IntroduceAppointmentEndDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010102110299_CreatePermissions.resx">
+      <DependentUpon>202010102110299_CreatePermissions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\GetUsersAndGroups.sql" />
   </ItemGroup>

@@ -70,6 +70,8 @@
     <Compile Include="Enums\PublicAreaKind.cs" />
     <Compile Include="Enums\ResourceType.cs" />
     <Compile Include="Enums\RepetitionType.cs" />
+    <Compile Include="Exceptions\ExceptionOccurredEventArgs.cs" />
+    <Compile Include="ICanBeOrdered.cs" />
     <Compile Include="IResource.cs" />
     <Compile Include="IEntityHaveActorOwner.cs" />
     <Compile Include="IEntityHaveEntityOwner.cs" />

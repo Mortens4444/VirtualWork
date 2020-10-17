@@ -78,66 +78,11 @@ namespace VirtualWork.WinForms.Providers
 
 			foreach (var appointment in appointments)
 			{
-				switch (appointment.RepetitionType)
+				var futureOccurances = appointment.GetNextOccuranceDates();
+				foreach (var futureOccurance in futureOccurances)
 				{
-					case RepetitionType.NoRepeat:
-						monthCalendar.AddBoldedDate(appointment.AppointmentDate);
-						break;
-					case RepetitionType.EveryMillisecond:
-					case RepetitionType.EverySecond:
-					case RepetitionType.EveryMinute:
-					case RepetitionType.Hourly:
-
-						MakeDatesBold(monthCalendar, appointment, 1);
-
-						break;
-
-					case RepetitionType.Daily:
-
-						MakeDatesBold(monthCalendar, appointment, appointment.RepetitionValue);
-
-						break;
-					case RepetitionType.Weekly:
-
-						MakeDatesBold(monthCalendar, appointment, 7 * appointment.RepetitionValue);
-
-						break;
-					case RepetitionType.Monthly:
-
-						var actualDateMonthly = appointment.AppointmentDate;
-						var expirationDateMonthly = appointment.ExpirationDate ?? DateTime.Now.AddYears(3);
-						while (actualDateMonthly < expirationDateMonthly)
-						{
-							actualDateMonthly = actualDateMonthly.AddMonths(appointment.RepetitionValue);
-							monthCalendar.AddBoldedDate(actualDateMonthly);
-						}
-
-						break;
-					case RepetitionType.Yearly:
-
-						var actualDateYearly = appointment.AppointmentDate;
-						var expirationDateYearly = appointment.ExpirationDate ?? DateTime.Now.AddYears(3);
-						while (actualDateYearly < expirationDateYearly)
-						{
-							actualDateYearly = actualDateYearly.AddYears(appointment.RepetitionValue);
-							monthCalendar.AddBoldedDate(actualDateYearly);
-						}
-
-						break;
-					default:
-						break;
+					monthCalendar.AddBoldedDate(futureOccurance);
 				}
-			}
-		}
-
-		private static void MakeDatesBold(MonthCalendar monthCalendar, AppointmentBase appointment, double modifyValue)
-		{
-			var actualDate = appointment.AppointmentDate;
-			var expirationDate = appointment.ExpirationDate ?? DateTime.Now.AddYears(3);
-			while (actualDate < expirationDate)
-			{
-				actualDate = actualDate.AddDays(modifyValue);
-				monthCalendar.AddBoldedDate(actualDate);
 			}
 		}
 	}
