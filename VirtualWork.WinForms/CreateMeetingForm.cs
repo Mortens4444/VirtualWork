@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Core.Extensions;
+using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
@@ -38,6 +40,7 @@ namespace VirtualWork.WinForms
 			dtpExpirationDate.Enabled = isEnabled;
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.AppointmentCrud)]
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
 			meeting = meeting ?? new Meeting();
@@ -63,6 +66,8 @@ namespace VirtualWork.WinForms
 
 		private void CreateMeetingForm_Shown(object sender, EventArgs e)
 		{
+			btnCreate.Enabled = Initializer.LoggedInUser.IsInRole(Roles.AppointmentCrud);
+
 			if (meeting == null)
 			{
 				Text = Lng.Elem("Create meeting");

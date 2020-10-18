@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
@@ -31,6 +32,7 @@ namespace VirtualWork.WinForms
 			groups = !userRepository.HasAny() ? new[] { groupRepository.GetAdminGroup() } : actualUserGroupsProvider.Get();
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.UserAndGroupManagement)]
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			user = user ?? new User();
@@ -43,7 +45,10 @@ namespace VirtualWork.WinForms
 
 		private void CredentialsChanged(object sender, EventArgs e)
 		{
-			btnAdd.Enabled = !String.IsNullOrEmpty(tbName.Text) && !String.IsNullOrEmpty(tbPassword.Text) && tbPassword.Text == tbConfirmPassword.Text;
+			btnAdd.Enabled = Initializer.LoggedInUser.IsInRole(Roles.ResourceCrud)
+				&& !String.IsNullOrEmpty(tbName.Text)
+				&& !String.IsNullOrEmpty(tbPassword.Text)
+				&& tbPassword.Text == tbConfirmPassword.Text;
 		}
 
 		public new bool ShowDialog()
@@ -53,6 +58,7 @@ namespace VirtualWork.WinForms
 
 		public bool ShowDialog(object obj)
 		{
+			btnAdd.Enabled = Initializer.LoggedInUser.IsInRole(Roles.ResourceCrud);
 			user = (User)obj;
 			return ShowDialog();
 		}

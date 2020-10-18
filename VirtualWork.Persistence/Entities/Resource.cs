@@ -20,7 +20,6 @@ namespace VirtualWork.Persistence.Entities
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string Key { get; set; }
 
-		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string OtherInformation { get; set; }
 	}
 }

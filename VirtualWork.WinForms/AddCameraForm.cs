@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Infrastructure;
+using VirtualWork.Core.Security;
 using CameraRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Camera, VirtualWork.Persistence.Entities.Camera>;
 using ServerRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Server, VirtualWork.Persistence.Entities.Server>;
 
@@ -27,6 +29,8 @@ namespace VirtualWork.WinForms
 
 		private void AddCameraForm_Shown(object sender, EventArgs e)
 		{
+			btnAdd.Enabled = Initializer.LoggedInUser.IsInRole(Roles.ResourceCrud);
+
 			var servers = serverRepository.GetAll();
 			cbServer.Items.Clear();
 			cbServer.Items.AddRange(servers.ToArray());
@@ -68,6 +72,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			camera = camera ?? new Camera();

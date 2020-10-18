@@ -15,7 +15,6 @@ namespace VirtualWork.Persistence.Entities
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
-		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string Description { get; set; }
 
 		public virtual ICollection<Group> Groups { get; set; }

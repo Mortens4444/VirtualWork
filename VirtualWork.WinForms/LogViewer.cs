@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Extensions;
 using VirtualWork.Core.Log;
+using VirtualWork.Core.Security;
 using VirtualWork.Core.Utils;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.WinForms.Extensions;
@@ -37,6 +39,7 @@ namespace VirtualWork.WinForms
 			GetLogItems();
 		}
 
+		//[PrincipalPermission(SecurityAction.Demand, Role = Roles.LogViewer)]
 		private void GetLogItems(Func<Persistence.Entities.LogEntry, bool> predicate = null)
 		{
 			var filteredLogEntries = logEntryRepository.GetAll(predicate);

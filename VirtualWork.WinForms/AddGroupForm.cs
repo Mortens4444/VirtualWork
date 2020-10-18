@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Security;
@@ -56,10 +57,12 @@ namespace VirtualWork.WinForms
 
 		public bool ShowDialog(object obj)
 		{
+			btnAdd.Enabled = Initializer.LoggedInUser.IsInRole(Roles.UserAndGroupManagement);
 			//group = (Group)obj;
 			return ShowDialog();
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.UserAndGroupManagement)]
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			var permissions = this is AddAdminGroupForm

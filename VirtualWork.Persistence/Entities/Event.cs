@@ -21,7 +21,6 @@ namespace VirtualWork.Persistence.Entities
 		[Required]
 		public string Title { get; set; }
 
-		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string Description { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]

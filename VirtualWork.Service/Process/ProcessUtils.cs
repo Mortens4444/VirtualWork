@@ -88,7 +88,7 @@ namespace VirtualWork.Service.Process
 				{
 					FileName = process,
 					Arguments = arguments,
-					Verb = "runas"
+					Verb = "RunAs"
 				});
 			}
 			catch (Exception ex)

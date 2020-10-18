@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
 using VirtualWork.Core.Infrastructure;
+using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.WinForms.Extensions;
@@ -34,6 +36,7 @@ namespace VirtualWork.WinForms
 			cbResourceType.FillWithEnum<ResourceType>();
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void BtnOk_Click(object sender, EventArgs e)
 		{
 			resource = resource ?? new Resource();
@@ -70,6 +73,8 @@ namespace VirtualWork.WinForms
 
 		private void AddResource_Shown(object sender, EventArgs e)
 		{
+			btnOk.Enabled = Initializer.LoggedInUser.IsInRole(Roles.ResourceCrud);
+
 			if (resource == null)
 			{
 				Text = Lng.Elem("Create resource");

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Infrastructure;
+using VirtualWork.Core.Security;
 using VirtualWork.Service.Network;
 using VirtualWork.Service.Utils;
 using ServerRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Infrastructure.Server, VirtualWork.Persistence.Entities.Server>;
@@ -35,6 +37,8 @@ namespace VirtualWork.WinForms
 
 		private void AddServerForm_Shown(object sender, EventArgs e)
 		{
+			btnAdd.Enabled = Initializer.LoggedInUser.IsInRole(Roles.ResourceCrud);
+
 			if (server == null)
 			{
 				Text = Lng.Elem("Create server");
@@ -68,6 +72,7 @@ namespace VirtualWork.WinForms
 			});
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			server = server ?? new Server();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -36,6 +37,10 @@ namespace VirtualWork.Core.Actors
 
 		public bool IsInRole(string role)
 		{
+			if (String.IsNullOrEmpty(role))
+			{
+				return true;
+			}
 			return Thread.CurrentPrincipal.IsInRole(role);
 		}
 	}

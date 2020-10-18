@@ -27,7 +27,6 @@ namespace VirtualWork.Persistence.Entities
 		public int? OwnerId { get; set; }
 		public virtual User Owner { get; set; }
 
-		[StringLength(PersistenceConstants.MaxLengthOfLongStrings)]
 		public string Description { get; set; }
 
 		[StringLength(PersistenceConstants.MaxLengthOfStrings)]

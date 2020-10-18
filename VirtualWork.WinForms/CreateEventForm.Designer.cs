@@ -36,6 +36,8 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tpGeneral = new System.Windows.Forms.TabPage();
 			this.gbMain = new System.Windows.Forms.GroupBox();
+			this.dtpEventEndDate = new System.Windows.Forms.DateTimePicker();
+			this.lblEventEndTime = new System.Windows.Forms.Label();
 			this.tbEventLocation = new System.Windows.Forms.TextBox();
 			this.lblEventLocation = new System.Windows.Forms.Label();
 			this.gbStartInfo = new System.Windows.Forms.GroupBox();
@@ -58,8 +60,6 @@
 			this.chOperation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOriginator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOperationTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.dtpEventEndDate = new System.Windows.Forms.DateTimePicker();
-			this.lblEventEndTime = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tpGeneral.SuspendLayout();
@@ -162,6 +162,24 @@
 			this.gbMain.TabIndex = 3;
 			this.gbMain.TabStop = false;
 			// 
+			// dtpEventEndDate
+			// 
+			this.dtpEventEndDate.CustomFormat = "yyyy.MM.dd. HH:mm";
+			this.dtpEventEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpEventEndDate.Location = new System.Drawing.Point(481, 141);
+			this.dtpEventEndDate.Name = "dtpEventEndDate";
+			this.dtpEventEndDate.Size = new System.Drawing.Size(156, 20);
+			this.dtpEventEndDate.TabIndex = 18;
+			// 
+			// lblEventEndTime
+			// 
+			this.lblEventEndTime.AutoSize = true;
+			this.lblEventEndTime.Location = new System.Drawing.Point(292, 147);
+			this.lblEventEndTime.Name = "lblEventEndTime";
+			this.lblEventEndTime.Size = new System.Drawing.Size(78, 13);
+			this.lblEventEndTime.TabIndex = 17;
+			this.lblEventEndTime.Text = "Event end time";
+			// 
 			// tbEventLocation
 			// 
 			this.tbEventLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -255,7 +273,7 @@
 			// 
 			this.dtpExpirationDate.CustomFormat = "yyyy.MM.dd. HH:mm";
 			this.dtpExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpExpirationDate.Location = new System.Drawing.Point(403, 40);
+			this.dtpExpirationDate.Location = new System.Drawing.Point(475, 40);
 			this.dtpExpirationDate.Name = "dtpExpirationDate";
 			this.dtpExpirationDate.Size = new System.Drawing.Size(152, 20);
 			this.dtpExpirationDate.TabIndex = 15;
@@ -384,24 +402,6 @@
 			// 
 			this.chOperationTime.Text = "Operation time";
 			this.chOperationTime.Width = 101;
-			// 
-			// dtpEventEndDate
-			// 
-			this.dtpEventEndDate.CustomFormat = "yyyy.MM.dd. HH:mm";
-			this.dtpEventEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpEventEndDate.Location = new System.Drawing.Point(387, 141);
-			this.dtpEventEndDate.Name = "dtpEventEndDate";
-			this.dtpEventEndDate.Size = new System.Drawing.Size(156, 20);
-			this.dtpEventEndDate.TabIndex = 18;
-			// 
-			// lblEventEndTime
-			// 
-			this.lblEventEndTime.AutoSize = true;
-			this.lblEventEndTime.Location = new System.Drawing.Point(292, 147);
-			this.lblEventEndTime.Name = "lblEventEndTime";
-			this.lblEventEndTime.Size = new System.Drawing.Size(78, 13);
-			this.lblEventEndTime.TabIndex = 17;
-			this.lblEventEndTime.Text = "Event end time";
 			// 
 			// CreateEventForm
 			// 
