@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using Enums;
 using LanguageService;
@@ -10,6 +12,7 @@ using MessageBoxes;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Core.Infrastructure;
 using VirtualWork.Core.Job;
+using VirtualWork.Core.Security;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Date;
 using VirtualWork.Interfaces.Enums;
@@ -205,6 +208,8 @@ namespace VirtualWork.WinForms
 
 		private void MainForm_Shown(object sender, EventArgs e)
 		{
+			tsmiLogViewer.Enabled = Initializer.LoggedInUser.IsInRole(Roles.LogViewer);
+
 			dateTimeProvider.ActualDateTimeReport += DateTimeProvider_ActualDateTimeReport;
 			serverListProvider.GetServersAndCamera(tvItems);
 			resourceListProvider.GetResources(tvItems);
@@ -429,7 +434,14 @@ namespace VirtualWork.WinForms
 
 		private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
 		{
-			var enabledMenuItems = new[] { cmiNewIssue, cmiNewEvent, cmiNewMeeting, cmiCreateServer, cmiCreateCamera };
+			var roleBasedMenuItems = new Dictionary<ToolStripMenuItem, string>()
+			{
+				{ cmiNewIssue, Roles.IssueCrud },
+				{ cmiNewEvent, Roles.AppointmentCrud },
+				{ cmiNewMeeting, Roles.AppointmentCrud },
+				{ cmiCreateServer, Roles.ResourceCrud },
+				{ cmiCreateCamera, Roles.ResourceCrud }
+			};
 
 			var disabledMenuItems = new[]
 			{
@@ -442,9 +454,10 @@ namespace VirtualWork.WinForms
 			e.Cancel = false;
 			if (tvItems.SelectedNode == null)
 			{
-				foreach (var menuItem in enabledMenuItems)
+				foreach (var menuItem in roleBasedMenuItems)
 				{
-					menuItem.SetEnabled(true);
+					var enabled = Initializer.LoggedInUser.IsInRole(menuItem.Value);
+					menuItem.Key.SetEnabled(enabled);
 				}
 				foreach (var menuItem in disabledMenuItems)
 				{
@@ -453,25 +466,28 @@ namespace VirtualWork.WinForms
 				return;
 			}
 
-			cmiNewEvent.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[EventListProvider.Events]);
-			var eventSelected = tvItems.SelectedNode.Tag is Event;
+			var appointmentCrud = Initializer.LoggedInUser.IsInRole(Roles.AppointmentCrud);
+			cmiNewEvent.SetEnabled(appointmentCrud && tvItems.SelectedNode == tvItems.Nodes[EventListProvider.Events]);
+			var eventSelected = appointmentCrud && tvItems.SelectedNode.Tag is Event;
 			cmiModifyEvent.SetEnabled(eventSelected);
 			cmiDeleteEvent.SetEnabled(eventSelected);
 
-			cmiNewIssue.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[IssueListProvider.Issues]);
-			var issueSelected = tvItems.SelectedNode.Tag is Issue;
+			var issueCrud = Initializer.LoggedInUser.IsInRole(Roles.IssueCrud);
+			cmiNewIssue.SetEnabled(issueCrud && tvItems.SelectedNode == tvItems.Nodes[IssueListProvider.Issues]);
+			var issueSelected = issueCrud && tvItems.SelectedNode.Tag is Issue;
 			cmiModifyIssue.SetEnabled(issueSelected);
 			cmiDeleteIssue.SetEnabled(issueSelected);
 
-			cmiNewMeeting.SetEnabled(tvItems.SelectedNode == tvItems.Nodes[MeetingsListProvider.Meetings]);
-			var meetingSelected = tvItems.SelectedNode.Tag is Meeting;
+			cmiNewMeeting.SetEnabled(appointmentCrud && tvItems.SelectedNode == tvItems.Nodes[MeetingsListProvider.Meetings]);
+			var meetingSelected = appointmentCrud && tvItems.SelectedNode.Tag is Meeting;
 			cmiModifyMeeting.SetEnabled(meetingSelected);
 			cmiDeleteMeeting.SetEnabled(meetingSelected);
 
-			var serverRootSelected = tvItems.SelectedNode == tvItems.Nodes[ServerListProvider.Servers];
+			var resourceCrud = Initializer.LoggedInUser.IsInRole(Roles.ResourceCrud);
+			var serverRootSelected = resourceCrud && tvItems.SelectedNode == tvItems.Nodes[ServerListProvider.Servers];
 			cmiCreateServer.SetEnabled(serverRootSelected);
 
-			var serverSelected = tvItems.SelectedNode.Tag is Server;
+			var serverSelected = resourceCrud && tvItems.SelectedNode.Tag is Server;
 			cmiCreateCamera.SetEnabled(serverRootSelected || serverSelected);
 			cmiModifyServer.SetEnabled(serverSelected);
 			cmiDeleteServer.SetEnabled(serverSelected);
@@ -479,25 +495,26 @@ namespace VirtualWork.WinForms
 			cmiCommandSender.SetEnabled(serverSelected);
 			cmiPing.SetEnabled(serverSelected);
 
-			var cameraSelected = tvItems.SelectedNode.Tag is Camera;
+			var cameraSelected = resourceCrud && tvItems.SelectedNode.Tag is Camera;
 			cmiModifyCamera.SetEnabled(cameraSelected);
 			cmiDeleteCamera.SetEnabled(cameraSelected);
 
-			var resourceRootSelected = tvItems.SelectedNode == tvItems.Nodes[ResourceListProvider.Resources];
+			var resourceRootSelected = resourceCrud && tvItems.SelectedNode == tvItems.Nodes[ResourceListProvider.Resources];
 			cmiCreateResource.SetEnabled(resourceRootSelected);
 
-			var resourceSelected = tvItems.SelectedNode.Tag is Resource;
+			var resourceSelected = resourceCrud && tvItems.SelectedNode.Tag is Resource;
 			cmiEditResource.SetEnabled(resourceSelected);
 			cmiDeleteResource.SetEnabled(resourceSelected);
 			cmiAddImage.SetEnabled(resourceSelected);
 
-			var menuItems = enabledMenuItems.Concat(disabledMenuItems);
+			var menuItems = roleBasedMenuItems.Keys.Concat(disabledMenuItems);
 			if (menuItems.All(menuItem => !menuItem.Enabled))
 			{
 				e.Cancel = true;
 			}			
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void CmiModifyServer_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Server server)
@@ -509,6 +526,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void CmiDeleteServer_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Server server &&
@@ -520,6 +538,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void CmiModifyCamera_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Camera camera)
@@ -531,6 +550,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.ResourceCrud)]
 		private void CmiDeleteCamera_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Camera camera &&
@@ -542,6 +562,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.IssueCrud)]
 		private void CmiModifyIssue_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Issue issue)
@@ -573,6 +594,7 @@ namespace VirtualWork.WinForms
 			pTaskDetails.Visible = !hasChildren;
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.IssueCrud)]
 		private void CmiDeleteIssue_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Issue issue &&
@@ -584,6 +606,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.AppointmentCrud)]
 		private void CmiModifyEvent_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Event myEvent)
@@ -595,6 +618,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.AppointmentCrud)]
 		private void CmiDeleteEvent_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Event myEvent &&
@@ -606,6 +630,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.AppointmentCrud)]
 		private void CmiModifyMeeting_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Meeting meeting)
@@ -617,6 +642,7 @@ namespace VirtualWork.WinForms
 			}
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.AppointmentCrud)]
 		private void CmiDeleteMeeting_Click(object sender, EventArgs e)
 		{
 			if (tvItems.SelectedNode?.Tag is Meeting meeting &&

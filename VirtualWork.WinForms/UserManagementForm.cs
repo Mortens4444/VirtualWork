@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
@@ -28,14 +29,18 @@ namespace VirtualWork.WinForms
 
 		private void UserManagementForm_Shown(object sender, EventArgs e)
 		{
+			btnCreateNewGroup.Enabled = Initializer.LoggedInUser.IsInRole(Roles.UserAndGroupManagement);
+			btnCreateNewUser.Enabled = btnCreateNewGroup.Enabled;
 			userListProvider.GetUsersAndGroups(tvUsersAndGroups);
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.UserAndGroupManagement)]
 		private void BtnCreateNewGroup_Click(object sender, EventArgs e)
 		{
 			addGroupForm.ShowDialog();
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.UserAndGroupManagement)]
 		private void BtnCreateNewUser_Click(object sender, EventArgs e)
 		{
 			addUserForm.ShowDialog();

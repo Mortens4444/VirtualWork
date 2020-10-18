@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Actors;
 using VirtualWork.Core.Job;
+using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.Service.Utils;
@@ -78,6 +80,7 @@ namespace VirtualWork.WinForms
 			cbParent.AddMatchingItems(parents);
 		}
 
+		[PrincipalPermission(SecurityAction.Demand, Role = Roles.IssueCrud)]
 		private void BtnCreate_Click(object sender, EventArgs e)
 		{
 			issue = issue ?? new Issue();
@@ -109,6 +112,8 @@ namespace VirtualWork.WinForms
 
 		private void CreateIssueForm_Shown(object sender, EventArgs e)
 		{
+			btnCreate.Enabled = Initializer.LoggedInUser.IsInRole(Roles.IssueCrud);
+
 			GetUsers();
 			GetUnfinishedIssues();
 

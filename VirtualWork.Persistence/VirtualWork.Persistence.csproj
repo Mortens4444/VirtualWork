@@ -173,6 +173,14 @@
     <Compile Include="Migrations\202010102110299_CreatePermissions.designer.cs">
       <DependentUpon>202010102110299_CreatePermissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010182227373_DeleteDescriptionsLengthRestrictions.cs" />
+    <Compile Include="Migrations\202010182227373_DeleteDescriptionsLengthRestrictions.designer.cs">
+      <DependentUpon>202010182227373_DeleteDescriptionsLengthRestrictions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010182234393_DeleteResourceOtherInformationLengthRestriction.cs" />
+    <Compile Include="Migrations\202010182234393_DeleteResourceOtherInformationLengthRestriction.designer.cs">
+      <DependentUpon>202010182234393_DeleteResourceOtherInformationLengthRestriction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\CredentialsRepository.cs" />
     <Compile Include="Repositories\PasswordHashRepository.cs" />
     <Compile Include="Repositories\EmailRepository.cs" />
@@ -181,6 +189,12 @@
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\IssueHistoryRepository.cs" />
     <Compile Include="Repositories\SystemSettingsRepository.cs" />
+    <EmbeddedResource Include="Migrations\202010182227373_DeleteDescriptionsLengthRestrictions.resx">
+      <DependentUpon>202010182227373_DeleteDescriptionsLengthRestrictions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010182234393_DeleteResourceOtherInformationLengthRestriction.resx">
+      <DependentUpon>202010182234393_DeleteResourceOtherInformationLengthRestriction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoredProcedures\CreatePermissions.sql" />
     <Compile Include="VirtualWorkDatabaseContext.cs" />
     <Compile Include="Entities\UserSetting.cs" />
