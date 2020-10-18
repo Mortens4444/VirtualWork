@@ -1077,7 +1077,7 @@
 			// tsslPlaceHolder
 			// 
 			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
-			this.tsslPlaceHolder.Size = new System.Drawing.Size(863, 17);
+			this.tsslPlaceHolder.Size = new System.Drawing.Size(811, 17);
 			this.tsslPlaceHolder.Spring = true;
 			// 
 			// tssbEditor
@@ -1100,7 +1100,6 @@
 			this.tssbCalculator.Name = "tssbCalculator";
 			this.tssbCalculator.Size = new System.Drawing.Size(21, 20);
 			this.tssbCalculator.Text = "Calculator";
-			this.tssbCalculator.Visible = false;
 			this.tssbCalculator.ButtonClick += new System.EventHandler(this.TssbCalculator_ButtonClick);
 			// 
 			// tssbOpenPowerShell
