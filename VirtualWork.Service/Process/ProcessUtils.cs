@@ -57,6 +57,29 @@ namespace VirtualWork.Service.Process
 			}
 		}
 
+		public System.Diagnostics.Process StartWithRedirect(string process, string arguments = null)
+		{
+			try
+			{
+				return System.Diagnostics.Process.Start(new ProcessStartInfo
+				{
+					WindowStyle = ProcessWindowStyle.Hidden,
+					FileName = process,
+					Arguments = arguments,
+					RedirectStandardInput = true,
+					RedirectStandardOutput = true,
+					RedirectStandardError = true,
+					UseShellExecute = false,
+					CreateNoWindow = true
+				});
+			}
+			catch (Exception ex)
+			{
+				errorBoxHelper.Show(ex);
+				return null;
+			}
+		}
+
 		public void StartAsAdmin(string process, string arguments = null)
 		{
 			try
