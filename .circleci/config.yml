@@ -11,4 +11,3 @@
        - checkout
        - run: nuget restore VirtualWork.sln
        - run: msbuild VirtualWork.sln
-       - task: VSTest@2
