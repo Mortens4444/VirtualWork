@@ -92,6 +92,7 @@
     <Compile Include="Exceptions\SystemErrorCodes.cs" />
     <Compile Include="Expressions\ExpressionDelegateVisitor.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\CalendarViewTypeExtensions.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\IHaveIdentifierExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />

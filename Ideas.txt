@@ -6,6 +6,12 @@ Appointments
 - Calendar (week/month)
 - CreateMeetingForm remove comments
 - Get meeting/event data sheet from calendar, show it on Google Maps
+- Speech, InfoBox, ErrorBox commands in start an application section
+	(ex.
+		- Speech "You will have an appointment in Room 101 in 10 minutes with the CEO."
+		- InfoBox "You need to go to the lab."
+		- ErrorBox "This should not be happen at all. Now you have to find out what to do next." [Maybe we didn't get our goods from a delivery company in time.]
+	)
 
 Resources
 ---------
