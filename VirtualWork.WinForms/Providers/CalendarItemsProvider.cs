@@ -38,35 +38,64 @@ namespace VirtualWork.WinForms.Providers
 			Font = new Font(FontFamily, 8)
 		};
 
-		public void GetItems(DataGridView dgvCalendar, DateTime date)
+		public void GetItems(DataGridView dgvCalendar, DateTime date, CalendarViewType calendarViewType)
+		{
+			var startDate = date.GetStartDate(calendarViewType);
+			dgvCalendar.ColumnCount = calendarViewType.GetNumberOfDays(date);
+
+			SetRowHeaderCells(dgvCalendar);
+			SetColumnHeaderCells(dgvCalendar, startDate);
+
+			for (int dayIndex = 0; dayIndex < dgvCalendar.ColumnCount; dayIndex++)
+			{
+				var actualDate = startDate.AddDays(dayIndex);
+				var meetings = meetingRepository.GetAll(meeting => meeting.MeetingDate.IsRepeatedOnDate(actualDate, (RepetitionType)meeting.RepetitionType, meeting.RepetitionValue, meeting.ExpirationDate));
+				var events = eventRepository.GetAll(myEvent => myEvent.EventDate.IsRepeatedOnDate(actualDate, (RepetitionType)myEvent.RepetitionType, myEvent.RepetitionValue, myEvent.ExpirationDate));
+
+				var slotStartTime = new TimeSpan(0, 0, 0);
+				for (int i = 0; i < 48; i++)
+				{
+					var slotEndTime = slotStartTime.Add(HalfAnHour);
+
+					var slotMeetings = meetings
+						.Where(meeting => DateTimeExtensions.AreDatesTimeBetweenTimeSpans(meeting.MeetingDate, meeting.MeetingEndDate, slotStartTime, slotEndTime))
+						.Select(meeting => meeting.Title);
+					var slotEvents = events
+						.Where(myEvent => DateTimeExtensions.AreDatesTimeBetweenTimeSpans(myEvent.EventDate, myEvent.EventEndDate, slotStartTime, slotEndTime))
+						.Select(myEvent => myEvent.Title);
+
+					var meetingsText = String.Join(", ", slotMeetings);
+					var eventsText = String.Join(", ", slotEvents);
+					var slotText = $"{meetingsText};{eventsText}".Trim(';');
+					dgvCalendar.Rows[i].Cells[dayIndex].Value = slotText;
+
+					slotStartTime = slotEndTime;
+				}
+			}
+		}
+
+		private void SetRowHeaderCells(DataGridView dgvCalendar)
 		{
 			dgvCalendar.Rows.Clear();
-			var meetings = meetingRepository.GetAll(meeting => meeting.MeetingDate.IsRepeatedOnDate(date, (RepetitionType)meeting.RepetitionType, meeting.RepetitionValue, meeting.ExpirationDate));
-			var events = eventRepository.GetAll(myEvent => myEvent.EventDate.IsRepeatedOnDate(date, (RepetitionType)myEvent.RepetitionType, myEvent.RepetitionValue, myEvent.ExpirationDate));
+			dgvCalendar.Rows.Add(48);
 
 			var slotStartTime = new TimeSpan(0, 0, 0);
 			for (int i = 0; i < 48; i++)
 			{
 				var slotEndTime = slotStartTime.Add(HalfAnHour);
-				
-				var slotMeetings = meetings
-					.Where(meeting => DateTimeExtensions.AreDatesTimeBetweenTimeSpans(meeting.MeetingDate, meeting.MeetingEndDate, slotStartTime, slotEndTime))
-					.Select(meeting => meeting.Title);
-				var slotEvents = events
-					.Where(myEvent => DateTimeExtensions.AreDatesTimeBetweenTimeSpans(myEvent.EventDate, myEvent.EventEndDate, slotStartTime, slotEndTime))
-					.Select(myEvent => myEvent.Title);
-
 				var formatString = i % 2 == 0 ? "hh\\:mm" : "\\ \\ \\ \\ \\ \\ mm";
-
-				var meetingsText = String.Join(", ", slotMeetings);
-				var eventsText = String.Join(", ", slotEvents);
-				var slotText = $"{meetingsText};{eventsText}".Trim(';');
-				dgvCalendar.Rows.Add(slotText);
-
 				dgvCalendar.Rows[i].HeaderCell.Value = slotStartTime.ToString(formatString);
 				dgvCalendar.Rows[i].HeaderCell.Style = i % 2 == 0 ? hourStyle : halfAnHourStyle;
-
 				slotStartTime = slotEndTime;
+			}
+		}
+
+		private void SetColumnHeaderCells(DataGridView dgvCalendar, DateTime startDate)
+		{
+			for (int i = 0; i < dgvCalendar.ColumnCount; i++)
+			{
+				var headerDate = startDate.AddDays(i);
+				dgvCalendar.Columns[i].HeaderText = headerDate.ToShortDateString();
 			}
 		}
 

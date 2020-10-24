@@ -10,6 +10,7 @@ using LanguageService;
 using LanguageService.Windows.Forms;
 using MessageBoxes;
 using VirtualWork.Core.Appointment;
+using VirtualWork.Core.Extensions;
 using VirtualWork.Core.Infrastructure;
 using VirtualWork.Core.Job;
 using VirtualWork.Core.Security;
@@ -77,6 +78,8 @@ namespace VirtualWork.WinForms
 		private readonly ProcessUtils processUtils;
 		private readonly ErrorBoxHelper errorBoxHelper;
 		private readonly AddImageForm addImageForm;
+
+		private CalendarViewType calendarViewType = CalendarViewType.Today;
 
 		public MainForm(DatabaseSettingsForm databaseSettingsForm,
 			UserManagementForm userManagementForm,
@@ -661,13 +664,20 @@ namespace VirtualWork.WinForms
 
 		private void SetCalendarColumnSize()
 		{
-			dgvCalendar.Columns[0].Width = dgvCalendar.Size.Width - dgvCalendar.RowHeadersWidth - 20;
+			var numberOfDays = calendarViewType.GetNumberOfDays(dateTimePicker.Value);
+			var maxWidth = dgvCalendar.Size.Width - dgvCalendar.RowHeadersWidth - 20;
+			var columnWidth = maxWidth / numberOfDays;
+			for (int i = 0; i < numberOfDays; i++)
+			{
+				dgvCalendar.Columns[i].Width = columnWidth;
+			}
 		}
 
 		private void DateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			calendarItemsProvider.GetItems(dgvCalendar, dateTimePicker.Value);
+			calendarItemsProvider.GetItems(dgvCalendar, dateTimePicker.Value, calendarViewType);
 			calendarItemsProvider.SetBoldDates(monthCalendar);
+			SetCalendarColumnSize();
 		}
 
 		private void MonthCalendar_DateSelected(object sender, DateRangeEventArgs e)
@@ -803,6 +813,13 @@ namespace VirtualWork.WinForms
 			{
 				toolTip.SetToolTip(e.Node.TreeView, String.Empty);
 			}
+		}
+
+		private void CbView_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			calendarViewType = (CalendarViewType)cbView.SelectedIndex;
+			calendarItemsProvider.GetItems(dgvCalendar, dateTimePicker.Value, calendarViewType);
+			SetCalendarColumnSize();
 		}
 	}
 }
