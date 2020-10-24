@@ -9,6 +9,6 @@
     
      steps:
        - checkout
-       - run: dotnet restore
+       - run: dotnet restore VirtualWork.sln
        - run: dotnet build
        - run: dotnet test
