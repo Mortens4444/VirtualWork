@@ -11,4 +11,12 @@
        - checkout
        - run: nuget restore VirtualWork.sln
        - run: msbuild VirtualWork.sln
-       - run: vstest.console .\VirtualWork.Tests\bin\Debug\VirtualWork.Tests.dll
+       - task: VSTest@2
+          displayName: 'Test Assemblies'
+          inputs:
+            testAssemblyVer2: |
+             **\$(BuildConfiguration)\*test*.dll
+             !**\obj\**
+            codeCoverageEnabled: true
+            platform: '$(BuildPlatform)'
+            configuration: '$(BuildConfiguration)'
