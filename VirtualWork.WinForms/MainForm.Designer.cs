@@ -723,6 +723,7 @@
 			this.cbView.Name = "cbView";
 			this.cbView.Size = new System.Drawing.Size(121, 21);
 			this.cbView.TabIndex = 19;
+			this.cbView.SelectedIndexChanged += new System.EventHandler(this.CbView_SelectedIndexChanged);
 			// 
 			// lblView
 			// 
@@ -1077,7 +1078,7 @@
 			// tsslPlaceHolder
 			// 
 			this.tsslPlaceHolder.Name = "tsslPlaceHolder";
-			this.tsslPlaceHolder.Size = new System.Drawing.Size(811, 17);
+			this.tsslPlaceHolder.Size = new System.Drawing.Size(842, 17);
 			this.tsslPlaceHolder.Spring = true;
 			// 
 			// tssbEditor

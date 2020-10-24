@@ -121,5 +121,25 @@ namespace VirtualWork.Core.Extensions
 		{
 			return dateTime.AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
 		}
+
+		public static DateTime GetStartOfTheWeek(this DateTime dateTime)
+		{
+			return dateTime.AddDays(dateTime.DayOfWeek == DayOfWeek.Sunday ? -6 : -(int)dateTime.DayOfWeek + 1).Date;
+		}
+
+		public static DateTime GetStartDate(this DateTime dateTime, CalendarViewType calendarViewType)
+		{
+			switch (calendarViewType)
+			{
+				case CalendarViewType.Today:
+					return dateTime;
+				case CalendarViewType.ThisWeek:
+					return dateTime.GetStartOfTheWeek();
+				case CalendarViewType.ThisMonth:
+					return new DateTime(dateTime.Year, dateTime.Month, 1);
+			}
+
+			throw new NotImplementedException();
+		}
 	}
 }
