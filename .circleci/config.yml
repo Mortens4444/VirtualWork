@@ -11,4 +11,4 @@
        - checkout
        - run: nuget restore VirtualWork.sln
        - run: msbuild VirtualWork.sln
-       - run: mstest.exe /testcontainer:"C:\Users\circleci\project\VirtualWork.Tests\obj\Debug\VirtualWork.Tests.dll"
+       - run: vstest.console .\VirtualWork.Tests\bin\Debug\VirtualWork.Tests.dll
