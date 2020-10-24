@@ -10,5 +10,5 @@
      steps:
        - checkout
        - run: nuget restore VirtualWork.sln
-       - run: dotnet build
-       - run: dotnet test
+       - run: msbuild VirtualWork.sln
+       - run: mstest.exe /testcontainer:VirtualWork.Tests.dll
