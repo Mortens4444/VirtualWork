@@ -11,3 +11,4 @@
        - checkout
        - run: nuget restore VirtualWork.sln
        - run: msbuild VirtualWork.sln
+       - run: VSTest.Console.exe "VirtualWork.Tests\bin\Debug\VirtualWork.Tests.dll"
