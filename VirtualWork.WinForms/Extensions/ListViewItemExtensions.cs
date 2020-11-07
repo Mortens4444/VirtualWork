@@ -9,7 +9,7 @@ namespace VirtualWork.WinForms.Extensions
 {
 	public static class ListViewItemExtensions
 	{
-		private static readonly Random random = new Random();
+		private static readonly RandomGenerator randomGenerator = new RandomGenerator();
 
 		public static ListViewItem ToListViewItem(this LogEntry logEntry, Color backColor)
 		{
@@ -33,7 +33,7 @@ namespace VirtualWork.WinForms.Extensions
 			};
 			item.SubItems.Add(credentials.Group);
 			item.SubItems.Add(credentials.Username);
-			var fakePasswordLength = random.Next(5, 12);
+			var fakePasswordLength = randomGenerator.Generate(8, 14);
 			var stars = new char[fakePasswordLength];
 			for (int j = 0; j < stars.Length; j++)
 			{
