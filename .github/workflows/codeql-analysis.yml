@@ -53,7 +53,7 @@ jobs:
 
     - run: |
        nuget restore
-       "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\bin\msbuild.exe" "D:\a\VirtualWork\VirtualWork\VirtualWork.sln"
+       "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\bin\msbuild.exe" D:\a\VirtualWork\VirtualWork\VirtualWork.sln
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
