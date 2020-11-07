@@ -12,17 +12,21 @@ namespace VirtualWork.WinForms
 	public partial class AddCredentialsForm : Form
 	{
 		private readonly CredentialsRepository credentialsRepository;
+		private readonly PasswordGenerator passwordGenerator;
 		private readonly PasswordManagerGroupsProvider passwordManagerGroupsProvider;
 		private Credentials credentials;
 
 		public AddCredentialsForm(CredentialsRepository credentialsRepository,
-			PasswordManagerGroupsProvider passwordManagerGroupsProvider)
+			PasswordManagerGroupsProvider passwordManagerGroupsProvider,
+			PasswordGenerator passwordGenerator)
 		{
 			this.credentialsRepository = credentialsRepository;
 			this.passwordManagerGroupsProvider = passwordManagerGroupsProvider;
+			this.passwordGenerator = passwordGenerator;
 
 			InitializeComponent();
 			Translator.Translate(this);
+			toolTip.SetToolTip(btnGenerate, Lng.Elem("Generate"));
 		}
 
 		private void BtnAdd_Click(object sender, EventArgs e)
@@ -77,6 +81,11 @@ namespace VirtualWork.WinForms
 		{
 			this.credentials = credentials;
 			return base.ShowDialog();
+		}
+
+		private void BtnGenerate_Click(object sender, EventArgs e)
+		{
+			tbPassword.Text = passwordGenerator.Generate();
 		}
 	}
 }

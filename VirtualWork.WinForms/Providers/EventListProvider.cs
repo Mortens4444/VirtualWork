@@ -27,8 +27,8 @@ namespace VirtualWork.WinForms.Providers
 		public void GetUpcomingEvents(TreeView treeView)
 		{
 			GetNodes(treeView, Events, 3,
-				myEvent => myEvent.EventDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0 ||
-					(myEvent.ExpirationDate.HasValue && myEvent.ExpirationDate > DateTime.Now) ||
+				myEvent => myEvent.EventDate >= DateTime.UtcNow ||
+					(myEvent.ExpirationDate.HasValue && myEvent.ExpirationDate > DateTime.UtcNow) ||
 					(myEvent.RepetitionType != (int)RepetitionType.NoRepeat) && !myEvent.ExpirationDate.HasValue);
 		}
 

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Attributes;
 
@@ -58,15 +57,6 @@ namespace VirtualWork.Persistence.Entities
 		public virtual ICollection<IssueHistory> IssueHistoryEntries { get; set; }
 
 		public virtual ICollection<Comment> Comments { get; set; }
-
-		public bool IsMatchingPattern(string pattern)
-		{
-			if (String.IsNullOrEmpty(pattern))
-			{
-				return true;
-			}
-			return Id.ToString().ContainsIgnoreCase(pattern) ||Title.ContainsIgnoreCase(pattern);
-		}
 
 		public override string ToString()
 		{

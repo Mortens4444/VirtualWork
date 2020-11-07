@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Windows.Forms;
 using VirtualWork.Interfaces;
@@ -21,7 +22,7 @@ namespace VirtualWork.WinForms.Providers
 			this.repository = repository;
 		}
 
-		public IEnumerable<TDtoType> GetNodes(TreeView treeView, string rootNodeName, int nodeIndex, Func<TEntityType, bool> predicate, bool appendItems = false)
+		public IEnumerable<TDtoType> GetNodes(TreeView treeView, string rootNodeName, int nodeIndex, Expression<Func<TEntityType, bool>> predicate, bool appendItems = false)
 		{
 			StopTasks();
 			var rootNode = treeView.Nodes[rootNodeName];

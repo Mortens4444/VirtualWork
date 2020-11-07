@@ -53,11 +53,10 @@ namespace VirtualWork.WinForms.Providers
 				issueView.IssueVerifiedStateChanged -= IssueView_IssueVerifiedStateChanged;
 				issueView.IssueCancelled -= IssueView_IssueCancelled;
 			}
-
+			
 			var taskboardItems = issueRepository.GetAll(issue =>
-				issue.ParentId == parent?.Id &&
 				issue.IssueState != (int)IssueState.Cancelled &&
-				issue.IssueState != (int)IssueState.Done).ToList();
+				issue.IssueState != (int)IssueState.Done).Where(issue => issue.Parent?.Id == parent?.Id);
 
 			if (taskboardItems.Any())
 			{

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Windows.Forms;
 using VirtualWork.Core.Extensions;
+using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Enums;
-using VirtualWork.Persistence.Entities;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.WinForms.Extensions;
 
@@ -20,24 +20,25 @@ namespace VirtualWork.WinForms.Providers
 			this.credentialsRepository = credentialsRepository;
 		}
 
-		public void GetCredentials(ListView listView, string searchPattern, string selectedGroup)
+		public void GetCredentials(ListView listView, string searchPattern, string selectedPasswordGroup)
 		{
 			Expression<Func<Credentials, bool>> resultExpression = credentials =>
-				(credentials.ActorType == (int)ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
-				(credentials.ActorType == (int)ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId));
-			Expression<Func<Credentials, bool>> groupFilter = credentials => credentials.Group == selectedGroup;
+				(credentials.ActorType == ActorType.User && credentials.ActorId == Initializer.LoggedInUser.Id) ||
+				(credentials.ActorType == ActorType.Group && Initializer.LoggedInUser.Groups.Any(group => group.Id == credentials.ActorId));
+			Expression<Func<Credentials, bool>> passwordGroupFilter = credentials => credentials.Group == selectedPasswordGroup;
 			Expression<Func<Credentials, bool>> searchPatternFilter = credentials => credentials.Name.ToLower().Contains(searchPattern.ToLower());
 
-			if (!String.IsNullOrEmpty(selectedGroup))
+			if (!String.IsNullOrEmpty(selectedPasswordGroup))
 			{
-				resultExpression = resultExpression.And(groupFilter);
+				resultExpression = resultExpression.And(passwordGroupFilter);
 			}
 			if (!String.IsNullOrEmpty(searchPattern))
 			{
 				resultExpression = resultExpression.And(searchPatternFilter);
 			}
 			listView.Items.Clear();
-			var allCredentials = credentialsRepository.GetAll(resultExpression.Compile());
+			// ToDo: Fix performance issue. GetAll should be called with a predicate.
+			var allCredentials = credentialsRepository.GetAll().Where(resultExpression.Compile());
 
 			int i = 0;
 			foreach (var credentials in allCredentials)

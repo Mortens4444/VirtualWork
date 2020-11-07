@@ -48,13 +48,13 @@
 			this.chAlternativeLink = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chExtraInformation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cms_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.tsmiCopyUsername = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmiCopyPassword = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmiCopyExtraInformation = new System.Windows.Forms.ToolStripMenuItem();
 			this.tss_Separator_2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tss_Separator_3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tb_Search = new System.Windows.Forms.TextBox();
 			this.btnAdd = new System.Windows.Forms.Button();
+			this.tsmiCopyUsername = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiCopyPassword = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiCopyExtraInformation = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiShowPassword = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,6 +123,9 @@
 			// 
 			// lvCredentials
 			// 
+			this.lvCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.lvCredentials.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chName,
             this.chGroup,
@@ -132,7 +135,6 @@
             this.chAlternativeLink,
             this.chExtraInformation});
 			this.lvCredentials.ContextMenuStrip = this.cms_Menu;
-			this.lvCredentials.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.lvCredentials.FullRowSelect = true;
 			this.lvCredentials.HideSelection = false;
 			this.lvCredentials.Location = new System.Drawing.Point(0, 32);
@@ -194,30 +196,6 @@
 			this.cms_Menu.Size = new System.Drawing.Size(198, 192);
 			this.cms_Menu.Opening += new System.ComponentModel.CancelEventHandler(this.Cms_Menu_Opening);
 			// 
-			// tsmiCopyUsername
-			// 
-			this.tsmiCopyUsername.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
-			this.tsmiCopyUsername.Name = "tsmiCopyUsername";
-			this.tsmiCopyUsername.Size = new System.Drawing.Size(197, 22);
-			this.tsmiCopyUsername.Text = "Copy username";
-			this.tsmiCopyUsername.Click += new System.EventHandler(this.Tsmi_CopyUsername_Click);
-			// 
-			// tsmiCopyPassword
-			// 
-			this.tsmiCopyPassword.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
-			this.tsmiCopyPassword.Name = "tsmiCopyPassword";
-			this.tsmiCopyPassword.Size = new System.Drawing.Size(197, 22);
-			this.tsmiCopyPassword.Text = "Copy password";
-			this.tsmiCopyPassword.Click += new System.EventHandler(this.Tsmi_CopyPassword_Click);
-			// 
-			// tsmiCopyExtraInformation
-			// 
-			this.tsmiCopyExtraInformation.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
-			this.tsmiCopyExtraInformation.Name = "tsmiCopyExtraInformation";
-			this.tsmiCopyExtraInformation.Size = new System.Drawing.Size(197, 22);
-			this.tsmiCopyExtraInformation.Text = "Copy extra information";
-			this.tsmiCopyExtraInformation.Click += new System.EventHandler(this.Tsmi_CopyExtraInformation_Click);
-			// 
 			// tss_Separator_2
 			// 
 			this.tss_Separator_2.Name = "tss_Separator_2";
@@ -245,6 +223,30 @@
 			this.btnAdd.TabIndex = 8;
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+			// 
+			// tsmiCopyUsername
+			// 
+			this.tsmiCopyUsername.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.tsmiCopyUsername.Name = "tsmiCopyUsername";
+			this.tsmiCopyUsername.Size = new System.Drawing.Size(197, 22);
+			this.tsmiCopyUsername.Text = "Copy username";
+			this.tsmiCopyUsername.Click += new System.EventHandler(this.Tsmi_CopyUsername_Click);
+			// 
+			// tsmiCopyPassword
+			// 
+			this.tsmiCopyPassword.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.tsmiCopyPassword.Name = "tsmiCopyPassword";
+			this.tsmiCopyPassword.Size = new System.Drawing.Size(197, 22);
+			this.tsmiCopyPassword.Text = "Copy password";
+			this.tsmiCopyPassword.Click += new System.EventHandler(this.Tsmi_CopyPassword_Click);
+			// 
+			// tsmiCopyExtraInformation
+			// 
+			this.tsmiCopyExtraInformation.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.tsmiCopyExtraInformation.Name = "tsmiCopyExtraInformation";
+			this.tsmiCopyExtraInformation.Size = new System.Drawing.Size(197, 22);
+			this.tsmiCopyExtraInformation.Text = "Copy extra information";
+			this.tsmiCopyExtraInformation.Click += new System.EventHandler(this.Tsmi_CopyExtraInformation_Click);
 			// 
 			// tsmiShowPassword
 			// 

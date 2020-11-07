@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Permissions;
 using System.Windows.Forms;
 using LanguageService;
@@ -65,7 +66,8 @@ namespace VirtualWork.WinForms
 
 		private void GetUsers()
 		{
-			var users = userRepository.GetAll(user => user.IsMatchingPattern(cbOwnedBy.Text));
+			// ToDo: Fix performance issue. GetAll should be called with a predicate.
+			var users = userRepository.GetAll().Where(user => user.IsMatchingPattern(cbOwnedBy.Text));
 			cbOwnedBy.AddMatchingItems(users);
 		}
 
@@ -75,8 +77,7 @@ namespace VirtualWork.WinForms
 			var parents = issueRepository.GetAll(currentIssue =>
 				((currentIssue.IssueState != (int)IssueState.Cancelled) &&
 				(currentIssue.IssueState != (int)IssueState.Done)) &&
-				currentIssue.IsMatchingPattern(cbParent.Text) &&
-				currentIssue.Id != issueId);
+				currentIssue.Id != issueId).Where(currentIssue => currentIssue.IsMatchingPattern(cbParent.Text));
 			cbParent.AddMatchingItems(parents);
 		}
 

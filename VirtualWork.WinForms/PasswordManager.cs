@@ -58,7 +58,7 @@ namespace VirtualWork.WinForms
 				passwordManagerGroupsProvider.GetGroups(cbGroup);
 			}
 
-			var group = cbGroup.SelectedIndex == 0 ? String.Empty : cbGroup.Text;
+			var group = cbGroup.SelectedIndex == 0 ? String.Empty : (string)cbGroup.SelectedItem;
 			credentialsProvider.GetCredentials(lvCredentials, tb_Search.Text, group);
 		}
 

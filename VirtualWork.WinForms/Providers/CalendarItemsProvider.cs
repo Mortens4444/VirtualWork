@@ -49,8 +49,9 @@ namespace VirtualWork.WinForms.Providers
 			for (int dayIndex = 0; dayIndex < dgvCalendar.ColumnCount; dayIndex++)
 			{
 				var actualDate = startDate.AddDays(dayIndex);
-				var meetings = meetingRepository.GetAll(meeting => meeting.MeetingDate.IsRepeatedOnDate(actualDate, (RepetitionType)meeting.RepetitionType, meeting.RepetitionValue, meeting.ExpirationDate));
-				var events = eventRepository.GetAll(myEvent => myEvent.EventDate.IsRepeatedOnDate(actualDate, (RepetitionType)myEvent.RepetitionType, myEvent.RepetitionValue, myEvent.ExpirationDate));
+				// ToDo: Fix performance issue. GetAll should be called with a predicate.
+				var meetings = meetingRepository.GetAll().Where(meeting => meeting.MeetingDate.IsRepeatedOnDate(actualDate, (RepetitionType)meeting.RepetitionType, meeting.RepetitionValue, meeting.ExpirationDate));
+				var events = eventRepository.GetAll().Where(myEvent => myEvent.EventDate.IsRepeatedOnDate(actualDate, (RepetitionType)myEvent.RepetitionType, myEvent.RepetitionValue, myEvent.ExpirationDate));
 
 				var slotStartTime = new TimeSpan(0, 0, 0);
 				for (int i = 0; i < 48; i++)
