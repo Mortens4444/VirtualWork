@@ -5,3 +5,5 @@ packages/
 VirtualWork/Documentation/.~lock.VIRtual Work User Guide.odt#
 Documentation/Model/
 VirtualWork.WinForms/VirtualWork.WinForms.csproj.user
+*.trx
+TestResults/

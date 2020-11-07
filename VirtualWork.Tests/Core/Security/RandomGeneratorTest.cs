@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VirtualWork.Core.Security;
 
@@ -16,7 +12,7 @@ namespace VirtualWork.Tests.Core.Security
 		[TestMethod]
 		public void GenerateRandomNumberNoRange()
 		{
-			Assert.ThrowsException<InvalidOperationException>(() => { randomGenerator.Generate(0, 0); });
+			AssertEx.ThrowsException<InvalidOperationException>(() => { randomGenerator.Generate(0, 0); });
 		}
 
 		[TestMethod]
