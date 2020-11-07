@@ -1,3 +1,7 @@
+- Fix performance issues (Search for: ToDo: Fix performance issue. GetAll should be called with a predicate.)
+- Full manual test should be executed.
+- Automatic tests should be created.
+
 Appointments
 ------------
 - Appointment grouping, to easily copy/create a hole bunch of event.
