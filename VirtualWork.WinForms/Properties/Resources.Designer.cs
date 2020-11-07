@@ -403,6 +403,16 @@ namespace VirtualWork.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap key_go {
+            get {
+                object obj = ResourceManager.GetObject("key_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap key_modify {
             get {
                 object obj = ResourceManager.GetObject("key_modify", resourceCulture);

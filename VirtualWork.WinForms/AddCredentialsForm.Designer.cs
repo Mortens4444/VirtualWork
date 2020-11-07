@@ -28,8 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCredentialsForm));
 			this.pMain = new System.Windows.Forms.Panel();
+			this.btnGenerate = new System.Windows.Forms.Button();
 			this.rtbExtraInformation = new System.Windows.Forms.RichTextBox();
 			this.lblExtraInformation = new System.Windows.Forms.Label();
 			this.tbAlternativeLink = new System.Windows.Forms.TextBox();
@@ -50,11 +52,13 @@
 			this.ch_ExecuteableOperationsAndVisibleCameras = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.pMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pMain
 			// 
+			this.pMain.Controls.Add(this.btnGenerate);
 			this.pMain.Controls.Add(this.rtbExtraInformation);
 			this.pMain.Controls.Add(this.lblExtraInformation);
 			this.pMain.Controls.Add(this.tbAlternativeLink);
@@ -76,6 +80,16 @@
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(334, 261);
 			this.pMain.TabIndex = 0;
+			// 
+			// btnGenerate
+			// 
+			this.btnGenerate.Image = global::VirtualWork.WinForms.Properties.Resources.key_go;
+			this.btnGenerate.Location = new System.Drawing.Point(302, 82);
+			this.btnGenerate.Name = "btnGenerate";
+			this.btnGenerate.Size = new System.Drawing.Size(25, 25);
+			this.btnGenerate.TabIndex = 16;
+			this.btnGenerate.UseVisualStyleBackColor = true;
+			this.btnGenerate.Click += new System.EventHandler(this.BtnGenerate_Click);
 			// 
 			// rtbExtraInformation
 			// 
@@ -140,8 +154,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbPassword.Location = new System.Drawing.Point(108, 85);
 			this.tbPassword.Name = "tbPassword";
-			this.tbPassword.PasswordChar = '*';
-			this.tbPassword.Size = new System.Drawing.Size(220, 20);
+			this.tbPassword.Size = new System.Drawing.Size(188, 20);
 			this.tbPassword.TabIndex = 7;
 			// 
 			// lblPassword
@@ -294,5 +307,7 @@
 		private System.Windows.Forms.Label lblPassword;
 		private System.Windows.Forms.TextBox tbUsername;
 		private System.Windows.Forms.Label lblUsername;
+		private System.Windows.Forms.Button btnGenerate;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }

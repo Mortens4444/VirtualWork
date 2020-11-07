@@ -459,6 +459,7 @@
     <None Include="Resources\hammer_screwdriver_modify.ico" />
     <None Include="Resources\hammer_screwdriver_remove.ico" />
     <None Include="Resources\image_add.ico" />
+    <None Include="Resources\key_go.ico" />
     <Content Include="VirtualWork_374.ico" />
     <None Include="Resources\hammer_screwdriver.ico" />
     <None Include="Resources\eye.ico" />

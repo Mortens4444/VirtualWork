@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using VirtualWork.Core.Actors;
+using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces;
 using VirtualWork.Interfaces.Actors;
 using VirtualWork.Interfaces.Enums;
@@ -47,6 +48,15 @@ namespace VirtualWork.Core.Job
 		public int RepetitionValue { get; set; }
 
 		public RepetitionType RepetitionType { get; set; }
+
+		public bool IsMatchingPattern(string pattern)
+		{
+			if (String.IsNullOrEmpty(pattern))
+			{
+				return true;
+			}
+			return Id.ToString().ContainsIgnoreCase(pattern) || Title.ContainsIgnoreCase(pattern);
+		}
 
 		public override string ToString()
 		{

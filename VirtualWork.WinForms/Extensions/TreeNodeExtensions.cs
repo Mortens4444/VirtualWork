@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using VirtualWork.Interfaces;
 using VirtualWork.Persistence.Repositories;
@@ -32,7 +33,7 @@ namespace VirtualWork.WinForms.Extensions
 			this TreeNodeCollection treeNodeCollection,
 			RepositoryBase<TDtoType, TEntityType> repository,
 			int elementImageIndex = 0,
-			Func<TEntityType, bool> predicate = null)
+			Expression<Func<TEntityType, bool>> predicate = null)
 			where TDtoType : class, IHaveIdentifier, IHaveName, new()
 			where TEntityType : class, IHaveIdentifier, new()
 		{
@@ -48,7 +49,7 @@ namespace VirtualWork.WinForms.Extensions
 			this TreeNodeCollection treeNodeCollection,
 			RepositoryBase<TDtoType, TEntityType> repository,
 			int elementImageIndex = 0,
-			Func<TEntityType, bool> predicate = null)
+			Expression<Func<TEntityType, bool>> predicate = null)
 			where TDtoType : class, IHaveIdentifier, IHaveTitle, new()
 			where TEntityType : class, IHaveIdentifier, new()
 		{

@@ -36,7 +36,7 @@ namespace VirtualWork.Tests.Persistence.Helper
 				Id = 1,
 				Groups = new List<Group> { new Group { Name = "Administrators" } }
 			};
-			var userDto = new Core.Actors.User();
+			var userDto = new VirtualWork.Core.Actors.User();
 
 			var propertyCopier = new PropertyCopier(null, null);
 			propertyCopier.CopyProperties(user, userDto);
@@ -54,7 +54,7 @@ namespace VirtualWork.Tests.Persistence.Helper
 				Id = 1,
 				PublicAreaKind = 1
 			};
-			var addressDto = new Core.Contacts.Address();
+			var addressDto = new VirtualWork.Core.Contacts.Address();
 
 			var propertyCopier = new PropertyCopier(null, null);
 			propertyCopier.CopyProperties(address, addressDto);
@@ -66,7 +66,7 @@ namespace VirtualWork.Tests.Persistence.Helper
 		[TestMethod]
 		public void CopyPropertiesWhenTheTargetIsIntAndSourceIsEnum()
 		{
-			var addressDto = new Core.Contacts.Address
+			var addressDto = new VirtualWork.Core.Contacts.Address
 			{
 				Id = 1,
 				PublicAreaKind = PublicAreaKind.Road

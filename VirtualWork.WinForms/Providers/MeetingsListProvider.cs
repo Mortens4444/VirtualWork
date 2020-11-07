@@ -23,8 +23,8 @@ namespace VirtualWork.WinForms.Providers
 		public void GetUpcomingMeetings(TreeView treeView)
 		{
 			base.GetNodes(treeView, Meetings, 2,
-				meeting => meeting.MeetingDate.Subtract(DateTime.UtcNow).TotalMilliseconds > 0 ||
-					(meeting.ExpirationDate.HasValue && meeting.ExpirationDate > DateTime.Now) ||
+				meeting => meeting.MeetingDate >= DateTime.UtcNow ||
+					(meeting.ExpirationDate.HasValue && meeting.ExpirationDate > DateTime.UtcNow) ||
 					(meeting.RepetitionType != (int)RepetitionType.NoRepeat) && !meeting.ExpirationDate.HasValue);
 		}
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using VirtualWork.Core.Extensions;
 using VirtualWork.Core.Security;
 using VirtualWork.Interfaces.Actors;
 
@@ -42,6 +43,11 @@ namespace VirtualWork.Core.Actors
 				return true;
 			}
 			return Thread.CurrentPrincipal.IsInRole(role);
+		}
+
+		public bool IsMatchingPattern(string pattern)
+		{
+			return Name.ContainsIgnoreCase(pattern) || FullName.ContainsIgnoreCase(pattern);
 		}
 	}
 }

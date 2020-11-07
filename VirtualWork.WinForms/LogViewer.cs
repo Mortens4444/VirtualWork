@@ -40,7 +40,7 @@ namespace VirtualWork.WinForms
 		}
 
 		//[PrincipalPermission(SecurityAction.Demand, Role = Roles.LogViewer)]
-		private void GetLogItems(Func<Persistence.Entities.LogEntry, bool> predicate = null)
+		private void GetLogItems(Expression<Func<Persistence.Entities.LogEntry, bool>> predicate = null)
 		{
 			var filteredLogEntries = logEntryRepository.GetAll(predicate);
 			var convertedItems = filteredLogEntries.Select((logEntry, index) =>
@@ -97,7 +97,7 @@ namespace VirtualWork.WinForms
 			{
 				resultExpression = resultExpression.And(logLevelFilter);
 			}
-			GetLogItems(resultExpression.Compile());
+			GetLogItems(resultExpression);
 		}
 	}
 }

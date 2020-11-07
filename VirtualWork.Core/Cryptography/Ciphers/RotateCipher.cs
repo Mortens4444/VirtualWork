@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace VirtualWork.Core.Cryptography.Ciphers
 {
@@ -6,6 +7,15 @@ namespace VirtualWork.Core.Cryptography.Ciphers
 	{
 		public string Encrypt(string source, int rotateKey)
 		{
+			if (source == null)
+			{
+				return null;
+			}
+			if (source == String.Empty)
+			{
+				return String.Empty;
+			}
+
 			int i = 0, j = 0;
 			var result = new StringBuilder(source);
 

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces;
 
 namespace VirtualWork.Persistence.Entities
@@ -22,11 +21,6 @@ namespace VirtualWork.Persistence.Entities
 		public string OtherInformation { get; set; }
 
 		public bool IsActive { get; set; }
-
-		public bool IsMatchingPattern(string pattern)
-		{
-			return Name.ContainsIgnoreCase(pattern) || FullName.ContainsIgnoreCase(pattern);
-		}
 
 		public override string ToString()
         {

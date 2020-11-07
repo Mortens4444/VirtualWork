@@ -50,7 +50,7 @@ namespace VirtualWork.Persistence.Repositories
 		public TDtoType AddOrUpdate(TDtoType dto)
 		{
 			var expression = EntitySearchPredicate(dto);
-			var entity = Get(expression.Compile());
+			var entity = Get(expression);
 			if (entity == null)
 			{
 				return Add(dto);
@@ -83,47 +83,56 @@ namespace VirtualWork.Persistence.Repositories
 			return Converter.ToDto(result);
 		}
 
-		public TDtoType Get(Func<TEntityType, bool> predicate)
+		public TDtoType Get(Expression<Func<TEntityType, bool>> predicate)
 		{
 			var result = DatabaseTable.AsNoTracking().FirstOrDefault(predicate);
 			return Converter.ToDto(result);
 		}
 
-		public IEnumerable<TDtoType> GetMany(Func<TEntityType, bool> predicate)
+		private IEnumerable<TDtoType> Order(IEnumerable<TDtoType> elements)
+		{
+			if (TypeUtils.IsImplementingInterface<TDtoType, IHaveName>())
+			{
+				var orderableElements = elements.Cast<IHaveName>();
+				return orderableElements.OrderBy(orderableElement => orderableElement.Name)
+					.Cast<TDtoType>();
+			}
+			else if (TypeUtils.IsImplementingInterface<TDtoType, IHaveTitle>())
+			{
+				var orderableElements = elements.Cast<IHaveTitle>();
+				return orderableElements.OrderBy(orderableElement => orderableElement.Title)
+					.Cast<TDtoType>();
+			}
+			else if (TypeUtils.IsImplementingInterface<TDtoType, IResource>())
+			{
+				var orderableElements = elements.Cast<IResource>();
+				return orderableElements.OrderBy(orderableElement => orderableElement.ResourceType)
+					.ThenBy(orderableElement => orderableElement.Key)
+					.Cast<TDtoType>();
+			}
+
+			return elements;
+		}
+
+		private IEnumerable<TDtoType> Convert(IQueryable<TEntityType> entities)
+		{
+			var elements = entities.Select(Converter.ToDto);
+			return Order(elements);
+		}
+
+		public IEnumerable<TDtoType> GetMany(Expression<Func<TEntityType, bool>> predicate)
 		{
 			var entities = DatabaseTable.AsNoTracking().Where(predicate);
-
-			if (TypeUtils.IsImplementingInterface<TEntityType, IHaveName>())
-			{
-				var orderableEntities = entities.Cast<IHaveName>();
-				return orderableEntities.OrderBy(orderableEntity => orderableEntity.Name)
-					.Cast<TEntityType>()
-					.Select(Converter.ToDto);
-			}
-			else if (TypeUtils.IsImplementingInterface<TEntityType, IHaveTitle>())
-			{
-				var orderableEntities = entities.Cast<IHaveTitle>();
-				return orderableEntities.OrderBy(orderableEntity => orderableEntity.Title)
-					.Cast<TEntityType>()
-					.Select(Converter.ToDto);
-			}
-			else if (TypeUtils.IsImplementingInterface<TEntityType, IResource>())
-			{
-				var orderableEntities = entities.Cast<IResource>();
-				return orderableEntities.OrderBy(orderableEntity => orderableEntity.ResourceType)
-					.ThenBy(orderableEntity => orderableEntity.Key)
-					.Cast<TEntityType>()
-					.Select(Converter.ToDto);
-			}
-			return entities.Select(Converter.ToDto);
+			return Convert(entities);
 		}
 
 		public IEnumerable<TDtoType> GetAll()
 		{
-			return GetAll((_) => { return true; });
+			var entities = DatabaseTable.AsNoTracking();
+			return Convert(entities);
 		}
 
-		public IEnumerable<TDtoType> GetAll(Func<TEntityType, bool> predicate)
+		public IEnumerable<TDtoType> GetAll(Expression<Func<TEntityType, bool>> predicate)
 		{
 			if (predicate == null)
 			{
@@ -132,7 +141,7 @@ namespace VirtualWork.Persistence.Repositories
 			return GetMany(predicate);
 		}
 
-		public TDtoType GetSingle(Func<TEntityType, bool> predicate)
+		public TDtoType GetSingle(Expression<Func<TEntityType, bool>> predicate)
 		{
 			var result = DatabaseTable.AsNoTracking().SingleOrDefault(predicate);
 			return Converter.ToDto(result);
@@ -151,7 +160,7 @@ namespace VirtualWork.Persistence.Repositories
 			Remove(entity);
 		}
 
-		public void Remove(Func<TEntityType, bool> predicate)
+		public void Remove(Expression<Func<TEntityType, bool>> predicate)
 		{
 			var entity = DatabaseTable.SingleOrDefault(predicate);
 			Remove(entity);
