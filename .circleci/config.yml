@@ -5,11 +5,11 @@
 
  jobs:
    build:
-     executor: win/default     
+     executor: win/default
     
      steps:
        - checkout
        - run: nuget restore VirtualWork.sln
        - run: msbuild VirtualWork.sln
-       - run: mstest.exe /testcontainer:".\VirtualWork.Tests\bin\Debug\VirtualWork.Tests.dll" 
+       #- run: mstest.exe /testcontainer:".\VirtualWork.Tests\bin\Debug\VirtualWork.Tests.dll" 
        #- run: VSTest.Console.exe "VirtualWork.Tests\bin\Debug\VirtualWork.Tests.dll"
