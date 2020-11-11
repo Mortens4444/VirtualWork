@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +89,8 @@
     <Compile Include="Utils\ClipboardHelper.cs" />
     <Compile Include="Utils\EnumUtils.cs" />
     <Compile Include="Utils\ErrorBoxHelper.cs" />
+    <Compile Include="Utils\Executor.cs" />
+    <Compile Include="Utils\Speech.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtualWork.Core\VirtualWork.Core.csproj">

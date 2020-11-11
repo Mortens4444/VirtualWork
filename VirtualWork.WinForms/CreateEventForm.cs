@@ -17,14 +17,14 @@ namespace VirtualWork.WinForms
 	public partial class CreateEventForm : Form
 	{
 		private readonly EventRepository eventRepository;
-		private readonly ProcessUtils processUtils;
+		private readonly Executor executor;
 		private Event myEvent;
 
 		public CreateEventForm(EventRepository eventRepository,
-			ProcessUtils processUtils)
+			Executor executor)
 		{
 			this.eventRepository = eventRepository;
-			this.processUtils = processUtils;
+			this.executor = executor;
 
 			InitializeComponent();
 			Translator.Translate(this);
@@ -107,7 +107,7 @@ namespace VirtualWork.WinForms
 		private void BtnTest_Click(object sender, EventArgs e)
 		{
 			var executionParameters = rtbStartApplication.Text.GetExecutionParameters();
-			processUtils.Start(executionParameters.Application, executionParameters.Parameters);
+			executor.Execute(executionParameters.Application, executionParameters.Parameters);
 		}
 
 		public DialogResult ShowDialog(Event myEvent = null)

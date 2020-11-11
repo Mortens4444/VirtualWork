@@ -7,6 +7,7 @@ using VirtualWork.Interfaces.Enums;
 using VirtualWork.Persistence.Entities;
 using VirtualWork.Service;
 using VirtualWork.Service.Process;
+using VirtualWork.Service.Utils;
 using EventDto = VirtualWork.Core.Appointment.Event;
 using EventRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Appointment.Event, VirtualWork.Persistence.Entities.Event>;
 
@@ -15,13 +16,13 @@ namespace VirtualWork.WinForms.Providers
 	public class EventListProvider : ListProviderBase<EventDto, Event>
 	{
 		public const string Events = "Events";
-		private readonly ProcessUtils processUtils;
+		private readonly Executor executor;
 
 		public EventListProvider(EventRepository eventRepository,
-			ProcessUtils processUtils)
+			Executor executor)
 			: base(eventRepository)
 		{
-			this.processUtils = processUtils;
+			this.executor = executor;
 		}
 
 		public void GetUpcomingEvents(TreeView treeView)
@@ -43,7 +44,7 @@ namespace VirtualWork.WinForms.Providers
 					{
 						if (!String.IsNullOrWhiteSpace(item.ApplicationToStart))
 						{
-							processUtils.Start(item.ApplicationToStart, item.Arguments);
+							executor.Execute(item.ApplicationToStart, item.Arguments);
 						}
 						else
 						{

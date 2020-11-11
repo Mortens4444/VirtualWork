@@ -18,11 +18,13 @@ namespace VirtualWork.Service.EmailService
 {
 	public class EmailSender : IEmailSender
 	{
+		public const string DefaultSenderEmailAddress = "virtualwork@noreply.com";
+
 		private readonly ILogger logger;
 		private readonly ErrorBoxHelper errorBoxHelper;
 		private readonly SmtpServer smtpServer;
 		private readonly SendMail sendMail;
-		private string systemSenderEmailAddress = "virtualwork@noreply.com";
+		private string systemSenderEmailAddress = DefaultSenderEmailAddress;
 		private bool showMessages;
 
 		public EmailSender(SystemSettingsRepository systemSettingsRepository,
