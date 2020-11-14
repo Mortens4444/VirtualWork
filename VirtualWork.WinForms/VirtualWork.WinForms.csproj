@@ -64,13 +64,13 @@
       <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\Enums.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\Mtf.Windows.Forms.LanguageService.1.0.5\lib\net48\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="LanguageService, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\LanguageService.dll</HintPath>
+      <HintPath>..\packages\Mtf.Windows.Forms.LanguageService.1.0.5\lib\net48\LanguageService.dll</HintPath>
     </Reference>
     <Reference Include="LanguageService.Windows.Forms, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.CommandExecutor.1.0.2\lib\net48\LanguageService.Windows.Forms.dll</HintPath>
+      <HintPath>..\packages\Mtf.Windows.Forms.LanguageService.1.0.5\lib\net48\LanguageService.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="MessageBoxes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WinForms.MessageBoxes.1.0.1\lib\MessageBoxes.dll</HintPath>

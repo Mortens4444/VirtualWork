@@ -36,13 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.WPF.LanguageService.1.0.4\lib\net48\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\Mtf.WPF.LanguageService.1.0.5\lib\net48\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="LanguageService, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.WPF.LanguageService.1.0.4\lib\net48\LanguageService.dll</HintPath>
+      <HintPath>..\packages\Mtf.WPF.LanguageService.1.0.5\lib\net48\LanguageService.dll</HintPath>
     </Reference>
     <Reference Include="LanguageService.WPF, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mtf.WPF.LanguageService.1.0.4\lib\net48\LanguageService.WPF.dll</HintPath>
+      <HintPath>..\packages\Mtf.WPF.LanguageService.1.0.5\lib\net48\LanguageService.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
