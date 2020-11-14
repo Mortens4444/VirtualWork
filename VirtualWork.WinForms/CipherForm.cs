@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using LanguageService.Windows.Forms;
 using VirtualWork.Core.Cryptography;
 using VirtualWork.Core.Cryptography.Ciphers;
 using VirtualWork.Core.Extensions;
+using VirtualWork.Service.Utils;
 using VirtualWork.WinForms.Extensions;
 
 namespace VirtualWork.WinForms
@@ -15,9 +17,12 @@ namespace VirtualWork.WinForms
 	{
 		private CipherMode cipherMode;
 		private bool encrypt = true;
+		private ErrorBoxHelper errorBoxHelper;
 
-		public CipherForm()
+		public CipherForm(ErrorBoxHelper errorBoxHelper)
 		{
+			this.errorBoxHelper = errorBoxHelper;
+
 			InitializeComponent();
 			Translator.Translate(this);
 
@@ -239,6 +244,49 @@ namespace VirtualWork.WinForms
 		{
 			e.Cancel = true;
 			Hide();
+		}
+
+		private void TsmiPaste_Click(object sender, EventArgs e)
+		{
+			SendKeys.Send("^V");
+		}
+
+		private void TsmiCopy_Click(object sender, EventArgs e)
+		{
+			SendKeys.Send("^C");
+		}
+
+		private void TsmiSavePlaintTextIntoFile_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				var dialogResult = saveFileDialog.ShowDialog();
+				if (dialogResult == DialogResult.OK)
+				{
+					File.WriteAllText(saveFileDialog.FileName, rtb_PlainText.Text.Base64Encode());
+				}
+			}
+			catch (Exception ex)
+			{
+				errorBoxHelper.Show(ex);
+			}
+		}
+
+		private void TsmiSaveCipherTextIntoFile_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				var bytes = Convert.FromBase64String(rtb_CipherText.Text);
+				var dialogResult = saveFileDialog.ShowDialog();
+				if (dialogResult == DialogResult.OK)
+				{
+					File.WriteAllBytes(saveFileDialog.FileName, bytes);
+				}
+			}
+			catch (Exception ex)
+			{
+				errorBoxHelper.Show(ex);
+			}
 		}
 	}
 }

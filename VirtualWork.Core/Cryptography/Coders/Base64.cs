@@ -14,24 +14,26 @@ namespace VirtualWork.Core.Cryptography.Coders
 			return Convert.ToBase64String(bytes);
 		}
 
-		public static string Encode(string plainString)
+		public static string Encode(string plainString, Encoding encoding = null)
 		{
 			if (plainString == null)
 			{
 				throw new ArgumentNullException(nameof(plainString));
 			}
-			var encBytes = Encoding.UTF8.GetBytes(plainString);
+			var actualEncoding = encoding ?? Encoding.UTF8;
+			var encBytes = actualEncoding.GetBytes(plainString);
 			return Convert.ToBase64String(encBytes);
 		}
 
-		public static string Decode(string encodedString)
+		public static string Decode(string encodedString, Encoding encoding = null)
 		{
 			if (encodedString == null)
 			{
 				throw new ArgumentNullException(nameof(encodedString));
 			}
 			var decBytes = Convert.FromBase64String(encodedString);
-			return Encoding.UTF8.GetString(decBytes);
+			var actualEncoding = encoding ?? Encoding.UTF8;
+			return actualEncoding.GetString(decBytes);
 		}
 
 		public static byte[] DecodeToArray(string encodedString)

@@ -28,12 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CipherForm));
 			this.p_Main = new System.Windows.Forms.Panel();
 			this.p_Upper = new System.Windows.Forms.Panel();
 			this.p_Right = new System.Windows.Forms.Panel();
 			this.gb_CipherText = new System.Windows.Forms.GroupBox();
 			this.rtb_CipherText = new System.Windows.Forms.RichTextBox();
+			this.cmsPlainText = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.tsmiCopy = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiPaste = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiSaveIntoFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.p_Left = new System.Windows.Forms.Panel();
 			this.gb_PlainText = new System.Windows.Forms.GroupBox();
 			this.rtb_PlainText = new System.Windows.Forms.RichTextBox();
@@ -58,10 +63,16 @@
 			this.lbl_IV = new System.Windows.Forms.Label();
 			this.tb_Password = new System.Windows.Forms.TextBox();
 			this.lbl_Password = new System.Windows.Forms.Label();
+			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.cmsCipherText = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.tsmiCopyCipherText = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiPasteIntoCipherText = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiSaveCipherTextIntoFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.p_Main.SuspendLayout();
 			this.p_Upper.SuspendLayout();
 			this.p_Right.SuspendLayout();
 			this.gb_CipherText.SuspendLayout();
+			this.cmsPlainText.SuspendLayout();
 			this.p_Left.SuspendLayout();
 			this.gb_PlainText.SuspendLayout();
 			this.p_Lower.SuspendLayout();
@@ -70,6 +81,7 @@
 			this.p_CipherMethod.SuspendLayout();
 			this.gbCipherMethod.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nud_Key)).BeginInit();
+			this.cmsCipherText.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// p_Main
@@ -115,6 +127,7 @@
 			// rtb_CipherText
 			// 
 			this.rtb_CipherText.AcceptsTab = true;
+			this.rtb_CipherText.ContextMenuStrip = this.cmsCipherText;
 			this.rtb_CipherText.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rtb_CipherText.Location = new System.Drawing.Point(3, 16);
 			this.rtb_CipherText.Name = "rtb_CipherText";
@@ -122,6 +135,39 @@
 			this.rtb_CipherText.TabIndex = 1;
 			this.rtb_CipherText.Text = "";
 			this.rtb_CipherText.TextChanged += new System.EventHandler(this.Rtb_CipherText_TextChanged);
+			// 
+			// cmsPlainText
+			// 
+			this.cmsPlainText.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCopy,
+            this.tsmiPaste,
+            this.tsmiSaveIntoFile});
+			this.cmsPlainText.Name = "contextMenuStrip";
+			this.cmsPlainText.Size = new System.Drawing.Size(228, 70);
+			// 
+			// tsmiCopy
+			// 
+			this.tsmiCopy.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.tsmiCopy.Name = "tsmiCopy";
+			this.tsmiCopy.Size = new System.Drawing.Size(227, 22);
+			this.tsmiCopy.Text = "Copy";
+			this.tsmiCopy.Click += new System.EventHandler(this.TsmiCopy_Click);
+			// 
+			// tsmiPaste
+			// 
+			this.tsmiPaste.Image = global::VirtualWork.WinForms.Properties.Resources.paste_plain;
+			this.tsmiPaste.Name = "tsmiPaste";
+			this.tsmiPaste.Size = new System.Drawing.Size(227, 22);
+			this.tsmiPaste.Text = "Paste";
+			this.tsmiPaste.Click += new System.EventHandler(this.TsmiPaste_Click);
+			// 
+			// tsmiSaveIntoFile
+			// 
+			this.tsmiSaveIntoFile.Image = global::VirtualWork.WinForms.Properties.Resources.save;
+			this.tsmiSaveIntoFile.Name = "tsmiSaveIntoFile";
+			this.tsmiSaveIntoFile.Size = new System.Drawing.Size(227, 22);
+			this.tsmiSaveIntoFile.Text = "Base64 encode result into file";
+			this.tsmiSaveIntoFile.Click += new System.EventHandler(this.TsmiSavePlaintTextIntoFile_Click);
 			// 
 			// p_Left
 			// 
@@ -147,6 +193,7 @@
 			// rtb_PlainText
 			// 
 			this.rtb_PlainText.AcceptsTab = true;
+			this.rtb_PlainText.ContextMenuStrip = this.cmsPlainText;
 			this.rtb_PlainText.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rtb_PlainText.Location = new System.Drawing.Point(3, 16);
 			this.rtb_PlainText.Name = "rtb_PlainText";
@@ -379,6 +426,39 @@
 			this.lbl_Password.TabIndex = 0;
 			this.lbl_Password.Text = "Password";
 			// 
+			// cmsCipherText
+			// 
+			this.cmsCipherText.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCopyCipherText,
+            this.tsmiPasteIntoCipherText,
+            this.tsmiSaveCipherTextIntoFile});
+			this.cmsCipherText.Name = "contextMenuStrip";
+			this.cmsCipherText.Size = new System.Drawing.Size(228, 92);
+			// 
+			// tsmiCopyCipherText
+			// 
+			this.tsmiCopyCipherText.Image = global::VirtualWork.WinForms.Properties.Resources.copy;
+			this.tsmiCopyCipherText.Name = "tsmiCopyCipherText";
+			this.tsmiCopyCipherText.Size = new System.Drawing.Size(227, 22);
+			this.tsmiCopyCipherText.Text = "Copy";
+			this.tsmiCopyCipherText.Click += new System.EventHandler(this.TsmiCopy_Click);
+			// 
+			// tsmiPasteIntoCipherText
+			// 
+			this.tsmiPasteIntoCipherText.Image = global::VirtualWork.WinForms.Properties.Resources.paste_plain;
+			this.tsmiPasteIntoCipherText.Name = "tsmiPasteIntoCipherText";
+			this.tsmiPasteIntoCipherText.Size = new System.Drawing.Size(227, 22);
+			this.tsmiPasteIntoCipherText.Text = "Paste";
+			this.tsmiPasteIntoCipherText.Click += new System.EventHandler(this.TsmiPaste_Click);
+			// 
+			// tsmiSaveCipherTextIntoFile
+			// 
+			this.tsmiSaveCipherTextIntoFile.Image = global::VirtualWork.WinForms.Properties.Resources.save;
+			this.tsmiSaveCipherTextIntoFile.Name = "tsmiSaveCipherTextIntoFile";
+			this.tsmiSaveCipherTextIntoFile.Size = new System.Drawing.Size(227, 22);
+			this.tsmiSaveCipherTextIntoFile.Text = "Base64 decode result into file";
+			this.tsmiSaveCipherTextIntoFile.Click += new System.EventHandler(this.TsmiSaveCipherTextIntoFile_Click);
+			// 
 			// CipherForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,6 +473,7 @@
 			this.p_Upper.ResumeLayout(false);
 			this.p_Right.ResumeLayout(false);
 			this.gb_CipherText.ResumeLayout(false);
+			this.cmsPlainText.ResumeLayout(false);
 			this.p_Left.ResumeLayout(false);
 			this.gb_PlainText.ResumeLayout(false);
 			this.p_Lower.ResumeLayout(false);
@@ -403,6 +484,7 @@
 			this.gbCipherMethod.ResumeLayout(false);
 			this.gbCipherMethod.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nud_Key)).EndInit();
+			this.cmsCipherText.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -438,5 +520,14 @@
 		private System.Windows.Forms.TextBox tb_Password;
 		private System.Windows.Forms.Label lbl_Password;
 		private System.Windows.Forms.ComboBox cbCipherMode;
+		private System.Windows.Forms.SaveFileDialog saveFileDialog;
+		private System.Windows.Forms.ContextMenuStrip cmsPlainText;
+		private System.Windows.Forms.ToolStripMenuItem tsmiCopy;
+		private System.Windows.Forms.ToolStripMenuItem tsmiPaste;
+		private System.Windows.Forms.ToolStripMenuItem tsmiSaveIntoFile;
+		private System.Windows.Forms.ContextMenuStrip cmsCipherText;
+		private System.Windows.Forms.ToolStripMenuItem tsmiCopyCipherText;
+		private System.Windows.Forms.ToolStripMenuItem tsmiPasteIntoCipherText;
+		private System.Windows.Forms.ToolStripMenuItem tsmiSaveCipherTextIntoFile;
 	}
 }
