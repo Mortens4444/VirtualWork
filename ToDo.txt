@@ -10,6 +10,14 @@ Appointments
 - Calendar (week/month)
 - CreateMeetingForm remove comments
 - Get meeting/event data sheet from calendar, show it on Google Maps
+- Add new event/meeting through calendar
+- Shopping list attach to event, same with application start and repetition, event closing date and place is optional attachable
+- More than one notification for an event
+- Event dependency (For example: Buy something before another event)
+- Fix: Add new event refresh month calendar
+- Fix: Modify event start date should also modify event end date
+- Weekly task overview page
+- Fix: calendar view change is slow to weekly (CalendarItemsProvider ToDo)
 
 Resources
 ---------

@@ -237,7 +237,7 @@
 			this.nudRepetitionValue.Size = new System.Drawing.Size(41, 20);
 			this.nudRepetitionValue.TabIndex = 11;
 			this.nudRepetitionValue.Value = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
             0});

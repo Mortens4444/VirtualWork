@@ -16,8 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWork.Persistence", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5702C5D8-985D-4D02-BEFD-242BFAB52B89}"
 	ProjectSection(SolutionItems) = preProject
-		Ideas.txt = Ideas.txt
 		OWASP.txt = OWASP.txt
+		ToDo.txt = ToDo.txt
 		Documentation\UML.bmp = Documentation\UML.bmp
 		Documentation\VIRtual Work.mdj = Documentation\VIRtual Work.mdj
 	EndProjectSection
