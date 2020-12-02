@@ -44,6 +44,15 @@ namespace VirtualWork.Core.Appointment
 
 		public override string ToString()
 		{
+			if (String.IsNullOrEmpty(Description))
+			{
+				if (String.IsNullOrEmpty(Title))
+				{
+					return $"{AppointmentDate.ToShortDateString()} {AppointmentDate.ToShortTimeString()}";
+				}
+				return Title;
+			}
+
 			return $"{Title} - {Description}";
 		}
 

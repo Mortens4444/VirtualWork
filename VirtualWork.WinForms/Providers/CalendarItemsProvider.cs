@@ -46,14 +46,18 @@ namespace VirtualWork.WinForms.Providers
 			SetRowHeaderCells(dgvCalendar);
 			SetColumnHeaderCells(dgvCalendar, startDate);
 
+			// ToDo: Fix performance issue. GetAll should be called with a predicate.
+			var allMeetings = meetingRepository.GetAll();
+			var allEvents = eventRepository.GetAll();
+
 			for (int dayIndex = 0; dayIndex < dgvCalendar.ColumnCount; dayIndex++)
 			{
 				var actualDate = startDate.AddDays(dayIndex);
-				// ToDo: Fix performance issue. GetAll should be called with a predicate.
-				var meetings = meetingRepository.GetAll().Where(meeting => meeting.MeetingDate.IsRepeatedOnDate(actualDate, (RepetitionType)meeting.RepetitionType, meeting.RepetitionValue, meeting.ExpirationDate));
-				var events = eventRepository.GetAll().Where(myEvent => myEvent.EventDate.IsRepeatedOnDate(actualDate, (RepetitionType)myEvent.RepetitionType, myEvent.RepetitionValue, myEvent.ExpirationDate));
+				var meetings = allMeetings.Where(meeting => meeting.MeetingDate.IsRepeatedOnDate(actualDate, (RepetitionType)meeting.RepetitionType, meeting.RepetitionValue, meeting.ExpirationDate)).ToList();
+				var events = allEvents.Where(myEvent => myEvent.EventDate.IsRepeatedOnDate(actualDate, (RepetitionType)myEvent.RepetitionType, myEvent.RepetitionValue, myEvent.ExpirationDate)).ToList();
 
 				var slotStartTime = new TimeSpan(0, 0, 0);
+
 				for (int i = 0; i < 48; i++)
 				{
 					var slotEndTime = slotStartTime.Add(HalfAnHour);
@@ -67,6 +71,7 @@ namespace VirtualWork.WinForms.Providers
 
 					var meetingsText = String.Join(", ", slotMeetings);
 					var eventsText = String.Join(", ", slotEvents);
+
 					var slotText = $"{meetingsText};{eventsText}".Trim(';');
 					dgvCalendar.Rows[i].Cells[dayIndex].Value = slotText;
 

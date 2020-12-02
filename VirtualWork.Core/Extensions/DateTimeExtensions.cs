@@ -113,6 +113,11 @@ namespace VirtualWork.Core.Extensions
 				{
 					return true;
 				}
+
+				if (actualDateTime > testedDateTime)
+				{
+					break;
+				}
 			}
 			return false;
 		}
