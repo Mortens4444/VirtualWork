@@ -53,6 +53,10 @@ namespace VirtualWork.Core.Appointment
 				return Title;
 			}
 
+			if (String.IsNullOrEmpty(Title))
+			{
+				return Description;
+			}
 			return $"{Title} - {Description}";
 		}
 

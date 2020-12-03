@@ -1,6 +1,10 @@
 - Fix performance issues (Search for: ToDo: Fix performance issue. GetAll should be called with a predicate.)
 - Full manual test should be executed.
 - Automatic tests should be created.
+- Merge database migrations into one file.
+- Move notification system into service.
+- Create VirtualWork WPF windows from VirtualWork.WinForms forms.
+- Create migration / stored procedure to fill up database Issues table with data (with these ToDo items for example).
 
 Appointments
 ------------
