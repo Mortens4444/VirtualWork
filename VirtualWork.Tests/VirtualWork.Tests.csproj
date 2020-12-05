@@ -54,6 +54,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Cryptography\Ciphers\XorCipherTest.cs" />
     <Compile Include="Core\Security\RandomGeneratorTest.cs" />
     <Compile Include="AssertEx.cs" />
     <Compile Include="Persistence\Helper\PropertyCopierTest.cs" />

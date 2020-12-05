@@ -9,6 +9,8 @@ namespace VirtualWork.Interfaces.Log
 
 		void Warning(string logInfo, IUser user = null);
 
+		void Warning(Exception exception, IUser user = null);
+
 		void Error(string logInfo, IUser user = null);
 
 		void Error(Exception exception, IUser user = null);

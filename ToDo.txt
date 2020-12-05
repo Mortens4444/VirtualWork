@@ -3,7 +3,6 @@
 - Automatic tests should be created.
 - Merge database migrations into one file.
 - Move notification system into service.
-- Create VirtualWork WPF windows from VirtualWork.WinForms forms.
 - Create migration / stored procedure to fill up database Issues table with data (with these ToDo items for example).
 
 Appointments
@@ -53,5 +52,5 @@ Programs (utilities)
 
 User Interface
 --------------
-- Create WPF UI in VirtualWork project
+- Create WPF UI in VirtualWork project (Create VirtualWork WPF windows from VirtualWork.WinForms forms.)
 - Create ASP.NET UI interface in a new project

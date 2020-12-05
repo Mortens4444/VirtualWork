@@ -46,6 +46,11 @@ namespace VirtualWork.Service.Log
 			logEntryRepository.Add(logEntry);
 		}
 
+		public void Warning(Exception exception, IUser user = null)
+		{
+			Warning(exception.GetDetails(), user);
+		}
+
 		private static LogEntry GetLogEntry(string logInfo, LogLevel logLevel, IUser user)
 		{
 			return new LogEntry

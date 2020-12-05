@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Common.Messages;
 using LanguageService;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.Interfaces.Log;
 using VirtualWork.Persistence.Entities;
 using VirtualWork.Service;
 using MeetingDto = VirtualWork.Core.Appointment.Meeting;
@@ -15,8 +16,9 @@ namespace VirtualWork.WinForms.Providers
 	{
 		public const string Meetings = "Meetings";
 
-		public MeetingsListProvider(MeetingRepository meetingRepository)
-			: base(meetingRepository)
+		public MeetingsListProvider(MeetingRepository meetingRepository,
+			ILogger logger)
+			: base(meetingRepository, logger)
 		{
 		}
 
@@ -33,7 +35,7 @@ namespace VirtualWork.WinForms.Providers
 			base.ProcessItems(items);
 			foreach (var item in items)
 			{
-				var notifier = new ActiveSleepNotifier();
+				var notifier = new ActiveSleepNotifier(logger);
 				notifier.NotifyAt(item,
 					() => { InfoBox.Show(Lng.Elem("Upcoming meeting"), item.ToString()); },
 					cancellationToken);

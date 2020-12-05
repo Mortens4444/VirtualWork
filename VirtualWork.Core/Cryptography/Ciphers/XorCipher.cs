@@ -13,7 +13,7 @@ namespace VirtualWork.Core.Cryptography.Ciphers
 			}
 
 			int i = 0, j = 0;
-			var result = new StringBuilder();
+			var result = new StringBuilder(source.Length);
 
 			while (i < source.Length)
 			{

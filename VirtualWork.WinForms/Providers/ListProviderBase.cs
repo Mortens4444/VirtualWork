@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Windows.Forms;
 using VirtualWork.Interfaces;
+using VirtualWork.Interfaces.Log;
 using VirtualWork.Persistence.Repositories;
 using VirtualWork.WinForms.Extensions;
 
@@ -14,12 +15,16 @@ namespace VirtualWork.WinForms.Providers
 		where TEntityType : class, IHaveIdentifier, new()
 	{
 		protected CancellationToken cancellationToken;
+		protected readonly ILogger logger;
+
 		private readonly RepositoryBase<TDtoType, TEntityType> repository;
 		private CancellationTokenSource cancellationTokenSource;
 
-		public ListProviderBase(RepositoryBase<TDtoType, TEntityType> repository)
+		public ListProviderBase(RepositoryBase<TDtoType, TEntityType> repository,
+			ILogger logger)
 		{
 			this.repository = repository;
+			this.logger = logger;
 		}
 
 		public IEnumerable<TDtoType> GetNodes(TreeView treeView, string rootNodeName, int nodeIndex, Expression<Func<TEntityType, bool>> predicate, bool appendItems = false)

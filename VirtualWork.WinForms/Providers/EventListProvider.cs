@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Common.Messages;
 using LanguageService;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.Interfaces.Log;
 using VirtualWork.Persistence.Entities;
 using VirtualWork.Service;
 using VirtualWork.Service.Process;
@@ -19,8 +20,9 @@ namespace VirtualWork.WinForms.Providers
 		private readonly Executor executor;
 
 		public EventListProvider(EventRepository eventRepository,
-			Executor executor)
-			: base(eventRepository)
+			Executor executor,
+			ILogger logger)
+			: base(eventRepository, logger)
 		{
 			this.executor = executor;
 		}
@@ -38,7 +40,7 @@ namespace VirtualWork.WinForms.Providers
 			base.ProcessItems(items);
 			foreach (var item in items)
 			{
-				var notifier = new ActiveSleepNotifier();
+				var notifier = new ActiveSleepNotifier(logger);
 				notifier.NotifyAt(item,
 					() =>
 					{

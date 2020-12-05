@@ -46,6 +46,11 @@ namespace VirtualWork.Service.Log
 			WriteToLogFile(logMessage, user, LogLevel.Warning);
 		}
 
+		public void Warning(Exception exception, IUser user = null)
+		{
+			Warning(exception.GetDetails(), user);
+		}
+
 		private void WriteToLogFile(string text, IUser user = null, LogLevel logLevel = LogLevel.Info)
 		{
 			var logMessage = ComposeLogMessage(text, logLevel);
