@@ -42,8 +42,7 @@ namespace VirtualWork.WinForms
 				btnCreate.Text = Lng.Elem("Create");
 
 				var now = DateTime.Now;
-				dtpEventDate.Value = now.AddDays(1);
-				dtpEventEndDate.Value = now.AddDays(1).AddHours(1);
+				dtpEventDate.Value = now.AddDays(1).CutMinutes();
 				tbTitle.Text = String.Empty;
 				tbEventLocation.Text = String.Empty;
 				rtbDescription.Text = String.Empty;
@@ -114,6 +113,12 @@ namespace VirtualWork.WinForms
 		{
 			this.myEvent = myEvent;
 			return base.ShowDialog();
+		}
+
+		private void DtpEventDate_ValueChanged(object sender, EventArgs e)
+		{
+			dtpEventEndDate.Value = dtpEventDate.Value.AddHours(1);
+			dtpExpirationDate.Value = dtpEventDate.Value.AddMonths(1);
 		}
 	}
 }

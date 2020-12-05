@@ -312,6 +312,7 @@
 			this.dtpEventDate.Name = "dtpEventDate";
 			this.dtpEventDate.Size = new System.Drawing.Size(156, 20);
 			this.dtpEventDate.TabIndex = 6;
+			this.dtpEventDate.ValueChanged += new System.EventHandler(this.DtpEventDate_ValueChanged);
 			// 
 			// lblEventTime
 			// 

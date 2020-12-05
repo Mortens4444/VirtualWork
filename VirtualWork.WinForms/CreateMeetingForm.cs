@@ -77,8 +77,7 @@ namespace VirtualWork.WinForms
 				rtbDescription.Text = String.Empty;
 				cbPartner.SelectedIndex = -1;
 				cbMeetingPoint.SelectedIndex = -1;
-				dtpMeetingDate.Value = DateTime.Now.AddDays(1);
-				dtpMeetingEndDate.Value = DateTime.Now.AddDays(1).AddHours(1);
+				dtpMeetingDate.Value = DateTime.Now.AddDays(1).CutMinutes();
 				cbRepetitionType.SelectedIndex = 0;
 				nudRepetitionValue.Value = 100;
 			}
@@ -118,6 +117,12 @@ namespace VirtualWork.WinForms
 				//	}
 				//}
 			}
+		}
+
+		private void DtpMeetingDate_ValueChanged(object sender, EventArgs e)
+		{
+			dtpMeetingEndDate.Value = dtpMeetingDate.Value.AddHours(1);
+			dtpExpirationDate.Value = dtpMeetingDate.Value.AddMonths(1);
 		}
 	}
 }

@@ -276,6 +276,7 @@ namespace VirtualWork.WinForms
 			if (createEventForm.ShowDialog() == DialogResult.OK)
 			{
 				eventListProvider.GetUpcomingEvents(tvItems);
+				calendarItemsProvider.SetBoldDates(monthCalendar);
 			}
 		}
 
@@ -294,6 +295,7 @@ namespace VirtualWork.WinForms
 			if (createMeetingForm.ShowDialog() == DialogResult.OK)
 			{
 				meetingsListProvider.GetUpcomingMeetings(tvItems);
+				calendarItemsProvider.SetBoldDates(monthCalendar);
 			}
 		}
 

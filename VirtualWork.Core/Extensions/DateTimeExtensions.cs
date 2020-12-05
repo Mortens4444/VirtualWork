@@ -34,7 +34,7 @@ namespace VirtualWork.Core.Extensions
 
 		public static bool AreDatesTimeBetweenTimeSpans(DateTime startDateTime, DateTime endDateTime, TimeSpan first, TimeSpan second)
 		{
-			if (startDateTime == endDateTime)
+			if (startDateTime.Date == endDateTime.Date)
 			{
 				return IsDateTimeBetweenTimeSpans(startDateTime, first, second);
 			}
@@ -120,6 +120,11 @@ namespace VirtualWork.Core.Extensions
 				}
 			}
 			return false;
+		}
+
+		public static DateTime CutMinutes(this DateTime dateTime)
+		{
+			return dateTime.AddMinutes(-dateTime.Minute);
 		}
 
 		public static DateTime CutSeconds(this DateTime dateTime)

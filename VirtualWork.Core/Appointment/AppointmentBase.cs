@@ -93,12 +93,22 @@ namespace VirtualWork.Core.Appointment
 			var actualDate = AppointmentDate;
 			var expirationDate = ExpirationDate ?? DateTime.Now.AddYears(3);
 			var functionDelegate = DateModifiers[RepetitionType];
-			if (expirationDate >= DateTime.Now && functionDelegate != null)
+			if (expirationDate >= DateTime.Now)
 			{
-				while (actualDate < expirationDate && result.Count < MaximumNumberOfDates)
+				if (functionDelegate == null)
 				{
-					actualDate = functionDelegate(actualDate, RepetitionValue);
-					result.Add(actualDate);
+					if (actualDate >= DateTime.Now)
+					{
+						result.Add(actualDate);
+					}
+				}
+				else
+				{
+					while (actualDate < expirationDate && result.Count < MaximumNumberOfDates)
+					{
+						actualDate = functionDelegate(actualDate, RepetitionValue);
+						result.Add(actualDate);
+					}
 				}
 			}
 			return result;

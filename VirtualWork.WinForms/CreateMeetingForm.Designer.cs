@@ -163,6 +163,7 @@
 			this.dtpMeetingDate.Name = "dtpMeetingDate";
 			this.dtpMeetingDate.Size = new System.Drawing.Size(156, 20);
 			this.dtpMeetingDate.TabIndex = 7;
+			this.dtpMeetingDate.ValueChanged += new System.EventHandler(this.DtpMeetingDate_ValueChanged);
 			// 
 			// gbRecurring
 			// 

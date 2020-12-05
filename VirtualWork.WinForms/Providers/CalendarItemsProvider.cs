@@ -111,6 +111,7 @@ namespace VirtualWork.WinForms.Providers
 			IEnumerable<AppointmentBase> events = eventRepository.GetAll();
 			var appointments = meetings.Concat(events).ToList();
 
+			monthCalendar.RemoveAllBoldedDates();
 			foreach (var appointment in appointments)
 			{
 				var futureOccurances = appointment.GetNextOccuranceDates();

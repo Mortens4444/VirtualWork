@@ -1,66 +1,72 @@
+How to use ToDo file
+--------------------
+Each task in this file should be under a category, and should have an estimation how difficult is the task.
+Use 1-10 scale, where 10 is the most difficult task or very long because of repetition.
+Where ? sign is present, a solution should be suggested.
+Plus sign after a number show, its greater or equal to the estimation. Example: 5+ means it is 5 or harder task.
+
 Service
 -------
-- Move notification system into service.
+- (7) Move notification system into service.
 
 Tests
 -----
-- Full manual test should be executed.
-- Automatic tests should be created.
+- (3) Full manual test should be executed.
+- (8) Automatic tests should be created.
 
 Database
 --------
-- Merge database migrations into one file.
-- Create migration / stored procedure to fill up database Issues table with data (with these ToDo items for example).
-- Fix performance issues (Search for: ToDo: Fix performance issue. GetAll should be called with a predicate.)
+- (2) Merge database migrations into one file.
+- (5) Create migration / stored procedure to fill up database Issues table with data (with these ToDo items for example).
+- (5) Fix performance issues (Search for: ToDo: Fix performance issue. GetAll should be called with a predicate.)
 
 Appointments
 ------------
-- Appointment grouping, to easily copy/create a hole bunch of event.
-- Consultation with link to synchronize (family doctor)
-- Execute more commands when an event triggered
-- Calendar (week/month)
-- CreateMeetingForm remove comments
-- Get meeting/event data sheet from calendar, show it on Google Maps
-- Add new event/meeting through calendar
-- Shopping list attach to event, same with application start and repetition, event closing date and place is optional attachable
-- More than one notification for an event
-- Event dependency (For example: Buy something before another event)
-- Fix: Add new event refresh month calendar
-- Fix: Modify event start date should also modify event end date
-- Weekly task overview page
-- Fix: calendar view change is slow to weekly (CalendarItemsProvider ToDo)
+- (?) Appointment grouping, to easily copy/create a hole bunch of event
+- (?) Consultation with link to synchronize (family doctor)
+- (3) Execute more commands when an event triggered
+- (?) Calendar (week/month)
+- (?) CreateMeetingForm remove comments
+- (6) Get meeting/event data sheet from calendar, show it on Google Maps
+- (2) Add new event/meeting through calendar
+- (7) Attach shopping list to an event, same with application start and repetition, event closing date and place is optional attachable
+- (?) More than one notification for an event (Check previous task)
+- (4) Event dependency (For example: Buy something before another event)
+- (1) Fix: Add new event refresh month calendar
+- (4) Weekly task overview page
+- (4) Sort appointments into year / month / week nodes in Main form's tree view
 
 Resources
 ---------
-- Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
-- Locations where these resources are available
+- (?) Store resources (like a car, devices, hardware information) Resource groups, with JSON definition (image)
+- (?) Locations where these resources are available
 
 Invoices
 --------
-- Upload invoices, images, documents
-- Incoming / outgoing money
+- (?) Upload invoices, images, documents
+- (?) Incoming / outgoing money
 
 Settings
 --------
-- System settings search
+- (?) System settings search
 
 Log
 ---
-- Log paging
+- (3) Log paging
 
 Security
 --------
-- Assign permissions to groups
-- Store passwords for groups
-- Import Google passwords into application.
-- Easy way to replace password encryption algorithm (and change to a better encryption).
+- (?) Assign permissions to groups
+- (?) Store passwords for groups
+- (3) Import Google passwords into application.
+- (5+) Easy way to replace password encryption algorithm (and change to a better encryption).
 
 Programs (utilities)
 --------------------
-- Save editor settings
-- Implement calculator
+- (3) Save editor settings
+- (5) Implement calculator
 
 User Interface
 --------------
-- Create WPF UI in VirtualWork project (Create VirtualWork WPF windows from VirtualWork.WinForms forms.)
-- Create ASP.NET UI interface in a new project
+- (9) Create WPF UI in VirtualWork project (Create VirtualWork WPF windows from VirtualWork.WinForms forms.)
+- (10) Create ASP.NET UI interface in a new project
