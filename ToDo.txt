@@ -1,9 +1,17 @@
-- Fix performance issues (Search for: ToDo: Fix performance issue. GetAll should be called with a predicate.)
+Service
+-------
+- Move notification system into service.
+
+Tests
+-----
 - Full manual test should be executed.
 - Automatic tests should be created.
+
+Database
+--------
 - Merge database migrations into one file.
-- Move notification system into service.
 - Create migration / stored procedure to fill up database Issues table with data (with these ToDo items for example).
+- Fix performance issues (Search for: ToDo: Fix performance issue. GetAll should be called with a predicate.)
 
 Appointments
 ------------
@@ -44,6 +52,8 @@ Security
 --------
 - Assign permissions to groups
 - Store passwords for groups
+- Import Google passwords into application.
+- Easy way to replace password encryption algorithm (and change to a better encryption).
 
 Programs (utilities)
 --------------------

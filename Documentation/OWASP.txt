@@ -1,10 +1,10 @@
 https://axen-cyber.com/hu/contact-2/
 
-Kétlépcsős azonosítás implementálása. ✗
-Az alkalmazás nem fogad el gyenge jelszavakat. (A gyenge jelszavak tiltása.) ✗
-Az alkalmazás rendelkezik brute force védelemmel. ✗
-Az alkalmazás biztonságos jelszó visszaállítást alkalmaz. ✗
-Az alkalmazás munkamenete lejár. (A munkamenetek érvénytelenítése.) ✗
-Az alkalmazás nem küld Session ID-t GET kérésen keresztül. (Szerver oldali, biztonságos Session menedzser implementálása.) ✗
+Implement 2FA (Two-factor authentication). ✗
+The application cannot accept weak passwords. (Forbid to use weak passwords.) ✗
+Implement Brute Force Attack protection. ✗
+The application secure password restoration method (Do not send plain text passwords in e-mails). ✗
+The application sessions can expire. (Invalidate sessions.) ✗
+The application not sends Session ID in GET requests. (Server side, secure Session Manager implementation.) ✗
 
-Az alkalmazás biztonságosan tárolja a jelszavakat. (A jelszavak biztonságos, hash-elt/titkosított tárolása.) ✓
+Secure password storage. (Safe password storage, hashed/encrypted storage.) ✓
