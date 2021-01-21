@@ -1,5 +1,11 @@
 https://axen-cyber.com/hu/contact-2/
 
+Legend
+------
+✓ - Implemented
+✗ - Not yet implemented
+? - Are you sure you did it right?
+
 Implement 2FA (Two-factor authentication). ✗
 The application cannot accept weak passwords. (Forbid to use weak passwords.) ✗
 Implement Brute Force Attack protection. ✗
@@ -7,4 +13,4 @@ The application secure password restoration method (Do not send plain text passw
 The application sessions can expire. (Invalidate sessions.) ✗
 The application not sends Session ID in GET requests. (Server side, secure Session Manager implementation.) ✗
 
-Secure password storage. (Safe password storage, hashed/encrypted storage.) ✓
+Secure password storage. (Safe password storage, hashed/encrypted storage.) ✓?

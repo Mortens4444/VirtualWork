@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using VirtualWork.Core.Appointment;
 using VirtualWork.Core.Extensions;
 using VirtualWork.Interfaces.Enums;
+using VirtualWork.WinForms.Extensions;
 using EventRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Appointment.Event, VirtualWork.Persistence.Entities.Event>;
 using MeetingRepository = VirtualWork.Persistence.Repositories.RepositoryBase<VirtualWork.Core.Appointment.Meeting, VirtualWork.Persistence.Entities.Meeting>;
 
@@ -120,6 +121,7 @@ namespace VirtualWork.WinForms.Providers
 					monthCalendar.AddBoldedDate(futureOccurance);
 				}
 			}
+			monthCalendar.RefreshView();
 		}
 	}
 }

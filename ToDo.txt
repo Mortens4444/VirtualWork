@@ -32,9 +32,10 @@ Appointments
 - (7) Attach shopping list to an event, same with application start and repetition, event closing date and place is optional attachable
 - (?) More than one notification for an event (Check previous task)
 - (4) Event dependency (For example: Buy something before another event)
-- (1) Fix: Add new event refresh month calendar
 - (4) Weekly task overview page
 - (4) Sort appointments into year / month / week nodes in Main form's tree view
+- Calendar view should show the day name
+- In monthly view a start date should be selected
 
 Resources
 ---------

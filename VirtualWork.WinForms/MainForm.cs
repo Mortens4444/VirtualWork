@@ -619,6 +619,7 @@ namespace VirtualWork.WinForms
 				if (createEventForm.ShowDialog(myEvent) == DialogResult.OK)
 				{
 					eventListProvider.GetUpcomingEvents(tvItems);
+					calendarItemsProvider.SetBoldDates(monthCalendar);
 				}
 			}
 		}
@@ -632,6 +633,7 @@ namespace VirtualWork.WinForms
 			{
 				eventRepository.Remove(myEvent.Id);
 				eventListProvider.GetUpcomingEvents(tvItems);
+				calendarItemsProvider.SetBoldDates(monthCalendar);
 			}
 		}
 
@@ -643,6 +645,7 @@ namespace VirtualWork.WinForms
 				if (createMeetingForm.ShowDialog(meeting) == DialogResult.OK)
 				{
 					meetingsListProvider.GetUpcomingMeetings(tvItems);
+					calendarItemsProvider.SetBoldDates(monthCalendar);
 				}
 			}
 		}
@@ -656,6 +659,7 @@ namespace VirtualWork.WinForms
 			{
 				meetingRepository.Remove(meeting.Id);
 				meetingsListProvider.GetUpcomingMeetings(tvItems);
+				calendarItemsProvider.SetBoldDates(monthCalendar);
 			}
 		}
 
